@@ -1,0 +1,19 @@
+use Libraries.Interface.Behaviors.Behavior
+use Libraries.Interface.Events.BehaviorEvent
+
+class PixelNavigateBehavior is Behavior
+
+    integer x = 0
+    integer y = 0
+
+    action Run(BehaviorEvent event)
+        PixelBlock block = cast(PixelBlock, event:GetItem())
+        block:GetRegion():Navigate(x, y)
+    end
+
+    action SetDirection(integer x, integer y)
+        me:x = x
+        me:y = y
+    end
+
+end

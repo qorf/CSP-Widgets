@@ -1,0 +1,24 @@
+use Libraries.Game.Graphics.Drawable
+use Libraries.Game.Graphics.Color
+
+class PixelBlock is Drawable
+
+    on create
+        SetAccessibilityCode(parent:Item:ITEM)
+        SetFocusable(true)
+        SetInputGroup("PixelBlock")
+    end
+
+    action GetNextFocus returns Item
+        return GetRegion():GetNextFocus()
+    end
+
+    action GetPreviousFocus returns Item
+        return GetRegion():GetPreviousFocus()
+    end
+
+    action GetRegion returns PixelRegion
+        return cast(PixelRegion, GetParent())
+    end
+
+end

@@ -1,0 +1,371 @@
+use Libraries.Game.Game
+use Libraries.Interface.Layouts.FlowLayout
+use Libraries.Interface.Controls.Control
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Views.LabelBoxView                                                                              
+use Libraries.Game.Graphics.Color
+use Libraries.Interface.Controls.ButtonGroup
+use Libraries.Interface.Controls.RadioButton
+use Libraries.Containers.Iterator
+use Libraries.Containers.Array
+use Libraries.Interface.Item
+use Libraries.Game.InputTable
+use Libraries.Interface.Events.KeyboardEvent
+use Libraries.Game.InputSet
+use Libraries.Interface.Events.TextChangeListener
+use Libraries.Interface.Events.TextChangeEvent
+
+class Main is Game, TextChangeListener
+
+    BitTextBox textBox = undefined
+    BitTextField widthField = undefined
+    BitTextField heightField = undefined
+    BitTextField bitField = undefined
+    ButtonGroup buttonGroup = undefined
+    RadioButton blackWhite = undefined
+    PixelRegion pixelRegion = undefined
+
+    boolean firstUpdate = true
+
+    action Main
+        SetGameName("Pixelation Widget")
+        EnableResizing(true)
+        StartGame()
+    end
+
+    action CreateGame
+        FlowLayout flow
+        SetLayout(flow)
+
+        Control topPanel
+        topPanel:SetPercentageWidth(1.0)
+        topPanel:SetVerticalLayoutMode(topPanel:FIT_CONTENTS)
+
+        FlowLayout panelLayout
+        topPanel:SetLayout(panelLayout)
+
+        LabelBoxView view
+        Color color
+        color:SetColor(0.9, 0.9, 0.9, 1)
+        view:Initialize(color, color)
+        topPanel:SetView2D(view)
+
+        Label topLabel
+        topLabel:SetSize(30)
+        topLabel:SetLeftPadding(10)
+        topLabel:SetHorizontalLayoutMode(topPanel:STANDARD)
+        topLabel:SetPercentageWidth(1.0)
+        topLabel:SetText("Pixelation Widget")
+        topPanel:Add(topLabel)
+
+        Control fieldPanel
+        FlowLayout fieldLayout
+        fieldPanel:SetLayout(fieldLayout)
+        fieldPanel:SetPercentageWidth(1.0)
+        fieldPanel:SetVerticalLayoutMode(fieldPanel:FIT_CONTENTS)
+        fieldPanel:SetTopPadding(20)
+        fieldPanel:SetBottomPadding(20)
+        
+        Control buttonPanel
+        FlowLayout buttonPanelLayout
+        buttonPanel:SetLayout(buttonPanelLayout)
+        buttonPanel:SetPixelWidth(100)
+        buttonPanel:SetLeftPadding(10)
+        buttonPanel:SetVerticalLayoutMode(buttonPanel:FIT_CONTENTS)
+
+        Label buttonLabel
+        buttonLabel:SetSize(20)
+        buttonLabel:SetText("Color Mode")
+        buttonPanel:Add(buttonLabel)
+
+        ButtonGroup group
+        buttonGroup = group
+        group:SetPercentageWidth(1.0)
+        group:SetHorizontalLayoutMode(buttonPanel:STANDARD)
+        group:SetVerticalLayoutMode(buttonPanel:FIT_CONTENTS)
+        group:SetName("Color Mode")
+        RadioButton blackWhite
+        me:blackWhite = blackWhite
+        blackWhite:SetName("Black and White")
+        RadioButton fullColor
+        fullColor:SetName("Full Color")
+        group:Add(blackWhite)
+        group:Add(fullColor)
+        buttonPanel:Add(group)
+        fieldPanel:Add(buttonPanel)
+
+        Control sizePanel
+        FlowLayout sizeLayout
+        sizePanel:SetLayout(sizeLayout)
+        sizePanel:SetPixelWidth(150)
+        sizePanel:SetLeftPadding(150)
+        sizePanel:SetVerticalLayoutMode(sizePanel:FIT_CONTENTS)
+
+        Label sizeLabel
+        sizeLabel:SetSize(20)
+        sizeLabel:SetText("Image Size")
+        sizeLabel:SetHorizontalLayoutMode(sizePanel:STANDARD)
+        sizeLabel:SetPercentageWidth(1.0)
+        sizeLabel:SetBottomPadding(6)
+        sizePanel:Add(sizeLabel)
+
+        Label widthLabel
+        widthLabel:SetText("Width:")
+        widthLabel:SetPositionOnBaseLine(false)
+        widthLabel:SetSize(16)
+        widthLabel:SetHorizontalLayoutMode(sizePanel:STANDARD)
+        widthLabel:SetPercentageWidth(0.5)
+        widthLabel:SetBottomPadding(4)
+        sizePanel:Add(widthLabel)
+
+        BitTextField widthField
+        me:widthField = widthField
+        widthField:SetName("Image Width")
+        widthField:SetText("5")
+        widthField:SetPercentageWidth(0.5)
+        widthField:SetBottomPadding(4)
+        sizePanel:Add(widthField)
+
+        Label heightLabel
+        heightLabel:SetText("Height:")
+        heightLabel:SetPositionOnBaseLine(false)
+        heightLabel:SetSize(16)
+        heightLabel:SetHorizontalLayoutMode(sizePanel:STANDARD)
+        heightLabel:SetPercentageWidth(0.5)
+        sizePanel:Add(heightLabel)
+
+        BitTextField heightField
+        me:heightField = heightField
+        heightField:SetName("Image Height")
+        heightField:SetText("5")
+        heightField:SetPercentageWidth(0.5)
+        sizePanel:Add(heightField)
+
+        fieldPanel:Add(sizePanel)
+
+        Control bitPanel
+        FlowLayout bitLayout
+        bitPanel:SetLayout(bitLayout)
+        bitPanel:SetPixelWidth(150)
+        bitPanel:SetLeftPadding(150)
+        bitPanel:SetVerticalLayoutMode(bitPanel:FIT_CONTENTS)
+
+        Label bitLabel
+        bitLabel:SetSize(20)
+        bitLabel:SetText("Bits per Color")
+        bitLabel:SetHorizontalLayoutMode(sizePanel:STANDARD)
+        bitLabel:SetPercentageWidth(1.0)
+        bitLabel:SetBottomPadding(6)
+        bitPanel:Add(bitLabel)
+
+        Label bitFieldLabel
+        bitFieldLabel:SetText("Bits:")
+        bitFieldLabel:SetPositionOnBaseLine(false)
+        bitFieldLabel:SetSize(16)
+        bitFieldLabel:SetHorizontalLayoutMode(bitPanel:STANDARD)
+        bitFieldLabel:SetPercentageWidth(0.5)
+        bitPanel:Add(bitFieldLabel)
+
+        BitTextField bitField
+        me:bitField = bitField
+        bitField:SetName("Bits Per Color")
+        bitField:SetText("1")
+        bitField:SetPercentageWidth(0.5)
+        bitPanel:Add(bitField)
+
+        fieldPanel:Add(bitPanel)
+
+        topPanel:Add(fieldPanel)
+
+        Add(topPanel)
+
+        PixelRegion pixelRegion
+        me:pixelRegion = pixelRegion
+        pixelRegion:SetPercentageWidth(0.5)
+        pixelRegion:SetVerticalLayoutMode(topPanel:FILL)
+        Add(pixelRegion)
+
+        BitTextBox textBox
+        me:textBox = textBox
+        textBox:SetPercentageWidth(0.5)
+        textBox:SetVerticalLayoutMode(topPanel:FILL)
+        Add(textBox)
+
+        buttonGroup:SetPreviousFocus(textBox)
+        buttonGroup:SetNextFocus(widthField)
+        blackWhite:SetPreviousFocus(textBox)
+        blackWhite:SetNextFocus(widthField)
+        fullColor:SetPreviousFocus(textBox)
+        fullColor:SetNextFocus(widthField)
+        widthField:SetPreviousFocus(buttonGroup)
+        widthField:SetNextFocus(heightField)
+        heightField:SetPreviousFocus(widthField)
+        heightField:SetNextFocus(bitField)
+        bitField:SetPreviousFocus(heightField)
+        bitField:SetNextFocus(pixelRegion)
+        pixelRegion:SetPreviousFocus(bitField)
+        pixelRegion:SetNextFocus(textBox)
+        textBox:SetPreviousFocus(pixelRegion)
+        textBox:SetNextFocus(buttonGroup)
+
+        textBox:Focus()
+
+        InputTable table
+        table:SetIdentifier("PixelBlock")
+
+        PixelNavigateBehavior leftBehavior
+        PixelNavigateBehavior rightBehavior
+        PixelNavigateBehavior upBehavior
+        PixelNavigateBehavior downBehavior
+
+        leftBehavior:SetDirection(-1, 0)
+        rightBehavior:SetDirection(1, 0)
+        upBehavior:SetDirection(0, -1)
+        downBehavior:SetDirection(0, 1)
+
+        KeyboardEvent keys
+        InputSet left
+        left:SetKeyboardInput(keys:LEFT)
+        InputSet right
+        right:SetKeyboardInput(keys:RIGHT)
+        InputSet down
+        down:SetKeyboardInput(keys:DOWN)
+        InputSet up
+        up:SetKeyboardInput(keys:UP)
+
+        table:Add(left, leftBehavior)
+        table:Add(right, rightBehavior)
+        table:Add(down, downBehavior)
+        table:Add(up, upBehavior)
+        AddInputTable(table)
+
+        textBox:AddTextChangeListener(me)
+        bitField:AddTextChangeListener(me)
+
+        RadioButtonBehavior radioBehavior
+        blackWhite:SetBehavior(radioBehavior)
+        fullColor:SetBehavior(radioBehavior)
+    end
+
+    action Update(number seconds)
+        if firstUpdate
+            firstUpdate = false
+            blackWhite:SetToggleState(true)
+        end
+    end
+
+    action TextChanged(TextChangeEvent event)
+        pixelRegion:CalculatePixelColors()
+    end
+
+    action GetImageWidth returns integer
+        integer value = -1
+        check
+            value = widthField:GetText():ParseInteger()
+        detect e is Error
+            return -1
+        end
+
+        return value
+    end
+
+    action GetImageHeight returns integer
+        integer value = -1
+        check
+            value = heightField:GetText():ParseInteger()
+        detect e is Error
+            return -1
+        end
+
+        return value
+    end
+
+    action GetPixelBits returns integer
+        integer value = -1
+        check
+            value = bitField:GetText():ParseInteger()
+        detect e is Error
+            return -1
+        end
+
+        return value
+    end
+
+    action IsBlackWhite returns boolean
+        return blackWhite:GetToggleState()
+    end
+
+    action GetColors returns Array<Color>
+        text value = textBox:GetText()
+        text newLine = value:GetLineFeed()
+        repeat while value:Contains(" ")
+            value = value:Replace(" ", "")
+        end
+        repeat while value:Contains(newLine)
+            value = value:Replace(newLine, "")
+        end
+
+        integer arraySize = GetImageWidth() * GetImageHeight()
+        integer bitsPerPixel = GetPixelBits()
+        if blackWhite:GetToggleState() = false
+            bitsPerPixel = bitsPerPixel * 3
+        end
+
+        Array<Color> colors
+        integer counter = 0
+        integer readPosition = 0
+
+        if bitsPerPixel <= 0
+            readPosition = value:GetSize()
+            bitsPerPixel = 1
+        end
+
+        repeat while counter < arraySize
+            if readPosition + bitsPerPixel > value:GetSize()
+                readPosition = readPosition + bitsPerPixel
+                colors:Add(undefined)
+            else
+                if IsBlackWhite()
+                    number percentage = GetColorPercentage(value:GetSubtext(readPosition, readPosition + bitsPerPixel))
+                    readPosition = readPosition + bitsPerPixel
+                    Color color
+                    color:SetColor(percentage, percentage, percentage, 1)
+                    colors:Add(color)
+                else
+                    integer colorBits = GetPixelBits()
+                    number red = GetColorPercentage(value:GetSubtext(readPosition, readPosition + colorBits))              
+                    readPosition = readPosition + colorBits
+                    number green = GetColorPercentage(value:GetSubtext(readPosition, readPosition + colorBits))
+                    readPosition = readPosition + colorBits
+                    number blue = GetColorPercentage(value:GetSubtext(readPosition, readPosition + colorBits))
+                    readPosition = readPosition + colorBits
+
+                    Color color
+                    color:SetColor(red, green, blue, 1)
+                    colors:Add(color)
+                end
+            end
+
+            counter = counter + 1
+        end
+
+        return colors
+    end
+
+    action GetColorPercentage(text value) returns number
+        number result = 0
+        number maximum = 0
+        integer counter = 0
+        repeat while counter < value:GetSize()
+            result = result * 2
+            maximum = maximum * 2 + 1
+            if value:GetCharacter(counter) = "1"
+                result = result + 1
+            end
+
+            counter = counter + 1
+        end
+
+        return result / maximum
+    end
+end

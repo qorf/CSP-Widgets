@@ -1,0 +1,31 @@
+use Libraries.Interface.Controls.TextBox
+
+class BitTextBox is TextBox
+
+    action Insert(text value)
+        if ValidateInput(value)
+            parent:TextBox:Insert(value)
+        end
+    end
+
+    action Insert(integer index, text value, boolean moveCaret)
+        if ValidateInput(value)
+            parent:TextBox:Insert(index, value, moveCaret)
+        end
+    end
+
+    private action ValidateInput(text value) returns boolean
+        integer counter = 0
+        text lineFeed = value:GetLineFeed()
+        repeat while counter < value:GetSize()
+            text current = value:GetCharacter(counter)
+            if not (current = "1" or current = "0" or current = " " or current = lineFeed)
+                return false
+            end
+            counter = counter + 1
+        end
+
+        return true
+    end
+
+end

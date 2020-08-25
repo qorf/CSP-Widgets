@@ -1,0 +1,37 @@
+use Libraries.Interface.Controls.TextField
+use Libraries.Interface.Events.FocusEvent
+
+class BitTextField is TextField
+
+    action Insert(text value)
+        if ValidateInput(value)
+            parent:TextField:Insert(value)
+        end
+    end
+
+    private action ValidateInput(text value) returns boolean
+        integer counter = 0
+        text temp = "09"
+        integer minimum = temp:GetUnicodeInteger(0)
+        integer maximum = temp:GetUnicodeInteger(1)
+
+        repeat while counter < value:GetSize()
+            integer current = value:GetUnicodeInteger(counter)
+            if current < minimum or current > maximum
+                return false
+            end
+            counter = counter + 1
+        end
+
+        return true
+    end
+
+    action LostFocus(FocusEvent event)
+        parent:TextField:LostFocus(event)
+    end
+
+    action GainedFocus(FocusEvent event)
+        parent:TextField:GainedFocus(event)
+    end
+
+end

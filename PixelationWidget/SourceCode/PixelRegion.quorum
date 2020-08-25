@@ -1,0 +1,182 @@
+use Libraries.Interface.Controls.Control
+use Libraries.Game.GameStateManager
+use Libraries.Game.Graphics.Color
+use Libraries.Containers.Array
+use Libraries.Interface.Views.LabelBoxView
+use Libraries.Interface.Layouts.LayoutProperties
+use Libraries.Interface.Events.FocusEvent
+
+class PixelRegion is Control
+
+    Main main = undefined
+    integer width = 0
+    integer height = 0
+    integer bits = 0
+
+    integer x = 0
+    integer y = 0
+
+    number lastScreenWidth = 0
+    number lastScreenHeight = 0
+
+    integer pixelPadding = 2
+
+    Color missingColor
+
+    Array<Array<PixelBlock>> pixels
+    Array<PixelBlock> pool
+
+    on create
+        GameStateManager manager
+        main = cast(Main, manager:GetGame())
+
+        missingColor:SetColor(255/255.0, 221/255.0, 221/255.0, 1)
+        LabelBoxView view
+        Color viewColor
+        viewColor:SetColor(202/255.0, 202/255.0, 202/255.0, 1)
+        view:Initialize(viewColor, viewColor)
+        SetView2D(view)
+
+        SetFocusable(true)
+    end
+
+    action Navigate(integer moveX, integer moveY)
+        if y + moveY < 0 or y + moveY >= pixels:GetSize()
+            return now
+        end
+        
+        y = y + moveY
+        Array<PixelBlock> row = pixels:Get(y)
+
+        if x + moveX < 0 or x + moveX >= row:GetSize()
+            return now
+        end
+
+        x = x + moveX
+        PixelBlock block = row:Get(x)
+
+        block:Focus()
+    end
+
+    action Update(number seconds)
+        boolean shouldRefresh = false
+        integer imageWidth = main:GetImageWidth()
+        integer imageHeight = main:GetImageHeight()
+
+        if imageWidth < 0 or imageHeight < 0
+            return now
+        end
+
+        if width not= imageWidth or height not= imageHeight
+            width = imageWidth
+            height = imageHeight
+            x = 0
+            y = 0
+            shouldRefresh = true
+        elseif lastScreenWidth not= GetWidth() or lastScreenHeight not= GetHeight()
+            lastScreenWidth = GetWidth()
+            lastScreenHeight = GetHeight()
+            shouldRefresh = true
+        end
+
+        if shouldRefresh
+            RefreshPixels()
+        end
+    end
+
+    action GainedFocus(FocusEvent event)
+        pixels:Get(y):Get(x):Focus()
+    end
+
+    action GetPixelBlock returns PixelBlock
+        if pool:IsEmpty() = false
+            return pool:RemoveFromEnd()
+        end
+
+        PixelBlock block
+        return block
+    end
+
+    action RecyclePixelBlock(PixelBlock block)
+        Remove(block)
+        pool:Add(block)
+    end
+
+    action RefreshPixels
+        integer i = 0
+        repeat while i < pixels:GetSize()
+            Array<PixelBlock> column = pixels:Get(i)
+            integer j = 0
+            repeat while j < column:GetSize()
+                RecyclePixelBlock(column:Get(j))
+                j = j + 1
+            end
+            i = i + 1
+        end
+        pixels:Empty()
+
+        integer pixelWidth = cast(integer, ((lastScreenWidth - pixelPadding) / width)) - pixelPadding
+        integer pixelHeight = cast(integer, ((lastScreenHeight - pixelPadding) / height)) - pixelPadding
+
+        if pixelWidth > pixelHeight
+            pixelWidth = pixelHeight
+        else
+            pixelHeight = pixelWidth
+        end
+
+        i = 0
+        repeat while i < height
+            Array<PixelBlock> array
+            integer j = 0
+            repeat while j < width
+                PixelBlock block = GetPixelBlock()
+                block:LoadFilledRectangle(pixelWidth, pixelHeight)
+                block:SetPosition(pixelPadding + j * (pixelWidth + pixelPadding), (lastScreenHeight - (i + 1) * (pixelHeight + pixelPadding)))                   
+                Add(block)
+
+                array:Add(block)
+                j = j + 1
+            end
+            pixels:Add(array)
+            i = i + 1
+        end
+
+        CalculatePixelColors()
+    end
+
+    action CalculatePixelColors
+        Array<Color> colors = main:GetColors()
+        
+        integer counter = 0
+        integer i = 0
+        repeat while i < pixels:GetSize()
+            Array<PixelBlock> row = pixels:Get(i)
+            integer j = 0
+            repeat while j < row:GetSize()
+                PixelBlock pixel = row:Get(j)
+                Color color = colors:Get(counter)
+                if color = undefined
+                    pixel:SetColor(missingColor:Copy())
+                    pixel:SetName(j + ", " + i + ": pixel not set")
+                else
+                    pixel:SetColor(color)
+                    if main:IsBlackWhite()
+                        integer white = cast(integer, color:GetRed() * 100)
+                        pixel:SetName(j + ", " + i + ": " + white + "% white")
+                    else
+                        integer red = cast(integer, color:GetRed() * 100)
+                        integer green = cast(integer, color:GetGreen() * 100)
+                        integer blue = cast(integer, color:GetBlue() * 100)
+                        pixel:SetName(j + ", " + i + ": " + red + "% red, " + green + "% green," + blue + "% blue")
+                    end
+                end
+
+                counter = counter + 1
+                j = j + 1
+            end
+
+            i = i + 1
+        end
+    end
+
+end
