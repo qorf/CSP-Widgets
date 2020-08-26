@@ -27,6 +27,8 @@ class Main is Game, TextChangeListener
 
     boolean firstUpdate = true
 
+    number scaling = 1.0
+
     action Main
         SetGameName("Pixelation Widget")
         EnableResizing(true)
@@ -245,6 +247,29 @@ class Main is Game, TextChangeListener
         RadioButtonBehavior radioBehavior
         blackWhite:SetBehavior(radioBehavior)
         fullColor:SetBehavior(radioBehavior)
+
+        InputTable defaultTable = GetDefaultInputTable()
+        ScaleBehavior scaleUpBehavior
+        ScaleBehavior scaleDownBehavior
+        scaleUpBehavior:Set(0.2)
+        scaleDownBehavior:Set(-0.2)
+        InputSet scaleUp
+        scaleUp:SetKeyboardInput(keys:EQUALS)
+        scaleUp:AddModifier(scaleUp:CONTROL)
+        InputSet numScaleUp
+        numScaleUp:SetKeyboardInput(keys:NUMPAD_PLUS)
+        numScaleUp:AddModifier(numScaleUp:CONTROL)
+        defaultTable:Add(scaleUp, scaleUpBehavior)
+        defaultTable:Add(numScaleUp, scaleUpBehavior)
+
+        InputSet scaleDown
+        scaleDown:SetKeyboardInput(keys:MINUS)
+        scaleDown:AddModifier(scaleDown:CONTROL)
+        InputSet numScaleDown
+        numScaleDown:SetKeyboardInput(keys:NUMPAD_MINUS)
+        numScaleDown:AddModifier(numScaleDown:CONTROL)
+        defaultTable:Add(scaleDown, scaleDownBehavior)
+        defaultTable:Add(numScaleDown, scaleDownBehavior)
     end
 
     action Update(number seconds)

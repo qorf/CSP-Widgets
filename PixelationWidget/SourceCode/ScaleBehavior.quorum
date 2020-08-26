@@ -1,0 +1,24 @@
+use Libraries.Interface.Behaviors.Behavior
+use Libraries.Interface.Events.BehaviorEvent
+use Libraries.Game.GameStateManager
+use Libraries.Game.Game
+
+class ScaleBehavior is Behavior
+
+    GameStateManager manager
+    number adjustment = 0
+
+    action Run(BehaviorEvent event)
+        Game game = manager:GetGame()
+        number scale = game:GetInterfaceScale()
+        if scale + adjustment < 0.2
+            return now
+        end
+
+        game:SetInterfaceScale(scale + adjustment)
+    end
+
+    action Set(number scaleAmount)
+        adjustment = scaleAmount
+    end
+end
