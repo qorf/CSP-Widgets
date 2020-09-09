@@ -103,6 +103,8 @@ class PixelRegion is Control
     end
 
     action RefreshPixels
+        boolean focused = main:GetFocus() is PixelBlock
+
         integer i = 0
         repeat while i < pixels:GetSize()
             Array<PixelBlock> column = pixels:Get(i)
@@ -131,7 +133,8 @@ class PixelRegion is Control
             repeat while j < width
                 PixelBlock block = GetPixelBlock()
                 block:LoadFilledRectangle(pixelWidth, pixelHeight)
-                block:SetPosition(pixelPadding + j * (pixelWidth + pixelPadding), (lastScreenHeight - (i + 1) * (pixelHeight + pixelPadding)))       
+                block:SetPosition(pixelPadding + j * (pixelWidth + pixelPadding), (lastScreenHeight - (i + 1) * (pixelHeight + pixelPadding)))
+                block:ResetHighlight()
                 Add(block)
 
                 array:Add(block)
@@ -142,6 +145,10 @@ class PixelRegion is Control
         end
 
         CalculatePixelColors()
+
+        if focused
+            Navigate(0, 0)
+        end
     end
 
     action CalculatePixelColors

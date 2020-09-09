@@ -34,13 +34,20 @@ class PixelBlock is Drawable
     end
 
     action GainedFocus(FocusEvent event)
-        integer padding = GetRegion():GetPixelPadding()
-        highlight:SetPosition(-padding, -padding)
-        highlight:SetSize(GetWidth() + 2 * padding, GetHeight() + 2 * padding)
+        ResetHighlight()
         highlight:Show()
     end
 
     action LostFocus(FocusEvent event)
         highlight:Hide()
+    end
+
+    action ResetHighlight
+        integer padding = 2
+        if GetRegion() not= undefined
+            GetRegion():GetPixelPadding()
+        end
+        highlight:SetPosition(-padding, -padding)
+        highlight:SetSize(GetWidth() + 2 * padding, GetHeight() + 2 * padding)
     end
 end
