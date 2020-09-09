@@ -131,7 +131,7 @@ class PixelRegion is Control
             repeat while j < width
                 PixelBlock block = GetPixelBlock()
                 block:LoadFilledRectangle(pixelWidth, pixelHeight)
-                block:SetPosition(pixelPadding + j * (pixelWidth + pixelPadding), (lastScreenHeight - (i + 1) * (pixelHeight + pixelPadding)))                   
+                block:SetPosition(pixelPadding + j * (pixelWidth + pixelPadding), (lastScreenHeight - (i + 1) * (pixelHeight + pixelPadding)))       
                 Add(block)
 
                 array:Add(block)
@@ -177,6 +177,10 @@ class PixelRegion is Control
 
             i = i + 1
         end
+    end
+
+    action GetPixelPadding returns integer
+        return pixelPadding
     end
 
 end

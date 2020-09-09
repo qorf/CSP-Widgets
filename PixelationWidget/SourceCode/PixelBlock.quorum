@@ -1,12 +1,24 @@
 use Libraries.Game.Graphics.Drawable
 use Libraries.Game.Graphics.Color
+use Libraries.Interface.Events.FocusEvent
 
 class PixelBlock is Drawable
+
+    Drawable highlight
 
     on create
         SetAccessibilityCode(parent:Item:ITEM)
         SetFocusable(true)
         SetInputGroup("PixelBlock")
+
+        SetZ(-1)
+
+        Color color
+        color:SetColor(1, 1, 0.5, 1)
+        highlight:LoadFilledRectangle(1, 1, color)
+        highlight:SetZ(0.5)
+        highlight:Hide()
+        Add(highlight)
     end
 
     action GetNextFocus returns Item
@@ -21,4 +33,14 @@ class PixelBlock is Drawable
         return cast(PixelRegion, GetParent())
     end
 
+    action GainedFocus(FocusEvent event)
+        integer padding = GetRegion():GetPixelPadding()
+        highlight:SetPosition(-padding, -padding)
+        highlight:SetSize(GetWidth() + 2 * padding, GetHeight() + 2 * padding)
+        highlight:Show()
+    end
+
+    action LostFocus(FocusEvent event)
+        highlight:Hide()
+    end
 end
