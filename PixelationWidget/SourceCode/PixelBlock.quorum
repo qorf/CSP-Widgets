@@ -45,7 +45,7 @@ class PixelBlock is Drawable
     action ResetHighlight
         integer padding = 2
         if GetRegion() not= undefined
-            GetRegion():GetPixelPadding()
+            padding = GetRegion():GetPixelPadding()
         end
         highlight:SetPosition(-padding, -padding)
         highlight:SetSize(GetWidth() + 2 * padding, GetHeight() + 2 * padding)
