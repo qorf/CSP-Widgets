@@ -1,0 +1,140 @@
+package Libraries.Curriculum.Code
+
+use Libraries.Containers.Array
+use Libraries.Interface.Item2D
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.GameStateManager
+use Libraries.Interface.Item
+
+class Page
+
+    GameStateManager manager
+    Array<Item2D> items
+    text name = "Unnamed Page"
+
+    action IsCurrentPage returns boolean
+        Application application = cast(Application, manager:GetGame())
+        return application:GetCurrentPage() = me
+    end
+
+    action Add(Item2D item)
+        if items:IsEmpty() = false
+            Item2D previous = items:GetFromEnd()
+            if item:GetPreviousFocus() = undefined and previous:GetNextFocus() = undefined
+                previous:SetNextFocus(item)
+                item:SetPreviousFocus(previous)
+            end
+        end
+
+        items:Add(item)
+
+        if IsCurrentPage()
+            Application application = cast(Application, manager:GetGame())
+            application:Add(item)
+        end
+    end
+
+    action Remove(Item2D item)
+        Item previousFocus = item:GetPreviousFocus()
+        Item nextFocus = item:GetNextFocus()
+        if previousFocus not= undefined
+            previousFocus:SetNextFocus(nextFocus)
+        end
+        if nextFocus not= undefined
+            nextFocus:SetPreviousFocus(previousFocus)
+        end
+
+        items:Remove(item)
+
+        if IsCurrentPage()
+            Application application = cast(Application, manager:GetGame())
+            application:Remove(item)
+        end
+    end
+
+    action Replace(Item2D oldItem, Item2D replacement)
+        boolean focused = oldItem:IsFocused()
+
+        integer index = items:GetFirstLocation(oldItem)
+        replacement:SetPreviousFocus(oldItem:GetPreviousFocus())
+        replacement:SetNextFocus(oldItem:GetNextFocus())
+        items:Set(index, replacement)
+
+        if IsCurrentPage()
+            Application application = cast(Application, manager:GetGame())
+            application:Remove(oldItem)
+            application:Add(replacement)
+        end
+
+        if focused
+            replacement:Focus()
+        end
+    end
+
+    action GetItems returns Array<Item2D>
+        return items
+    end
+
+    action SetName(text name)
+        me:name = name
+    end
+
+    action GetName returns text
+        return name
+    end
+
+    action GetButton(text name) returns Button
+        integer counter = 0
+        repeat while counter < items:GetSize()
+            Item2D item = items:Get(counter)
+            if item is Button and item:GetName() = name
+                return cast(Button, item)
+            end
+            counter = counter + 1
+        end
+
+        alert("I couldn't find a Button named " + name + " on this page!")
+    end
+
+    action GetLabel(text name) returns Label
+        integer counter = 0
+        repeat while counter < items:GetSize()
+            Item2D item = items:Get(counter)
+            if item is Label and item:GetName() = name
+                return cast(Label, item)
+            end
+            counter = counter + 1
+        end
+
+        alert("I couldn't find a Label named " + name + " on this page!")
+    end
+
+    action GetIcon(text name) returns Icon
+        integer counter = 0
+        repeat while counter < items:GetSize()
+            Item2D item = items:Get(counter)
+            if item is Icon and item:GetName() = name
+                return cast(Icon, item)
+            end
+            counter = counter + 1
+        end
+
+        alert("I couldn't find a Icon named " + name + " on this page!")
+    end
+
+    action GetTextBox(text name) returns TextBox
+        integer counter = 0
+        repeat while counter < items:GetSize()
+            Item2D item = items:Get(counter)
+            if item is TextBox and item:GetName() = name
+                return cast(TextBox, item)
+            end
+            counter = counter + 1
+        end
+
+        alert("I couldn't find a TextBox named " + name + " on this page!")
+    end
+end

@@ -1,0 +1,308 @@
+use Libraries.Curriculum.Code.Application
+use Libraries.Curriculum.Code.Page
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Control
+use Libraries.Game.Graphics.Color
+use Libraries.Game.Graphics.Drawable
+
+class Main is Application
+
+    text englishTitle = "Water Conservation Tips"
+    text englishParagraph1 = "It's important that we all do our part to use less water. Click through this app for tips for conservation ideas."    
+    text englishTip1 = "Instead of buying disposable water bottles, use a refillable bottle. One use water bottles fill our land fills and trap valuable water."
+    text englishDirections1 = "Choose the correct water bottle."
+    text englishTip2 = "Another way to conserve water is to take shorter showers. Try setting a timer to five minutes!"
+    text englishDirections2 = "Click on the timer"
+
+    text spanishTitle = "Consejos Para La Conservacion Del Agua"
+    text spanishParagraph1 = "Es importante que todos hagamos nuestra parte para usar menos agua. Haga clic en esta aplicacion para obtener consejos sobre ideas de conservacion."
+    text spanishTip1 = "En lugar de comprar botellas de agua desechables, use una botella recargable. Las botellas de agua de un solo uso llenan nuestras minas terrestres y atrapan agua valiosa."
+    text spanishDirections1 = "Elija la botella de agua correcta."
+    text spanishTip2 = "Otra forma de conservar el agua es tomar duchas mas cortas. Trate de configurar un temporizador de cinco minutos!"
+    text spanishDirections2 = "Haga clic en el temporizador"
+
+    action Main
+        StartGame()
+    end
+
+    action Start
+        // Set the window size to 400 pixels wide by 600 pixels tall.
+        SetScreenSize(400, 600)
+
+        // Set the background color to white.
+        SetBackgroundColor(1.0, 1.0, 1.0)
+
+        // Turn on focus highlighting and set its properties.
+        // This will let us see what we're currently accessing via the keyboard.
+        ShowFocusHighlight(true)
+        SetFocusHighlightThickness(4)
+
+        // The first page of the app.
+        Page page1
+        page1:SetName("Home Page")
+
+        Label titleLabel = CreateLabel()
+        titleLabel:SetName("Title")
+        titleLabel:SetText(englishTitle)
+        titleLabel:SetFontSize(26)
+        titleLabel:SetMaximumWidth(300)
+        titleLabel:SetPixelX(50)
+        titleLabel:SetPixelY(560)
+        page1:Add(titleLabel)
+
+        Label paragraph1 = CreateLabel()
+        paragraph1:SetName("Description")
+        paragraph1:SetFontSize(16)
+        paragraph1:SetText(englishParagraph1)
+        paragraph1:SetMaximumWidth(300)
+        paragraph1:SetPixelX(50)
+        paragraph1:SetPixelY(500)
+        page1:Add(paragraph1)
+
+        Icon titleImage = CreateIcon("Filled Water Glass.jpg")
+        titleImage:SetName("Banner")
+        titleImage:SetDescription("A glass that is being filled with water.")
+        titleImage:SetPixelWidth(400)
+        titleImage:SetPixelHeight(225)
+        titleImage:SetPixelX(0)
+        titleImage:SetPixelY(175)
+        page1:Add(titleImage)
+
+        Button spanishButton = CreateButton()
+        spanishButton:SetName("Spanish")
+        spanishButton:SetPixelWidth(80)
+        spanishButton:SetPixelHeight(36)
+        spanishButton:SetPixelX(0)
+        spanishButton:SetPixelY(36)
+
+        Color spanishColor = NewColor(0.8, 0.8, 1.0)
+        spanishButton:SetBackgroundColor(spanishColor)
+        page1:Add(spanishButton)
+
+        Button englishButton = CreateButton()
+        englishButton:SetName("English")
+        englishButton:SetPixelWidth(80)
+        englishButton:SetPixelHeight(36)
+        englishButton:SetPixelX(0)
+        englishButton:SetPixelY(0)
+
+        Color englishColor = NewColor(1.0, 0.8, 0.8)
+        englishButton:SetBackgroundColor(englishColor)
+        page1:Add(englishButton)
+
+        Button nextButton = CreateButton()
+        nextButton:SetName("Next")
+        nextButton:SetPixelWidth(80)
+        nextButton:SetPixelHeight(36)
+        nextButton:SetPixelX(320)
+        nextButton:SetPixelY(0)
+
+        Color nextColor = NewColor(0.5, 1.0, 0.5)
+        nextButton:SetBackgroundColor(nextColor)
+        page1:Add(nextButton)
+
+        AddPage(page1)
+
+        // The second page of the application.
+        Page page2
+        page2:SetName("Tip 1 Page")
+
+        Label tip1 = CreateLabel()
+        tip1:SetName("Tip 1")
+        tip1:SetText(englishTip1)
+        tip1:SetMaximumWidth(350)
+        tip1:SetPixelX(25)
+        tip1:SetPixelY(560)
+        tip1:SetFontSize(18)
+        page2:Add(tip1)
+
+        Label directions1 = CreateLabel()
+        directions1:SetName("Directions")
+        directions1:SetText(englishDirections1)
+        directions1:SetFontSize(16)
+        directions1:SetPixelX(75)
+        directions1:SetMaximumWidth(250)
+        directions1:SetPixelY(400)
+        page2:Add(directions1)
+
+        Button glassBottle = CreateButton("Glass Water Bottle.png")
+        glassBottle:SetName("Glass Bottle")
+        glassBottle:SetDescription("A reusable glass bottle.")
+        glassBottle:SetPixelWidth(104)
+        glassBottle:SetPixelHeight(200)
+        glassBottle:SetPixelX(60)
+        glassBottle:SetPixelY(150)
+        page2:Add(glassBottle)
+
+        Button plasticBottle = CreateButton("Disposable Water Bottle.png")
+        plasticBottle:SetName("Disposable Bottle")
+        plasticBottle:SetDescription("A disposable plastic bottle.")
+        plasticBottle:SetPixelWidth(100)
+        plasticBottle:SetPixelHeight(200)
+        plasticBottle:SetPixelX(240)
+        plasticBottle:SetPixelY(150)
+        page2:Add(plasticBottle)
+
+        Button nextButton2 = CreateButton()
+        nextButton2:SetName("Next")
+        nextButton2:SetPixelWidth(80)
+        nextButton2:SetPixelHeight(36)
+        nextButton2:SetPixelX(320)
+        nextButton2:SetPixelY(0)
+        nextButton2:SetBackgroundColor(nextColor)
+        page2:Add(nextButton2)
+
+        AddPage(page2)
+
+        // The final page of the application.
+        Page page3
+        page3:SetName("Tip 2 Page")
+
+        Label tip2 = CreateLabel()
+        tip2:SetName("Tip 2")
+        tip2:SetText(englishTip2)
+        tip2:SetMaximumWidth(350)
+        tip2:SetPixelX(25)
+        tip2:SetPixelY(560)
+        tip2:SetFontSize(18)
+        page3:Add(tip2)
+
+        Icon showeringDuck = CreateIcon("Showering Rubber Duck.jpg")
+        showeringDuck:SetName("Showering Duck")
+        showeringDuck:SetDescription("A rubber duck is taking a shower.")
+        showeringDuck:SetPixelWidth(250)
+        showeringDuck:SetPixelHeight(250)
+        showeringDuck:SetPixelX(5)
+        showeringDuck:SetPixelY(150)
+        page3:Add(showeringDuck)
+
+        Label timerDirections = CreateLabel()
+        timerDirections:SetName("Directions")
+        timerDirections:SetText(englishDirections2)
+        timerDirections:SetMaximumWidth(120)
+        timerDirections:SetPixelX(260)
+        timerDirections:SetPixelY(350)
+        /*
+        By default, objects have a "Z" value of 0.
+        Objects with lower Z values will appear in front of objects
+        with higher Z values. So this will put the directions in front
+        of the timer button.
+        */
+        timerDirections:SetZ(-1)
+        page3:Add(timerDirections)
+
+        Button timerButton = CreateButton("5 Minute Timer.png")
+        timerButton:SetName("Timer")
+        timerButton:SetPixelWidth(78)
+        timerButton:SetPixelHeight(121)
+        timerButton:SetPixelX(280)
+        timerButton:SetPixelY(220)
+        page3:Add(timerButton)
+
+        Button homeButton = CreateButton()
+        homeButton:SetName("Home")
+        homeButton:SetPixelWidth(80)
+        homeButton:SetPixelHeight(36)
+        homeButton:SetPixelX(320)
+        homeButton:SetPixelY(0)
+        homeButton:SetBackgroundColor(nextColor)
+        page3:Add(homeButton)
+
+        AddPage(page3)
+    end
+
+    action ButtonActivated(Button button)
+        if button:GetName() = "Spanish"
+            Page page1 = GetPage("Home Page")
+            Label title = page1:GetLabel("Title")
+            title:SetText(spanishTitle)
+            Label paragraph = page1:GetLabel("Description")
+            paragraph:SetText(spanishParagraph1)
+
+            Page page2 = GetPage("Tip 1 Page")
+            Label tip1 = page2:GetLabel("Tip 1")
+            tip1:SetText(spanishTip1)
+            Label directions1 = page2:GetLabel("Directions")
+            directions1:SetText(spanishDirections1)
+
+            Page page3 = GetPage("Tip 2 Page")
+            Label tip2 = page3:GetLabel("Tip 2")
+            tip2:SetText(spanishTip2)
+            Label directions2 = page3:GetLabel("Directions")
+            directions2:SetText(spanishDirections2)
+        end
+
+        if button:GetName() = "English"
+            Page page1 = GetPage("Home Page")
+            Label title = page1:GetLabel("Title")
+            title:SetText(englishTitle)
+            Label paragraph = page1:GetLabel("Description")
+            paragraph:SetText(englishParagraph1)
+
+            Page page2 = GetPage("Tip 1 Page")
+            Label tip1 = page2:GetLabel("Tip 1")
+            tip1:SetText(englishTip1)
+            Label directions1 = page2:GetLabel("Directions")
+            directions1:SetText(englishDirections1)
+
+            Page page3 = GetPage("Tip 2 Page")
+            Label tip2 = page3:GetLabel("Tip 2")
+            tip2:SetText(englishTip2)
+            Label directions2 = page3:GetLabel("Directions")
+            directions2:SetText(englishDirections2)
+        end
+
+        if button:GetName() = "Next"
+            ShowNextPage()
+        end
+
+        if button:GetName() = "Home"
+            Page homePage = GetPage("Home Page")
+            ShowPage(homePage)
+        end
+
+        if button:GetName() = "Glass Bottle"
+            PlaySound("lighthearted_bonus_objective_1.ogg")
+        end
+
+        if button:GetName() = "Disposable Bottle"
+            PlaySound("hop.ogg")
+            Page currentPage = GetCurrentPage()
+
+            Icon noSign = CreateIcon("No Sign.png")
+            noSign:SetName("No Sign")
+            noSign:SetPixelWidth(200)
+            noSign:SetPixelHeight(200)
+            noSign:SetPixelX(190)
+            noSign:SetPixelY(150)
+            currentPage:Add(noSign)
+        end
+
+        if button:GetName() = "Timer"
+            Page currentPage = GetCurrentPage()
+
+            PlaySound("hollow_bell_notification.ogg")
+
+            Icon finishedTimer = CreateIcon("Finished Timer.jpg")
+            finishedTimer:SetName("Finished Timer")
+            finishedTimer:SetPixelWidth(78)
+            finishedTimer:SetPixelHeight(121)
+            finishedTimer:SetPixelX(280)
+            finishedTimer:SetPixelY(220)
+            currentPage:Replace(button, finishedTimer)
+
+            Icon showeringDuck = currentPage:GetIcon("Showering Duck")
+
+            Icon rubberDuck = CreateIcon("Rubber Duck.jpg")
+            rubberDuck:SetName("Rubber Duck")
+            rubberDuck:SetDescription("A clean rubber duck fresh out of the shower!")
+            rubberDuck:SetPixelWidth(250)
+            rubberDuck:SetPixelHeight(250)
+            rubberDuck:SetPixelX(5)
+            rubberDuck:SetPixelY(150)
+            currentPage:Replace(showeringDuck, rubberDuck)
+        end
+    end
+end

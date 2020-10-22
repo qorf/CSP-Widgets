@@ -1,0 +1,437 @@
+use Libraries.Curriculum.Code.Application
+use Libraries.Curriculum.Code.Page
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Color
+use Libraries.Web.Page.Image
+use Libraries.Interface.Controls.Icon
+use Libraries.Curriculum.Code.CustomFocusManager
+
+class Main is Application
+
+    action Main
+        StartGame()
+    end
+
+    action Start
+        // Set the window size to 400 pixels wide by 600 pixels tall.
+        SetScreenSize(400, 600)
+
+        // Set the background color to white.
+        SetBackgroundColor(1.0, 1.0, 1.0)
+
+        // Turn on focus highlighting and set its properties.
+        // This will let us see what we're currently accessing via the keyboard.
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
+        // The first page of the app.
+        Page page1
+        page1:SetName("Home Page")
+
+        Label titleLabel = CreateLabel()
+        titleLabel:SetName("Title")
+        titleLabel:SetText("Bird Quiz!")
+        titleLabel:SetFontSize(64)
+        titleLabel:SetMaximumWidth(300)
+        titleLabel:SetPixelX(50)
+        titleLabel:SetPixelY(520)
+        page1:Add(titleLabel)
+
+        Label instructions = CreateLabel()
+        instructions:SetName("Instructions")
+        instructions:SetText("Think you know birds? Time to test your knowledge.")
+        instructions:SetFontSize(18)
+        instructions:SetMaximumWidth(260)
+        instructions:SetPixelX(70)
+        instructions:SetPixelY(450)
+        page1:Add(instructions)
+
+        Button beginButton = CreateButton()
+        beginButton:SetName("Begin")
+        beginButton:SetPixelWidth(100)
+        beginButton:SetPixelHeight(40)
+        beginButton:SetPixelX(150)
+        beginButton:SetPixelY(360)
+        beginButton:SetFontSize(20)
+        Color beginColor = NewColor(0.1, 0.75, 0.6)
+        beginButton:SetBackgroundColor(beginColor)
+        Color white = NewColor(1, 1, 1)
+        beginButton:SetFontColor(white)
+        page1:Add(beginButton)
+
+        Icon sillyBird = CreateIcon("Silly Bird.jpg")
+        sillyBird:SetName("Silly Bird")
+        sillyBird:SetDescription("A weird looking bird that's tilting its head to the side")
+        sillyBird:SetPercentageWidth(1.0)
+        sillyBird:SetPercentageHeight(0.5)
+        sillyBird:SetPixelX(0)
+        sillyBird:SetPixelY(0)
+        page1:Add(sillyBird)
+
+        AddPage(page1)
+
+        // The second page of the application.
+        Page page2
+        page2:SetName("Question 1")
+
+        Label question1 = CreateLabel()
+        question1:SetName("Question 1")
+        question1:SetText("What bird is the fastest on land?")
+        question1:SetFontSize(22)
+        question1:SetMaximumWidth(350)
+        question1:SetPixelX(25)
+        question1:SetPixelY(560)
+        page2:Add(question1)
+
+        Button ostrich = CreateButton("Ostrich.png")
+        ostrich:SetName("Ostrich")
+        ostrich:SetPixelWidth(150)
+        ostrich:SetPixelHeight(200)
+        ostrich:SetPixelX(25)
+        ostrich:SetPixelY(300)
+        page2:Add(ostrich)
+
+        Label ostrichLabel = CreateLabel()
+        ostrichLabel:SetText("Ostrich")
+        ostrichLabel:SetMaximumWidth(100)
+        ostrichLabel:SetPixelX(80)
+        ostrichLabel:SetPixelY(280)
+        ostrichLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        ostrichLabel:SetFocusable(false)
+        page2:Add(ostrichLabel)
+
+        Button emu = CreateButton("Emu.png")
+        emu:SetName("Emu")
+        emu:SetPixelX(225)
+        emu:SetPixelY(310)
+        emu:SetPixelWidth(150)
+        emu:SetPixelHeight(175)
+        page2:Add(emu)
+
+        Label emuLabel = CreateLabel()
+        emuLabel:SetText("Emu")
+        emuLabel:SetMaximumWidth(100)
+        emuLabel:SetPixelX(290)
+        emuLabel:SetPixelY(280)
+        emuLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        emuLabel:SetFocusable(false)
+        page2:Add(emuLabel)
+
+        Button falcon = CreateButton("Peregrine Falcon.png")
+        falcon:SetName("Peregrine Falcon")
+        falcon:SetPixelX(25)
+        falcon:SetPixelY(50)
+        falcon:SetPixelWidth(150)
+        falcon:SetPixelHeight(200)
+        page2:Add(falcon)
+
+        Label falconLabel = CreateLabel()
+        falconLabel:SetText("Peregrine Falcon")
+        falconLabel:SetMaximumWidth(150)
+        falconLabel:SetPixelX(40)
+        falconLabel:SetPixelY(30)
+        falconLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        falconLabel:SetFocusable(false)
+        page2:Add(falconLabel)
+
+        Button penguin = CreateButton("Penguin.png")
+        penguin:SetName("Penguin")
+        penguin:SetPixelX(250)
+        penguin:SetPixelY(50)
+        penguin:SetPixelWidth(100)
+        penguin:SetPixelHeight(200)
+        page2:Add(penguin)
+
+        Label penguinLabel = CreateLabel()
+        penguinLabel:SetText("Penguin")
+        penguinLabel:SetMaximumWidth(100)
+        penguinLabel:SetPixelX(280)
+        penguinLabel:SetPixelY(30)
+        penguinLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        penguinLabel:SetFocusable(false)
+        page2:Add(penguinLabel)
+
+        AddPage(page2)
+
+        // The third page of the application.
+        Page page3
+        page3:SetName("Question 2")
+
+        Label question2 = CreateLabel()
+        question2:SetName("Question 2")
+        question2:SetText("What bird can live the longest?")
+        question2:SetFontSize(22)
+        question2:SetMaximumWidth(350)
+        question2:SetPixelX(25)
+        question2:SetPixelY(560)
+        page3:Add(question2)
+
+        Button swan = CreateButton("Swan.png")
+        swan:SetName("Swan")
+        swan:SetPixelWidth(150)
+        swan:SetPixelHeight(200)
+        swan:SetPixelX(25)
+        swan:SetPixelY(300)
+        page3:Add(swan)
+
+        Label swanLabel = CreateLabel()
+        swanLabel:SetText("Swan")
+        swanLabel:SetMaximumWidth(100)
+        swanLabel:SetPixelX(70)
+        swanLabel:SetPixelY(280)
+        swanLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        swanLabel:SetFocusable(false)
+        page3:Add(swanLabel)
+
+        Button budgie = CreateButton("Budgie.png")
+        budgie:SetName("Budgie")
+        budgie:SetPixelX(200)
+        budgie:SetPixelY(310)
+        budgie:SetPixelWidth(200)
+        budgie:SetPixelHeight(155)
+        page3:Add(budgie)
+
+        Label budgieLabel = CreateLabel()
+        budgieLabel:SetText("Budgie")
+        budgieLabel:SetMaximumWidth(100)
+        budgieLabel:SetPixelX(280)
+        budgieLabel:SetPixelY(280)
+        budgieLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        budgieLabel:SetFocusable(false)
+        page3:Add(budgieLabel)
+
+        Button parrot = CreateButton("Parrot.png")
+        parrot:SetName("Parrot")
+        parrot:SetPixelX(10)
+        parrot:SetPixelY(50)
+        parrot:SetPixelWidth(200)
+        parrot:SetPixelHeight(200)
+        page3:Add(parrot)
+
+        Label parrotLabel = CreateLabel()
+        parrotLabel:SetText("Parrot")
+        parrotLabel:SetMaximumWidth(150)
+        parrotLabel:SetPixelX(70)
+        parrotLabel:SetPixelY(30)
+        parrotLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        parrotLabel:SetFocusable(false)
+        page3:Add(parrotLabel)
+
+        Button eagle = CreateButton("Eagle.png")
+        eagle:SetName("Eagle")
+        eagle:SetPixelX(200)
+        eagle:SetPixelY(70)
+        eagle:SetPixelWidth(200)
+        eagle:SetPixelHeight(150)
+        page3:Add(eagle)
+
+        Label eagleLabel = CreateLabel()
+        eagleLabel:SetText("Eagle")
+        eagleLabel:SetMaximumWidth(100)
+        eagleLabel:SetPixelX(280)
+        eagleLabel:SetPixelY(30)
+        eagleLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        eagleLabel:SetFocusable(false)
+        page3:Add(eagleLabel)
+
+        AddPage(page3)
+
+        // The fourth page of the application.
+        Page page4
+        page4:SetName("Question 3")
+
+        Label question3 = CreateLabel()
+        question3:SetName("Question 3")
+        question3:SetText("What bird can fly backwards?")
+        question3:SetFontSize(22)
+        question3:SetMaximumWidth(350)
+        question3:SetPixelX(25)
+        question3:SetPixelY(560)
+        page4:Add(question3)
+
+        Button robin = CreateButton("Robin.png")
+        robin:SetName("Robin")
+        robin:SetPixelWidth(150)
+        robin:SetPixelHeight(200)
+        robin:SetPixelX(25)
+        robin:SetPixelY(300)
+        page4:Add(robin)
+
+        Label robinLabel = CreateLabel()
+        robinLabel:SetText("Robin")
+        robinLabel:SetMaximumWidth(100)
+        robinLabel:SetPixelX(90)
+        robinLabel:SetPixelY(280)
+        robinLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        robinLabel:SetFocusable(false)
+        page4:Add(robinLabel)
+
+        Button hummingbird = CreateButton("Hummingbird.png")
+        hummingbird:SetName("Hummingbird")
+        hummingbird:SetPixelX(200)
+        hummingbird:SetPixelY(320)
+        hummingbird:SetPixelWidth(200)
+        hummingbird:SetPixelHeight(155)
+        page4:Add(hummingbird)
+
+        Label hummingbirdLabel = CreateLabel()
+        hummingbirdLabel:SetText("Hummingbird")
+        hummingbirdLabel:SetMaximumWidth(100)
+        hummingbirdLabel:SetPixelX(270)
+        hummingbirdLabel:SetPixelY(280)
+        hummingbirdLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        hummingbirdLabel:SetFocusable(false)
+        page4:Add(hummingbirdLabel)
+
+        Button woodpecker = CreateButton("Woodpecker.png")
+        woodpecker:SetName("Woodpecker")
+        woodpecker:SetPixelX(10)
+        woodpecker:SetPixelY(50)
+        woodpecker:SetPixelWidth(200)
+        woodpecker:SetPixelHeight(200)
+        page4:Add(woodpecker)
+
+        Label woodpeckerLabel = CreateLabel()
+        woodpeckerLabel:SetText("Woodpecker")
+        woodpeckerLabel:SetMaximumWidth(150)
+        woodpeckerLabel:SetPixelX(70)
+        woodpeckerLabel:SetPixelY(30)
+        woodpeckerLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        woodpeckerLabel:SetFocusable(false)
+        page4:Add(woodpeckerLabel)
+
+        Button blueJay = CreateButton("Blue Jay.png")
+        blueJay:SetName("Blue Jay")
+        blueJay:SetPixelX(200)
+        blueJay:SetPixelY(80)
+        blueJay:SetPixelWidth(200)
+        blueJay:SetPixelHeight(150)
+        page4:Add(blueJay)
+
+        Label blueJayLabel = CreateLabel()
+        blueJayLabel:SetText("Blue Jay")
+        blueJayLabel:SetMaximumWidth(100)
+        blueJayLabel:SetPixelX(280)
+        blueJayLabel:SetPixelY(30)
+        blueJayLabel:SetFontSize(16)
+        // Makes it so this label can't be focused or navigated to via the keyboard
+        blueJayLabel:SetFocusable(false)
+        page4:Add(blueJayLabel)
+
+        AddPage(page4)
+
+        // We'll show this next page if the player wins the quiz.
+        Page winPage
+        winPage:SetName("Victory")
+        
+        Label winLabel = CreateLabel()
+        winLabel:SetName("Congratulations")
+        winLabel:SetText("You Win!!")
+        winLabel:SetMaximumWidth(300)
+        winLabel:SetPixelX(50)
+        winLabel:SetPixelY(500)
+        winLabel:SetFontSize(60)
+        winPage:Add(winLabel)
+
+        Label description = CreateLabel()
+        description:SetName("Description")
+        description:SetText("You are a bird expert.")
+        description:SetFontSize(32)
+        description:SetMaximumWidth(330)
+        description:SetPixelX(35)
+        description:SetPixelY(430)
+        winPage:Add(description)
+
+        Button playAgain = CreateButton()
+        playAgain:SetName("Play Again")
+        playAgain:SetPixelWidth(100)
+        playAgain:SetPixelHeight(40)
+        playAgain:SetPixelX(150)
+        playAgain:SetPixelY(340)
+
+        Color playAgainColor = NewColor(0.1, 0.75, 0.6)
+        playAgain:SetBackgroundColor(playAgainColor)
+        Color playAgainFontColor = NewColor(1, 1, 1)
+        playAgain:SetFontColor(playAgainFontColor)
+
+        winPage:Add(playAgain)
+
+        Icon happyBird = CreateIcon("Happy Ostrich.jpg")
+        happyBird:SetName("Happy Ostrich")
+        happyBird:SetDescription("An ostrich with a big happy smile!")
+        happyBird:SetPercentageWidth(1.0)
+        happyBird:SetPercentageHeight(0.5)
+        happyBird:SetPixelX(0)
+        happyBird:SetPixelY(0)
+        winPage:Add(happyBird)
+
+        AddPage(winPage)
+
+        // The final page is shown if the player loses.
+        Page losePage
+        losePage:SetName("Lose Page")
+        
+        Label loseLabel = CreateLabel()
+        loseLabel:SetName("Loss")
+        loseLabel:SetText("You Lose!!")
+        loseLabel:SetMaximumWidth(300)
+        loseLabel:SetPixelX(50)
+        loseLabel:SetPixelY(500)
+        loseLabel:SetFontSize(60)
+        losePage:Add(loseLabel)
+
+        Button tryAgain = CreateButton()
+        tryAgain:SetName("Try Again")
+        tryAgain:SetPixelWidth(100)
+        tryAgain:SetPixelHeight(40)
+        tryAgain:SetPixelX(150)
+        tryAgain:SetPixelY(340)
+
+        Color tryAgainColor = NewColor(0.1, 0.75, 0.6)
+        tryAgain:SetBackgroundColor(tryAgainColor)
+        Color tryAgainFontColor = NewColor(1, 1, 1)
+        tryAgain:SetFontColor(tryAgainFontColor)
+
+        losePage:Add(tryAgain)
+
+        Icon shoebill = CreateIcon("Shoebill.jpg")
+        shoebill:SetName("Shoebill")
+        shoebill:SetDescription("A shoebill, a giant bird with a big, long beak.")
+        shoebill:SetPercentageWidth(1.0)
+        shoebill:SetPercentageHeight(0.5)
+        shoebill:SetPixelX(0)
+        shoebill:SetPixelY(0)
+        losePage:Add(shoebill)
+
+        AddPage(losePage)
+    end
+
+    action ButtonActivated(Button button)
+        text name = button:GetName()
+
+        if name = "Begin" or name = "Ostrich" or name = "Parrot" or name = "Hummingbird"
+            ShowNextPage()
+        elseif name = "Play Again" or name = "Try Again"
+            Page homePage = GetPage("Home Page")
+            ShowPage(homePage)
+        else
+            // If any other button was clicked, it was a wrong answer to a quiz question!
+            Page losePage = GetPage("Lose Page")
+            ShowPage(losePage)
+        end
+    end
+
+end

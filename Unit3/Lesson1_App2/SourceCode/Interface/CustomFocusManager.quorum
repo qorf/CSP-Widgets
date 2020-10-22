@@ -1,0 +1,41 @@
+package Libraries.Curriculum.Code
+
+use Libraries.Game.FocusManager
+use Libraries.Interface.Item
+use Libraries.Interface.Item2D
+
+class CustomFocusManager is FocusManager
+
+    action FocusNextItem
+        Item focused = GetFocus()
+
+        parent:FocusManager:FocusNextItem()
+
+        if focused = GetFocus() and focused not= undefined
+            repeat until focused = undefined
+                focused = focused:GetNextFocus()
+                if focused not= undefined and focused:IsFocusable()
+                    SetFocus(focused)
+                    focused = undefined
+                end
+            end
+        end
+    end
+
+    action FocusPreviousItem
+        Item focused = GetFocus()
+
+        parent:FocusManager:FocusPreviousItem()
+
+        if focused = GetFocus() and focused not= undefined
+            repeat until focused = undefined
+                focused = focused:GetPreviousFocus()
+                if focused not= undefined and focused:IsFocusable()
+                    SetFocus(focused)
+                    focused = undefined
+                end
+            end
+        end
+    end
+
+end

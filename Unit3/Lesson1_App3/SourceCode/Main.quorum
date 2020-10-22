@@ -1,0 +1,293 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+
+    action Main
+        StartGame()
+    end
+
+    action Start
+        // Set the window size to 400 pixels wide by 600 pixels tall.
+        SetScreenSize(400, 600)
+
+        // Set the background color to white.
+        SetBackgroundColor(1.0, 1.0, 1.0)
+
+        // Turn on focus highlighting and set its properties.
+        // This will let us see what we're currently accessing via the keyboard.
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
+        // The first page of the app.
+        Page page1
+        page1:SetName("Home Page")
+
+        Icon coloredBackground = CreateRectangle(NewColor(0.94, 0.87, 0.80))
+        coloredBackground:SetPercentageWidth(1.0)
+        coloredBackground:SetPixelHeight(200)
+        coloredBackground:SetPixelX(0)
+        coloredBackground:SetPixelY(400)
+        coloredBackground:SetFocusable(false)
+        page1:Add(coloredBackground)
+
+        Label introduction = CreateLabel()
+        introduction:SetName("Introduction")
+        introduction:SetText("Here in beautiful, sunny Hamilton our residents are working hard to add beauty to our city streets. The current plan approved by the town committee involves placing baskets of flowers on all street lamp posts located on Main and Cross streets from May through October. ")
+        introduction:SetFontSize(18)
+        introduction:SetMaximumWidth(350)
+        introduction:SetPixelX(25)
+        introduction:SetPixelY(560)
+        page1:Add(introduction)
+
+        Icon colorPreview = CreateRectangle(NewColor(1, 0, 0))
+        colorPreview:SetName("Color Preview")
+        colorPreview:SetDescription("A red square, previewing one of the possible colors of the flowers.")
+        colorPreview:SetPixelWidth(80)
+        colorPreview:SetPixelHeight(80)
+        colorPreview:SetPixelX(60)
+        colorPreview:SetPixelY(300)
+        page1:Add(colorPreview)
+
+        Color buttonGreen = NewColor(0.1, 0.75, 0.6)
+        Color white = NewColor(1, 1, 1)
+
+        Button redButton = CreateButton()
+        redButton:SetName("Red")
+        redButton:SetPixelWidth(80)
+        redButton:SetPixelHeight(40)
+        redButton:SetPixelX(60)
+        redButton:SetPixelY(250)
+        redButton:SetBackgroundColor(buttonGreen)
+        redButton:SetFontSize(18)
+        redButton:SetFontColor(white)
+        page1:Add(redButton)
+
+        Button blueButton = CreateButton()
+        blueButton:SetName("Blue")
+        blueButton:SetPixelWidth(80)
+        blueButton:SetPixelHeight(40)
+        blueButton:SetPixelX(60)
+        blueButton:SetPixelY(200)
+        blueButton:SetBackgroundColor(buttonGreen)
+        blueButton:SetFontSize(18)
+        blueButton:SetFontColor(white)
+        page1:Add(blueButton)
+
+        Button purpleButton = CreateButton()
+        purpleButton:SetName("Purple")
+        purpleButton:SetPixelWidth(80)
+        purpleButton:SetPixelHeight(40)
+        purpleButton:SetPixelX(60)
+        purpleButton:SetPixelY(150)
+        purpleButton:SetBackgroundColor(buttonGreen)
+        purpleButton:SetFontSize(18)
+        purpleButton:SetFontColor(white)
+        page1:Add(purpleButton)
+
+        Icon flowerPot = CreateIcon("Black and White Flower Pot.jpg")
+        flowerPot:SetName("Flower Pot")
+        flowerPot:SetDescription("A black and white sketch of a flower pot.")
+        flowerPot:SetPixelWidth(150)
+        flowerPot:SetPixelHeight(150)
+        flowerPot:SetPixelX(200)
+        flowerPot:SetPixelY(230)
+        page1:Add(flowerPot)
+
+        Label colorDirections = CreateLabel()
+        colorDirections:SetName("Directions")
+        colorDirections:SetText("Click to see the different color options for the flowers.")
+        colorDirections:SetMaximumWidth(150)
+        colorDirections:SetPixelX(225)
+        colorDirections:SetPixelY(210)
+        colorDirections:SetFontSize(18)
+        page1:Add(colorDirections)
+
+        Label author = CreateLabel()
+        author:SetName("Author")
+        author:SetText("Hamilton Township Improvement Project")
+        author:SetFontSize(24)
+        author:SetMaximumWidth(250)
+        author:SetPixelX(75)
+        author:SetPixelY(100)
+        page1:Add(author)
+
+        Button nextButton = CreateButton("Right Arrow.png")
+        nextButton:SetName("Continue")
+        nextButton:SetPixelWidth(60)
+        nextButton:SetPixelHeight(60)
+        nextButton:SetPixelX(170)
+        nextButton:SetPixelY(0)
+        page1:Add(nextButton)
+
+        AddPage(page1)
+
+        // Code for the second page of the app.
+        Page page2
+        page2:SetName("Page 2")
+        
+        Label handlingTrash = CreateLabel()
+        handlingTrash:SetName("Handling Trash")
+        handlingTrash:SetText("Making our town more beautiful starts with each and every one of our residents taking pride in their surroundings. If you see trash, pick it up and throw it away. If you see a can or a bottle that can be recycled, please make the effort to place that item in the recycling bins we have placed around town. Click below to make sure you know how where to place any trash you find on the streets. ")
+        handlingTrash:SetFontSize(18)
+        handlingTrash:SetMaximumWidth(350)
+        handlingTrash:SetPixelX(25)
+        handlingTrash:SetPixelY(560)
+        page2:Add(handlingTrash)
+
+        Button recyclingButton = CreateButton("Recycling Bin.jpg")
+        recyclingButton:SetName("Recycling Bin")
+        recyclingButton:SetPixelWidth(100)
+        recyclingButton:SetPixelHeight(150)
+        recyclingButton:SetPixelX(25)
+        recyclingButton:SetPixelY(200)
+        page2:Add(recyclingButton)
+
+        Button flowerButton = CreateButton("Flower Pot.jpg")
+        flowerButton:SetName("Flower Pot")
+        flowerButton:SetPixelWidth(150)
+        flowerButton:SetPixelHeight(150)
+        flowerButton:SetPixelX(125)
+        flowerButton:SetPixelY(200)
+        page2:Add(flowerButton)
+
+        Button trashButton = CreateButton("Trash Bin.jpg")
+        trashButton:SetName("Trash Bin")
+        trashButton:SetPixelWidth(100)
+        trashButton:SetPixelHeight(150)
+        trashButton:SetPixelX(275)
+        trashButton:SetPixelY(200)
+        page2:Add(trashButton)
+
+        Label responsiveText = CreateLabel()
+        responsiveText:SetName("Responsive Text")
+        responsiveText:SetText("Click one of the pictures above.")
+        responsiveText:SetPixelX(25)
+        responsiveText:SetPixelY(150)
+        responsiveText:SetMaximumWidth(350)
+        responsiveText:SetFontSize(20)
+        page2:Add(responsiveText)
+
+        Button nextButton2 = CreateButton("Right Arrow.png")
+        nextButton2:SetName("Continue")
+        nextButton2:SetPixelWidth(60)
+        nextButton2:SetPixelHeight(60)
+        nextButton2:SetPixelX(170)
+        nextButton2:SetPixelY(0)
+        page2:Add(nextButton2)
+
+        AddPage(page2)
+
+        // Code for the final page of the app.
+        Page lastPage
+        lastPage:SetName("Last Page")
+        
+        Label townGarden = CreateLabel()
+        townGarden:SetName("Town Garden")
+        townGarden:SetText("The town is also working on improving the quality of life for the residents with a community garden. If you are interested in volunteering to help weed, plant, or harvest, please stop by the town office. ")
+        townGarden:SetFontSize(20)
+        townGarden:SetPixelX(25)
+        townGarden:SetPixelY(560)
+        townGarden:SetMaximumWidth(350)
+        lastPage:Add(townGarden)
+
+        Icon gardenImage = CreateIcon("Growing Plants.jpg")
+        gardenImage:SetName("Garden Sketch")
+        gardenImage:SetDescription("A sketch of garden plants growing")
+        gardenImage:SetPixelWidth(350)
+        gardenImage:SetPixelHeight(175)
+        gardenImage:SetPixelX(25)
+        gardenImage:SetPixelY(200)
+        lastPage:Add(gardenImage)
+
+        Button homeButton = CreateButton("House.png")
+        homeButton:SetName("Home")
+        homeButton:SetPixelWidth(60)
+        homeButton:SetPixelHeight(60)
+        homeButton:SetPixelX(170)
+        homeButton:SetPixelY(0)
+        lastPage:Add(homeButton)
+
+        AddPage(lastPage)
+    end
+
+    action ButtonActivated(Button button)
+        text name = button:GetName()
+
+        if name = "Continue"
+            ShowNextPage()
+        end
+    
+        if name = "Home"
+            Page homePage = GetPage("Home Page")
+            ShowPage(homePage)
+        end
+
+        if name = "Recycling Bin"
+            // Look at the page that we're currently on when the button is clicked.
+            Page page = GetCurrentPage()
+
+            // Get the responsive text label, and then change what it says.
+            Label responsiveText = page:GetLabel("Responsive Text")
+            responsiveText:SetText("Recycling Bin: Put in here any items that can be recycled.")
+            responsiveText:SetDescription("Recycling Bin: Put in here any items that can be recycled.")
+        end
+
+        if name = "Flower Pot"
+            // Look at the page that we're currently on when the button is clicked.
+            Page page = GetCurrentPage()
+
+            // Get the responsive text label, and then change what it says.
+            Label responsiveText = page:GetLabel("Responsive Text")
+            responsiveText:SetText("New flower baskets: No trash belongs here!")
+            responsiveText:SetDescription("New flower baskets: No trash belongs here!")
+
+            PlaySound("power_down_2.ogg")
+        end
+
+        if name = "Trash Bin"
+            // Look at the page that we're currently on when the button is clicked.
+            Page page = GetCurrentPage()
+
+            // Get the responsive text label, and then change what it says.
+            Label responsiveText = page:GetLabel("Responsive Text")
+            responsiveText:SetText("Trash Can: Throw away all trash in the blue bins.")
+            responsiveText:SetDescription("Trash Can: Throw away all trash in the blue bins.")
+        end
+
+        if name = "Red"
+            // Look at the page that we're currently on when the button is clicked.
+            Page page = GetCurrentPage()
+
+            // Get the colored rectangle and change its color and description.
+            Icon colorPreview = page:GetIcon("Color Preview")
+            colorPreview:SetColor(NewColor(1, 0, 0))
+            colorPreview:SetDescription("A red square, previewing one of the possible colors of the flowers.")
+        end
+
+        if name = "Blue"
+            // Look at the page that we're currently on when the button is clicked.
+            Page page = GetCurrentPage()
+
+            // Get the colored rectangle and change its color and description.
+            Icon colorPreview = page:GetIcon("Color Preview")
+            colorPreview:SetColor(NewColor(0, 0, 1))
+            colorPreview:SetDescription("A blue square, previewing one of the possible colors of the flowers.")
+        end
+
+        if name = "Purple"
+            // Look at the page that we're currently on when the button is clicked.
+            Page page = GetCurrentPage()
+
+            // Get the colored rectangle and change its color and description.
+            Icon colorPreview = page:GetIcon("Color Preview")
+            colorPreview:SetColor(NewColor(0.5, 0, 0.5))
+            colorPreview:SetDescription("A purple square, previewing one of the possible colors of the flowers.")
+        end
+    end
+
+end
