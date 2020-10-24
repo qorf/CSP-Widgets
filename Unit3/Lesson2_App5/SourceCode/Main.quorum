@@ -1,0 +1,102 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    /*
+    When the app starts, this code runs.
+
+    This is where we put all of our code to set up our pages and create the user interface.
+    */
+    action Start
+        // Set the screen to be  400 pixels wide and 600 pixels tall.
+        SetScreenSize(400, 600)
+
+        SetBackgroundColor(NewColor(1.0, 0.85, 0.81))
+
+        Page homePage
+        homePage:SetName("Home Page")
+
+        // This code creates the colored background at the top of the app.
+        Icon rectangle = CreateRectangle(NewColor(1.0, 0.92, 0.9))
+        rectangle:SetPixelWidth(400)
+        rectangle:SetPixelHeight(150)
+        rectangle:SetPixelX(0)
+        rectangle:SetPixelY(450)
+        homePage:Add(rectangle)        
+
+        // Code for the label at the top of the app.
+        Label title = CreateLabel()
+        title:SetText("Movie Times")
+        title:SetPixelX(100)
+        title:SetPixelY(540)
+        title:SetMaximumWidth(200)
+        title:SetFontSize(60)
+        homePage:Add(title)
+
+        /*
+        The code below creates an icon, but its properties are wrong.
+        We want the icon to be smaller and directly to the left of the title.
+        We should also make it a darker color so we can see it more easily against the background.
+
+        SetPixelX and SetPixelY tells the app where to position the BOTTOM-LEFT corner of an object.
+        A pixel X value of 0 is located at the far left edge of the app. A pixel y value of 0 is located at the bottom edge of the app.
+
+        SetPixelWidth and SetPixelHeight sets how many pixels wide and tall the object is, respectively.
+
+        DO THIS:
+        * Change the values in "SetPixelWidth" and "SetPixelHeight" to make the icon smaller
+        * Change the values in "SetPixelX" and "SetPixelY" to put the icon in the right place
+        * Change the color of the icon to something darker (e.g. black) so it's easier to see
+
+        */
+        Icon camera = CreateIcon("Video Camera Icon.png")
+        camera:SetPixelWidth(200)
+        camera:SetPixelHeight(200)
+        camera:SetPixelX(0)
+        camera:SetPixelY(0)
+        camera:SetColor(White())
+
+        homePage:Add(camera)
+
+        /*
+        Once you've finished adjusting the previous icon, create a brand new one.
+        We want to display another icon directly to the right of the title.
+
+        To create a new Icon, we use the CreateIcon action. For example:
+       
+        Icon myNewIcon = CreateIcon("My Image File.png")
+
+        The second word ("myNewIcon" in the example) is a name or ID for this Icon. You can replace that name
+        with any name you want, so long as it doesn't contain spaces, start with a number, or have the same ID
+        as another item you've made.
+
+        Once you've made your Icon and set its properties, we also need to add it to a page in our app.
+        To do this, we use "homePage:Add(myNewIcon)". "homePage" is the ID of the page that we're working on, and
+        between the parenthesis, you should put the ID of your Icon.
+
+        DO THIS:
+        * Make a brand new Icon using CreateIcon
+        * Set its properties so it's the same size and color as the last icon
+        * Set the icon's properties so it appears to the right of the title
+        * Add the icon to the page by using "homePage:Add(myIconName)", replacing "myIconName" with the ID of your icon
+
+        */
+
+
+        // Place your code for the second icon above this line!
+
+        AddPage(homePage)
+    end
+
+    /*
+    This code automatically handles some background stuff.
+
+    It's not important to know what this does, but don't remove it or change it!
+    */
+    action Main
+        StartGame()
+    end
+
+end

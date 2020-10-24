@@ -1,0 +1,154 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Color
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+
+    /*
+    When the app starts, this code runs.
+
+    This is where we put all of our code to set up our pages and create the user interface.
+    */
+    action Start
+        /*
+        There are several properties that apply to the whole application.
+        We've listed some properties in the code below that you can change and experiment with.
+
+        DO THIS:
+        * Run the project if you haven't already. See what the app looks like.
+        * Read the comments above each of the listed properties.
+        * Try changing each of the values to match the examples given in the comments.
+
+        */
+
+        // SetScreenSize sets how large the screen is in pixels. The first number represents the width, and the second represents the height.
+        // Try making the screen larger by increasing both values to 800.
+        SetScreenSize(400, 600)
+
+        /*
+        Most desktop apps can be navigated with the keyboard in addition to the mouse. When we use the keyboard, one item in the app is
+        the "focus". You can press TAB to move the focus to the next item in the app, or SHIFT and TAB at the same time to move back to
+        the previous item. You can also use the keyboard to use the focused item -- for example, press SPACEBAR to use a button you're focused on.
+
+        In our app, we can optionally draw a rectangle around the focused item. To turn this on, replace the "false" in the code below with "true".
+        Try turning on the focus highlighting, run the app, and try navigating using the keyboard.
+        */
+        ShowFocusHighlight(false)
+
+        // This code changes how many pixels thick the edges of the rectangle are when we turn the focus highlight on.
+        // Try making the value smaller or larger and see the difference if you have the focus highlighting on.
+        SetFocusHighlightThickness(5)
+
+        // We can also set what color the focus rectangle is -- try replacing "Blue()" with "Red()" or "Green()".
+        SetFocusHighlightColor(Blue())
+
+        /*
+        The code below creates the user interface. You don't need to adjust any of this code for right now.
+        */
+        
+        Page homePage
+        homePage:SetName("Home Page")
+
+        /*
+        This code sets the color of the background.
+        */
+        SetBackgroundColor(White())
+
+        // Code to create the bell icon.
+        Icon bell = CreateIcon("Bell Icon.png")
+        bell:SetName("Bell")
+        bell:SetPixelWidth(80)
+        bell:SetPixelHeight(80)
+        bell:SetPixelX(20)
+        bell:SetPixelY(500)
+        bell:SetColor(Black())
+
+        homePage:Add(bell)
+
+        // Code to create the app title.
+        Label title = CreateLabel()
+        title:SetPixelX(110)
+        title:SetPixelY(520)
+        title:SetMaximumWidth(300)
+        title:SetFontSize(64)
+        title:SetText("App Title")
+        title:SetFontColor(NewColor(0.4, 0.4, 0.4))
+
+        homePage:Add(title)
+
+        // Code to create the description label.
+        Label description = CreateLabel()
+        description:SetPixelX(75)
+        description:SetPixelY(460)
+        description:SetMaximumWidth(250)
+        description:SetFontSize(20)
+        description:SetText("Information about my app.")
+        description:SetColor(NewColor(0.4, 0.4, 0.4))
+
+        homePage:Add(description)
+
+        // Code for the text box.
+        TextBox textBox = CreateTextBox()
+        textBox:SetPixelWidth(250)
+        textBox:SetPixelHeight(175)
+        textBox:SetPixelX(75)
+        textBox:SetPixelY(225)
+        textBox:SetText("Type here!")
+        textBox:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        textBox:SetFontColor(Black())
+
+        homePage:Add(textBox)
+
+        // Code for the smaller, secondary text field.
+        TextBox textField = CreateTextBox()
+        textField:SetPixelX(25)
+        textField:SetPixelY(125)
+        textField:SetPixelWidth(250)
+        textField:SetPixelHeight(40)
+        textField:SetText("You can type here too!")
+        textField:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        textField:SetFontColor(Black())
+
+        homePage:Add(textField)
+
+        // Code for the first button.
+        Button button1 = CreateButton()
+        button1:SetPixelX(300)
+        button1:SetPixelY(125)
+        button1:SetPixelWidth(75)
+        button1:SetPixelHeight(40)
+        button1:SetBackgroundColor(Orange())
+        button1:SetFontColor(Black())
+        button1:SetBorderColor(Black())
+
+        homePage:Add(button1)
+
+        // Code for the second button.
+        Button button2 = CreateButton()
+        button2:SetPixelX(150)
+        button2:SetPixelY(50)
+        button2:SetPixelWidth(100)
+        button2:SetPixelHeight(50)
+        button2:SetFontSize(22)
+        button2:SetBackgroundColor(Orange())
+        button2:SetFontColor(Black())
+        button2:SetBorderColor(Black())
+
+        homePage:Add(button2)
+
+        AddPage(homePage)
+    end
+
+    /*
+    This code automatically handles some background stuff.
+
+    It's not important to know what this does, but don't remove it or change it!
+    */
+    action Main
+        StartGame()
+    end
+
+end

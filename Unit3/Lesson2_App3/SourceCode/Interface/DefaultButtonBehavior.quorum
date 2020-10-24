@@ -1,0 +1,17 @@
+package Libraries.Curriculum.Code
+
+use Libraries.Interface.Behaviors.Behavior
+use Libraries.Interface.Events.BehaviorEvent
+use Libraries.Game.GameStateManager
+use Libraries.Interface.Controls.Button
+
+class DefaultButtonBehavior is Behavior
+
+    GameStateManager manager
+
+    action Run(BehaviorEvent event)
+        Application app = cast(Application, manager:GetGame())
+        app:ButtonActivated(cast(Button, event:GetItem()))
+    end
+
+end

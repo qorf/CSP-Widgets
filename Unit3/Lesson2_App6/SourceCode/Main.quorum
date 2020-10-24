@@ -1,0 +1,121 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+
+    /*
+    When the app starts, this code runs.
+
+    This is where we put all of our code to set up our pages and create the user interface.
+    */
+    action Start
+        SetScreenSize(400, 600)
+        ShowFocusHighlight(true)
+        SetFocusHighlightThickness(4)
+        SetFocusHighlightColor(Black())
+
+        Page homePage
+        homePage:SetName("Home Page")
+
+        SetBackgroundColor(NewColor(1, 0.88, 0.29))
+
+        /*
+        In addition to the ID that describes each item in the code, each element has a "real" name.
+        It's important that these names are meaningful. They provide extra information to users that
+        need it -- for example, a blind user that is using a screen reader to access your app. We can
+        also give items a description. For example, if we have a picture of a dog, we might want to give
+        the picture a short description so the blind user can understand what the picture is.
+
+        Setting good names is also important for us when we're designing the app. When you begin programming
+        your app later, these names will let us identify what's being used and control how we react.
+
+        DO THIS:
+        * Use the SetName action to give meaningful "real" names to all four of the components below.
+        * Use the SetDescription action on the cookie icon to give it a meaningful description.
+
+        */
+
+        // Code for the title label.
+        Label title = CreateLabel()
+
+        // We currently set a name for the title, but it's not very meaningful.
+        // Replace the name below with a better one.
+        title:SetName("item")
+
+        title:SetText("Cookie Clicker")
+        title:SetPixelX(50)
+        title:SetPixelY(530)
+        // SetMaximumWidth tells the label how wide the text is allowed to get before it breaks it up into multiple lines
+        title:SetMaximumWidth(300)
+        title:SetFontSize(46)
+        title:SetFontColor(NewColor(0.35, 0.72, 0.90))
+        homePage:Add(title)
+
+
+        // Code for the directions label.
+        Label directions = CreateLabel()
+
+        // This label doesn't currently have name.
+        // On the line below, use SetName on the "directions" label to give it a meaningful name.
+
+
+        directions:SetText("Click the cookie")
+        directions:SetPixelX(100)
+        directions:SetPixelY(450)
+        directions:SetMaximumWidth(200)
+        directions:SetFontSize(26)
+        directions:SetFontColor(NewColor(0.35, 0.72, 0.90))
+        homePage:Add(directions)
+
+
+        // Code for the cookie icon.
+        Icon cookie = CreateIcon("Cookie.png")
+
+        // This icon doesn't have a name yet. Just like you did with the directions, give it a meaningful name on the line below.
+
+
+        /*
+        This icon is also missing a description. We can use the SetDescription action, which looks like this:
+        
+        iconID:SetDescription("This is a short sentence that describes the icon.")
+
+        Use the "SetDescription" action on the "cookie" icon and give it a meaningful description just below this comment.
+        */
+
+        cookie:SetPixelX(100)
+        cookie:SetPixelY(200)
+        cookie:SetPixelWidth(200)
+        cookie:SetPixelHeight(200)
+        homePage:Add(cookie)
+
+
+        // Code for the play button.
+        Button playButton = CreateButton()
+
+        // The play button also needs a good name. This name will appear as the text on the button!
+        // Give the button a good name on the line below.
+
+
+        playButton:SetPixelWidth(100)
+        playButton:SetPixelHeight(40)
+        playButton:SetPixelX(150)
+        playButton:SetPixelY(100)
+        playButton:SetFontSize(20)
+        playButton:SetBackgroundColor(NewColor(0.35, 0.72, 0.90))
+        homePage:Add(playButton)
+
+        AddPage(homePage)
+    end
+
+    /*
+    This code automatically handles some background stuff.
+
+    It's not important to know what this does, but don't remove it or change it!
+    */
+    action Main
+        StartGame()
+    end
+
+end

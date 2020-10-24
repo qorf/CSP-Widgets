@@ -39,6 +39,8 @@ class Application is Game, FocusListener
     Color highlightColor
     number highlightThickness = 5
 
+    Color color
+
     action CreateGame
         CustomFocusManager focus
         SetFocusManager(focus)
@@ -313,14 +315,83 @@ class Application is Game, FocusListener
     end
 
     action NewColor(number red, number green, number blue) returns Color
-        Color color
-        color:SetColor(red, green, blue, 1.0)
-        return color
+        return color:CustomColor(red, green, blue, 1.0)
     end
 
     action NewColor(number red, number green, number blue, number opacity) returns Color
-        Color color
-        color:SetColor(red, green, blue, opacity)
-        return color
+        return color:CustomColor(red, green, blue, opacity)
     end
+
+    action White returns Color
+        return color:White()
+    end
+
+    action Black returns Color
+        return color:Black()
+    end
+
+    action Red returns Color
+        return color:Red()
+    end
+
+    action Green returns Color
+        return color:Green()
+    end
+
+    action Blue returns Color
+        return color:Blue()
+    end
+
+    action LightGray returns Color
+        return color:LightGray()
+    end
+
+    action Gray returns Color
+        return color:Gray()
+    end
+
+    action DarkGray returns Color
+        return color:DarkGray()
+    end
+
+    action Pink returns Color
+        return color:Pink()
+    end
+
+    action Orange returns Color
+        return color:Orange()
+    end
+
+    action Yellow returns Color
+        return color:Yellow()
+    end
+
+    action Magenta returns Color
+        return color:Magenta()
+    end
+
+    action Cyan returns Color
+        return color:Cyan()
+    end
+
+    action Olive returns Color
+        return color:Olive()
+    end
+
+    action Purple returns Color
+        return color:Purple()
+    end
+
+    action Maroon returns Color
+        return color:Maroon()
+    end
+
+    action Teal returns Color
+        return color:Teal()
+    end
+
+    action Navy returns Color
+        return color:Navy()
+    end
+
 end

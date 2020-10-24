@@ -1,0 +1,64 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+
+    /*
+    For this challenge, let's upload our own custom assets. This can either be an image or audio.
+
+    This app has a single button that plays a sound when clicked. Change either the button's image
+    or the audio that plays by modifying the code below.
+    */
+
+    /*
+    When the app starts, this code runs.
+
+    This is where we put all of our code to set up our pages and create the user interface.
+    */
+    action Start
+        // Sets the screen to be 400 pixels wide and 600 pixels tall.
+        SetScreenSize(400, 600)
+
+        Page homePage
+        homePage:SetName("Home Page")
+
+        /*
+        This line of code makes a button out of an image. You can use your own custom image
+        by placing it in the Images folder in the project. This works for loading Icons too!
+
+        Try downloading a picture of a cat and placing it in the project's Image folder. Then
+        load your picture into a button by changing the line of code below.
+        */
+        Button button = CreateButton("House.png")
+
+        button:SetPixelWidth(200)
+        button:SetPixelHeight(200)
+        button:SetPixelX(100)
+        button:SetPixelY(200)
+        homePage:Add(button)
+
+        AddPage(homePage)
+    end
+
+    /*
+
+    */
+    action ButtonActivated(Button button)
+        /*
+        This sound will play whenever the button is activated.
+        To use your own custom sounds, place your own .wav or .ogg audio files into the Sounds folder in the project.
+        Then type the file name into the PlaySound command below.
+        */
+        PlaySound("hollow_bell_notification.ogg")
+    end
+
+    /*
+    This code automatically handles some background stuff.
+
+    It's not important to know what this does, but don't remove it or change it!
+    */
+    action Main
+        StartGame()
+    end
+
+end

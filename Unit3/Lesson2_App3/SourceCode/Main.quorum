@@ -1,0 +1,189 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Color
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+
+    /*
+    When the app starts, this code runs.
+
+    This is where we put all of our code to set up our pages and create the user interface.
+    */
+    action Start
+        SetScreenSize(400, 600)
+
+        Page homePage
+        homePage:SetName("Home Page")
+
+        /*
+        Modify the code below to change the colors used in the app.
+
+
+        There are two primary ways to set the color of a component.
+        
+        You can use the NewColor command to create any color by mixing red, green, and blue.
+        It accepts three numbers between 0.0 and 1.0, which represent the red, green, and blue
+        components, respectively. For example, "NewColor(1.0, 0.0, 0.5)" will make a new color
+        with 100% red, 0% blue, and 50% green, which combines to make a reddish-orange.
+
+        The other way to create a color is by using one of the color commands, which provides
+        you with a common color. Here's the full list of all the color commands you can use:
+        White()
+        Black()
+        Red()
+        Green()
+        Blue()
+        LightGray()
+        Gray()
+        DarkGray()
+        Pink()
+        Orange()
+        Yellow()
+        Magenta()
+        Cyan()
+        Olive()
+        Purple()
+        Maroon()
+        Teal()
+        Navy()
+        */
+
+        /*
+        This code sets the color of the background.
+        */
+        SetBackgroundColor(White())
+
+        // Code to create the bell icon.
+        Icon bell = CreateIcon("Bell Icon.png")
+        bell:SetName("Bell")
+        bell:SetPixelWidth(80)
+        bell:SetPixelHeight(80)
+        bell:SetPixelX(20)
+        bell:SetPixelY(500)
+
+        /*
+        This code sets the color of the bell icon.
+        */
+        bell:SetColor(Black())
+
+        homePage:Add(bell)
+
+        // Code to create the app title.
+        Label title = CreateLabel()
+        title:SetPixelX(110)
+        title:SetPixelY(520)
+        title:SetMaximumWidth(300)
+        title:SetFontSize(64)
+        title:SetText("App Title")
+
+        /*
+        This code sets the color of the app title.
+        Using "NewColor" lets us set the red, green, and blue values using numbers between 0.0 and 1.0
+        The number represents how bright each color is between 0% (at 0.0) and 100% (at 1.0) brightness.
+        */
+        title:SetFontColor(NewColor(0.4, 0.4, 0.4))
+
+        homePage:Add(title)
+
+        // Code to create the description label.
+        Label description = CreateLabel()
+        description:SetPixelX(75)
+        description:SetPixelY(460)
+        description:SetMaximumWidth(250)
+        description:SetFontSize(20)
+        description:SetText("Information about my app.")
+
+        /*
+        This code sets the color of the app description.
+        You can change the values in "NewColor" to change what color it appears, or just replace it with
+        one of the Color commands, like "Orange()" or "Cyan()".
+        */
+        description:SetColor(NewColor(0.4, 0.4, 0.4))
+
+        homePage:Add(description)
+
+        // Code for the text box.
+        TextBox textBox = CreateTextBox()
+        textBox:SetPixelWidth(250)
+        textBox:SetPixelHeight(175)
+        textBox:SetPixelX(75)
+        textBox:SetPixelY(225)
+        textBox:SetText("Type here!")
+
+        /*
+        This code sets the color of the textbox.
+        You can separately change the background and font color in the TextBox.
+        */
+        textBox:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        textBox:SetFontColor(Black())
+
+        homePage:Add(textBox)
+
+        // Code for the smaller, secondary text field.
+        TextBox textField = CreateTextBox()
+        textField:SetPixelX(25)
+        textField:SetPixelY(125)
+        textField:SetPixelWidth(250)
+        textField:SetPixelHeight(40)
+        textField:SetText("You can type here too!")
+
+        /*
+        This code sets the color the field.
+        Just like the other textbox, you can change the color of the background and font color.
+        */
+        textField:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        textField:SetFontColor(Black())
+
+        homePage:Add(textField)
+
+        // Code for the first button.
+        Button button1 = CreateButton()
+        button1:SetPixelX(300)
+        button1:SetPixelY(125)
+        button1:SetPixelWidth(75)
+        button1:SetPixelHeight(40)
+        
+        /*
+        This action sets the color of the button.
+        You can separately change the color of the background, font, and border of a button.
+        */
+        button1:SetBackgroundColor(Orange())
+        button1:SetFontColor(Black())
+        button1:SetBorderColor(Black())
+
+        homePage:Add(button1)
+
+        // Code for the second button.
+        Button button2 = CreateButton()
+        button2:SetPixelX(150)
+        button2:SetPixelY(50)
+        button2:SetPixelWidth(100)
+        button2:SetPixelHeight(50)
+        button2:SetFontSize(22)
+
+        /*
+        This action sets the color of the second button.
+        Just like the other button, you can set the color of the background, font, and border.
+        */
+        button2:SetBackgroundColor(Orange())
+        button2:SetFontColor(Black())
+        button2:SetBorderColor(Black())
+
+        homePage:Add(button2)
+
+        AddPage(homePage)
+    end
+
+    /*
+    This code automatically handles some background stuff.
+
+    It's not important to know what this does, but don't remove it or change it!
+    */
+    action Main
+        StartGame()
+    end
+
+end
