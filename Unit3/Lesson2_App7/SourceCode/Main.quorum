@@ -36,13 +36,13 @@ class Main is Application
         homePage:SetName("Home Page")
 
         You can change the ID and the "real" name to whatever you would like, but try to make them meaningful.
-        Write some code below to make a page for your application.
+        DO THIS: Write some code below to make a page for your application.
         */
 
 
 
         /*
-        TO-DO: In the section below, recreate the sample app, which has the following features:
+        DO THIS: In the section below, recreate the sample app, which has the following features:
         * A light-blue background
         * A dark-blue banner at the top of the app
         * A white label that says "Practice Log" in the middle of the banner
@@ -144,7 +144,7 @@ class Main is Application
 
 
         /*
-        Once you've added everything to the page, add the page to the app. The code should look like this:
+        DO THIS: Once you've added everything to the page, add the page to the app. The code should look like this:
 
         AddPage(homePage)
 

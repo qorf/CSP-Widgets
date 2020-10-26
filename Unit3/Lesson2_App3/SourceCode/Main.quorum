@@ -19,7 +19,7 @@ class Main is Application
         homePage:SetName("Home Page")
 
         /*
-        Modify the code below to change the colors used in the app.
+        DO THIS: Modify the code below to change the colors used in the app.
 
 
         There are two primary ways to set the color of a component.
