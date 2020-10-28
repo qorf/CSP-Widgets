@@ -15,44 +15,39 @@ class Main is Application
         // SetScreenSize sets how large the screen is in pixels. The first number represents the width, and the second represents the height.
         SetScreenSize(400, 600)
 
-        // Show a rectangle around the focused item (if set to true)
+
+        /*
+        Use this template to create your app. You can use the examples below as a reference.
+
+
+        CREATING PAGES
+
+        // This makes a new page. The second word is the ID, and you can replace it with a different name.
+        Page pageID
+
+        // This sets the name of the page. This is useful when we want to interact with the pages during event handling.
+        pageID:SetName("A Meaningful Name")
+        
+        // This adds the page to the app. Your app won't work unless there's at least 1 page added to it!
+        AddPage(pageID)
+
+
+        SETTING APP PROPERTIES
+
+        // Show a rectangle around the focused item (if set to true). Set to false to turn it off.
         ShowFocusHighlight(true)
 
-        // Set how thick the edges of the focus rectangle are.
+        // Set how many pixels thick the edges of the focus rectangle are.
         SetFocusHighlightThickness(5)
 
-        // Set the color of the focus highlight to a dark green color.
-        SetFocusHighlightColor(NewColor(0, 0.5, 0))
+        // Set the color of the focus highlight. You can replace the color in this example with a different one.
+        SetFocusHighlightColor(Blue())
 
         // Set the background color as a percentage of red, green, and blue values. 
         // The default value sends 100% of each color, which makes white.
         // You can change the values here to change the color!
         SetBackgroundColor(1.0, 1.0, 1.0)
 
-        /*
-        We need a page to put all of our elements onto for our app. We can do that with code that looks like this:
-
-        Page homePage
-        homePage:SetName("Home Page")
-
-        You can change the ID and the "real" name to whatever you would like, but try to make them meaningful.
-        DO THIS: Write some code below to make a page for your application.
-        */
-
-
-
-        /*
-        DO THIS: In the section below, recreate the sample app, which has the following features:
-        * A light-blue background
-        * A dark-blue banner at the top of the app
-        * A white label that says "Practice Log" in the middle of the banner
-        * A yellow music symbol icon to the left of the label
-        * A yellow headphones icon to the right of the label
-        * A large, dark-blue rectangle in the center of the app
-        * A textbox underneath the rectangle
-        * A button at the bottom of the app named "Add Record"
-
-        Here are some examples of code you can use:
 
         CREATING ELEMENTS
 
@@ -116,6 +111,7 @@ class Main is Application
         // Sets how many pixels wide the text in a Label can be before the text is wrapped onto the next line.
         labelID:SetMaximumWidth(300)
 
+
         USING COLORS
 
         // Makes a color by mixing red, green, and blue. Each number is between 0 (for 0% brightness) or 1 (for 100% brightness).
@@ -141,25 +137,28 @@ class Main is Application
         Teal()
         Navy()
 
-        Use these commands to recreate the app. Don't forget to replace the example item IDs with
-        the ID of the items you've made!
+        Don't forget to replace the example IDs with the ID of the items you've made!
         */
 
 
 
-        /*
-        DO THIS: Once you've added everything to the page, add the page to the app. The code should look like this:
 
-        AddPage(homePage)
+        // YOUR CODE GOES HERE
 
-        The ID in the parenthesis should be the same ID that you used when you made the page earlier!
-        Add the code below this comment to add your page to the app.
-        */
 
 
 
     end
     
+
+    /*
+    This code activates whenever a button is clicked or activated using the keyboard.
+    */
+    action ButtonActivated(Button button)
+
+    end
+
+
     /*
     This code automatically handles some background stuff.
 
