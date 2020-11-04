@@ -1,0 +1,148 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    action Main
+        StartGame()
+    end
+
+    action Start
+        SetBackgroundColor(0.77, 0.88, 0.33)
+
+        Page page1
+        page1:SetName("Page 1")
+
+        Icon banner = CreateRectangle(NewColor(0.34, 0.55, 0.18))
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(60)
+        banner:SetPixelX(0)
+        banner:SetPixelY(540)
+        banner:SetFocusable(false)
+        page1:Add(banner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Cats or Dogs?")
+        title:SetFontSize(42)
+        title:SetPixelX(25)
+        title:SetPixelY(555)
+        title:SetColor(NewColor(0.87, 0.94, 0.66))
+        page1:Add(title)
+
+        Icon paw = CreateIcon("Paw Icon.png")
+        paw:SetName("Paw Icon")
+        paw:SetDescription("A decorative drawing of a paw print.")
+        paw:SetPixelX(340)
+        paw:SetPixelY(540)
+        paw:SetPixelWidth(60)
+        paw:SetPixelHeight(60)
+        page1:Add(paw)
+
+        // The fourth number in "NewColor" is opacity. 0% opacity will make this completely transparent.
+        Icon transparentIcon = CreateRectangle(NewColor(0, 0, 0, 0))
+        transparentIcon:SetName("Choice")
+        transparentIcon:SetDescription("A picture of the animal you choose will go here!")
+        transparentIcon:SetPixelX(35)
+        transparentIcon:SetPixelY(270)
+        transparentIcon:SetPixelWidth(330)
+        transparentIcon:SetPixelHeight(220)
+        page1:Add(transparentIcon)
+
+        Icon labelBackground = CreateRectangle(NewColor(0.34, 0.55, 0.18))
+        labelBackground:SetPixelWidth(350)
+        labelBackground:SetPixelHeight(80)
+        labelBackground:SetPixelX(25)
+        labelBackground:SetPixelY(130)
+        labelBackground:SetFocusable(false)
+        page1:Add(labelBackground)
+
+        Label choiceLabel = CreateLabel()
+        choiceLabel:SetName("Your choice")
+        choiceLabel:SetText("You decide!")
+        choiceLabel:SetPixelX(50)
+        choiceLabel:SetPixelY(170)
+        choiceLabel:SetMaximumWidth(300)
+        choiceLabel:SetFontSize(38)
+        choiceLabel:SetColor(NewColor(0.87, 0.94, 0.66))
+        page1:Add(choiceLabel)
+
+        Button cats = CreateButton()
+        cats:SetName("Cats!")
+        cats:SetPixelWidth(170)
+        cats:SetPixelHeight(100)
+        cats:SetPixelX(25)
+        cats:SetPixelY(20)
+        cats:SetFontSize(50)
+        cats:SetBackgroundColor(NewColor(1.0, 0.53, 0.38))
+        cats:SetBorderColor(NewColor(0.34, 0.55, 0.18))
+        page1:Add(cats)
+
+        Button dogs = CreateButton()
+        dogs:SetName("Dogs!")
+        dogs:SetPixelWidth(170)
+        dogs:SetPixelHeight(100)
+        dogs:SetPixelX(205)
+        dogs:SetPixelY(20)
+        dogs:SetFontSize(50)
+        dogs:SetBackgroundColor(NewColor(1.0, 0.53, 0.38))
+        dogs:SetBorderColor(NewColor(0.34, 0.55, 0.18))
+        page1:Add(dogs)
+
+        AddPage(page1)
+    end
+
+    action ButtonActivated(Button button)
+        text name = button:GetName()
+
+        // When the user clicks the cat button play a meow sound and show cat image and text
+        if name = "Cats!"
+            Page page = GetCurrentPage()
+
+            Label choiceLabel = page:GetLabel("Your choice")
+            choiceLabel:SetText("Cats Rule!")
+            choiceLabel:SetDescription("Cats Rule!")
+
+            Icon currentIcon = page:GetIcon("Choice")
+
+            Icon newIcon = CreateIcon("Cat.jpg")
+            newIcon:SetName("Choice")
+            newIcon:SetDescription("A picture of a cat standing on top of a fence.")
+            newIcon:SetPixelX(35)
+            newIcon:SetPixelY(270)
+            newIcon:SetPixelWidth(330)
+            newIcon:SetPixelHeight(220)
+            page:Replace(currentIcon, newIcon)
+
+            PlaySound("cat.ogg")
+        end
+
+        /*
+        When the user clicks the dog button,
+        play a woof sound and show dog image and text.
+        */
+        if name = "Dogs!"
+            Page page = GetCurrentPage()
+
+            Label choiceLabel = page:GetLabel("Your choice")
+            choiceLabel:SetText("Dogs #1!!")
+            choiceLabel:SetDescription("Dogs #1!!")
+
+            Icon currentIcon = page:GetIcon("Choice")
+
+            Icon newIcon = CreateIcon("Dog.jpg")
+            newIcon:SetName("Choice")
+            newIcon:SetDescription("A picture of a small dog standing in front of a lake.")
+            newIcon:SetPixelX(35)
+            newIcon:SetPixelY(270)
+            newIcon:SetPixelWidth(330)
+            newIcon:SetPixelHeight(220)
+            page:Replace(currentIcon, newIcon)
+
+            
+        end
+    end
+
+end

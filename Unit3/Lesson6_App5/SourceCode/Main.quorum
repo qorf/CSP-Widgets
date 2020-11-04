@@ -1,0 +1,169 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Events.MouseEvent
+use Libraries.Interface.Controls.Control
+use Libraries.Interface.Events.KeyboardEvent
+
+class Main is Application
+
+    action Main
+        StartGame()
+    end
+
+    action Start
+        Page page
+        page:SetName("Game Screen")
+
+        // Play the background music. It should repeat forever.
+        PlaySound("forest_woodland_loop.ogg", true)
+
+        Icon background = CreateIcon("Sky Background.jpg")
+        background:SetPixelWidth(960)
+        background:SetPixelHeight(600)
+        background:SetPixelX(-280)
+        background:SetPixelY(0)
+        background:SetFocusable(false)
+        page:Add(background)
+        
+        Label directions = CreateLabel()
+        directions:SetText("Save the sparrow!")
+        directions:SetName("Directions")
+        directions:SetPixelX(100)
+        directions:SetPixelY(25)
+        directions:SetFontSize(24)
+        directions:SetColor(White())
+        page:Add(directions)
+
+        Icon hawk = CreateIcon("Hawk.png")
+        hawk:SetName("Hawk")
+        hawk:SetPixelWidth(160)
+        hawk:SetPixelHeight(51)
+        hawk:SetPixelX(220)
+        hawk:SetPixelY(480)
+        hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
+        page:Add(hawk)
+
+        Icon sparrow = CreateIcon("Sparrow.png")
+        sparrow:SetName("Sparrow")
+        sparrow:SetPixelWidth(96)
+        sparrow:SetPixelHeight(65)
+        sparrow:SetPixelX(80)
+        sparrow:SetPixelY(280)
+        sparrow:SetDescription("At " + sparrow:GetPixelX() + ", " + sparrow:GetPixelY())
+        page:Add(sparrow)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        // This code runs when a button is clicked or activated with the keyboard.
+
+
+    end
+
+    action MouseMoved(MouseEvent event)
+        // This code runs when the mouse moves inside the app window.
+
+
+    end
+
+    action MousedOver(Control item, MouseEvent event)
+        // This code runs when an item in the game is moused over.
+
+
+        // When the user puts their mouse over the hawk move both
+        // birds but play a sad sound and put sad text
+        if item:GetName() = "Hawk"        
+            PlaySound("vibrant_wrong_action_hit_1.ogg")
+
+            Page page = GetCurrentPage()
+
+            Label directions = page:GetLabel("Directions")
+            directions:SetText("Avoid the hawk!")
+            directions:SetDescription("Avoid the hawk!")
+
+            Icon hawk = page:GetIcon("Hawk")
+            hawk:SetPixelX(RandomNumber(0, 150))
+            hawk:SetPixelY(RandomNumber(350, 550))
+            hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
+
+            Icon sparrow = page:GetIcon("Sparrow")
+            sparrow:SetPixelX(RandomNumber(0, 150))
+            sparrow:SetPixelY(RandomNumber(350, 550))
+            sparrow:SetDescription("At " + sparrow:GetPixelX() + ", " + sparrow:GetPixelY())
+        end
+
+        if item:GetName() = "Sparrow"
+            PlaySound("vibrant_game_positive_item_2.ogg")
+
+            Page page = GetCurrentPage()
+
+            Label directions = page:GetLabel("Directions")
+            directions:SetText("You saved a sparrow!")
+            directions:SetDescription("You saved a sparrow!")
+
+            Icon hawk = page:GetIcon("Hawk")
+            hawk:SetPixelX(RandomNumber(0, 150))
+            hawk:SetPixelY(RandomNumber(350, 550))
+            hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
+
+            Icon sparrow = page:GetIcon("Sparrow")
+            sparrow:SetPixelX(RandomNumber(0, 150))
+            sparrow:SetPixelY(RandomNumber(350, 550))
+            sparrow:SetDescription("At " + sparrow:GetPixelX() + ", " + sparrow:GetPixelY())
+        end
+    end
+
+    action MousedOut(Control item, MouseEvent event)
+        // This code runs when the user moves the mouse off of an item.
+
+
+    end
+
+    action MouseClicked(Control item, MouseEvent event)
+        // This code runs when the user clicks the mouse.
+        // If they clicked on an item, it's available here via the "item" ID.
+
+
+    end
+
+    action MouseReleased(Control item, MouseEvent event)
+        // This code runs when the user releases the mouse.
+        // If they released it over an item, it's available here via the "item" ID.
+
+
+    end
+
+    action KeyPressed(KeyboardEvent keys)
+        // This code runs when the user presses a key on the keyboard.
+
+        if keys:keyCode = keys:SPACE
+            PlaySound("hop.ogg")
+
+            Page page = GetCurrentPage()
+
+            Label directions = page:GetLabel("Directions")
+            directions:SetText("Save the sparrow!")
+            directions:SetDescription("Save the sparrow!")
+
+            Icon hawk = page:GetIcon("Hawk")
+            hawk:SetPixelX(RandomNumber(0, 150))
+            hawk:SetPixelY(RandomNumber(350, 550))
+            hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
+
+            Icon sparrow = page:GetIcon("Sparrow")
+            sparrow:SetPixelX(RandomNumber(0, 150))
+            sparrow:SetPixelY(RandomNumber(350, 550))
+            sparrow:SetDescription("At " + sparrow:GetPixelX() + ", " + sparrow:GetPixelY())
+        end
+    end
+
+    action KeyReleased(KeyboardEvent keys)
+        // This code runs when the user releases a key on the keyboard.
+
+
+    end
+
+end

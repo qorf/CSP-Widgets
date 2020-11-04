@@ -1,0 +1,6 @@
+output "Hi!"
+output "This is a very simple program."
+output "You can display text in quotes"
+output "But you can also display numbers, like this"
+output 100
+output "Try adding some code of your own below!"

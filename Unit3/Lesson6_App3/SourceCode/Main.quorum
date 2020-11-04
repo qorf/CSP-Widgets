@@ -1,0 +1,37 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+
+    action Main
+        StartGame()
+    end
+
+    action Start
+        output "Starting my program!"
+
+        Page homePage
+        homePage:SetName("Home Page")
+        
+        Button button = CreateButton()
+        button:SetName("This is a button!")
+        button:SetPixelX(125)
+        button:SetPixelY(300)
+        button:SetPixelWidth(150)
+        button:SetPixelHeight(50)
+        homePage:Add(button)
+
+        AddPage(homePage)
+
+        output "Ending my program!"
+    end
+
+    action ButtonActivated(Button button)
+        button:SetBackgroundColor(Orange())
+        button:SetPixelWidth(170)
+        button:SetPixelHeight(100)
+        button:SetName("Now it's a big button!")
+
+        output "You clicked the button!"
+    end
+end

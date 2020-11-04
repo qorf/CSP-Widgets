@@ -3,6 +3,9 @@ use Libraries.Game.Graphics.Label
 use Libraries.Interface.Controls.Icon
 use Libraries.Interface.Controls.Button
 use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Control
+use Libraries.Interface.Events.MouseEvent
+use Libraries.Interface.Events.KeyboardEvent
 
 class Main is Application
 
@@ -151,10 +154,53 @@ class Main is Application
     end
     
 
-    /*
-    This code activates whenever a button is clicked or activated using the keyboard.
-    */
     action ButtonActivated(Button button)
+        // This code runs when a button is clicked or activated with the keyboard.
+
+
+    end
+
+    action MouseMoved(MouseEvent event)
+        // This code runs when the mouse moves inside the app window.
+
+
+    end
+
+    action MousedOver(Control item, MouseEvent event)
+        // This code runs when an item in the game is moused over.
+
+
+    end
+
+    action MousedOut(Control item, MouseEvent event)
+        // This code runs when the user moves the mouse off of an item.
+
+
+    end
+
+    action MouseClicked(Control item, MouseEvent event)
+        // This code runs when the user clicks the mouse.
+        // If they clicked on an item, it's available here via the "item" ID.
+
+
+    end
+
+    action MouseReleased(Control item, MouseEvent event)
+        // This code runs when the user releases the mouse.
+        // If they released it over an item, it's available here via the "item" ID.
+
+
+    end
+
+    action KeyPressed(KeyboardEvent keys)
+        // This code runs when the user presses a key on the keyboard.
+
+
+    end
+
+    action KeyReleased(KeyboardEvent keys)
+        // This code runs when the user releases a key on the keyboard.
+
 
     end
 
