@@ -1,0 +1,28 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+
+class Main is Application
+
+    action Main
+        StartGame()
+    end
+
+    action Start
+        SetBackgroundColor(0.68, 0.85, 0.90)
+
+        Page homePage
+        homePage:SetName(Home)
+
+        Label welcome = CreateLabel()
+        welcome:SetText("Welcome to my app!")
+        welcome:SetFontSize(30)
+        welcome:SetPixelX(50)
+        welcome:SetPixelY(550)
+        homePage:Add(welcome)
+
+        AddPage(homePage)
+    end
+
+end

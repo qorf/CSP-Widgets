@@ -1,0 +1,162 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    action Start
+        Page page
+        page:SetName("Main Page")
+
+        SetBackgroundColor(NewColor(1, 0.86, 0.82))
+
+        Icon topBanner = CreateRectangle(NewColor(1, 0.92, 0.90))
+        topBanner:SetFocusable(false)
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(50)
+        topBanner:SetPixelX(0)
+        topBanner:SetPixelY(550)
+        page:Add(topBanner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Mood Minder")
+        title:SetPixelX(25)
+        title:SetPixelY(560)
+        title:SetFontSize(40)
+        page:Add(title)
+
+        Icon mainIcon = CreateIcon("Lake Rowboat.jpg")
+        mainIcon:SetName("Display")
+        mainIcon:SetDescription("A calming picture of a rowboat on a still lake, reflecting the sunset.")
+        mainIcon:SetPixelX(25)
+        mainIcon:SetPixelY(300)
+        mainIcon:SetPixelWidth(350)
+        mainIcon:SetPixelHeight(220)
+        page:Add(mainIcon)
+
+        Icon descriptionBanner = CreateRectangle(NewColor(1, 0.92, 0.90))
+        descriptionBanner:SetFocusable(false)
+        descriptionBanner:SetPixelWidth(350)
+        descriptionBanner:SetPixelHeight(100)
+        descriptionBanner:SetPixelX(25)
+        descriptionBanner:SetPixelY(175)
+        page:Add(descriptionBanner)
+
+        Label moodLabel = CreateLabel()
+        moodLabel:SetName("Mood")
+        moodLabel:SetText("Pick your mood from the list below.")
+        moodLabel:SetPixelX(40)
+        moodLabel:SetPixelY(250)
+        moodLabel:SetFontSize(20)
+        moodLabel:SetMaximumWidth(320)
+        page:Add(moodLabel)
+
+        Button calmButton = CreateButton()
+        calmButton:SetName("Calm")
+        calmButton:SetBackgroundColor(Maroon())
+        calmButton:SetFontColor(White())
+        calmButton:SetFontSize(24)
+        calmButton:SetPixelWidth(100)
+        calmButton:SetPixelHeight(50)
+        calmButton:SetPixelX(25)
+        calmButton:SetPixelY(75)
+        page:Add(calmButton)
+
+        Button tiredButton = CreateButton()
+        tiredButton:SetName("Tired")
+        tiredButton:SetBackgroundColor(Maroon())
+        tiredButton:SetFontColor(White())
+        tiredButton:SetFontSize(24)
+        tiredButton:SetPixelWidth(100)
+        tiredButton:SetPixelHeight(50)
+        tiredButton:SetPixelX(150)
+        tiredButton:SetPixelY(75)
+        page:Add(tiredButton)
+
+        Button excitedButton = CreateButton()
+        excitedButton:SetName("Excited")
+        excitedButton:SetBackgroundColor(Maroon())
+        excitedButton:SetFontColor(White())
+        excitedButton:SetFontSize(24)
+        excitedButton:SetPixelWidth(100)
+        excitedButton:SetPixelHeight(50)
+        excitedButton:SetPixelX(275)
+        excitedButton:SetPixelY(75)
+        page:Add(excitedButton)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+
+        // If the calm button is activated, update the page with a calm image, text, and song
+        if button:GetName() = "Calm"
+            Page page = GetCurrentPage()
+            Button calmButton = page:GetButton("Calm")
+            Button tiredButton = page:GetButton("Tired")
+            Button excitedButton = page:GetButton("Excited")
+
+            calmButton:SetBackgroundColor(Navy())
+            tiredButton:SetBackgroundColor(Maroon())
+            excitedButton:SetBackgroundColor(Maroon())
+            
+            Label moodLabel = page:GetLabel("Mood")
+            moodLabel:SetText("Your mind is clear. Breathe deeply and enjoy the calm.")
+            moodLabel:SetDescription("Your mind is clear. Breathe deeply and enjoy the calm.")
+
+            Icon oldDisplay = page:GetIcon("Display")
+            Icon newDisplay = CreateIcon("Lake Rowboat.jpg")
+            newDisplay:SetName("Display")
+            newDisplay:SetDescription("A calming picture of a rowboat on a still lake, reflecting the sunset.")
+            newDisplay:SetPixelX(25)
+            newDisplay:SetPixelY(300)
+            newDisplay:SetPixelWidth(350)
+            newDisplay:SetPixelHeight(220)
+            page:Replace(oldDisplay, newDisplay)
+
+            // Stop any sounds that are already playing. Then play the new music on loop.
+            StopSounds()
+            PlaySound("stabilizing_breath_loop1.ogg", true)
+        end
+
+        // If the tired button is activated, update the page with a tired image, text, and song
+        if button:GetName() = "Tired"
+            Page page = GetCurrentPage()
+            Button calmButton = page:GetButton("Calm")
+            Button tiredButton = page:GetButton("Tired")
+            Button excitedButton = page:GetButton("Excited")
+
+            calmButton:SetBackgroundColor(Maroon())
+            tiredButton:SetBackgroundColor(Navy())
+            excitedButton:SetBackgroundColor(Maroon())
+
+            Label moodLabel = page:GetLabel("Mood")
+            moodLabel:SetText("Let yourself rest and save your energy.")
+            moodLabel:SetDescription("Let yourself rest and save your energy.")
+
+            Icon oldDisplay = page:GetIcon("Display")
+            Icon newDisplay = CreateIcon("Sleeping Dogs.jpg")
+            newDisplay:SetName("Display")
+            newDisplay:SetDescription("A picture of two small dogs sleeping peacefully in bed.")
+            newDisplay:SetPixelX(25)
+            newDisplay:SetPixelY(300)
+            newDisplay:SetPixelWidth(350)
+            newDisplay:SetPixelHeight(220)
+            page:Replace(oldDisplay, newDisplay)
+
+            // Stop any sounds that are already playing. Then play the new music on loop.
+            StopSounds()
+            PlaySound("vibrant_game_harping_down_forever_loop_1.ogg", true)
+        end
+
+
+
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

@@ -1,0 +1,4 @@
+output "Here's my favorite color"
+output green
+output "and here's my favorite number"
+output 5

@@ -25,7 +25,6 @@ use Libraries.Interface.Events.KeyboardListener
 use Libraries.Interface.Events.MouseMovementListener
 use Libraries.Interface.Events.KeyboardEvent
 use Libraries.Interface.Events.MouseEvent
-use Libraries.Containers.Iterator
 
 class Application is Game, FocusListener, KeyboardListener, MouseListener, MouseMovementListener
 
@@ -264,13 +263,6 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         end
 
         audio:Play()
-    end
-
-    action StopSounds
-        Iterator<Audio> values = sounds:GetValueIterator()
-        repeat while values:HasNext()
-            values:Next():Stop()
-        end
     end
 
     action StopSound(text fileName)

@@ -1,0 +1,113 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    action Start
+        SetBackgroundColor(1, 0.88, 0.29)
+
+        // Play this music and loop it forever.
+        PlaySound("vibrant_game_harping_down_forever_loop_1.ogg", true)
+
+        Page homePage
+        homePage:SetName("Home Page")
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Come to Club Fair!")
+        title:SetFontSize(60)
+        title:SetPixelX(25)
+        title:SetPixelY(550)
+        title:SetMaximumWidth(350)
+        title:SetColor(NewColor(0.36, 0.72, 0.91))
+        homePage:Add(title)
+
+        Icon supplies = CreateIcon("School Supplies.png")
+        supplies:SetName("Banner")
+        supplies:SetDescription("A decorative banner showing lots of school supplies.")
+        supplies:SetPixelWidth(350)
+        supplies:SetPixelHeight(220)
+        supplies:SetPixelX(25)
+        supplies:SetPixelY(230)
+        homePage:Add(supplies)
+
+        Button detailsButton = CreateButton()
+        detailsButton:SetName("Event Details")
+        detailsButton:SetFontSize(24)
+        detailsButton:SetPixelX(120)
+        detailsButton:SetPixelY(100)
+        detailsButton:SetPixelWidth(160)
+        detailsButton:SetPixelHeight(40)
+        detailsButton:SetBackgroundColor(NewColor(0.36, 0.72, 0.91))
+        detailsButton:SetFontColor(White())
+        homePage:Add(detailsButton)
+
+        AddPage(homePage)
+
+        Page detailsPage
+        detailsPage:SetName("Details Page")
+
+        Icon background = CreateRectangle(White())
+        background:SetPixelWidth(350)
+        background:SetPixelHeight(400)
+        background:SetPixelX(25)
+        background:SetPixelY(175)
+        background:SetFocusable(false)
+        detailsPage:Add(background)
+
+        Label info = CreateLabel()
+        info:SetName("Information")
+        
+        // If we put our text in multiple lines here, it'll appear in multiple lines in our label.
+        info:SetText("Where: Gymnasium
+When: Friday during lunch
+What to Bring: An open mind!")
+        info:SetColor(NewColor(0.36, 0.72, 0.91))
+        info:SetPixelX(50)
+        info:SetPixelY(550)
+        info:SetFontSize(18)
+        detailsPage:Add(info)
+
+        Label detailsLabel = CreateLabel()
+        detailsLabel:SetName("Details")
+        detailsLabel:SetText("You can sign up for clubs through the end of the month. Make sure you follow up after the Club Fair with any groups you want to join.")           
+        detailsLabel:SetFontSize(18)
+        detailsLabel:SetColor(NewColor(0.36, 0.72, 0.91))
+        detailsLabel:SetMaximumWidth(300)
+        detailsLabel:SetPixelX(50)
+        detailsLabel:SetPixelY(450)
+        detailsPage:Add(detailsLabel)
+
+        Button goBackButton = CreateButton()
+        goBackButton:SetName("Go Back")
+        goBackButton:SetFontSize(24)
+        goBackButton:SetPixelX(120)
+        goBackButton:SetPixelY(100)
+        goBackButton:SetPixelWidth(160)
+        goBackButton:SetPixelHeight(40)
+        goBackButton:SetBackgroundColor(NewColor(0.36, 0.72, 0.91))
+        goBackButton:SetFontColor(White())
+        detailsPage:Add(goBackButton)
+
+        AddPage(detailsPage)
+    end
+
+    action ButtonActivated(Button button)
+
+        // If we click the "Event Details" button, show the Details Page
+        if button:GetName() = "Event Details"
+            Page nextPage = GetPage("Details Page")
+            ShowPage(nextPage)
+        end
+
+        // If we click the "Go Back" button, show the Home Page
+
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

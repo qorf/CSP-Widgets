@@ -1,0 +1,103 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    action Start
+        Page mainPage
+        mainPage:SetName("Main Page")
+        
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Farm Sounds")
+        title:SetFontSize(40)
+        title:SetPixelX(50)
+        title:SetPixelY(550)
+        mainPage:Add(title)
+
+        Icon speakerIcon = CreateIcon("Speaker Icon.png")
+        speakerIcon:SetPixelWidth(80)
+        speakerIcon:SetPixelHeight(80)
+        speakerIcon:SetPixelX(300)
+        speakerIcon:SetPixelY(520)
+        speakerIcon:SetColor(Black())
+        mainPage:Add(speakerIcon)
+
+        Button cowButton = CreateButton("Cow.jpg")
+        cowButton:SetName("Cow Image")
+        cowButton:SetPixelWidth(210)
+        cowButton:SetPixelHeight(140)
+        cowButton:SetPixelX(95)
+        cowButton:SetPixelY(370)
+        mainPage:Add(cowButton)
+
+        Button roosterButton = CreateButton("Rooster.jpg")
+        roosterButton:SetName("Rooster Image")
+        roosterButton:SetPixelWidth(210)
+        roosterButton:SetPixelHeight(140)
+        roosterButton:SetPixelX(95)
+        roosterButton:SetPixelY(220)
+        mainPage:Add(roosterButton)
+
+        Button pigButton = CreateButton("Pig.jpg")
+        pigButton:SetName("Pig Image")
+        pigButton:SetPixelWidth(210)
+        pigButton:SetPixelHeight(140)
+        pigButton:SetPixelX(95)
+        pigButton:SetPixelY(70)
+        mainPage:Add(pigButton)
+
+        Label directions = CreateLabel()
+        directions:SetName("Directions")
+        directions:SetText("Click an animal")
+        directions:SetFontSize(20)
+        directions:SetPixelX(140)
+        directions:SetPixelY(40)
+        mainPage:Add(directions)
+
+        AddPage(mainPage)
+    end
+
+    action ButtonActivated(Button button)
+        // Play a moo sound when the user clicks the cow
+        if button:GetName() = "Cow Image"
+            PlaySound("moo.ogg")
+        
+            Page page = GetCurrentPage()
+            Label directions = page:GetLabel("Directions")
+            
+            directions:SetText("Cow")
+            directions:SetDescription("Cow")
+        end
+
+        // Play a rooster sound when the user clicks the rooster
+        if button:GetName() = "Rooster Iamge"
+            PlaySound("pig.ogg")
+        
+            Page page = GetCurrentPage()
+            Label directions = page:GetLabel("Directions")
+            
+            directions:SetText("Pig")
+            directions:SetDescription("Pig")
+        end
+
+        // Play a pig sound when the user clicks the pig
+        if button:GetName() = "Pig Image"
+            PlaySound("rooster.ogg")
+        
+            Page page = GetCurrentPage()
+            Label directions = page:GetLabel("Directions")
+            
+            directions:SetText("Rooster")
+            directions:SetDescription("Rooster")
+        end
+    end
+
+
+    action Main
+        StartGame()
+    end
+
+end
