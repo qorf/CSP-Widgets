@@ -1,0 +1,211 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    integer clicks = 0
+    integer clickPower = 1
+
+    action Start
+        Page page
+        page:SetName("Home Page")
+
+        Label directions = CreateLabel()
+        directions:SetName("Directions")
+        directions:SetText("This pet rock needs some love. If you click on him enough times, he just might evolve into a very special pet rock. Use the buttons at the bottom to upgrade your clicker!")               
+        directions:SetPixelX(25)
+        directions:SetPixelY(560)
+        directions:SetMaximumWidth(350)
+        directions:SetFontSize(20)
+        directions:SetColor(NewColor(0, 0.58, 0.79))
+        page:Add(directions)
+
+        Button level1 = CreateButton("Pet Rock Level 1.jpg")
+        level1:SetName("Pet Rock Level 1: Rock-a-Bye")
+        level1:SetPixelWidth(132)
+        level1:SetPixelHeight(100)
+        level1:SetPixelX(134)
+        level1:SetPixelY(250)
+        page:Add(level1)
+
+        Button level2 = CreateButton("Pet Rock Level 2.jpg")
+        level2:SetName("Pet Rock Level 2: Rock-a-Bunny")
+        level2:SetPixelWidth(132)
+        level2:SetPixelHeight(174)
+        level2:SetPixelX(134)
+        level2:SetPixelY(250)
+        level2:Hide()
+        page:Add(level2)
+
+        Button level3 = CreateButton("Pet Rock Level 3.jpg")
+        level3:SetName("Pet Rock Level 3: Rock-a-Walk-a-Rainbow")
+        level3:SetDescription("EVOLUTION COMPLETE")
+        level3:SetPixelWidth(200)
+        level3:SetPixelHeight(200)
+        level3:SetPixelX(100)
+        level3:SetPixelY(225)
+        level3:Hide()
+        page:Add(level3)
+
+        Label descriptor = CreateLabel()
+        descriptor:SetFocusable(false)
+        descriptor:SetName("Descriptor")
+        descriptor:SetText("Level 1: Rock-a-Bye")
+        descriptor:SetFontSize(20)
+        descriptor:SetColor(NewColor(0, 0.58, 0.79))
+        descriptor:SetPixelX(100)
+        descriptor:SetPixelY(200)
+        page:Add(descriptor)
+
+        Label clickLabel = CreateLabel()
+        clickLabel:SetName("Clicks")
+        clickLabel:SetText("Clicks: 0")
+        clickLabel:SetDescription("0")
+        clickLabel:SetFontSize(20)
+        clickLabel:SetColor(NewColor(0, 0.58, 0.79))
+        clickLabel:SetPixelX(40)
+        clickLabel:SetPixelY(130)
+        page:Add(clickLabel)
+
+        Label clickPowerLabel = CreateLabel()
+        clickPowerLabel:SetName("Click Power")
+        clickPowerLabel:SetText("+1")
+        clickPowerLabel:SetFontSize(20)
+        clickPowerLabel:SetColor(NewColor(0, 0.58, 0.79))
+        clickPowerLabel:SetPixelX(320)
+        clickPowerLabel:SetPixelY(130)
+        page:Add(clickPowerLabel)
+
+        Icon banner = CreateRectangle(NewColor(0, 0.58, 0.79))
+        banner:SetFocusable(false)
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(40)
+        banner:SetPixelX(0)
+        banner:SetPixelY(80)
+        page:Add(banner)
+        
+        Label upgradeLabel = CreateLabel()
+        upgradeLabel:SetName("Banner")
+        upgradeLabel:SetText("Upgrade Clicker")
+        upgradeLabel:SetFontSize(20)
+        upgradeLabel:SetColor(White())
+        upgradeLabel:SetPixelX(125)
+        upgradeLabel:SetPixelY(90)
+        page:Add(upgradeLabel)
+
+        Button upgrade1 = CreateButton()
+        upgrade1:SetName("+2 (cost = 5 clicks)")
+        upgrade1:SetFontSize(16)
+        upgrade1:SetPixelX(25)
+        upgrade1:SetPixelY(20)
+        upgrade1:SetPixelWidth(150)
+        upgrade1:SetPixelHeight(40)
+        page:Add(upgrade1)
+
+        Button upgrade2 = CreateButton()
+        upgrade2:SetName("+20 (cost = 20 clicks)")
+        upgrade2:SetFontSize(16)
+        upgrade2:SetPixelX(200)
+        upgrade2:SetPixelY(20)
+        upgrade2:SetPixelWidth(175)
+        upgrade2:SetPixelHeight(40)
+        page:Add(upgrade2)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        text name = button:GetName()
+
+        // If user clicked on the pet rock
+        if name:Contains("Pet Rock")
+            clicks = clicks + clickPower
+
+            Page page = GetCurrentPage()
+            Label clicksLabel = page:GetLabel("Clicks")
+            clicksLabel:SetText("Clicks: " + clicks)
+            clicksLabel:SetDescription("" + clicks)
+            
+            // If we're ready to go from level 1 to 2
+            if clicks >= 10 and name:Contains("Level 1")
+                button:Hide()
+
+                Button level2 = page:GetButton("Pet Rock Level 2: Rock-a-Bunny")
+                level2:Show()
+                level2:Focus()
+
+                Label descriptor = page:GetLabel("Descriptor")
+                descriptor:SetText("Pet Rock Level 2: Rock-a-Bunny")
+                
+                PlaySound("vibrant_game_positive_item_2.ogg")
+            end
+
+            // If we're ready to go from level 2 to 3
+            if clicks >= 100 and name:Contains("Level 2")
+                button:Hide()
+
+                Button level2 = page:GetButton("Pet Rock Level 3: Rock-a-Walk-a-Rainbow")
+                level2:Show()
+                level2:Focus()
+
+                Label descriptor = page:GetLabel("Descriptor")
+                descriptor:SetText("Pet Rock Level 3: Rock-a-Walk-a-Rainbow
+EVOLUTION COMPLETE")
+                descriptor:SetPixelX(10)
+                
+                PlaySound("vibrant_game_positive_item_2.ogg")
+            end
+        end
+
+
+        // If user clicked the first upgrade
+        if name = "+2 (cost = 5 clicks)" and clicks >= 5
+            clicks = clicks - 5
+            clickPower = 2
+            
+            Page page = GetCurrentPage()
+            Label clicksLabel = page:GetLabel("Clicks")
+            clicksLabel:SetText("Clicks: " + clicks)
+            clicksLabel:SetDescription("" + clicks)
+
+            Label powerLabel = page:GetLabel("Click Power")
+            powerLabel:SetText("+2")
+            powerLabel:SetDescription("+2")
+            powerLabel:Focus()
+
+            button:Hide()
+
+            PlaySound("hollow_bell_notification.ogg")
+        end
+
+        // If user clicked the second upgrade
+        if name = "+20 (cost = 20 clicks)" and clicks >= 20
+            clicks = clicks - 20
+            clickPower = 20
+            
+            Page page = GetCurrentPage()
+            Label clicksLabel = page:GetLabel("Clicks")
+            clicksLabel:SetText("Clicks: " + clicks)
+            clicksLabel:SetDescription("" + clicks)
+
+            Label powerLabel = page:GetLabel("Click Power")
+            powerLabel:SetText("+20")
+            powerLabel:SetDescription("+20")
+            powerLabel:Focus()
+
+            Button upgrade1 = page:GetButton("+2 (cost = 5 clicks)")
+            upgrade1:Hide()
+
+            button:Hide()
+
+            PlaySound("hollow_bell_notification.ogg")
+        end
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

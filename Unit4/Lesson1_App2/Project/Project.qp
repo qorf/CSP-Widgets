@@ -1,0 +1,8 @@
+{
+    "DevelopmentEnvironmentVersion" : "Quorum Studio 2.0",
+    "ExecutableName" : "Default",
+    "Main" : "/SourceCode/Main.quorum",
+    "MobileAssets" : "media",
+    "ProjectName" : "Lesson1_App2",
+    "ProjectType" : "JavaType"
+}
