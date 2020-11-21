@@ -17,7 +17,6 @@ class CustomFocusManager is FocusManager
             repeat until newFocus = undefined
                 newFocus = newFocus:GetNextFocus()
                 if newFocus not= undefined and newFocus:IsFocusable() and newFocus:IsShowing()
-                    output newFocus:GetName()
                     SetFocus(newFocus)
                     newFocus = undefined
                 end
@@ -36,7 +35,6 @@ class CustomFocusManager is FocusManager
             repeat until newFocus = undefined
                 newFocus = newFocus:GetPreviousFocus()
                 if newFocus not= undefined and newFocus:IsFocusable() and newFocus:IsShowing()
-                    output newFocus:GetName()
                     SetFocus(newFocus)
                     newFocus = undefined
                 end

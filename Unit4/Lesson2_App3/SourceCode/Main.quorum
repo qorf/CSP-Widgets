@@ -1,0 +1,223 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+use Libraries.Compute.Math
+
+class Main is Application
+
+    Math math
+    integer tempF = 70
+    integer tempC = Round((tempF - 32) * (5.0 / 9.0))
+    Label fahrenheit
+    Label celsius
+    Label greetings
+    TextBox nameField = undefined
+
+    action Start
+        Page homePage
+        homePage:SetName("Home Page")
+
+        SetBackgroundColor(White())
+
+        Label homeTitle = CreateLabel()
+        homeTitle:SetName("Title")
+        homeTitle:SetText("Home Thermostat App")
+        homeTitle:SetFontSize(28)
+        homeTitle:SetColor(Black())
+        homeTitle:SetPixelX(20)
+        homeTitle:SetPixelY(550)
+        homePage:Add(homeTitle)
+
+        Button homeButton = CreateButton("House.png")
+        homeButton:SetName("Home")
+        homeButton:SetPixelX(330)
+        homeButton:SetPixelY(530)
+        homeButton:SetPixelWidth(60)
+        homeButton:SetPixelHeight(60)
+        homePage:Add(homeButton)
+
+        Label nameLabel = CreateLabel()
+        nameLabel:SetFocusable(false)
+        nameLabel:SetText("Name:")
+        nameLabel:SetFontSize(20)
+        nameLabel:SetPixelX(50)
+        nameLabel:SetPixelY(450)
+        homePage:Add(nameLabel)
+
+        nameField = CreateTextBox()
+        nameField:SetName("Name")
+        nameField:SetBackgroundColor(NewColor(0.85, 0.85, 0.85))
+        nameField:SetPixelX(120)
+        nameField:SetPixelY(440)
+        nameField:SetPixelWidth(230)
+        nameField:SetPixelHeight(35)
+        nameField:SetFontSize(20)
+        homePage:Add(nameField)
+
+        Button login = CreateButton()
+        login:SetBackgroundColor(NewColor(0.13, 0.55, 0.13))
+        login:SetName("Log In")
+        login:SetFontColor(White())
+        login:SetFontSize(80)
+        login:SetPixelX(70)
+        login:SetPixelY(200)
+        login:SetPixelWidth(260)
+        login:SetPixelHeight(150)
+        homePage:Add(login)
+
+        AddPage(homePage)
+
+        Page thermostat
+        thermostat:SetName("Thermostat")
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Home Thermostat App")
+        title:SetFontSize(28)
+        title:SetColor(White())
+        title:SetPixelX(20)
+        title:SetPixelY(550)
+        thermostat:Add(title)
+
+        Button homeButton2 = CreateButton("House White.png")
+        homeButton2:SetName("Home")
+        homeButton2:SetPixelX(330)
+        homeButton2:SetPixelY(530)
+        homeButton2:SetPixelWidth(60)
+        homeButton2:SetPixelHeight(60)
+        thermostat:Add(homeButton2)
+        
+        Icon banner = CreateRectangle(Gray())
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(40)
+        banner:SetPixelX(0)
+        banner:SetPixelY(490)
+        banner:SetFocusable(false)
+        thermostat:Add(banner)
+
+        Icon avatar = CreateIcon("User Icon.png")
+        avatar:SetPixelWidth(40)
+        avatar:SetPixelHeight(40)
+        avatar:SetPixelX(10)
+        avatar:SetPixelY(490)
+        thermostat:Add(avatar)
+
+        greetings = CreateLabel()
+        greetings:SetName("Welcome")
+        greetings:SetFontSize(20)
+        greetings:SetColor(White())
+        greetings:SetPixelX(60)
+        greetings:SetPixelY(500)
+        thermostat:Add(greetings)
+
+        fahrenheit = CreateLabel()
+        fahrenheit:SetName("Temperature")
+        fahrenheit:SetText(tempF + " F")
+        fahrenheit:SetFontSize(100)
+        fahrenheit:SetColor(White())
+        fahrenheit:SetPixelX(100)
+        fahrenheit:SetPixelY(350)
+        thermostat:Add(fahrenheit)
+
+        celsius = CreateLabel()
+        celsius:SetName("Temperature Celsius")
+        celsius:SetText(tempC + " C")
+        celsius:SetFontSize(60)
+        celsius:SetColor(White())
+        celsius:SetPixelX(130)
+        celsius:SetPixelY(250)
+        thermostat:Add(celsius)
+
+        Icon downBackground = CreateRectangle(NewColor(0.68, 0.85, 0.90))
+        downBackground:SetFocusable(false)
+        downBackground:SetPixelWidth(150)
+        downBackground:SetPixelHeight(150)
+        downBackground:SetPixelX(25)
+        downBackground:SetPixelY(25)
+        thermostat:Add(downBackground)
+
+        Button downButton = CreateButton("Down Arrow.png")
+        downButton:SetName("Thermostat Down")
+        downButton:SetPixelWidth(150)
+        downButton:SetPixelHeight(150)
+        downButton:SetPixelX(25)
+        downButton:SetPixelY(25)
+        thermostat:Add(downButton)
+
+        Icon upBackground = CreateRectangle(NewColor(1.00, 0.75, 0.80))
+        upBackground:SetFocusable(false)
+        upBackground:SetPixelWidth(150)
+        upBackground:SetPixelHeight(150)
+        upBackground:SetPixelX(225)
+        upBackground:SetPixelY(25)
+        thermostat:Add(upBackground)
+
+        Button upButton = CreateButton("Up Arrow.png")
+        upButton:SetName("Thermostat Up")
+        upButton:SetPixelWidth(150)
+        upButton:SetPixelHeight(150)
+        upButton:SetPixelX(225)
+        upButton:SetPixelY(25)
+        thermostat:Add(upButton)
+
+        AddPage(thermostat)
+    end
+
+    action ButtonActivated(Button button)
+        text name = button:GetName()
+
+        if name = "Thermostat Up"
+            PlaySound("sharp_switch.ogg")
+
+            tempF = tempF + 1
+            fahrenheit:SetText(tempF + " F")
+            fahrenheit:SetDescription(tempF + " F")
+
+            tempC = Round((tempF - 32) * (5.0 / 9.0))
+            celsius:SetText(tempC + " C")
+            celsius:SetDescription(tempC + " C")
+        end
+
+        if name = "Thermostat Down"
+            PlaySound("sharp_switch.ogg")
+
+            tempF = tempF - 1
+            fahrenheit:SetText(tempF + " F")
+            fahrenheit:SetDescription(tempF + " F")
+
+            tempC = Round((tempF - 32) * (5.0 / 9.0))
+            celsius:SetText(tempC + " C")
+            celsius:SetDescription(tempC + " C")
+        end
+
+        if name = "Home"
+            PlaySound("app_button_1.ogg")
+
+            Page homePage = GetPage("Home Page")
+            ShowPage(homePage)
+
+            SetBackgroundColor(White())
+        end
+
+        if name = "Log In"
+            PlaySound("app_button_1.ogg")
+            Page thermostatPage = GetPage("Thermostat")
+
+            text userName = nameField:GetText()
+            text myName = "Hi, " + userName
+            greetings:SetText(myName)
+            greetings:SetDescription(myName)
+
+            ShowPage(thermostatPage)
+
+            SetBackgroundColor(Black())
+        end
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

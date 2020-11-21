@@ -1,0 +1,122 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+use Libraries.Compute.Math
+
+class Main is Application
+
+    Math math
+    integer tempF = 70
+    integer tempC = Round((tempF - 32) * (5.0 / 9.0))
+    Label fahrenheit
+    Label celsius
+
+    action Start
+        Page thermostat
+        thermostat:SetName("Thermostat")
+
+        SetBackgroundColor(Black())
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Home Thermostat App")
+        title:SetFontSize(28)
+        title:SetColor(White())
+        title:SetPixelX(20)
+        title:SetPixelY(550)
+        thermostat:Add(title)
+
+        Button homeButton = CreateButton("House White.png")
+        homeButton:SetName("Home")
+        homeButton:SetPixelX(330)
+        homeButton:SetPixelY(530)
+        homeButton:SetPixelWidth(60)
+        homeButton:SetPixelHeight(60)
+        thermostat:Add(homeButton)
+        
+        fahrenheit = CreateLabel()
+        fahrenheit:SetName("Temperature")
+        fahrenheit:SetText(tempF + " F")
+        fahrenheit:SetFontSize(100)
+        fahrenheit:SetColor(White())
+        fahrenheit:SetPixelX(100)
+        fahrenheit:SetPixelY(400)
+        thermostat:Add(fahrenheit)
+
+        celsius = CreateLabel()
+        celsius:SetName("Temperature Celsius")
+        celsius:SetText(tempC + " C")
+        celsius:SetFontSize(60)
+        celsius:SetColor(White())
+        celsius:SetPixelX(130)
+        celsius:SetPixelY(300)
+        thermostat:Add(celsius)
+
+        Icon downBackground = CreateRectangle(NewColor(0.68, 0.85, 0.90))
+        downBackground:SetFocusable(false)
+        downBackground:SetPixelWidth(150)
+        downBackground:SetPixelHeight(150)
+        downBackground:SetPixelX(25)
+        downBackground:SetPixelY(25)
+        thermostat:Add(downBackground)
+
+        Button downButton = CreateButton("Down Arrow.png")
+        downButton:SetName("Thermostat Down")
+        downButton:SetPixelWidth(150)
+        downButton:SetPixelHeight(150)
+        downButton:SetPixelX(25)
+        downButton:SetPixelY(25)
+        thermostat:Add(downButton)
+
+        Icon upBackground = CreateRectangle(NewColor(1.00, 0.75, 0.80))
+        upBackground:SetFocusable(false)
+        upBackground:SetPixelWidth(150)
+        upBackground:SetPixelHeight(150)
+        upBackground:SetPixelX(225)
+        upBackground:SetPixelY(25)
+        thermostat:Add(upBackground)
+
+        Button upButton = CreateButton("Up Arrow.png")
+        upButton:SetName("Thermostat Up")
+        upButton:SetPixelWidth(150)
+        upButton:SetPixelHeight(150)
+        upButton:SetPixelX(225)
+        upButton:SetPixelY(25)
+        thermostat:Add(upButton)
+
+        AddPage(thermostat)
+    end
+
+    action ButtonActivated(Button button)
+        PlaySound("sharp_switch.ogg")
+
+        text name = button:GetName()
+
+        if name = "Thermostat Up"
+            tempF = tempF + 1
+            fahrenheit:SetText(tempF + " F")
+            fahrenheit:SetDescription(tempF + " F")
+
+            tempC = Round((tempF - 32) * (5.0 / 9.0))
+            celsius:SetText(tempC + " C")
+            celsius:SetDescription(tempC + " C")
+        end
+
+        if name = "Thermostat Down"
+            tempF = tempF - 1
+            fahrenheit:SetText(tempF + " F")
+            fahrenheit:SetDescription(tempF + " F")
+
+            tempC = Round((tempF - 32) * (5.0 / 9.0))
+            celsius:SetText(tempC + " C")
+            celsius:SetDescription(tempC + " C")
+        end
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
