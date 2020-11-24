@@ -1,44 +1,16 @@
 use Libraries.Compute.Statistics.DataFrame
-use Libraries.Compute.Statistics.Charts.BarChartCreator
-use Libraries.Compute.Statistics.Charts.HistogramCreator
-use Libraries.Game.Game
-use Libraries.Interface.Controls.Charts.Chart
-use Libraries.Interface.Layouts.ManualLayout
-/* 
-    This is a default class named Main. It has one action, also named Main,
-    that starts the program.
-*/
-class Main is Game
+use Libraries.Interface.Controls.Charts.Histogram
 
-    /*
-        This action, Main, starts our computer program. In Quorum, programs always
-        begin from Main.
-    */
-    action Main
-        //SetScreenSize(2000, 1000)        
-        StartGame()
-    end
+//Create a DataFrame, load it, and set which column to focus on
+DataFrame frame
+//go up a folder from this project (../), find the Data/Animals folder, then find the file named Dogs.csv
+frame:Load("../Data/Animals/Dogs.csv")
+frame:AddSelectedColumns("Maximum Life Span")
 
-    action CreateGame
-        ManualLayout layout
-        SetLayout(layout)
-        DataFrame frame
-        frame:Load("../Data/Animals/Dogs.csv")
-
-        HistogramCreator creator
-        
-        creator:SetColumn(5)
-        creator:SetBinWidth(5)
-
-        Chart chart = frame:CreateChart(creator)
-        chart:SetTitle("Maximum Life Span of Dog Breeds")
-        chart:SetXAxisTitle("Max Life Span")
-        chart:SetPercentageWidth(1)
-        chart:SetPercentageHeight(1)
-        
-
-        Add(chart)
-
-        chart:Focus()
-    end
-end
+//Create a histogram with a bin width of 5. Leaving this 
+//blank has the system calculate the bin width on its own
+//Display tells it to load it, show it, and make it accessible
+Histogram chart = frame:Histogram(5)
+chart:SetTitle("Maximum Life Span of Dog Breeds")
+chart:SetXAxisTitle("Max Life Span")
+chart:Display()
