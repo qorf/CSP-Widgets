@@ -1,0 +1,51 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    // Create and assign variables
+    integer clicks = 0
+    Label counter = undefined
+
+    action Start
+        Page page
+        page:SetName("Home")
+
+        counter = CreateLabel()
+        counter:SetName("Counter")
+        counter:SetText("0")
+        counter:SetFontSize(100)
+        counter:SetPixelX(170)
+        counter:SetPixelY(420)
+        page:Add(counter)
+
+        Button button = CreateButton()
+        button:SetName("+1")
+        button:SetBackgroundColor(Purple())
+        button:SetFontSize(100)
+        button:SetFontColor(White())
+        button:SetPixelX(125)
+        button:SetPixelY(100)
+        button:SetPixelWidth(150)
+        button:SetPixelHeight(150)
+        page:Add(button)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        // This line creates the scope issue.
+        // You should only create variables once, and at the start of your program.
+        integer clicks = 0
+
+        clicks = clicks + 1
+        counter:SetText("" + clicks)
+        counter:SetDescription("" + clicks)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

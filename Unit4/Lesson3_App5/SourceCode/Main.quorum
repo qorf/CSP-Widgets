@@ -1,0 +1,30 @@
+// Create and assign value to variables
+integer age = 16
+
+// In Quorum, if text is spread across multiple lines, it will print across multiple lines when output
+
+output "This
+one
+string
+prints
+on
+multiple
+lines"
+
+// Story
+output "Hi there!
+I am " + age + " years old.
+"
+
+output "How many weeks have you been alive?"
+output "I've been alive about " + (age * 52) + " weeks!
+"
+
+// Add code to answer the following questions. Make sure your
+// answer prints on a single line.
+
+output "How many days have you been alive?"
+// Add code here. There are 365 days in a year.
+
+output "How many months have you been alive?"
+// Add code here. There are 12 months in a year.

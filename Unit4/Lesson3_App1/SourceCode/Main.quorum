@@ -1,0 +1,14 @@
+number myFavoriteNumber = 0
+text myFavoriteFood = ""
+
+// Change this line
+myFavoriteNumber = 1
+
+// Change this line
+myFavoriteFood = "pizza"
+
+output "My favorite number is"
+output myFavoriteNumber
+
+output "My favorite food is"
+output myFavoriteFood

@@ -1,0 +1,26 @@
+output "How many hours in a week?"
+output 7 * 24
+output ""
+
+output "How many seconds in a year?"
+output 60 * 60 * 24 * 365
+output ""
+
+output "What is 72 degrees farenheit in celsius?"
+output (72-32)*(5/9)
+
+output "What do the numbers 1 through 10 add up to?"
+// Add code here to add the numbers 1 - 10
+
+output ""
+
+output "What do the numbers 1 through 10 multiply to?"
+// Add code here to multiply the numbers 1 - 10
+
+output ""
+
+output "What is 1.0 divided by 7.0?"
+// You get different results if you divide 1 by 7 vs. 1.0 by 7.0! Why? What does each operation do?
+// Add code here to divide 1.0 by 7.0
+
+output ""

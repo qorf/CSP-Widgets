@@ -1,0 +1,26 @@
+// Creating and assigning variables
+// Change this value if you like
+integer myAge = 16
+
+// My story
+output "Right now I am"
+output myAge
+output "years old."
+
+output "Next year I will be"
+output myAge + 1
+output "years old."
+
+output "And ten years from now I will be"
+output myAge + 10
+output "years old"
+
+output "In fifty years I will be"
+// Add code here to calculate your age in 50 years.
+
+output "years old"
+
+output "I have lived for about"
+// Add code here to calculate your age in months.
+
+output "months"
