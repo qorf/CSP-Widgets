@@ -1,0 +1,44 @@
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Compute.Statistics.Charts.BarChartCreator
+use Libraries.Compute.Statistics.Charts.HistogramCreator
+use Libraries.Game.Game
+use Libraries.Interface.Controls.Charts.Chart
+use Libraries.Interface.Layouts.ManualLayout
+/* 
+    This is a default class named Main. It has one action, also named Main,
+    that starts the program.
+*/
+class Main is Game
+
+    /*
+        This action, Main, starts our computer program. In Quorum, programs always
+        begin from Main.
+    */
+    action Main
+        //SetScreenSize(2000, 1000)        
+        StartGame()
+    end
+
+    action CreateGame
+        ManualLayout layout
+        SetLayout(layout)
+        DataFrame frame
+        frame:Load("../Data/Animals/Dogs.csv")
+
+        HistogramCreator creator
+        
+        creator:SetColumn(5)
+        creator:SetBinWidth(5)
+
+        Chart chart = frame:CreateChart(creator)
+        chart:SetTitle("Maximum Life Span of Dog Breeds")
+        chart:SetXAxisTitle("Max Life Span")
+        chart:SetPercentageWidth(1)
+        chart:SetPercentageHeight(1)
+        
+
+        Add(chart)
+
+        chart:Focus()
+    end
+end
