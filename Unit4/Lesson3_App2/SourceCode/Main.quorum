@@ -1,0 +1,31 @@
+// Creating variables
+text petName = ""
+text petType = ""
+integer petWeight = 0
+
+// Assigning values to variables. You can change the numbers
+// and strings assigned here if you want!
+petName = "Jackson"
+petType = "Iguana"
+petWeight = 60
+
+// My story
+output "This is a story about my pet named"
+output petname
+
+output "It's a lot of work owning a "
+output pet Type
+
+output "Especially because it weighs about"
+output weight
+output "pounds!"
+
+output "I love"
+output PetName
+
+output "It's the best"
+output "petType"
+output "in the world!"
+
+// Add three lines to the story here.
+// Make sure to reference at least one variable.

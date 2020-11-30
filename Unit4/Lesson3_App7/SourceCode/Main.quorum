@@ -1,0 +1,92 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    // Create and assign variables
+    // Feel free to change the reminder
+    text allReminders = "Feed the cats"
+    text newReminder = ""
+
+    // These variables are empty when we create them. We'll store real values in them later, in the Start code.
+    Label reminderText = undefined
+    TextBox reminderInput = undefined
+
+    action Start
+        Page page
+        page:SetName("Main Screen")
+
+        Icon background = CreateRectangle(NewColor(0.89, 0.8, 0.8))
+        background:SetFocusable(false)
+        background:SetPixelX(0)
+        background:SetPixelY(300)
+        background:SetPixelWidth(400)
+        background:SetPixelHeight(300)
+        page:Add(background)
+
+        Icon background2 = CreateRectangle(NewColor(1.0, 1.0, 1.0, 0.4))
+        background2:SetFocusable(false)
+        background2:SetPixelX(25)
+        background2:SetPixelY(325)
+        background2:SetPixelWidth(350)
+        background2:SetPixelHeight(250)
+        page:Add(background2)
+
+        reminderText = CreateLabel()
+        reminderText:SetName("Reminders")
+        reminderText:SetPixelX(35)
+        reminderText:SetPixelY(550)
+        reminderText:SetMaximumWidth(330)
+        reminderText:SetFontSize(20)
+
+        // Put the first reminder on the screen.
+        reminderText:SetText(allReminders)
+
+        page:Add(reminderText)
+
+        reminderInput = CreateTextBox()
+        reminderInput:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        reminderInput:SetPixelX(25)
+        reminderInput:SetPixelY(220)
+        reminderInput:SetPixelWidth(350)
+        reminderInput:SetPixelHeight(35)
+        reminderInput:SetFontSize(18)
+        page:Add(reminderInput)
+
+        Button remindButton = CreateButton()
+        remindButton:SetName("Remind!")
+        remindButton:SetBackgroundColor(NewColor(0.44, 0.55, 0.69))
+        remindButton:SetPixelWidth(250)
+        remindButton:SetPixelHeight(100)
+        remindButton:SetPixelX(75)
+        remindButton:SetPixelY(100)
+        remindButton:SetFontSize(60)
+        remindButton:SetFontColor(White())
+        page:Add(remindButton)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        // When the button is clicked, add the new reminder to the screen on a new line.
+        // The reminder input box should be cleared out for the next reminder.
+
+        newReminder = reminderInput:GetText()
+
+        allReminders = allReminders + newReminder
+        reminderText:SetText(allReminders)
+
+
+
+
+
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
