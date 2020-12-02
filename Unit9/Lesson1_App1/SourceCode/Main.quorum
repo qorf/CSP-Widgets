@@ -1,0 +1,11 @@
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Interface.Controls.Charts.BarChart
+
+DataFrame frame
+frame:Load("../Data/Other/GoogleTrendsChocolate.csv")
+frame:SetSelectedColumnRange(0,1)
+BarChart chart = frame:BarChart()
+chart:SetTitle("Chocolate Interest over time")
+chart:SetXAxisTitle("Time Periods")
+chart:SetYAxisTitle("Popularity Percentage")
+chart:Display()
