@@ -1,3 +1,12 @@
+/*
+This program uses the arithmetic operators +, -, /, * to write expressions.
+
+DO THIS:
+1. Run the program to see how it works.
+2. Three of the questions are missing code. Write expressions that evaluate to the
+    correct answers. Comments show you where to do it.
+*/
+
 output "How many hours in a week?"
 output 7 * 24
 output ""

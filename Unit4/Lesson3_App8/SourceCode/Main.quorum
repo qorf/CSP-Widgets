@@ -3,6 +3,13 @@ use Libraries.Interface.Controls.Button
 use Libraries.Game.Graphics.Label
 
 class Main is Application
+/*
+This program has a scope bug created by accidentally using a local variable.
+
+DO THIS:
+1. Run this program once. Click the "+1" button a few times to see how it works now.
+2. Remove the line that creates the local variable inside the action to remove the local variable.
+*/
 
     // Create and assign variables
     integer clicks = 0

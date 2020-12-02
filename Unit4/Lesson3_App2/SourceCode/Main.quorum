@@ -1,3 +1,18 @@
+/*
+There's a few rules for variable names:
+    * Capitalization matters. "myVar" is not the same as "myvar".
+    * Variable names can't have spaces in them. "myVar" and "my_var" are allowed but "my var" is not.
+    * Variables can't start with a number. "var2" is allowed but "2var" is not.
+    * Variable names should always be clear and meaningful.
+
+DO THIS:
+    1. Discuss with a partner:
+        How can the red lines help debug your code?
+        Does the computer always put the red line in the right place? (Hint: Double check the code before the line, too)            
+    2. Debug this program so that it runs without errors.
+    3. Add three lines to the story. Make sure you use at least one variable.
+*/
+
 // Creating variables
 text petName = ""
 text petType = ""

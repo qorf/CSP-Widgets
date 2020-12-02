@@ -1,3 +1,13 @@
+/*
+The + operator can be used to join or "concatenate" two strings or a number and a string.
+    * "sun" + "rise" evaluates to "sunrise"
+    * 4 + "ever" evaluates to "4ever"
+
+DO THIS:
+1. Run the program to see what it does.
+2. Write code to answer the last two questions. Use string concatenation to make your responses print on a single line.         
+
+*/
 // Create and assign value to variables
 integer age = 16
 

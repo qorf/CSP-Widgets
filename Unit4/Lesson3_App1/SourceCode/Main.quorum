@@ -1,3 +1,14 @@
+/*
+DO THIS:
+
+1. Run this program.
+2. Discuss with a partner:
+    On which lines is a variable being created?
+    On which lines is a variable being assigned?
+3. Change the number assigned to myFavoriteNumber and the
+string assigned to myFavoriteFood and run the program again.
+*/
+
 number myFavoriteNumber = 0
 text myFavoriteFood = ""
 

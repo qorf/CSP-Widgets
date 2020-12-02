@@ -1,3 +1,16 @@
+/*
+Variables can be created and assigned using a single command, like "integer myAge = 16".
+In fact, in Quorum, we must always assign a starting value to integer, number, or text variables!
+
+You can use variables in an expression, like "myAge + 1". The value of the variable is used to evaluate the expression."       
+
+DO THIS:
+1. Run the code to see how it works.
+2. Discuss with a partner:
+    Which lines of code use a variable inside an expression?
+    Does the value of the variable ever change? Why?
+3. Add code that uses variables in expressions to complete the story. There are comments to show you where.
+*/
 // Creating and assigning variables
 // Change this value if you like
 integer myAge = 16

@@ -3,6 +3,15 @@ use Libraries.Interface.Controls.Button
 use Libraries.Game.Graphics.Label
 
 class Main is Application
+/*
+This program keeps track of the money collected and tickets sold for a performance.
+There are three variables already created that store the cost of an adult, child, and senior tickets.
+
+DO THIS:
+1. Run the program to see how it works. Make sure to click all three buttons.
+2. Add code to make the "Child" and "Senior" buttons work. They should increase the total number of
+tickets sold and the total money collected. Use the code for the "Adult" button as a guide.
+*/
 
     // Create and assign values to variables
     number dollars = 0

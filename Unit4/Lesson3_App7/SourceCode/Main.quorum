@@ -5,6 +5,14 @@ use Libraries.Interface.Controls.Icon
 use Libraries.Game.Graphics.Label
 
 class Main is Application
+    /*
+    The counter pattern can be used with strings too.
+
+    DO THIS:
+    1. Run the program to see how it runs now. Note a new command: GetText() on line 85.
+    2. Add code so that each reminder is added to a different line on the screen. Remember, you can add a new line by concatenating multi-line text.              
+    3. Add code so that the reminder input is cleared out when you click the "Remind!" button.
+    */
 
     // Create and assign variables
     // Feel free to change the reminder

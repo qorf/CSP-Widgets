@@ -5,6 +5,15 @@ use Libraries.Game.Graphics.Label
 
 class Main is Application
 
+    /*
+    The counter pattern is "myVar = myVar + 1". The expression on the right "myVar + 1" is evaluated first.
+    The new value is then assigned to "myVar". This pattern lets a variable "count" by whatever amount is added. 
+
+    DO THIS:
+    1. Run the program to see what it does. Make sure to click both buttons.
+    2. Write code to make the "+$20" button work. The comments show you where.
+    */
+
     // Create and initialize variables
     integer dollars = 0
 
