@@ -1,0 +1,127 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    integer likes = 0
+    text comments = "OMG soooo cute!"
+
+    Label likeCounterOutput = undefined
+    TextBox allCommentsOutput = undefined
+    TextBox newCommentInput = undefined
+
+    action Start
+        Page page
+        page:SetName("Home Page")
+
+        SetBackgroundColor(NewColor(1.0, 0.86, 0.82))
+        
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Photo Liker")
+        title:SetFontSize(54)
+        title:SetPixelX(25)
+        title:SetPixelY(540)
+        page:Add(title)
+
+        Icon picture = CreateIcon("Kitten.jpg")
+        picture:SetName("Kitty")
+        picture:SetDescription("A picture of an adorable kitten walking on an outdoor patio.")
+        picture:SetPixelWidth(360)
+        picture:SetPixelHeight(240)
+        picture:SetPixelX(20)
+        picture:SetPixelY(270)
+        page:Add(picture)
+
+        Button downButton = CreateButton("Thumb Down Button.png")
+        downButton:SetName("Dislike")
+        downButton:SetPixelWidth(60)
+        downButton:SetPixelHeight(60)
+        downButton:SetPixelX(20)
+        downButton:SetPixelY(200)
+        downButton:SetIconColor(NewColor(1, 0.7, 0.75))
+        page:Add(downButton)
+
+        Button upButton = CreateButton("Thumb Up Button.png")
+        upButton:SetName("Like")
+        upButton:SetPixelWidth(60)
+        upButton:SetPixelHeight(60)
+        upButton:SetPixelX(90)
+        upButton:SetPixelY(200)
+        upButton:SetIconColor(NewColor(0.56, 0.93, 0.56))
+        page:Add(upButton)
+
+        likeCounterOutput = CreateLabel()
+        likeCounterOutput:SetName("Likes")
+        likeCounterOutput:SetDescription("0")
+        likeCounterOutput:SetText("Likes: 0")
+        likeCounterOutput:SetFontSize(36)
+        likeCounterOutput:SetPixelX(200)
+        likeCounterOutput:SetPixelY(215)
+        page:Add(likeCounterOutput)
+
+        allCommentsOutput = CreateTextBox()
+        allCommentsOutput:SetName("Comments")
+        allCommentsOutput:SetText(comments)
+        allCommentsOutput:SetPixelX(20)
+        allCommentsOutput:SetPixelY(20)
+        allCommentsOutput:SetPixelWidth(190)
+        allCommentsOutput:SetPixelHeight(160)
+        allCommentsOutput:SetFontSize(18)
+        page:Add(allCommentsOutput)
+
+        newCommentInput = CreateTextBox()
+        newCommentInput:SetName("New Comment")
+        newCommentInput:SetPixelWidth(150)
+        newCommentInput:SetPixelHeight(45)
+        newCommentInput:SetPixelX(230)
+        newCommentInput:SetPixelY(135)
+        newCommentInput:SetFontSize(18)
+        page:Add(newCommentInput)
+
+        Button postComment = CreateButton("Comment Button.png")
+        postComment:SetName("Post Comment")
+        postComment:SetPixelWidth(150)
+        postComment:SetPixelHeight(50)
+        postComment:SetPixelX(230)
+        postComment:SetPixelY(75)
+        postComment:SetIconColor(NewColor(0.69, 0.88, 0.9))
+        page:Add(postComment)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        text name = button:GetName()
+
+        if name = "Dislike"
+            likes = likes - 1
+            likeCounterOutput:SetText("Likes: " + likes)
+            likeCounterOutput:SetDescription("" + likes)
+
+            PlaySound("app_button_1.ogg")
+        end
+
+        if name = "Like"
+            likes = likes + 1
+            likeCounterOutput:SetText("Likes: " + likes)
+            likeCounterOutput:SetDescription("" + likes)
+
+            PlaySound("app_button_1.ogg")
+        end
+
+        if name = "Post Comment"
+            comments = comments + "
+" + newCommentInput:GetText()
+            allCommentsOutput:SetText(comments)
+        end
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
