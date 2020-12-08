@@ -11,6 +11,7 @@ frame:AddSelectedColumns("Maximum Life Span")
 //blank has the system calculate the bin width on its own
 //Display tells it to load it, show it, and make it accessible
 Histogram chart = frame:Histogram(5)
+chart:SetFontSize(30)
 chart:SetTitle("Maximum Life Span of Dog Breeds")
 chart:SetXAxisTitle("Max Life Span")
 chart:Display()
