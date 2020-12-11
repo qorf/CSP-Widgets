@@ -1,0 +1,200 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+    /*
+    DO THIS:
+    Play the game at least once. Then with a partner, choose one of the three code sections below:
+    * Section 1: lines 132-149
+    * Section 2: lines 151-167
+    * Section 3: lines 169-192
+
+    Read the code in your section carefully, make sure you understand how each line works.
+
+    DISCUSS:
+    Find partners from the two other groups and:
+    * Explain what your section does
+    * Call out any lines of code you thought were interesting or confusing
+    * Ask good questions about how their section works
+
+    MODIFY:
+    Right now the game keeps going when the player has 0 lives. Fix this problem.
+    */
+
+    // Create and assign variables
+    integer score = 0
+    integer lives = 3
+
+    // Variables for the pages of the application.
+    // This will let us easily swap between them later.
+    Page homePage
+    Page gamePage
+
+    // Variables for a few of the elements in the app so we can easily modify them later.
+    // These start undefined (or empty) and we assign values to them in "Start".
+    TextBox instructions = undefined
+    Button lemon = undefined
+    Button lime = undefined
+    Label scoreLabel = undefined
+
+    action Start
+        SetBackgroundColor(NewColor(0.59, 0.76, 0.34))
+
+        // Add the elements for the home page.
+
+        Icon banner = CreateRectangle(NewColor(0.41, 0.53, 0.24))
+        banner:SetFocusable(false)
+        banner:SetPixelX(0)
+        banner:SetPixelY(530)
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(70)
+        homePage:Add(banner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Lemon Squeeze")
+        title:SetColor(NewColor(0.97, 0.93, 0.38))
+        title:SetPixelX(20)
+        title:SetPixelY(550)
+        title:SetSize(40)
+        homePage:Add(title)
+
+        Icon lemonIcon = CreateIcon("Lemon Icon.png")
+        lemonIcon:SetFocusable(false)
+        lemonIcon:SetPixelWidth(70)
+        lemonIcon:SetPixelHeight(70)
+        lemonIcon:SetPixelX(330)
+        lemonIcon:SetPixelY(530)
+        homePage:Add(lemonIcon)
+
+        instructions = CreateTextBox()
+        instructions:SetPixelX(50)
+        instructions:SetPixelY(300)
+        instructions:SetPixelWidth(300)
+        instructions:SetPixelHeight(200)
+        instructions:SetName("Instructions")
+        instructions:SetText("Welcome Lemon Lovers!
+Collect lemons!
+Avoid limes!")
+        instructions:SetFontSize(20)
+        homePage:Add(instructions)        
+
+        Button playButton = CreateButton()
+        playButton:SetName("Play!")
+        playButton:SetPixelWidth(120)
+        playButton:SetPixelHeight(80)
+        playButton:SetFontSize(45)
+        playButton:SetPixelX(140)
+        playButton:SetPixelY(100)
+        playButton:SetBackgroundColor(NewColor(0.97, 0.93, 0.38))
+        homePage:Add(playButton)
+
+        AddPage(homePage)
+
+        // Add the elements to the game page.
+        lime = CreateButton("Lime.png")
+        lime:SetName("Lime")
+        lime:SetPixelWidth(200)
+        lime:SetPixelHeight(200)
+        gamePage:Add(lime)
+
+        lemon = CreateButton("Lemon.png")
+        lemon:SetName("Lemon")
+        lemon:SetPixelWidth(200)
+        lemon:SetPixelHeight(200)
+        gamePage:Add(lemon)
+
+        Icon banner2 = CreateRectangle(NewColor(0.41, 0.53, 0.24))
+        banner2:SetFocusable(false)
+        banner2:SetPixelX(0)
+        banner2:SetPixelY(0)
+        banner2:SetPixelWidth(400)
+        banner2:SetPixelHeight(50)
+        gamePage:Add(banner2)
+
+        scoreLabel = CreateLabel()
+        scoreLabel:SetName("Score")
+        scoreLabel:SetColor(NewColor(0.97, 0.93, 0.38))
+        scoreLabel:SetPixelX(20)
+        scoreLabel:SetPixelY(10)
+        scoreLabel:SetSize(25)
+        gamePage:Add(scoreLabel)
+
+        AddPage(gamePage)
+    end
+
+    action ButtonActivated(Button button)
+        text name = button:GetName()
+
+        // Button to start the game
+        if name = "Play!"
+            PlaySound("vibrant_game_cartoon_start_game_2_long.ogg")
+
+            // Set starting values for variables and properties.
+            score = 0
+            lives = 3
+
+            scoreLabel:SetText("Score: " + score + " Lives: " + lives)
+            scoreLabel:SetDescription(score + " Lives: " + lives)
+
+            lime:SetPixelX(RandomNumber(0, 200))
+            lime:SetPixelY(RandomNumber(50, 400))
+            lemon:SetPixelX(RandomNumber(0, 200))
+            lemon:SetPixelY(RandomNumber(50, 400))
+
+            ShowPage(gamePage)
+        end
+
+        // Event handler for when the lemon is clicked
+        if name = "Lemon"
+            PlaySound("collect_item_bling_1.ogg")
+
+            // Increase the score
+            score = score + 1
+
+            // Move the lemon and line to random locations
+            lime:SetPixelX(RandomNumber(0, 200))
+            lime:SetPixelY(RandomNumber(50, 400))
+            lemon:SetPixelX(RandomNumber(0, 200))
+            lemon:SetPixelY(RandomNumber(50, 400))
+
+            // Update screen text
+            scoreLabel:SetText("Score: " + score + " Lives: " + lives)
+            scoreLabel:SetDescription(score + " Lives: " + lives)
+        end
+
+        // Event handler for when the lime is clicked
+        if name = "Lime"
+            PlaySound("retro_game_enemy_spawn_7.ogg")
+
+            // Decrease lives
+            lives = lives - 1
+
+            // Move the lemon and line to random locations
+            lime:SetPixelX(RandomNumber(0, 200))
+            lime:SetPixelY(RandomNumber(50, 400))
+            lemon:SetPixelX(RandomNumber(0, 200))
+            lemon:SetPixelY(RandomNumber(50, 400))
+
+            // Update screen text
+            scoreLabel:SetText("Score: " + score + " Lives: " + lives)
+            scoreLabel:SetDescription(score + " Lives: " + lives)
+
+            // End game when you run out of lives
+            if lives < 0
+                instructions:SetText("You collected " + score + " lemons!
+Play again?")
+                ShowPage(homePage)
+            end
+        end
+
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
