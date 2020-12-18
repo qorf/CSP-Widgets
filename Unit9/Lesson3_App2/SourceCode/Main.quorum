@@ -1,0 +1,28 @@
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Interface.Controls.Charts.BarChart
+
+//Create a DataFrame, load it, and set which column to focus on
+DataFrame frame
+//Notice that the data loads just fine into these frames and can be used
+//However, anywhere where the data does not conform to a number, Quorum
+//strips out the values. We can confirm this by outputting to the screen
+//a chart or outputting the DataFrame in Quorum Studio
+frame:Load("../Data/Other/Student Info.csv")
+
+//You can also specify columns numerically. In this case, 
+//4 is average hours of sleep and 3 is favorite subject
+frame:AddSelectedColumn(4)
+
+Filter filter
+filter:SetColumn(3)
+filter:SetFilter("Spanish")
+DataFrame newFrame = frame:Transform(filter)
+output newFrame:ToText()
+
+//Create a Bar chart of the average number of hours of sleep.
+BarChart chart = newFrame:BarChart()
+chart:SetFontSize(30)
+chart:SetTitle("Unclean Student Info Chart")
+chart:SetXAxisTitle("Average Hours of Sleep")
+//We can make this bigger or smaller for our screen (width and height)
+chart:Display(1500,750)
