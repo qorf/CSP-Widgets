@@ -8,7 +8,6 @@ frame:Load("../Data/Animals/Dogs.csv")
 
 //Change this to any columns of interest.
 //We can also add them as indexex, where 0 is the left-most index.
-frame:AddSelectedColumns("Breed Group")
 frame:AddSelectedColumns("Maximum Life Span")
 
 //Create a histogram with a bin width of 5. Leaving this 
@@ -16,6 +15,6 @@ frame:AddSelectedColumns("Maximum Life Span")
 //Display tells it to load it, show it, and make it accessible
 BarChart chart = frame:BarChart()
 chart:SetFontSize(30)
-chart:SetTitle("Maximum Life Span of Dog Breeds")
-chart:SetXAxisTitle("Max Life Span")
-chart:Display()
+chart:SetTitle("Maximum Life Span")
+chart:SetXAxisTitle("Maximum Life Span")
+chart:Display(1500,750)
