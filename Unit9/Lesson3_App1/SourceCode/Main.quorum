@@ -8,6 +8,9 @@ DataFrame frame
 //strips out the values. We can confirm this by outputting to the screen
 //a chart or outputting the DataFrame in Quorum Studio
 frame:Load("../Data/Other/Student Info.csv")
+
+//You can also specify columns numerically. In this case, 
+//4 is average hours of sleep and 3 is favorite subject
 frame:AddSelectedColumn(4)
 
 //Create a Bar chart of the average number of hours of sleep.
