@@ -1,0 +1,27 @@
+/*
+DO THIS:
+1. Read the code and predict how questions 1 or 2 will be answered.
+2. Run the code and watch the console to check your prediction.
+3. Add code to answer questions 3 and 4. You will need to write boolean expressions with variables.
+*/
+
+integer score = 10
+integer lives = 3
+
+// Predict how questions 1 and 2 will be answered, then run the code to
+// check your prediction.
+output "Q1: Is score plus lives less than thirteen?"
+output (score + lives) < 13
+output ""
+
+output "Q2: Is lives times three equal to score?"
+output (lives * 3) = score
+output ""
+
+// Add code to answer the following two questions
+output "Q3: Is score minus lives greater than five?"
+
+output ""
+
+// 
+output "Q4: Is score times two greater than or equal to lives times ten?"

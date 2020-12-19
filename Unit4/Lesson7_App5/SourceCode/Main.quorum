@@ -1,0 +1,56 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+/*
+Add code to this project so that the star changes color based on the number of clicks.
+
+DO THIS:
+1. Run the code to see how it works.
+2. Change the if statement into an if-else statement by adding the "else" block between "if" and "end".
+3. Add code in the else section to change the star's color using "Orange()", and play the sound "hop.ogg"           
+*/    
+
+    // Create variables
+    integer clicks = 0
+    Button star = undefined
+    Label clickLabel = undefined
+
+    action Start
+        Page page
+    
+        star = CreateButton("Star Icon.png")
+        star:SetPixelWidth(400)
+        star:SetPixelHeight(400)
+        star:SetPixelX(0)
+        star:SetPixelY(150)
+        star:SetIconColor(Black())
+        page:Add(star)
+
+        clickLabel = CreateLabel()
+        clickLabel:SetPixelX(50)
+        clickLabel:SetPixelY(50)
+        clickLabel:SetFontSize(20)
+        clickLabel:SetText("Number of clicks: " + clicks)
+        page:Add(clickLabel)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        clicks = clicks + 1
+        clickLabel:SetText("Number of clicks: " + clicks)
+        clickLabel:SetDescription(clickLabel:GetText())
+
+        if clicks < 5
+            star:SetIconColor(Red())
+            PlaySound("vibrant_game_positive_item_2.ogg")
+        end
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

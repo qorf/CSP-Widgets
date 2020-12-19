@@ -1,0 +1,71 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+/*
+DO THIS:
+1. Run the code to see how it works.
+2. Add code to the if-else-if command to make the star change colors
+    using the commands indicated in the table below.           
+3. Whenever the color changes, also play a sound of your choice.
+
+Clicks & Color:
+0: Black()
+1 - 4: Red()
+5 - 9: Orange()
+10 - 14: Yellow()
+15 - 19: Green()
+20 - 24: Blue()
+25 - 29: Purple()
+30+: Pink()
+*/    
+
+    // Create variables
+    integer clicks = 0
+    Button star = undefined
+    Label clickLabel = undefined
+
+    action Start
+        Page page
+    
+        star = CreateButton("Star Icon.png")
+        star:SetPixelWidth(400)
+        star:SetPixelHeight(400)
+        star:SetPixelX(0)
+        star:SetPixelY(150)
+        star:SetIconColor(Black())
+        page:Add(star)
+
+        clickLabel = CreateLabel()
+        clickLabel:SetPixelX(50)
+        clickLabel:SetPixelY(50)
+        clickLabel:SetFontSize(20)
+        clickLabel:SetText("Number of clicks: " + clicks)
+        page:Add(clickLabel)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        clicks = clicks + 1
+        clickLabel:SetText("Number of clicks: " + clicks)
+        clickLabel:SetDescription(clickLabel:GetText())
+
+        if clicks < 5
+            star:SetIconColor(Red())
+            PlaySound("vibrant_game_positive_item_2.ogg")
+        elseif clicks < 10
+            star:SetIconColor(Orange())
+            PlaySound("coin_2.ogg")
+        else
+            star:SetIconColor(Pink())
+            PlaySound("hop.ogg")
+        end
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

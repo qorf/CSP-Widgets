@@ -1,0 +1,55 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+/*
+Build an App where the star changes colors and plays a sound based on the number of clicks.
+
+DO THIS:
+1. Add a boolean expression to the if-statement on line 45 that checks if there are 5 or more clicks.
+2. Test the app to see if the star turns red and plays a sound if there are 5 or more clicks.
+*/    
+
+    // Create variables
+    integer clicks = 0
+    Button star = undefined
+    Label clickLabel = undefined
+
+    action Start
+        Page page
+    
+        star = CreateButton("Star Icon.png")
+        star:SetPixelWidth(400)
+        star:SetPixelHeight(400)
+        star:SetPixelX(0)
+        star:SetPixelY(150)
+        star:SetIconColor(Black())
+        page:Add(star)
+
+        clickLabel = CreateLabel()
+        clickLabel:SetPixelX(50)
+        clickLabel:SetPixelY(50)
+        clickLabel:SetFontSize(20)
+        clickLabel:SetText("Number of clicks: " + clicks)
+        page:Add(clickLabel)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        clicks = clicks + 1
+        clickLabel:SetText("Number of clicks: " + clicks)
+        clickLabel:SetDescription(clickLabel:GetText())
+
+        if ( )
+            star:SetIconColor(Red())
+            PlaySound("vibrant_game_positive_item_2.ogg")
+        end
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

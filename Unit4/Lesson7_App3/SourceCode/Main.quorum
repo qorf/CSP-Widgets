@@ -1,0 +1,31 @@
+/*
+DO THIS:
+1. Read the code for questions 1 - 3 and predict the answers.
+2. Run the code to check your predictions.
+3. Add code to answer questions 4 and 5. You will need to write boolean 
+    expressions that use logical operators  (and, or, not).
+*/
+integer fruitServings = 3
+integer vegServings = 5
+integer grainServings = 4
+
+// Predict how the first three questions will be answered. Then run the code
+// to check your predictions.
+output "Q1: Am I eating more than 3 fruitservings AND more than 5 vegetable servings?"
+output (fruitServings > 3 ) and (vegServings > 5)
+output ""
+
+output "Q2: Am I eating 4 or fewer grain servings AND 4 or fewer fruit servings?"
+output (grainServings <= 4) and (fruitServings <= 4)
+output ""
+
+output "Q3: Am I eating exactly 5 grainServings OR any amount besides 2 fruitServings"
+output (grainServings = 5) or (fruitServings not= 2)
+output ""
+
+// Add code to answer questions 4 and 5.
+output "Q4: Am I eating exactly 3 grain servings OR exactly 3 fruit servings?"
+
+output ""
+
+output "Q5: Am I eating 5 or fewer vegetable servings AND any amount besides 5 grain servings?"

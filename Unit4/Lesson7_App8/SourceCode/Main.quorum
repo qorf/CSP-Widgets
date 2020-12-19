@@ -1,0 +1,28 @@
+/*
+Some conditional statements can be written as Boolean expressions, and vice versa.
+Let's see what this looks like.
+
+DO THIS:
+1. Run the code and look at the first example.
+2. Write the conditional statement for the Boolean expression.
+*/
+// Example #1: The Boolean expression on line 12 is another way
+// of writing the conditional statement on lines 15-19.
+integer y = 8
+boolean x = (y < 6)
+output x
+
+if (y < 6)
+    x = true
+else
+    x = false
+end
+output x
+
+// Example #2: The Boolean expression is written for you.
+// Below it, write the conditional statement that represents the same thing
+integer a = 3
+boolean b = (a > 2)
+output b
+
+

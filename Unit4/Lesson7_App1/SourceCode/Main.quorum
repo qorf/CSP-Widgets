@@ -1,0 +1,21 @@
+/*
+DO THIS:
+1. Read the code and predict what will appear in the console.
+2. Run the code and watch how each question is answered.
+3. Add code to answer the last two questions. You'll need to create a boolean expression for each one.
+*/
+
+// Predict whether the following questions evaluate to true or false
+output "Q1: Is three less than five?"
+output 3 < 5
+output "Q2: Is three equal to five?"
+output 3 = 5
+output "Q3: Is three greater than three?"
+output 3 > 3
+output "Q4: Is two times two greater than or equal to five?"
+output (2 * 2) >= 5
+
+// Add code below to answer these questions
+output "Q5: Is ten less than or equal to ten?"
+
+output "Q6: Is ten minus three greater than three times three?"

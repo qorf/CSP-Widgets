@@ -1,0 +1,145 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Icon
+
+class Main is Application
+    /*
+    Remember the "Can I Adopt a Cat?" Flowchart? Build an app that answers that question.
+    This project has two parts. Do them in order.
+
+    PART 1: DO THIS
+    1. Add code to get the number the user inputs for money. The code for the user's age has
+        already been done for you -- use this as a guide.
+    2. Write the Boolean expression of the if-statement that checks if money is equal to 40 and
+        age is over 14. You will need to use logical operators (and, or, not).
+
+    PART 2: DO THIS AFTER PART 1
+    Add these two changes to the way the Kitten Adoption app works.
+    1. $40 OR MORE: Right now you can ony adopt the cat if you have exactly $40.
+        Update the code so you can adopt a cat if you have 40 or more dollars.
+    2. TEENAGER DAY: It's "Teenager Day" at the animal shelter and only teenagers are allowed to
+        adopt cats. Update the code to prevent anyone under the age of 13 or over the age of 19
+        from adopting a cat.
+
+    All of these rules can be written in a single Boolean expression with multiple logical operators (and, or, not).             
+    Test the code to make sure your modifications have worked.
+
+    AGE     MONEY   OUTPUT
+    18      $40     "You can adopt a cat"
+    18      $50     "You can adopt a cat"
+    12      $50     "You can't adopt a cat"
+    13      $39     "You can't adopt a cat"
+    20      $100    "You can't adopt a cat"
+    */
+
+    integer age = 0
+    integer money = 0
+    TextBox ageInput = undefined
+    TextBox moneyInput = undefined
+    Icon yesCat = undefined
+    Icon noCat = undefined
+
+    action Start
+        Page page
+
+        Label ageLabel = CreateLabel()
+        ageLabel:SetFocusable(false)
+        ageLabel:SetText("Age:")
+        ageLabel:SetFontSize(30)
+        ageLabel:SetPixelX(100)
+        ageLabel:SetPixelY(500)
+        page:Add(ageLabel)
+
+        ageInput = CreateTextBox()
+        ageInput:SetName("Age")
+        ageInput:SetFontSize(30)
+        ageInput:SetPixelX(175)
+        ageInput:SetPixelY(485)
+        ageInput:SetPixelWidth(150)
+        ageInput:SetPixelHeight(45)
+        ageInput:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        page:Add(ageInput)
+
+        Label moneyLabel = CreateLabel()
+        moneyLabel:SetFocusable(false)
+        moneyLabel:SetText("Money:")
+        moneyLabel:SetFontSize(30)
+        moneyLabel:SetPixelX(60)
+        moneyLabel:SetPixelY(400)
+        page:Add(moneyLabel)
+
+        moneyInput = CreateTextBox()
+        moneyInput:SetName("Money")
+        moneyInput:SetFontSize(30)
+        moneyInput:SetPixelX(175)
+        moneyInput:SetPixelY(385)
+        moneyInput:SetPixelWidth(150)
+        moneyInput:SetPixelHeight(45)
+        moneyInput:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        page:Add(moneyInput)
+
+        Button adoptButton = CreateButton()
+        adoptButton:SetName("Can I adopt a cat?")
+        adoptButton:SetFontSize(30)
+        adoptButton:SetPixelWidth(260)
+        adoptButton:SetPixelHeight(60)
+        adoptButton:SetPixelX(70)
+        adoptButton:SetPixelY(250)
+        adoptButton:SetBackgroundColor(NewColor(0.2, 0.84, 0.71))
+        page:Add(adoptButton)
+
+        yesCat = CreateIcon("Yes Cat.jpg")
+        yesCat:SetName("Yes!")
+        yesCat:SetDescription("You can adopt a cat!")
+        yesCat:SetPixelWidth(300)
+        yesCat:SetPixelHeight(180)
+        yesCat:SetPixelX(50)
+        yesCat:SetPixelY(30)
+        yesCat:Hide()
+        page:Add(yesCat)
+
+        noCat = CreateIcon("No Cat.jpg")
+        noCat:SetName("No")
+        noCat:SetDescription("You can not adopt a cat.")
+        noCat:SetPixelWidth(300)
+        noCat:SetPixelHeight(180)
+        noCat:SetPixelX(50)
+        noCat:SetPixelY(30)
+        noCat:Hide()
+        page:Add(noCat)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        // Resets the images each time adoptButton is clicked.
+        yesCat:Hide()
+        noCat:Hide()
+
+
+        // A "cast" changes variables from one type to another. This code turns the 
+        // text inside the "ageInput" text box into an integer.
+        age = cast(integer, ageInput:GetText())
+        // Using the code above as a guide, write a line of code to update
+        // the "money" variable using the "moneyInput" text box.
+
+
+
+        // Write an expression below that checks if age is over 14 and money equals 40.
+        if ( )
+            yesCat:Show()
+            yesCat:Focus()
+        else
+            noCat:Show()
+            noCat:Focus()
+        end
+
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

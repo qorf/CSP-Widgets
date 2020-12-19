@@ -1,0 +1,74 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+/*
+Debug this code. The star never turns orange.
+
+DO THIS:
+1. Run the app to determine why the star never changes to orange. You can use output
+    statements to test which sections of code are being run.
+2. Identify the error and fix the code.
+*/    
+
+    // Create variables
+    integer clicks = 0
+    Button star = undefined
+    Label clickLabel = undefined
+
+    action Start
+        Page page
+    
+        star = CreateButton("Star Icon.png")
+        star:SetPixelWidth(400)
+        star:SetPixelHeight(400)
+        star:SetPixelX(0)
+        star:SetPixelY(150)
+        star:SetIconColor(Black())
+        page:Add(star)
+
+        clickLabel = CreateLabel()
+        clickLabel:SetPixelX(50)
+        clickLabel:SetPixelY(50)
+        clickLabel:SetFontSize(20)
+        clickLabel:SetText("Number of clicks: " + clicks)
+        page:Add(clickLabel)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        clicks = clicks + 1
+        clickLabel:SetText("Number of clicks: " + clicks)
+        clickLabel:SetDescription(clickLabel:GetText())
+
+        if clicks < 5
+            star:SetIconColor(Red())
+            PlaySound("vibrant_game_positive_item_2.ogg")
+        elseif clicks < 15
+            star:SetIconColor(Yellow())
+            PlaySound("collect_item_bling_1.ogg")
+        elseif clicks < 10
+            star:SetIconColor(Orange())
+            PlaySound("coin_2.ogg")
+        elseif clicks < 20
+            star:SetIconColor(Green())
+            PlaySound("arcade_game_jump_1.ogg")
+        elseif clicks < 25
+            star:SetIconColor(Blue())
+            PlaySound("hollow_bell_notification.ogg")
+        elseif clicks < 30
+            star:SetIconColor(Purple())
+            PlaySound("lighthearted_bonus_objective_1.ogg")
+        else
+            star:SetIconColor(Pink())
+            PlaySound("hop.ogg")
+        end
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
