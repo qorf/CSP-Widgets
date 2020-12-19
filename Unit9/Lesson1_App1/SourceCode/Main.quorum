@@ -1,9 +1,13 @@
 use Libraries.Compute.Statistics.DataFrame
-use Libraries.Interface.Controls.Charts.BarChart
+use Libraries.Interface.Controls.Charts.LineChart
+
 DataFrame frame
 frame:Load("../Data/Other/GoogleTrendsChocolate.csv")
-frame:SetSelectedColumnRange(0,1)
-BarChart chart = frame:BarChart()
+frame:AddSelectedColumn(1)
+frame:AddSelectedFactor(0)
+
+LineChart chart = frame:LineChart()
+chart:SetXTickCount(5)
 chart:SetFontSize(40)
 chart:SetTitle("Chocolate Interest over time")
 chart:SetXAxisTitle("Time Periods")
