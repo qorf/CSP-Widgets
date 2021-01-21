@@ -1,0 +1,173 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+
+    TextBox dayInput = undefined
+    TextBox ageInput = undefined
+    TextBox discountInput = undefined
+    TextBox ticketOutput = undefined
+    Button createButton = undefined
+
+    text day = ""
+    integer age = 0
+    text discountCode = ""
+    integer price = 0
+
+    action Start
+        Page homePage
+        homePage:SetName("Home")
+
+        Icon banner = CreateRectangle(NewColor(0.53, 0.81, 0.92))
+        banner:SetFocusable(false)
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(100)
+        banner:SetPixelX(0)
+        banner:SetPixelY(500)
+        homePage:Add(banner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Museum Ticket Generator")
+        title:SetFontSize(24)
+        title:SetPixelX(10)
+        title:SetPixelY(560)
+        homePage:Add(title)
+    
+        Icon building = CreateIcon("Building Icon.png")
+        building:SetFocusable(false)
+        building:SetPixelWidth(80)
+        building:SetPixelHeight(80)
+        building:SetPixelX(310)
+        building:SetPixelY(510)
+        homePage:Add(building)
+
+        Label instructions = CreateLabel()
+        instructions:SetName("Instructions")
+        instructions:SetText("Enter your information below to calculate your ticket price and print your ticket.")
+        instructions:SetPixelX(10)
+        instructions:SetPixelY(540)
+        instructions:SetMaximumWidth(220)
+        homePage:Add(instructions)
+
+        Label dayLabel = CreateLabel()
+        dayLabel:SetFocusable(false)
+        dayLabel:SetText("Day:")
+        dayLabel:SetFontSize(24)
+        dayLabel:SetPixelX(10)
+        dayLabel:SetPixelY(450)
+        homePage:Add(dayLabel)
+
+        dayInput = CreateTextBox()
+        dayInput:SetName("Day")
+        dayInput:SetFontSize(24)
+        dayInput:SetBackgroundColor(NewColor(0.63, 0.91, 1.0))
+        dayInput:SetPixelWidth(190)
+        dayInput:SetPixelHeight(36)
+        dayInput:SetPixelX(200)
+        dayInput:SetPixelY(442)
+        homePage:Add(dayInput)
+
+        Label ageLabel = CreateLabel()
+        ageLabel:SetFocusable(false)
+        ageLabel:SetText("Age:")
+        ageLabel:SetFontSize(24)
+        ageLabel:SetPixelX(10)
+        ageLabel:SetPixelY(400)
+        homePage:Add(ageLabel)
+
+        ageInput = CreateTextBox()
+        ageInput:SetName("Age")
+        ageInput:SetFontSize(24)
+        ageInput:SetBackgroundColor(NewColor(0.63, 0.91, 1.0))
+        ageInput:SetPixelWidth(190)
+        ageInput:SetPixelHeight(36)
+        ageInput:SetPixelX(200)
+        ageInput:SetPixelY(392)
+        homePage:Add(ageInput)
+
+        Label discountLabel = CreateLabel()
+        discountLabel:SetFocusable(false)
+        discountLabel:SetText("Discount Code:")
+        discountLabel:SetFontSize(24)
+        discountLabel:SetPixelX(10)
+        discountLabel:SetPixelY(350)
+        homePage:Add(discountLabel)
+
+        discountInput = CreateTextBox()
+        discountInput:SetName("Discount Code")
+        discountInput:SetFontSize(24)
+        discountInput:SetBackgroundColor(NewColor(0.63, 0.91, 1.0))
+        discountInput:SetPixelWidth(190)
+        discountInput:SetPixelHeight(36)
+        discountInput:SetPixelX(200)
+        discountInput:SetPixelY(342)
+        homePage:Add(discountInput)
+
+        createButton = CreateButton()
+        createButton:SetName("Create My Ticket!")
+        createButton:SetBackgroundColor(NewColor(1.0, 0.8, 0.2))
+        createButton:SetFontSize(24)
+        createButton:SetPixelX(100)
+        createButton:SetPixelY(250)
+        createButton:SetPixelWidth(200)
+        createButton:SetPixelHeight(55)
+        homePage:Add(createButton)
+
+        Label admitLabel = CreateLabel()
+        admitLabel:SetName("Ticket")
+        admitLabel:SetText("Admit One")
+        admitLabel:SetFontSize(32)
+        admitLabel:SetPixelX(20)
+        admitLabel:SetPixelY(180)
+        homePage:Add(admitLabel)
+
+        Icon qrCode = CreateIcon("QR Code.png")
+        qrCode:SetName("QR Code")
+        qrCode:SetDescription("A code that can be scanned on your ticket")
+        qrCode:SetPixelWidth(70)
+        qrCode:SetPixelHeight(70)
+        qrCode:SetPixelX(320)
+        qrCode:SetPixelY(155)
+        homePage:Add(qrCode)
+
+        AddPage(homePage)
+
+        ticketOutput = CreateTextBox()
+        ticketOutput:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        ticketOutput:SetFontSize(24)
+        ticketOutput:SetPixelX(20)
+        ticketOutput:SetPixelY(20)
+        ticketOutput:SetPixelWidth(360)
+        ticketOutput:SetPixelHeight(145)
+        homePage:Add(ticketOutput)
+    end
+
+    action ButtonActivated(Button button)
+        day = dayInput:GetText()
+        day = day:ToUpperCase()
+        age = cast(integer, ageInput:GetText())
+        discountCode = discountInput:GetText()
+        discountCode = discountCode:ToUpperCase()
+
+        if day = "FRIDAY" and discountCode = "FREEFRIDAY"
+            price = 0
+        elseif age < 18 and (day = "MONDAY" or day = "TUESDAY" or day = "WEDNESDAY" or day = "THURSDAY" or day = "FRIDAY")          
+            price = 5
+        else
+            price = 10
+        end
+
+        ticketOutput:SetText("Day: " + day + "
+Age: " + age + "
+Price: " + price)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
