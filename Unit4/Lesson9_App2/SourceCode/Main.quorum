@@ -1,0 +1,138 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+
+    /*
+    DO THIS:
+    Read this program and predict how it will run. Then run it and discuss with a partner.
+
+    DISCUSS:
+    * On what line(s) is the UpdateScreen function being declared?
+    * On what lines is the UpdateScreen function being called?
+    * How does the UpdateScreen function make the program easier to write and understand?
+
+    MODIFY:
+    * Change the program to make the game end when the score is 15 or greater.
+    * Change the program to make the game end when the score is -10 or less.
+    * Change the program to make it display the "clicks" after the count as you play the
+      game. For example, it should say "5 clicks" or "10 clicks" instead of just "5" or "10".
+
+    */
+
+    // Create variables and assign values
+    integer count = 0
+
+    Label counter = undefined
+    Button downButton = undefined
+    Button upButton = undefined
+
+    Label finalCount = undefined
+
+    action ButtonActivated(Button button)
+        // When the user clicks the upButton increase the
+        // score and then update the screen.
+        if button = upButton
+            count = count + 1
+            UpdateScreen()
+
+        // When the user clicks the downButton decrease the
+        // score and then update the screen.
+        elseif button = downButton
+            count = count - 1
+            UpdateScreen()
+        end
+    end
+
+    // Declare the UpdateScreen function
+    action UpdateScreen
+        counter:SetText("" + count)
+        counter:SetDescription(counter:GetText())
+        PlaySound("app_button_1.ogg")
+
+        if count >= 10 or count <= -5
+            SetBackgroundColor(NewColor(0, 0.68, 0.74))
+            ShowNextPage()
+            finalCount:SetText("" + count)
+        end
+    end
+
+    action Start
+        Page page
+        page:SetName("Home")
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Let's Count!")
+        title:SetFontSize(60)
+        title:SetPixelX(40)
+        title:SetPixelY(530)
+        page:Add(title)
+
+        counter = CreateLabel()
+        counter:SetName("Counter")
+        counter:SetText("0")
+        counter:SetFontSize(70)
+        counter:SetFontColor(Teal())
+        counter:SetPixelX(170)
+        counter:SetPixelY(400)
+        page:Add(counter)
+
+        downButton = CreateButton("Down Arrow.png")
+        downButton:SetName("Count Down")
+        downButton:SetIconColor(NewColor(0.75, 0, 0))
+        downButton:SetPixelX(40)
+        downButton:SetPixelY(40)
+        downButton:SetPixelWidth(150)
+        downButton:SetPixelHeight(150)
+        page:Add(downButton)
+
+        upButton = CreateButton("Up Arrow.png")
+        upButton:SetName("Count Up")
+        upButton:SetIconColor(NewColor(0, 0.75, 0))
+        upButton:SetPixelX(210)
+        upButton:SetPixelY(40)
+        upButton:SetPixelWidth(150)
+        upButton:SetPixelHeight(150)
+        page:Add(upButton)
+
+        AddPage(page)
+
+
+        Page gameOverScreen
+        gameOverScreen:SetName("Game Over")
+        
+        Label endTitle = CreateLabel()
+        endTitle:SetName("Title")
+        endTitle:SetText("Wow!")
+        endTitle:SetFontSize(80)
+        endTitle:SetPixelX(100)
+        endTitle:SetPixelY(520)
+        gameOverScreen:Add(endTitle)
+
+        Label description = CreateLabel()
+        description:SetFocusable(false)
+        description:SetText("You counted to:")
+        description:SetFontColor(White())
+        description:SetFontSize(30)
+        description:SetPixelX(100)
+        description:SetPixelY(400)
+        gameOverScreen:Add(description)
+
+        finalCount = CreateLabel()
+        finalCount:SetName("Final Count")
+        finalCount:SetFontColor(White())
+        finalCount:SetFontSize(60)
+        finalCount:SetPixelX(180)
+        finalCount:SetPixelY(340)
+        gameOverScreen:Add(finalCount)
+
+        AddPage(gameOverScreen)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

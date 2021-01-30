@@ -1,0 +1,63 @@
+/*
+This code is using a function to display the lyrics of a song. 
+There's a few places where this program skips the chorus.
+
+DO THIS:
+* Run the program to see how it works. Pay attention to what happens when the program
+  "sings" the chorus.
+* Add code to make the program "sing" the chorus. There are comments to tell you where
+  to add the code.
+
+*/
+
+// This code will run when the program starts.
+action Main
+    // Verse 1
+    output "Feeling my way through the darkness"
+    output "Guided by a beating heart"
+    output "I can't tell where the journey will end"
+    output "But I know where to start"
+    
+    output "They tell me I'm too young to understand"
+    output "They say I'm caught up in a dream"
+    output "Well life will pass me by if I don't open up my eyes"
+    output "Well that's fine by me"
+    
+    // Chorus
+    SingChorus()
+    SingChorus()
+    
+    // Verse 2
+    output "I tried carrying the weight of the world"
+    output "But I only have two hands"
+    output "I hope I get the chance to travel the world"
+    output "But I don't have any plans"
+    
+    output "I wish that I could stay forever this young"
+    output "Not afraid to close my eyes"
+    output "Life's a game made for everyone"
+    output "And love is the prize"
+    
+    // Chorus
+    // Add code here to sing the chorus twice
+    
+
+    // Bridge
+    output "I didn't know I was lost"
+    output "I didn't know I was lost"
+    output "I didn't know I was lost"
+    output "I didn't know I was lost"
+    
+    // Chorus
+    // Add code here to sing the chorus once
+    
+
+end
+
+// Declaring the SingChorus function
+action SingChorus
+  output "So wake me up when it's all over"
+  output "When I'm wiser and I'm older"
+  output "All this time I was finding myself"
+  output "And I didn't know I was lost"
+end
