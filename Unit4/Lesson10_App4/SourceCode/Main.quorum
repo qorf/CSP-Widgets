@@ -1,0 +1,143 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+/*
+This program has declared an UpdateScreen function but it isn't called anywhere in the program.
+
+DO THIS:
+* Read the code to understand how it works, in particular the UpdateScreen function.
+* Add calls to UpdateScreen function to make the face and text on the screen respond to
+  the changes in the value stored in the thumbsUp variable.
+
+*/
+
+    // Create and assign variables
+    integer thumbsUp = 5
+    text mood = ""
+
+    Icon sadFace = undefined
+    Icon neutralFace = undefined
+    Icon happyFace = undefined
+    Label moodLabel = undefined
+    Button downButton = undefined
+    Button upButton = undefined
+
+    action Start
+        Page page
+
+        // Add the controls to the screen        
+        neutralFace = CreateIcon("Neutral Face.png")
+        neutralFace:SetName("Neutral Face")
+        neutralFace:SetPixelWidth(200)
+        neutralFace:SetPixelHeight(200)
+        neutralFace:SetPixelX(100)
+        neutralFace:SetPixelY(350)
+        page:Add(neutralFace)
+
+        sadFace = CreateIcon("Sad Face.png")
+        sadFace:SetName("Sad Face")
+        sadFace:SetPixelWidth(200)
+        sadFace:SetPixelHeight(200)
+        sadFace:SetPixelX(100)
+        sadFace:SetPixelY(350)
+        // Hide the sad face so it doesn't appear until we want it to
+        sadFace:Hide()
+        page:Add(sadFace)
+
+        happyFace = CreateIcon("Happy Face.png")
+        happyFace:SetName("Happy Face")
+        happyFace:SetPixelWidth(200)
+        happyFace:SetPixelHeight(200)
+        happyFace:SetPixelX(100)
+        happyFace:SetPixelY(350)
+        // Hide the happy face so it doesn't appear until we want it to
+        happyFace:Hide()
+        page:Add(happyFace)
+        
+        moodLabel = CreateLabel()
+        moodLabel:SetName("Mood")
+        moodLabel:SetText("Thumbs Up: 0 Mood: Neutral")
+        moodLabel:SetFontSize(24)
+        moodLabel:SetPixelX(35)
+        moodLabel:SetPixelY(250)
+        page:Add(moodLabel)
+
+        downButton = CreateButton("Thumb Down Button.png")
+        downButton:SetName("Thumb Down")
+        downButton:SetPixelWidth(150)
+        downButton:SetPixelHeight(150)
+        downButton:SetPixelX(40)
+        downButton:SetPixelY(40)
+        downButton:SetIconColor(NewColor(1, 0.65, 0.65))
+        page:Add(downButton)
+
+        upButton = CreateButton("Thumb Up Button.png")
+        upButton:SetName("Thumb Up")
+        upButton:SetPixelWidth(150)
+        upButton:SetPixelHeight(150)
+        upButton:SetPixelX(210)
+        upButton:SetPixelY(40)
+        upButton:SetIconColor(NewColor(0.65, 1, 0.65))
+        page:Add(upButton)
+
+        AddPage(page)
+
+        // Add code to update the screen
+
+
+    end
+
+    action ButtonActivated(Button button)
+        // When the down button is clicked
+        // decrease the thumbs up by one and
+        // update the screen
+        if button = downButton
+            thumbsUp = thumbsUp - 1
+            // Add code to update the screen
+
+
+
+        // When the up button is clicked
+        // increase the thumbsUp by one and
+        // update the screen
+        elseif button = upButton
+            thumbsUp = thumbsUp + 1
+            // Add code to update the screen
+
+
+        end
+    end
+
+    // Function to update the screen. It first checks
+    // the number of thumbs up. Then it changes the mood
+    // variable and uses it to update the text on the screen.
+    action UpdateScreen
+        if thumbsUp < 0
+            mood = "Sad"
+            sadFace:Show()
+            neutralFace:Hide()
+            happyFace:Hide()
+        elseif thumbsUp < 10
+            mood = "Neutral"
+            sadFace:Hide()
+            neutralFace:Show()
+            happyFace:Hide()
+        else
+            mood = "Happy"
+            sadFace:Hide()
+            neutralFace:Hide()
+            happyFace:Show()
+        end
+
+        moodLabel:SetText("Thumbs Up: " + thumbsUp + " Mood: " + mood)
+        moodLabel:SetDescription(moodLabel:GetDescription())
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

@@ -1,0 +1,56 @@
+/*
+Functions help you avoid repeated code in your program.
+If you are ever using the same pieces of code over and over you should declare a
+function once at the bottom of your program and call it every time you need to use it.
+
+DO THIS:
+Rewrite this program to use functions rather than repeated code.
+* Read this program and identify blocks of code that are repeated.
+* Declare a function for the block of code that is repeated at the bottom of your program.
+* Replace the repeated blocks of code with calls to your function.
+
+*/
+
+// The code in the Main action runs when the program starts.
+action Main
+    output "A Cat's Diary
+"
+    
+    output "Monday"
+    
+    output "  Morning: Slept in late"
+    output "  Noon: Lunch"
+    output "  Afternoon: Scratched up furniture. Slept in the sunny spot"
+    output "  Evening: Hide"
+    
+    output "Tuesday"
+    
+    output "  Morning: Slept in late"
+    output "  Noon: Lunch"
+    output "  Afternoon: Scratched up furniture. Slept in the sunny spot"
+    output "  Evening: Hide"
+    
+    output "Wednesday"
+    
+    output "  Morning: Slept in late"
+    output "  Noon: Lunch"
+    output "  Afternoon: Scratched up furniture. Slept in the sunny spot"
+    output "  Evening: Hide"
+    
+    output "Thursday"
+    
+    output "  Morning: Slept in late"
+    output "  Noon: Lunch"
+    output "  Afternoon: Scratched up furniture. Slept in the sunny spot"
+    output "  Evening: Hide"
+    
+    output "Friday"
+    
+    output "  Morning: Slept in late"
+    output "  Noon: Lunch"
+    output "  Afternoon: Scratched up furniture. Slept in the sunny spot"
+    output "  Evening: Hide"
+end
+
+
+

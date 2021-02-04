@@ -1,0 +1,113 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+/*
+DO THIS:
+This program should "buy" an apple every time the apple is clicked but
+it doesn't seem to be working.
+* Run the code to see how it works.
+* Debug the scope issue so that it runs correctly.
+
+*/
+
+    // Create and assign variables
+    integer dollars = 5
+    integer apples = 0
+
+    Button appleButton = undefined
+    Label infoLabel = undefined
+    Label resultLabel = undefined
+    Label walletLabel = undefined
+
+    action ButtonActivated(Button button)
+        if button = appleButton
+            BuyApple()
+        end
+    end
+
+    action BuyApple()
+        integer dollars = 5
+        integer apples = 0
+
+        infoLabel:SetText("I had " + apples + " apples.")
+        infoLabel:SetDescription(infoLabel:GetText())
+        dollars = dollars - 1
+        apples = apples + 1
+        resultLabel:SetText("Now I have " + apples + ".")
+        resultLabel:SetDescription(resultLabel:GetText())
+        walletLabel:SetText("Wallet: " + dollars)
+        walletLabel:SetDescription("" + dollars)
+    end
+
+    action Start
+        Page page
+        page:SetName("Home")
+
+        Label instructions = CreateLabel()
+        instructions:SetName("Instructions")
+        instructions:SetText("Click!")
+        instructions:SetFontSize(60)
+        instructions:SetPixelX(125)
+        instructions:SetPixelY(520)
+        page:Add(instructions)
+        
+        appleButton = CreateButton("Apple.png")
+        appleButton:SetName("Buy an Apple")
+        appleButton:SetPixelWidth(250)
+        appleButton:SetPixelHeight(250)
+        appleButton:SetPixelX(75)
+        appleButton:SetPixelY(275)
+        page:Add(appleButton)
+
+        Icon background1 = CreateRectangle(NewColor(1, 0.8, 0.8))
+        background1:SetFocusable(false)
+        background1:SetPixelWidth(350)
+        background1:SetPixelHeight(50)
+        background1:SetPixelX(25)
+        background1:SetPixelY(200)
+        page:Add(background1)
+
+        Icon background2 = CreateRectangle(NewColor(0.8, 0.9, 1))
+        background2:SetFocusable(false)
+        background2:SetPixelWidth(350)
+        background2:SetPixelHeight(50)
+        background2:SetPixelX(25)
+        background2:SetPixelY(140)
+        page:Add(background2)
+
+        infoLabel = CreateLabel()
+        infoLabel:SetName("Info")
+        infoLabel:SetText("")
+        infoLabel:SetFontSize(42)
+        infoLabel:SetPixelX(40)
+        infoLabel:SetPixelY(210)
+        page:Add(infoLabel)
+
+        resultLabel = CreateLabel()
+        resultLabel:SetName("Results")
+        resultLabel:SetText("")
+        resultLabel:SetFontSize(42)
+        resultLabel:SetPixelX(40)
+        resultLabel:SetPixelY(150)
+        page:Add(resultLabel)
+
+        walletLabel = CreateLabel()
+        walletLabel:SetName("Wallet")
+        walletLabel:SetText("Wallet: 5")
+        walletLabel:SetDescription("5")
+        walletLabel:SetFontSize(42)
+        walletLabel:SetPixelX(30)
+        walletLabel:SetPixelY(70)
+        page:Add(walletLabel)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

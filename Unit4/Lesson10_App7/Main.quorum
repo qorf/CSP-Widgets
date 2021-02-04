@@ -1,0 +1,116 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+
+class Main is Application
+/*
+This program keeps track of the money collected and tickets sold for a performance.
+There are three variables already created that store the cost of an adult, child, and senior tickets.
+
+DO THIS:
+1. Run the program to see how it works. Make sure to click all three buttons.
+2. Add code to make the "Child" and "Senior" buttons work. They should increase the total number of
+tickets sold and the total money collected. Use the code for the "Adult" button as a guide.
+*/
+
+    // Create and assign values to variables
+    number dollars = 0
+    integer tickets = 0
+    number adultPrice = 12.50
+    number childPrice = 8.50
+    number seniorPrice = 10
+
+    Label dollarsLabel = undefined
+    Label ticketsLabel = undefined
+
+    action Start
+        Page page
+        page:SetName("Main Page")
+
+        dollarsLabel = CreateLabel()
+        dollarsLabel:SetName("Dollars")
+        dollarsLabel:SetText("$0")
+        dollarsLabel:SetFontSize(80)
+        dollarsLabel:SetPixelX(100)
+        dollarsLabel:SetPixelY(400)
+        page:Add(dollarsLabel)
+
+        ticketsLabel = CreateLabel()
+        ticketsLabel:SetName("Counter")
+        ticketsLabel:SetText("0 tickets")
+        ticketsLabel:SetFontSize(60)
+        ticketsLabel:SetPixelX(90)
+        ticketsLabel:SetPixelY(300)
+        page:Add(ticketsLabel)
+
+        Button adult = CreateButton()
+        adult:SetName("Adult Ticket")
+        adult:SetBackgroundColor(NewColor(1.0, 0.84, 0.0))
+        adult:SetFontSize(30)
+        adult:SetPixelWidth(200)
+        adult:SetPixelHeight(50)
+        adult:SetPixelX(100)
+        adult:SetPixelY(180)
+        page:Add(adult)
+
+        Button child = CreateButton()
+        child:SetName("Child Ticket")
+        child:SetBackgroundColor(NewColor(1.0, 0.64, 0.0))
+        child:SetFontSize(30)
+        child:SetPixelWidth(200)
+        child:SetPixelHeight(50)
+        child:SetPixelX(100)
+        child:SetPixelY(120)
+        page:Add(child)
+
+        Button senior = CreateButton()
+        senior:SetName("Senior Ticket")
+        senior:SetBackgroundColor(NewColor(1.0, 0.44, 0.0))
+        senior:SetFontSize(30)
+        senior:SetPixelWidth(200)
+        senior:SetPixelHeight(50)
+        senior:SetPixelX(100)
+        senior:SetPixelY(60)
+        page:Add(senior)
+
+        AddPage(page)
+    end
+
+    action ButtonActivated(Button button)
+        text name = button:GetName()
+
+        if name = "Adult Ticket"
+            // Increase tickets sold
+            tickets = tickets + 1
+
+            // Increase dollars collected
+            dollars = dollars + adultPrice
+
+            dollarsLabel:SetText("$" + dollars)
+            dollarsLabel:SetDescription("$" + dollars)
+
+            ticketsLabel:SetText(tickets + " tickets")
+            ticketsLabel:SetDescription(tickets + " tickets")
+
+            PlaySound("coin_2.ogg")
+        end
+
+        // Add code to make this button work
+        if name = "Child Ticket"
+
+            PlaySound("coin_2.ogg")
+        end
+
+        // Add code to make this button work
+        if name = "Senior Ticket"
+
+            PlaySound("coin_2.ogg")
+        end
+
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

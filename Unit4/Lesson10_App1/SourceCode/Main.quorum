@@ -1,0 +1,26 @@
+// These functions are not called in the correct order. Rearrange the function calls to correctly tell the story.
+
+// When the program starts, it will execute the code in the Main action.
+action Main
+    Winter()
+    Summer()
+    Spring()
+    Autumn()
+end
+
+// Function declarations
+action Spring
+    output "First comes spring, when flowers bloom"
+end
+
+action Summer
+    output "Summer's sun will follow soon"
+end
+
+action Autumn
+    output "Autumn crackles red and gold"
+end
+
+action Winter
+    output "Then hibernate for winter's cold"
+end

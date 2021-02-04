@@ -1,0 +1,32 @@
+/*
+This program will draw a building in the console using characters from the keyboard.
+
+DO THIS:
+* Run the program and look at the output in the console to see how it works.
+* Add code to the program to draw at least three more floors to the building.
+
+*/
+
+// When the program starts, it will execute the code in the Main action.
+action Main
+    Roof()
+    Floor()
+    Lobby()
+end
+
+// Function declarations
+action Roof
+    output "  =============="
+    output "  |------------|"
+end
+
+action Floor
+    output "  |-[]--[]--[]-|"
+    output "  |------------|"
+end
+
+action Lobby
+    output "  |----____----|"
+    output "  |----|  ,|---|"
+    output "  |----|   |---|"
+end
