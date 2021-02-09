@@ -1,0 +1,261 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+use Libraries.Game.Graphics.Font
+
+class Main is Application
+/*
+DO THIS:
+Build the Quote Maker app using your activity guide to help you plan.
+When you're done, submit your work.
+
+As part of the app, you will need to change the font in a label. The
+code below shows an example of how to do it.
+
+// Get the Arial font at 16 point size
+Font arial = NewFont("Arial", 16)
+
+// Load the font into a label
+label:SetFont(arial)
+
+*/
+
+    // Create and assign variables.
+
+
+
+
+
+    // The background for the quote.
+    Icon background = undefined
+
+    // The label that shows the quote.
+    Label quoteLabel = undefined
+
+    // The TextBox where the user can type in their quote.
+    TextBox quoteInput = undefined
+
+    // Buttons for selecting the font style
+    Button arialButton = undefined
+    Button georgiaButton = undefined
+    Button impactButton = undefined
+    Button verdanaButton = undefined
+
+    // Buttons for selecting the background color
+    Button blueButton = undefined
+    Button greenButton = undefined
+    Button pinkButton = undefined
+    Button lavenderButton = undefined
+
+    // Buttons for selecting the font size
+    Button font16Button = undefined
+    Button font20Button = undefined
+    Button font24Button = undefined
+    Button font28Button = undefined
+
+    // The label that comments on the user's design.
+    Label feedbackLabel = undefined
+
+    action ButtonActivated(Button button)
+        // Respond to button clicks here.
+
+
+    end
+
+    action TextChanged(TextBox textBox)
+        // When the text in a text box changes, this code will run.
+
+
+    end
+
+
+    action Start
+        Page page
+        page:SetName("Main Page")
+
+        background = CreateRectangle(NewColor(0.9, 0.9, 0.9))
+        background:SetName("Background")
+        background:SetDescription("Gray" + " background " + "16" + " " + "Arial")
+        background:SetPixelX(25)
+        background:SetPixelY(475)
+        background:SetPixelWidth(350)
+        background:SetPixelHeight(100)
+        page:Add(background)
+
+        quoteLabel = CreateLabel()
+        quoteLabel:SetName("Quote")
+        quoteLabel:SetFontSize(16)
+        quoteLabel:SetText("")
+        quoteLabel:SetPixelX(30)
+        quoteLabel:SetPixelY(550)
+        quoteLabel:SetMaximumWidth(340)
+        page:Add(quoteLabel)
+
+        Label quoteInputLabel = CreateLabel()
+        quoteInputLabel:SetFocusable(false)
+        quoteInputLabel:SetFontSize(20)
+        quoteInputLabel:SetText("Quote:")
+        quoteInputLabel:SetPixelX(25)
+        quoteInputLabel:SetPixelY(425)
+        page:Add(quoteInputLabel)
+
+        quoteInput = CreateTextBox()
+        quoteInput:SetFontSize(20)
+        quoteInput:SetBackgroundColor(NewColor(0.9, 0.9, 0.9))
+        quoteInput:SetPixelX(100)
+        quoteInput:SetPixelY(415)
+        quoteInput:SetPixelWidth(275)
+        quoteInput:SetPixelHeight(34)
+        page:Add(quoteInput)
+
+        Label fontFamilyLabel = CreateLabel()
+        fontFamilyLabel:SetName("Category 1")
+        fontFamilyLabel:SetFontSize(20)
+        fontFamilyLabel:SetText("Font Family:")
+        fontFamilyLabel:SetPixelX(25)
+        fontFamilyLabel:SetPixelY(380)
+        page:Add(fontFamilyLabel)
+
+        arialButton = CreateButton()
+        arialButton:SetFontSize(18)
+        arialButton:SetName("Arial")
+        arialButton:SetPixelHeight(36)
+        arialButton:SetPixelWidth(55)
+        arialButton:SetPixelX(25)
+        arialButton:SetPixelY(325)
+        page:Add(arialButton)
+
+        georgiaButton = CreateButton()
+        georgiaButton:SetFontSize(18)
+        georgiaButton:SetName("Georgia")
+        georgiaButton:SetPixelHeight(36)
+        georgiaButton:SetPixelWidth(80)
+        georgiaButton:SetPixelX(85)
+        georgiaButton:SetPixelY(325)
+        page:Add(georgiaButton)
+
+        impactButton = CreateButton()
+        impactButton:SetFontSize(18)
+        impactButton:SetName("Impact")
+        impactButton:SetPixelHeight(36)
+        impactButton:SetPixelWidth(115)
+        impactButton:SetPixelX(170)
+        impactButton:SetPixelY(325)
+        page:Add(impactButton)
+
+        verdanaButton = CreateButton()
+        verdanaButton:SetFontSize(18)
+        verdanaButton:SetName("Verdana")
+        verdanaButton:SetPixelHeight(36)
+        verdanaButton:SetPixelWidth(95)
+        verdanaButton:SetPixelX(290)
+        verdanaButton:SetPixelY(325)
+        page:Add(verdanaButton)
+
+        Label colorLabel = CreateLabel()
+        colorLabel:SetName("Category 2")
+        colorLabel:SetFontSize(20)
+        colorLabel:SetText("Color:")
+        colorLabel:SetPixelX(25)
+        colorLabel:SetPixelY(280)
+        page:Add(colorLabel)
+
+        blueButton = CreateButton()
+        blueButton:SetFontSize(18)
+        blueButton:SetName("Blue")
+        blueButton:SetPixelHeight(36)
+        blueButton:SetPixelWidth(55)
+        blueButton:SetPixelX(25)
+        blueButton:SetPixelY(225)
+        page:Add(blueButton)
+
+        greenButton = CreateButton()
+        greenButton:SetFontSize(18)
+        greenButton:SetName("Green")
+        greenButton:SetPixelHeight(36)
+        greenButton:SetPixelWidth(65)
+        greenButton:SetPixelX(85)
+        greenButton:SetPixelY(225)
+        page:Add(greenButton)
+
+        pinkButton = CreateButton()
+        pinkButton:SetFontSize(18)
+        pinkButton:SetName("Pink")
+        pinkButton:SetPixelHeight(36)
+        pinkButton:SetPixelWidth(50)
+        pinkButton:SetPixelX(155)
+        pinkButton:SetPixelY(225)
+        page:Add(pinkButton)
+
+        lavenderButton = CreateButton()
+        lavenderButton:SetFontSize(18)
+        lavenderButton:SetName("Lavender")
+        lavenderButton:SetPixelHeight(36)
+        lavenderButton:SetPixelWidth(90)
+        lavenderButton:SetPixelX(210)
+        lavenderButton:SetPixelY(225)
+        page:Add(lavenderButton)
+
+        Label fontSizeLabel = CreateLabel()
+        fontSizeLabel:SetName("Category 3")
+        fontSizeLabel:SetFontSize(20)
+        fontSizeLabel:SetText("Font Size:")
+        fontSizeLabel:SetPixelX(25)
+        fontSizeLabel:SetPixelY(180)
+        page:Add(fontSizeLabel)
+
+        font16Button = CreateButton()
+        font16Button:SetFontSize(18)
+        font16Button:SetName("16pt")
+        font16Button:SetPixelHeight(36)
+        font16Button:SetPixelWidth(55)
+        font16Button:SetPixelX(25)
+        font16Button:SetPixelY(125)
+        page:Add(font16Button)
+
+        font20Button = CreateButton()
+        font20Button:SetFontSize(18)
+        font20Button:SetName("20pt")
+        font20Button:SetPixelHeight(36)
+        font20Button:SetPixelWidth(55)
+        font20Button:SetPixelX(85)
+        font20Button:SetPixelY(125)
+        page:Add(font20Button)
+
+        font24Button = CreateButton()
+        font24Button:SetFontSize(18)
+        font24Button:SetName("24pt")
+        font24Button:SetPixelHeight(36)
+        font24Button:SetPixelWidth(55)
+        font24Button:SetPixelX(145)
+        font24Button:SetPixelY(125)
+        page:Add(font24Button)
+
+        font28Button = CreateButton()
+        font28Button:SetFontSize(18)
+        font28Button:SetName("28pt")
+        font28Button:SetPixelHeight(36)
+        font28Button:SetPixelWidth(55)
+        font28Button:SetPixelX(205)
+        font28Button:SetPixelY(125)
+        page:Add(font28Button)
+
+        feedbackLabel = CreateLabel()
+        feedbackLabel:SetText("")
+        feedbackLabel:SetPixelX(50)
+        feedbackLabel:SetPixelY(75)
+        feedbackLabel:SetFontSize(26)
+        feedbackLabel:SetMaximumWidth(300)
+        page:Add(feedbackLabel)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
