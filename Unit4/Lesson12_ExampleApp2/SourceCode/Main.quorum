@@ -1,0 +1,221 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+    // Create and assign variables.
+    text name = ""
+    integer time = 8
+    text activityLevel = "LIGHT"
+    text recommendation = ""
+
+    Color darkOrange = NewColor(1, 0.64, 0)
+    Color lightGray = NewColor(0.85, 0.85, 0.85)
+
+    /*
+    Variables for the controls on the page.
+    We start by making these undefined, or empty,
+    and then we give them values in our Start action.
+    */
+    TextBox nameInput = undefined
+    TextBox timeInput = undefined
+    Button lightButton = undefined
+    Button moderateButton = undefined
+    Button strenuousButton = undefined
+    Label resultLabel = undefined
+
+    action ButtonActivated(Button button)
+        if button = lightButton
+            activityLevel = "LIGHT"
+        elseif button = moderateButton
+            activityLevel = "MODERATE"
+        elseif button = strenuousButton
+            activityLevel = "STRENUOUS"
+        end
+
+        UpdateScreen()
+    end
+
+    action TextChanged(TextBox textBox)
+        UpdateScreen()
+    end
+
+    action UpdateScreen
+        // Get the name and then make it all upper case.
+        name = nameInput:GetText()
+        name = name:ToUpperCase()
+
+        // If the text in the time of day input is a valid integer
+        // and it's between 8 to 5, we'll store it.
+        integer currentTime = 0
+        if IsInteger(timeInput:GetText())
+            currentTime = cast(integer, timeInput:GetText())
+        end
+
+        // If the current time isn't between 8 to 5, we don't accept it.
+        if (currentTime >= 8 and currentTime <= 12) or (currentTime >= 1 or currentTime <= 5)
+            time = currentTime
+        end
+
+        // Decide on the recommended activity based on time and activity level.
+        if activityLevel = "LIGHT"
+            if time >= 8 and time <= 12
+                recommendation = "walking around the mall."
+            else
+                recommendation = "kite flying at Manson Park."
+            end
+
+        elseif activityLevel = "MODERATE"
+            if time >= 8 and time <= 12
+                recommendation = "swimming in the indoor pool at Splash Complex."
+            else
+                recommendation = "biking on the boardwalk."
+            end
+
+        else
+            recommendation = "rock climbing at Rocco's Gym."
+        end
+
+        // Because this line of code is very long, we split it up onto two lines.
+        resultLabel:SetText("Hi, " + name + ". You want to do a " + activityLevel 
+            + " activity at " + time + " o'clock. You may want to try " + recommendation)
+
+        resultLabel:SetDescription(resultLabel:GetText())
+    end
+
+    action Start
+        Page homePage
+        homePage:SetName("Home")
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Activity Finder")
+        title:SetFontSize(50)
+        title:SetFontColor(darkOrange)
+        title:SetPixelX(40)
+        title:SetPixelY(530)
+        homePage:Add(title)
+
+        Label nameLabel = CreateLabel()
+        nameLabel:SetFocusable(false)
+        nameLabel:SetText("Name")
+        nameLabel:SetFontSize(20)
+        nameLabel:SetPixelX(25)
+        nameLabel:SetPixelY(445)
+        homePage:Add(nameLabel)
+
+        nameInput = CreateTextBox()
+        nameInput:SetFontSize(20)
+        nameInput:SetBackgroundColor(lightGray)
+        nameInput:SetPixelX(90)
+        nameInput:SetPixelY(432)
+        nameInput:SetPixelWidth(150)
+        nameInput:SetPixelHeight(35)
+        homePage:Add(nameInput)
+
+        Label timeLabel = CreateLabel()
+        timeLabel:SetFocusable(false)
+        timeLabel:SetText("Time (8 to 5)")
+        timeLabel:SetFontSize(18)
+        timeLabel:SetPixelX(280)
+        timeLabel:SetPixelY(480)
+        homePage:Add(timeLabel)
+
+        timeInput = CreateTextBox()
+        timeInput:SetFontSize(20)
+        timeInput:SetBackgroundColor(lightGray)
+        timeInput:SetText("8")
+        timeInput:SetPixelX(290)
+        timeInput:SetPixelY(432)
+        timeInput:SetPixelWidth(80)
+        timeInput:SetPixelHeight(35)
+        homePage:Add(timeInput)
+
+        Label activityLabel = CreateLabel()
+        activityLabel:SetName("Category")
+        activityLabel:SetText("Activity Level")
+        activityLabel:SetFontSize(24)
+        activityLabel:SetPixelX(135)
+        activityLabel:SetPixelY(380)
+        homePage:Add(activityLabel)
+
+        lightButton = CreateButton()
+        lightButton:SetName("Light")
+        lightButton:SetFontSize(20)
+        lightButton:SetPixelX(62)
+        lightButton:SetPixelY(325)
+        lightButton:SetPixelWidth(55)
+        lightButton:SetPixelHeight(45)
+        homePage:Add(lightButton)
+
+        moderateButton = CreateButton()
+        moderateButton:SetName("Moderate")
+        moderateButton:SetFontSize(20)
+        moderateButton:SetPixelX(127)
+        moderateButton:SetPixelY(325)
+        moderateButton:SetPixelWidth(100)
+        moderateButton:SetPixelHeight(45)
+        homePage:Add(moderateButton)
+
+        strenuousButton = CreateButton()
+        strenuousButton:SetName("Strenuous")
+        strenuousButton:SetFontSize(20)
+        strenuousButton:SetPixelX(237)
+        strenuousButton:SetPixelY(325)
+        strenuousButton:SetPixelWidth(100)
+        strenuousButton:SetPixelHeight(45)
+        homePage:Add(strenuousButton)
+
+        Icon decoration1 = CreateIcon("Tree Icon.png")
+        decoration1:SetFocusable(false)
+        decoration1:SetPixelWidth(60)
+        decoration1:SetPixelHeight(60)
+        decoration1:SetPixelX(90)
+        decoration1:SetPixelY(240)
+        homePage:Add(decoration1)
+
+        Icon decoration2 = CreateIcon("Bike Icon.png")
+        decoration2:SetFocusable(false)
+        decoration2:SetPixelWidth(60)
+        decoration2:SetPixelHeight(60)
+        decoration2:SetPixelX(170)
+        decoration2:SetPixelY(240)
+        homePage:Add(decoration2)
+
+        Icon decoration3 = CreateIcon("Tree Icon.png")
+        decoration3:SetFocusable(false)
+        decoration3:SetPixelWidth(60)
+        decoration3:SetPixelHeight(60)
+        decoration3:SetPixelX(250)
+        decoration3:SetPixelY(240)
+        homePage:Add(decoration3)
+
+        Icon resultBackground = CreateRectangle(darkOrange)
+        resultBackground:SetFocusable(false)
+        resultBackground:SetPixelX(25)
+        resultBackground:SetPixelY(25)
+        resultBackground:SetPixelWidth(350)
+        resultBackground:SetPixelHeight(200)
+        homePage:Add(resultBackground)
+
+        resultLabel = CreateLabel()
+        resultLabel:SetText("")
+        resultLabel:SetFontSize(26)
+        resultLabel:SetFontColor(White())
+        resultLabel:SetMaximumWidth(320)
+        resultLabel:SetPixelX(40)
+        resultLabel:SetPixelY(190)
+        homePage:Add(resultLabel)
+
+        AddPage(homePage)
+    end
+
+    action Main
+        // This command opens the window, then it runs the Start action.
+        StartGame()
+    end
+
+end

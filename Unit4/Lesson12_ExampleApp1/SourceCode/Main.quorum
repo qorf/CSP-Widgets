@@ -1,0 +1,224 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+    // Create and assign variables.
+    text name = ""
+    text mealType = ""
+    integer price = 15
+    text recommendation = ""
+
+    Color labelColor = NewColor(0.85, 1, 0.85)
+
+    /*
+    Variables for the controls on the page.
+    We start by making these undefined, or empty,
+    and then we give them values in our Start action.
+    */
+    TextBox nameInput = undefined
+    Button chineseButton = undefined
+    Button italianButton = undefined
+    Button breakfastButton = undefined
+    Button priceDown = undefined
+    Button priceUp = undefined
+    Label currentPrice = undefined
+    Label resultLabel = undefined
+
+    action ButtonActivated(Button button)
+        if button = chineseButton
+            mealType = "Chinese"
+        
+        elseif button = italianButton
+            mealType = "Italian"
+
+        elseif button = breakfastButton
+            mealType = "Breakfast"
+
+        elseif button = priceDown
+            price = price - 5
+
+            if price < 0
+                price = 0
+            end
+
+        elseif button = priceUp
+            price = price + 5
+
+            if price > 55
+                price = 55
+            end 
+        end
+
+        UpdateScreen()
+    end
+
+    action UpdateScreen
+        currentPrice:SetText("$" + price)
+        currentPrice:SetDescription(currentPrice:GetDescription())
+        
+        name = nameInput:GetText()
+
+        if mealType = "Chinese" and price <= 20
+            recommendation = "Genghis Khan"
+        elseif mealType = "Chinese" and price > 20
+            recommendation = "Din Tai Fung"
+        elseif mealType = "Italian" and price <= 30
+            recommendation = "Bizzaro's"
+        elseif mealType = "Italian" and price > 30
+            recommendation = "Casina Spinasse"
+        elseif mealType = "Breakfast" and price <= 15
+            recommendation = "Glo's Diner"
+        else
+            recommendation = "Portage Bay"
+        end
+
+        resultLabel:SetText("Hello, " + name + "! It sounds like you want to eat at a " + mealType + " restaurant and spend " + price + " dollars per person. I recommend " + recommendation)                
+        resultLabel:SetDescription(resultLabel:GetText())
+    end
+
+    action Start
+        SetBackgroundColor(NewColor(0.5, 0.42, 0.65))
+
+        Page homePage
+        homePage:SetName("Home")
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Where Should I Eat?")
+        title:SetFontSize(30)
+        title:SetFontColor(labelColor)
+        title:SetPixelX(25)
+        title:SetPixelY(540)
+        homePage:Add(title)
+
+        Icon decoration = CreateIcon("Eatery Icon.png")
+        decoration:SetName("Eatery Icon")
+        decoration:SetDescription("A decorative icon showing a knife and fork.")
+        decoration:SetPixelWidth(50)
+        decoration:SetPixelHeight(50)
+        decoration:SetPixelX(325)
+        decoration:SetPixelY(525)
+        homePage:Add(decoration)
+
+        Label nameLabel = CreateLabel()
+        nameLabel:SetFocusable(false)
+        nameLabel:SetText("Name")
+        nameLabel:SetFontColor(labelColor)
+        nameLabel:SetFontSize(20)
+        nameLabel:SetPixelX(25)
+        nameLabel:SetPixelY(485)
+        homePage:Add(nameLabel)
+
+        nameInput = CreateTextBox()
+        nameInput:SetFontSize(20)
+        nameInput:SetPixelX(120)
+        nameInput:SetPixelY(472)
+        nameInput:SetPixelWidth(260)
+        nameInput:SetPixelHeight(35)
+        homePage:Add(nameInput)
+
+        Label typeLabel = CreateLabel()
+        typeLabel:SetName("Category")
+        typeLabel:SetText("Type of Meal")
+        typeLabel:SetFontSize(20)
+        typeLabel:SetFontColor(labelColor)
+        typeLabel:SetPixelX(25)
+        typeLabel:SetPixelY(420)
+        homePage:Add(typeLabel)
+
+        chineseButton = CreateButton()
+        chineseButton:SetName("Chinese")
+        chineseButton:SetFontSize(20)
+        chineseButton:SetBackgroundColor(labelColor)
+        chineseButton:SetPixelX(25)
+        chineseButton:SetPixelY(355)
+        chineseButton:SetPixelWidth(85)
+        chineseButton:SetPixelHeight(45)
+        homePage:Add(chineseButton)
+
+        italianButton = CreateButton()
+        italianButton:SetName("Italian")
+        italianButton:SetFontSize(20)
+        italianButton:SetBackgroundColor(labelColor)
+        italianButton:SetPixelX(120)
+        italianButton:SetPixelY(355)
+        italianButton:SetPixelWidth(70)
+        italianButton:SetPixelHeight(45)
+        homePage:Add(italianButton)
+
+        breakfastButton = CreateButton()
+        breakfastButton:SetName("Breakfast")
+        breakfastButton:SetFontSize(20)
+        breakfastButton:SetBackgroundColor(labelColor)
+        breakfastButton:SetPixelX(200)
+        breakfastButton:SetPixelY(355)
+        breakfastButton:SetPixelWidth(105)
+        breakfastButton:SetPixelHeight(45)
+        homePage:Add(breakfastButton)
+        
+        Label dollarsPerLabel = CreateLabel()
+        dollarsPerLabel:SetName("Price")
+        dollarsPerLabel:SetText("Dollars per Person")
+        dollarsPerLabel:SetFontSize(20)
+        dollarsPerLabel:SetFontColor(labelColor)
+        dollarsPerLabel:SetPixelX(25)
+        dollarsPerLabel:SetPixelY(310)
+        homePage:Add(dollarsPerLabel)
+
+        priceDown = CreateButton("Down Button.png")
+        priceDown:SetName("Reduce Price")
+        priceDown:SetIconColor(labelColor)
+        priceDown:SetPixelWidth(30)
+        priceDown:SetPixelHeight(30)
+        priceDown:SetPixelX(220)
+        priceDown:SetPixelY(300)
+        homePage:Add(priceDown)
+
+        priceUp = CreateButton("Up Button.png")
+        priceUp:SetName("Increase Price")
+        priceUp:SetIconColor(labelColor)
+        priceUp:SetPixelWidth(30)
+        priceUp:SetPixelHeight(30)
+        priceUp:SetPixelX(255)
+        priceUp:SetPixelY(300)
+        homePage:Add(priceUp)
+
+        currentPrice = CreateLabel()
+        currentPrice:SetFontSize(26)
+        currentPrice:SetFontColor(labelColor)
+        currentPrice:SetName("Current Price")
+        currentPrice:SetText("$" + price)
+        currentPrice:SetPixelX(300)
+        currentPrice:SetPixelY(305)
+        homePage:Add(currentPrice)
+
+        Icon resultBackground = CreateRectangle(NewColor(1, 1, 1, 0.5))
+        resultBackground:SetFocusable(false)
+        resultBackground:SetPixelX(25)
+        resultBackground:SetPixelY(25)
+        resultBackground:SetPixelWidth(350)
+        resultBackground:SetPixelHeight(240)
+        homePage:Add(resultBackground)
+
+        resultLabel = CreateLabel()
+        resultLabel:SetText("")
+        resultLabel:SetFontSize(26)
+        resultLabel:SetFontColor(labelColor)
+        resultLabel:SetMaximumWidth(330)
+        resultLabel:SetPixelX(35)
+        resultLabel:SetPixelY(240)
+        homePage:Add(resultLabel)
+
+        AddPage(homePage)
+    end
+
+    action Main
+        // This command opens the window, then it runs the Start action.
+        StartGame()
+    end
+
+end
