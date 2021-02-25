@@ -1,0 +1,278 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Containers.Array
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+/*
+DO THIS:
+Run this program and carefully read each individual part of the program.
+
+DISCUSS:
+Discuss these questions with a partner and be prepared to share answers with the class.
+* Lines 29-30: Why does this program use two lists? What is each one storing?
+* Lines 31-32: Why does this program include the variables topsIndex and bottomsIndex?
+  What would happen if these variables were removed from the program?
+* Lines 54-60: Write a short description of what the event handling code on these lines does.
+* Line 47: What is the conditional statement "topsIndex < topsList:GetSize() - 1" checking?
+  What would break if it was instead "topsIndex < topsList:GetSize()"?
+* Lines 41-61: Find all the places that the UpdateScreen function is called. What changes
+  about the way the app runs if any of these calls were removed?
+
+MODIFY:
+Edit the if-statement on lines 46-49 so that the topsIndex is set to 0 if the user hits the
+right button when they're already at the end of the list.
+*/
+
+    Array<Icon> topsList
+    Array<Icon> bottomsList
+    integer topsIndex = 0
+    integer bottomsIndex = 0
+    Icon currentTop = undefined
+    Icon currentBottom = undefined
+
+    Button previousTop = undefined
+    Button nextTop = undefined
+    Button previousBottom = undefined
+    Button nextBottom = undefined
+
+    action ButtonActivated(Button button)
+        if button = previousTop
+            if topsIndex > 0
+                topsIndex = topsIndex - 1
+            end
+        elseif button = nextTop
+            if topsIndex < topsList:GetSize() - 1
+                topsIndex = topsIndex + 1
+            end
+        elseif button = previousBottom
+            if bottomsIndex > 0
+                bottomsIndex = bottomsIndex - 1
+            end
+        elseif button = nextBottom
+            if bottomsIndex < bottomsList:GetSize() - 1
+                bottomsIndex = bottomsIndex + 1
+            end
+        end
+
+        UpdateScreen()
+    end
+
+    action UpdateScreen
+        currentTop:Hide()
+        currentBottom:Hide()
+
+        currentTop = topsList:Get(topsIndex)
+        currentBottom = bottomsList:Get(bottomsIndex)
+
+        currentTop:Show()
+        currentBottom:Show()
+    end
+
+    action Start
+        Page page
+        page:SetName("Main")
+
+        SetBackgroundColor(NewColor(1, 0.86, 0.82))
+
+        Icon banner = CreateRectangle(NewColor(1, 0.92, 0.90))
+        banner:SetFocusable(false)
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(60)
+        banner:SetPixelX(0)
+        banner:SetPixelY(540)
+        page:Add(banner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Outfit Picker")
+        title:SetFontSize(48)
+        title:SetPixelX(20)
+        title:SetPixelY(550)
+        page:Add(title)
+
+        Icon decoration = CreateIcon("Shopping Cart Icon.png")
+        decoration:SetFocusable(false)
+        decoration:SetPixelWidth(60)
+        decoration:SetPixelHeight(60)
+        decoration:SetPixelX(330)
+        decoration:SetPixelY(540)
+        page:Add(decoration)
+
+        Color brown = NewColor(0.75, 0.5, 0.5)
+
+        previousTop = CreateButton("Left Button.png")
+        previousTop:SetIconColor(brown)
+        previousTop:SetPixelX(10)
+        previousTop:SetPixelY(380)
+        previousTop:SetPixelWidth(70)
+        previousTop:SetPixelHeight(70)
+        page:Add(previousTop)
+
+        Icon top1 = CreateIcon("Top1.png")
+        top1:SetName("Top 1")
+        top1:SetDescription("A comfortable orange hoody")
+        top1:SetPixelWidth(232)
+        top1:SetPixelHeight(245)
+        top1:SetPixelX(84)
+        top1:SetPixelY(260)
+        topsList:Add(top1)
+        page:Add(top1)
+
+        currentTop = top1
+
+        Icon top2 = CreateIcon("Top2.png")
+        top2:SetName("Top 2")
+        top2:SetDescription("A deep blue jacket over a purple shirt")
+        top2:SetPixelWidth(232)
+        top2:SetPixelHeight(245)
+        top2:SetPixelX(84)
+        top2:SetPixelY(260)
+        top2:Hide()
+        topsList:Add(top2)
+        page:Add(top2)
+
+        Icon top3 = CreateIcon("Top3.png")
+        top3:SetName("Top 3")
+        top3:SetDescription("A red tee shirt with white stripes")
+        top3:SetPixelWidth(232)
+        top3:SetPixelHeight(245)
+        top3:SetPixelX(84)
+        top3:SetPixelY(260)
+        top3:Hide()
+        topsList:Add(top3)
+        page:Add(top3)
+
+        Icon top4 = CreateIcon("Top4.png")
+        top4:SetName("Top 4")
+        top4:SetDescription("A rainbow striped tank top")
+        top4:SetPixelWidth(232)
+        top4:SetPixelHeight(245)
+        top4:SetPixelX(84)
+        top4:SetPixelY(260)
+        top4:Hide()
+        topsList:Add(top4)
+        page:Add(top4)
+
+        Icon top5 = CreateIcon("Top5.png")
+        top5:SetName("Top 5")
+        top5:SetDescription("A short sleeved green shirt with pale dots")
+        top5:SetPixelWidth(232)
+        top5:SetPixelHeight(245)
+        top5:SetPixelX(84)
+        top5:SetPixelY(260)
+        top5:Hide()
+        topsList:Add(top5)
+        page:Add(top5)
+
+        Icon top6 = CreateIcon("Top6.png")
+        top6:SetName("Top 6")
+        top6:SetDescription("A long-sleeved orange button-up shirt")
+        top6:SetPixelWidth(232)
+        top6:SetPixelHeight(245)
+        top6:SetPixelX(84)
+        top6:SetPixelY(260)
+        top6:Hide()
+        topsList:Add(top6)
+        page:Add(top6)
+
+        nextTop = CreateButton("Right Button.png")
+        nextTop:SetIconColor(brown)
+        nextTop:SetPixelX(310)
+        nextTop:SetPixelY(380)
+        nextTop:SetPixelWidth(70)
+        nextTop:SetPixelHeight(70)
+        page:Add(nextTop)
+
+        previousBottom = CreateButton("Left Button.png")
+        previousBottom:SetIconColor(brown)
+        previousBottom:SetPixelX(10)
+        previousBottom:SetPixelY(180)
+        previousBottom:SetPixelWidth(70)
+        previousBottom:SetPixelHeight(70)
+        page:Add(previousBottom)
+
+        Icon bottom1 = CreateIcon("Bottom1.png")
+        bottom1:SetName("Bottom 1")
+        bottom1:SetDescription("A set of blue shorts")
+        bottom1:SetPixelWidth(190)
+        bottom1:SetPixelHeight(345)
+        bottom1:SetPixelX(95)
+        bottom1:SetPixelY(10)
+        bottomsList:Add(bottom1)
+        page:Add(bottom1)
+
+        currentBottom = bottom1
+
+        Icon bottom2 = CreateIcon("Bottom2.png")
+        bottom2:SetName("Bottom 2")
+        bottom2:SetDescription("A pair of black leggings")
+        bottom2:SetPixelWidth(190)
+        bottom2:SetPixelHeight(345)
+        bottom2:SetPixelX(95)
+        bottom2:SetPixelY(10)
+        bottom2:Hide()
+        bottomsList:Add(bottom2)
+        page:Add(bottom2)
+
+        Icon bottom3 = CreateIcon("Bottom3.png")
+        bottom3:SetName("Bottom 3")
+        bottom3:SetDescription("A dark green skirt with a plaid design")
+        bottom3:SetPixelWidth(190)
+        bottom3:SetPixelHeight(345)
+        bottom3:SetPixelX(95)
+        bottom3:SetPixelY(10)
+        bottom3:Hide()
+        bottomsList:Add(bottom3)
+        page:Add(bottom3)
+
+        Icon bottom4 = CreateIcon("Bottom4.png")
+        bottom4:SetName("Bottom 4")
+        bottom4:SetDescription("A sleek purple skirt")
+        bottom4:SetPixelWidth(190)
+        bottom4:SetPixelHeight(345)
+        bottom4:SetPixelX(95)
+        bottom4:SetPixelY(10)
+        bottom4:Hide()
+        bottomsList:Add(bottom4)
+        page:Add(bottom4)
+
+        Icon bottom5 = CreateIcon("Bottom5.png")
+        bottom5:SetName("Bottom 5")
+        bottom5:SetDescription("A pair of shorter black leggings with cuffs")
+        bottom5:SetPixelWidth(190)
+        bottom5:SetPixelHeight(345)
+        bottom5:SetPixelX(95)
+        bottom5:SetPixelY(10)
+        bottom5:Hide()
+        bottomsList:Add(bottom5)
+        page:Add(bottom5)
+
+        Icon bottom6 = CreateIcon("Bottom6.png")
+        bottom6:SetName("Bottom 6")
+        bottom6:SetDescription("A frilly pink skirt")
+        bottom6:SetPixelWidth(190)
+        bottom6:SetPixelHeight(345)
+        bottom6:SetPixelX(95)
+        bottom6:SetPixelY(10)
+        bottom6:Hide()
+        bottomsList:Add(bottom6)
+        page:Add(bottom6)
+
+        nextBottom = CreateButton("Right Button.png")
+        nextBottom:SetIconColor(brown)
+        nextBottom:SetPixelX(310)
+        nextBottom:SetPixelY(180)
+        nextBottom:SetPixelWidth(70)
+        nextBottom:SetPixelHeight(70)
+        page:Add(nextBottom)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+end
