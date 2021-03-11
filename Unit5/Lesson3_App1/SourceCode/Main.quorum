@@ -1,0 +1,33 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+* Read the code
+* Create a new list of numbers for the array "myUnluckyNumbers"
+* Use "IntegerArrayToText" to turn the array into a text value
+* Use "output" to print the list to the console
+
+*/
+
+    action Main
+        Array<integer> myLuckyNumbers
+        myLuckyNumbers:Add(63)
+        myLuckyNumbers:Add(74)
+        myLuckyNumbers:Add(98)
+        myLuckyNumbers:Add(33)
+        output "My Lucky Numbers:"
+        output IntegerArrayToText(myLuckyNumbers)
+
+        // Create a list of four numbers
+
+
+        output "My Unlucky Numbers:"
+
+        // Print the list to the console
+
+
+    end
+
+end

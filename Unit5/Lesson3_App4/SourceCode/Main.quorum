@@ -1,0 +1,91 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Control
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Events.MouseEvent
+use Libraries.Interface.Events.KeyboardEvent
+use Libraries.Game.Graphics.Label
+use Libraries.Containers.Array
+
+class Main is Application
+/*
+DO THIS:
+Make this Magic 8 Ball app work!
+* When the screen is clicked, make a random string the answers list display on the 8 Ball
+* Use the Random List Access Pattern to update the code
+
+(Reminder: You can use the RandomNumber(startInteger, endInteger) command
+to generate a random integer between two values.)
+*/
+
+    Array<text> answers
+    integer index = 0
+
+    Label answerOutput = undefined
+
+    action MouseClicked(Control item, MouseEvent event)
+        // If the left mouse button is clicked, update the screen.
+        if event:mouseButton = event:LEFT
+            UpdateScreen()
+        end
+    end
+
+    action KeyPressed(KeyboardEvent event)
+        // If the spacebar is pressed, update the screen.
+        if event:keyCode = event:SPACE
+            UpdateScreen()
+        end
+    end
+
+    action UpdateScreen
+        // Update the indext to a random number
+        // Use the Random List Access Pattern
+
+
+        // Set the text of "answerOutput"
+        answerOutput:SetText(answers:Get(index))
+        answerOutput:SetDescription(answerOutput:GetText())
+        PlaySound("bubble_pop_cluster_2.ogg")
+    end
+
+    action Start
+        answers:Add("Yes, absolutely")
+        answers:Add("Maybe")
+        answers:Add("Don't even think about it!")
+        answers:Add("I'm not sure")
+        answers:Add("Ask me again")
+        answers:Add("I have a good feeling about this")
+        answers:Add("Are you kidding?")
+        answers:Add("You are crazy!")
+        answers:Add("Why not!")
+
+        Page page
+        page:SetName("Home")
+
+        Icon background = CreateIcon("8 Ball.png")
+        background:SetFocusable(false)
+        background:SetName("8 Ball")
+        background:SetPixelWidth(400)
+        background:SetPixelHeight(400)
+        background:SetPixelX(0)
+        background:SetPixelY(100)
+        page:Add(background)
+        
+        answerOutput = CreateLabel()
+        answerOutput:SetName("Answer")
+        answerOutput:SetColor(White())
+        answerOutput:SetFontSize(22)
+        answerOutput:SetPixelX(155)
+        answerOutput:SetPixelY(335)
+        answerOutput:SetMaximumWidth(110)
+        page:Add(answerOutput)
+
+        AddPage(page)
+
+        UpdateScreen()
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

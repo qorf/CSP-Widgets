@@ -1,0 +1,29 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+In addition to numbers, lists care store strings.
+* Read the starter code for the list "trees" and run the program
+* Create your own list with three of your favorite songs in it
+* Use "output" and "TextArrayToText" to print the list to the console
+
+*/
+    action Main
+        output "Trees:"
+        Array<text> trees
+        trees:Add("oak")
+        trees:Add("maple")
+        trees:Add("dogwood")
+        output TextArrayToText(trees)
+        output ""
+
+        output "My Favorite Songs:"
+        // Create a list with three of your favorite songs
+        // Print the list to the console
+
+
+    end
+
+end

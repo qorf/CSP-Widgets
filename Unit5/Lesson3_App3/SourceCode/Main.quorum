@@ -1,0 +1,43 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+* Print to the console the first, third, fifth, and last animals in the list using the list name and index.
+* Don't forget list indexes in Quorum start at 0, so the last index is always list:GetSize() - 1
+
+*/
+
+    action Main
+        Array<text> animals
+        animals:Add("cat")
+        animals:Add("dog")
+        animals:Add("bird")
+        animals:Add("raccoon")
+        animals:Add("bear")
+        animals:Add("rabbit")
+        animals:Add("coyote")
+        animals:Add("deer")
+        animals:Add("buffalo")
+        animals:Add("lizard")
+        animals:Add("turtle")
+
+        output "The first animal in the list is a: "
+        output animals:Get(0)
+
+        output "The third animal in the list is a: "
+        // Print to the console the third animal using the list name and index
+
+
+        output "The fifth animal in the list is a: "
+        // Print to the console the fifth animal using the list name and index
+
+
+        output "The last animal in the list is a: "
+        // Print the last animal in the list to the console.
+
+        
+    end
+
+end

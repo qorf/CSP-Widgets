@@ -1,0 +1,33 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+* Read the code below
+* Use "Add" to add two more food items to the list
+* NOtice how the length of the list grows each time an item is added
+
+*/
+
+    action Main
+        Array<text> food
+        food:Add("carrots")
+        food:Add("pizza")
+        food:Add("lettuce")
+        food:Add("strawberries")
+        output "My food list: " + TextArrayToText(food)
+        output "Length of list: " + food:GetSize()
+
+        // Use "Add" to add an item to the food list
+
+        output "My food list: " + TextArrayToText(food)
+        output "Length of list: " + food:GetSize()
+
+        // Use "Add" to add an item to the food list
+
+        output "My food list: " + TextArrayToText(food)
+        output "Length of list: " + food:GetSize()
+    end
+
+end

@@ -1,0 +1,26 @@
+/*
+The characters in a string each have an index.
+* text:GetSize() returns the length of a string.
+* text:Subtext(start, end) returns a portion of the string, beginning at the start
+  index and ending with the letter before the end index.
+
+DO THIS:
+* Run the code to see how these two new commands work.
+* Follow the pattern in the starter code to print the name, length, and
+  first character of the longest country and city name in the console.
+
+*/
+
+text longestAnimal = "Parastratiosphecomyia sphecomyioides"
+text longestCountry = "The United Kingdom of Great Britain and Northern Ireland"
+text longestCity = "Krung Thep Mahanakhon Amon Rattanakosin Mahinthara Yuthaya Mahadilok Phop Noppharat Ratchathani Burirom Udomratchaniwet Mahasathan Amon Piman Awatan Sathit Sakkathattiya Witsanukam Prasit"            
+
+output "The longest animal name is " + longestAnimal
+output "It has " + longestAnimal:GetSize() + " characters"
+output "Its first letter is " + longestAnimal:GetSubtext(0, 1)
+
+// Print the name, length, and first letter of the longestCountry
+
+
+
+// Print the name, length, and first letter of the longestCity

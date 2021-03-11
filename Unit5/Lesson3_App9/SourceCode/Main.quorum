@@ -1,0 +1,115 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Containers.Array
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+/*
+DO THIS:
+We can turn a list of food into a Food Diary app
+* Read the code
+* Use "Add" to add a new item to the food diary list when the "Add Item" button is pressed
+
+NOTE: Take a look at line 37. Can you figure out how "JoinText" works?
+*/
+
+    Array<text> food
+
+    Label diaryOutput = undefined
+    TextBox diaryInput = undefined
+    Button addButton = undefined
+
+    action ButtonActivated(Button button)
+        text newFood = diaryInput:GetText()
+
+        // Use "Add" to add a new item to the food diary list
+
+
+        diaryInput:SetText("")
+        PlaySound("puzzle_game_accent_a_01.ogg")
+        UpdateScreen()
+    end
+
+    action UpdateScreen
+        diaryOutput:SetText(JoinText(food, ", "))
+        diaryOutput:SetDescription(diaryOutput:GetText())
+    end
+
+    action Start
+        food:Add("oatmeal")
+        food:Add("pancakes")
+        food:Add("crackers")
+        food:Add("peanuts")
+
+        SetBackgroundColor(NewColor(1, 0.64, 0))
+
+        Page page
+        page:SetName("Page 1")
+
+        Color brown = NewColor(0.3, 0.19, 0)
+
+        Icon banner = CreateRectangle(brown)
+        banner:SetFocusable(false)
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(50)
+        banner:SetPixelX(0)
+        banner:SetPixelY(520)
+        page:Add(banner)
+
+        Label title = CreateLabel()
+        title:SetFontSize(46)
+        title:SetColor(White())
+        title:SetPixelX(80)
+        title:SetPixelY(530)
+        title:SetName("Title")
+        title:SetText("Food Diary")
+        page:Add(title)
+
+        Icon background = CreateRectangle(brown)
+        background:SetFocusable(false)
+        background:SetPixelWidth(350)
+        background:SetPixelHeight(350)
+        background:SetPixelX(25)
+        background:SetPixelY(140)
+        page:Add(background)
+
+        diaryOutput = CreateLabel()
+        diaryOutput:SetName("Diary")
+        diaryOutput:SetColor(White())
+        diaryOutput:SetFontSize(28)
+        diaryOutput:SetPixelX(35)
+        diaryOutput:SetPixelY(460)
+        diaryOutput:SetMaximumWidth(330)
+        page:Add(diaryOutput)
+        
+        diaryInput = CreateTextBox()
+        diaryInput:SetName("New food input")
+        diaryInput:SetFontSize(24)
+        diaryInput:SetPixelWidth(220)
+        diaryInput:SetPixelHeight(40)
+        diaryInput:SetPixelX(25)
+        diaryInput:SetPixelY(70)
+        page:Add(diaryInput)
+
+        addButton = CreateButton()
+        addButton:SetName("Add Item")
+        addButton:SetFontSize(22)
+        addButton:SetPixelWidth(110)
+        addButton:SetPixelHeight(40)
+        addButton:SetPixelX(265)
+        addButton:SetPixelY(70)
+        page:Add(addButton)
+
+        AddPage(page)
+
+        UpdateScreen()
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

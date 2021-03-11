@@ -1,0 +1,144 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+use Libraries.Containers.Array
+
+class Main is Application
+    Array<text> reminders
+    integer index = 0
+
+    Label reminderOutput = undefined
+    Button leftButton = undefined
+    Label countOutput = undefined
+    Button rightButton = undefined
+    TextBox reminderInput = undefined
+    Button addButton = undefined
+
+    action ButtonActivated(Button button)
+
+
+
+    end
+
+    action UpdateScreen
+
+
+
+    end
+
+
+
+
+    action Start
+        Page page
+        page:SetName("Home")
+        
+        SetBackgroundColor(NewColor(0.92, 0.34, 0.34))
+
+        Icon topBanner = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+        topBanner:SetFocusable(false)
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(60)
+        topBanner:SetPixelX(0)
+        topBanner:SetPixelY(540)
+        page:Add(topBanner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("RemindME")
+        title:SetFontSize(50)
+        title:SetColor(White())
+        title:SetPixelX(15)
+        title:SetPixelY(550)
+        page:Add(title)
+
+        Icon decoration = CreateIcon("Red List Icon.png")
+        decoration:SetFocusable(false)
+        decoration:SetPixelWidth(60)
+        decoration:SetPixelHeight(60)
+        decoration:SetPixelX(340)
+        decoration:SetPixelY(540)
+        page:Add(decoration)
+
+        Icon background = CreateRectangle(White())
+        background:SetFocusable(false)
+        background:SetPixelWidth(370)
+        background:SetPixelHeight(300)
+        background:SetPixelX(15)
+        background:SetPixelY(225)
+        page:Add(background)
+
+        /*
+        Label reminderOutput = undefined
+        Button leftButton = undefined
+        Label countOutput = undefined
+        Button rightButton = undefined
+        TextBox reminderInput = undefined
+        Button addButton = undefined
+        */
+
+        reminderOutput = CreateLabel()
+        reminderOutput:SetFontSize(40)
+        reminderOutput:SetText("Add reminders!")
+        reminderOutput:SetPixelX(25)
+        reminderOutput:SetPixelY(475)
+        reminderOutput:SetMaximumWidth(350)
+        page:Add(reminderOutput)
+
+        Color gold = NewColor(0.98, 0.87, 0.34)
+
+        leftButton = CreateButton("Left Button.png")
+        leftButton:SetIconColor(gold)
+        leftButton:SetPixelWidth(60)
+        leftButton:SetPixelHeight(60)
+        leftButton:SetPixelX(15)
+        leftButton:SetPixelY(150)
+        page:Add(leftButton)
+
+        countOutput = CreateLabel()
+        countOutput:SetName("Reminder Number")
+        countOutput:SetText("0")
+        countOutput:SetColor(White())
+        countOutput:SetFontSize(40)
+        countOutput:SetPixelX(190)
+        countOutput:SetPixelY(165)
+        page:Add(countOutput)
+        
+        rightButton = CreateButton("Right Button.png")
+        rightButton:SetIconColor(gold)
+        rightButton:SetPixelWidth(60)
+        rightButton:SetPixelHeight(60)
+        rightButton:SetPixelX(325)
+        rightButton:SetPixelY(150)
+        page:Add(rightButton)
+
+        reminderInput = CreateTextBox()
+        reminderInput:SetName("New Reminder")
+        reminderInput:SetFontSize(22)
+        reminderInput:SetPixelX(15)
+        reminderInput:SetPixelY(85)
+        reminderInput:SetPixelWidth(285)
+        reminderInput:SetPixelHeight(50)
+        page:Add(reminderInput)
+
+        addButton = CreateButton()
+        addButton:SetName("Add")
+        addButton:SetBackgroundColor(gold)
+        addButton:SetFontSize(26)
+        addButton:SetPixelX(320)
+        addButton:SetPixelY(85)
+        addButton:SetPixelWidth(65)
+        addButton:SetPixelHeight(50)
+        page:Add(addButton)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

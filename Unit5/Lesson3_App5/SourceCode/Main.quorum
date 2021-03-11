@@ -1,0 +1,133 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+use Libraries.Containers.Array
+
+class Main is Application
+/*
+DO THIS:
+This app should let the user scroll through their classes, but the left button isn't working.
+* Read the starter code
+* Add code to the "leftButton" so the user can scroll back to the left after scrolling to the right.
+* Hint: Use the List Scrolling Pattern
+
+*/
+
+    // Create and assign variables
+    integer index = 0
+    Array<text> classes
+
+    Button leftButton = undefined
+    Button rightButton = undefined
+    Label classLabel = undefined
+    Label periodLabel = undefined
+
+    action ButtonActivated(Button button)
+        if button = leftButton
+            // Use the Scroll Pattern to decrease the index
+
+            // Call UpdateScreen()
+
+            PlaySound("puzzle_game_accent_small_d_01.ogg")
+        elseif button = rightButton
+            if index < classes:GetSize() - 1
+                index = index + 1
+            end
+
+            UpdateScreen()
+
+            PlaySound("puzzle_game_accent_small_d_02.ogg")
+        end
+    end
+
+    action UpdateScreen
+        classLabel:SetText(classes:Get(index))
+        classLabel:SetDescription(classLabel:GetText())
+
+        periodLabel:SetText("Period: " + (index + 1))
+        periodLabel:SetDescription("" + (index + 1))
+    end
+
+    action Start
+        classes:Add("Biology")
+        classes:Add("Algebra")
+        classes:Add("Social Studies")
+        classes:Add("Gym")
+
+        SetBackgroundColor(NewColor(0.59, 0.76, 0.34))
+        Color darkGreen = NewColor(0.41, 0.53, 0.24)
+        Color yellow = NewColor(0.97, 0.93, 0.38)
+
+        Page page
+        page:SetName("Home")
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetFontSize(50)
+        title:SetColor(White())
+        title:SetText("Class Schedule")
+        title:SetPixelX(25)
+        title:SetPixelY(540)
+        page:Add(title)
+
+        Icon background1 = CreateRectangle(darkGreen)
+        background1:SetFocusable(false)
+        background1:SetPixelWidth(200)
+        background1:SetPixelHeight(200)
+        background1:SetPixelX(100)
+        background1:SetPixelY(250)
+        page:Add(background1)
+
+        Icon background2 = CreateRectangle(darkGreen)
+        background2:SetFocusable(false)
+        background2:SetPixelWidth(200)
+        background2:SetPixelHeight(50)
+        background2:SetPixelX(100)
+        background2:SetPixelY(190)
+        page:Add(background2)
+
+        leftButton = CreateButton("Left Button.png")
+        leftButton:SetIconColor(yellow)
+        leftButton:SetPixelWidth(80)
+        leftButton:SetPixelHeight(80)
+        leftButton:SetPixelX(10)
+        leftButton:SetPixelY(300)
+        page:Add(leftButton)
+
+        classLabel = CreateLabel()
+        classLabel:SetColor(yellow)
+        classLabel:SetFontSize(30)
+        classLabel:SetName("Class")
+        classLabel:SetPixelX(110)
+        classLabel:SetPixelY(410)
+        classLabel:SetMaximumWidth(180)
+        page:Add(classLabel)
+
+        periodLabel = CreateLabel()
+        periodLabel:SetColor(yellow)
+        periodLabel:SetFontSize(30)
+        periodLabel:SetName("Period")
+        periodLabel:SetPixelX(110)
+        periodLabel:SetPixelY(200)
+        page:Add(periodLabel)
+
+        rightButton = CreateButton("Right Button.png")
+        rightButton:SetIconColor(yellow)
+        rightButton:SetPixelWidth(80)
+        rightButton:SetPixelHeight(80)
+        rightButton:SetPixelX(310)
+        rightButton:SetPixelY(300)
+        page:Add(rightButton)
+
+        AddPage(page)
+
+        UpdateScreen()
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

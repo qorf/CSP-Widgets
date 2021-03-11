@@ -1,0 +1,59 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+This program creates two lists. Use the "RemoveAt(index)" and "Add(index, element)" commands
+to fix the following problems:
+* Remove all numbers from the animals list
+* Add all missing months to the "months" list in their correct position
+* Remember that indexes start at 0
+
+*/
+
+    action Main
+        Array<text> animals
+        animals:Add("cat")
+        animals:Add("dog")
+        animals:Add("2")
+        animals:Add("bird")
+        animals:Add("raccoon")
+        animals:Add("bear")
+        animals:Add("11")
+        animals:Add("rabbit")
+        animals:Add("coyote")
+        animals:Add("deer")
+        animals:Add("13")
+        animals:Add("buffalo")
+        animals:Add("lizard")
+        animals:Add("turtle")
+
+        animals:RemoveAt(2)
+
+        // Add code to remove the other two numbers from the list
+
+        output TextArrayToText(animals)
+
+
+
+        Array<text> months
+        months:Add("January")
+        months:Add("February")
+        months:Add("March")
+        months:Add("May")
+        months:Add("June")
+        months:Add("July")
+        months:Add("August")
+        months:Add("October")
+        months:Add("December")
+
+        months:Add(3, "April")
+
+        // Add code to insert the months of "September" and "November" to their
+        // correct positions in the list.
+
+        output TextArrayToText(months)
+    end
+
+end

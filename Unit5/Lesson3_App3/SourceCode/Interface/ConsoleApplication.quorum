@@ -1,0 +1,47 @@
+package Libraries.Curriculum.Code
+
+use Libraries.Containers.Array
+
+class ConsoleApplication
+
+    action TextArrayToText(Array<text> array) returns text
+        text result = "["
+        text dq = result:GetDoubleQuote()
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + dq + array:Get(counter) + dq
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+
+    action IntegerArrayToText(Array<integer> array) returns text
+        text result = "["
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + array:Get(counter)
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+
+    action NumberArrayToText(Array<number> array) returns text
+        text result = "["
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + array:Get(counter)
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+
+end

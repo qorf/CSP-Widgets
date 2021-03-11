@@ -1,0 +1,162 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+use Libraries.Containers.Array
+
+class Main is Application
+/*
+DO THIS:
+This app keeps track of the user's top ten favorite songs. The user
+should be able to add new songs into the list.
+* Add code that will insert a new song into the list at the position
+  selection and remove the last song from the end of the list. There
+  should only ever be 10 songs in the list.
+* Don't forget indexes start at 0 as you add and remove songs.
+* You will need the "array:Add(index, element)" and "array:RemoveAt(index)" commands.
+* You can use "IsInteger(textVariable)" to check if a string is a valid integer value,
+ and "cast(integer, textVariable)" to transform a valid string into an integer.
+
+*/
+
+    Array<text> songList
+
+    Label songsOutput = undefined
+    TextBox rankInput = undefined
+    TextBox songInput = undefined
+    Button updateButton = undefined
+
+    action ButtonActivated(Button button)
+        if button = updateButton
+            // Add code to get the name of the new song and its position in the list
+
+
+            // Add code to insert the song into the list at the position indicated
+
+
+            // Add code to remove the last item from the list
+
+
+            PlaySound("whoosh_4.ogg")
+            UpdateScreen()
+        end
+    end
+
+    action UpdateScreen
+        songsOutput:SetText(JoinText(songList, "
+"))
+        songsOutput:SetDescription(songsOutput:GetText())
+    end
+
+    action Start
+        songList:Add("The Twist")
+        songList:Add("Stop! In the Name of Love")
+        songList:Add("Dancing in the Streets")
+        songList:Add("The Locomotion")
+        songList:Add("Happy Together")
+        songList:Add("I Wanna Hold Your Hand")
+        songList:Add("Build Me Up Buttercup")
+        songList:Add("Crimson and Clover")
+        songList:Add("Stand By Me")
+        songList:Add("I'm a Believer")
+
+        Page page
+        page:SetName("Song Page")
+
+        SetBackgroundColor(0.21, 0.18, 0.29)
+        Color paleGreen = NewColor(0.85, 1, 0.65)
+
+        Icon decoration = CreateIcon("Headphones Icon.png")
+        decoration:SetFocusable(false)
+        decoration:SetColor(Black())
+        decoration:SetPixelWidth(100)
+        decoration:SetPixelHeight(100)
+        decoration:SetPixelX(0)
+        decoration:SetPixelY(500)
+        page:Add(decoration)
+
+        Label title = CreateLabel()
+        
+        title:SetName("Title")
+        title:SetColor(paleGreen)
+        title:SetFontSize(60)
+        title:SetText("Top Ten")
+        title:SetPixelX(110)
+        title:SetPixelY(530)
+        page:Add(title)
+
+        Icon background = CreateRectangle(Black())
+        background:SetFocusable(false)
+        background:SetPixelX(10)
+        background:SetPixelY(200)
+        background:SetPixelWidth(380)
+        background:SetPixelHeight(300)
+        page:Add(background)
+
+        songsOutput = CreateLabel()
+        songsOutput:SetName("Top 10 Songs")
+        songsOutput:SetFontSize(22)
+        songsOutput:SetColor(paleGreen)
+        songsOutput:SetPixelX(15)
+        songsOutput:SetPixelY(475)
+        songsOutput:SetMaximumWidth(370)
+        page:Add(songsOutput)
+
+        Label rankLabel = CreateLabel()
+        rankLabel:SetFocusable(false)
+        rankLabel:SetText("Rank")
+        rankLabel:SetFontSize(18)
+        rankLabel:SetColor(paleGreen)
+        rankLabel:SetPixelX(10)
+        rankLabel:SetPixelY(175)
+        page:Add(rankLabel)
+        
+        Label songTitleLabel = CreateLabel()
+        songTitleLabel:SetFocusable(false)
+        songTitleLabel:SetText("Song Title")
+        songTitleLabel:SetFontSize(18)
+        songTitleLabel:SetColor(paleGreen)
+        songTitleLabel:SetPixelX(110)
+        songTitleLabel:SetPixelY(175)
+        page:Add(songTitleLabel)
+
+        rankInput = CreateTextBox()
+        rankInput:SetName("Rank")
+        rankInput:SetFontSize(22)
+        rankInput:SetPixelX(10)
+        rankInput:SetPixelY(130)
+        rankInput:SetPixelWidth(60)
+        rankInput:SetPixelHeight(30)
+        page:Add(rankInput)
+
+        songInput = CreateTextBox()
+        songInput:SetName("Song Title")
+        songInput:SetFontSize(22)
+        songInput:SetPixelX(110)
+        songInput:SetPixelY(130)
+        songInput:SetPixelWidth(280)
+        songInput:SetPixelHeight(30)
+        page:Add(songInput)
+
+        updateButton = CreateButton()
+        updateButton:SetName("Add New Song")
+        updateButton:SetBackgroundColor(paleGreen)
+        updateButton:SetFontSize(30)
+        updateButton:SetPixelX(90)
+        updateButton:SetPixelY(50)
+        updateButton:SetPixelWidth(220)
+        updateButton:SetPixelHeight(60)
+        page:Add(updateButton)
+
+        AddPage(page)
+
+        UpdateScreen()
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
