@@ -1,0 +1,147 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Containers.Array
+
+class Main is Application
+/*
+DO THIS:
+
+RUN: Run the program and carefully read each individual part of the program.
+
+DISCUSS: Discuss these questions with a partner and be prepared to share answers with the class.
+* Find the repeat while loop in the program. What does it do?
+* Take a look at the names of the screen elements set in the Start action. Then look at the event
+  handling code again. How is ("Output " + i) used? How does it evaluate with each round of the loop?
+* What happens if you change the label variable names? Try changing them from Output 0, Output 1, etc.
+  to Label 0, Label 1, etc. What do you need to change in the code for the program to still work?
+* What happens if you change the Boolean expression i < 4 in the loop? Change the Boolean expressions
+  to each of these options and discuss:
+    - i < 3
+    - i < 2
+    - i <= 3
+
+MODIFY: If time allows, make the following modifications to the program.
+    * Play a sound when the random button is clicked.
+    * Change the counting variable "i" to a different letter. Does your program still work?
+    * Add more phrases to the list
+*/
+
+    Array<text> phrases
+    Page mainPage
+
+    TextBox phraseInput = undefined
+    Button randomPhrase = undefined
+
+    action ButtonActivated(Button button)
+        text currentPhrase = phrases:Get(RandomNumber(0, phrases:GetSize() - 1))
+        phraseInput:SetText(currentPhrase)
+    end
+
+    action TextChanged(TextBox textBox)
+        text currentPhrase = phraseInput:GetText()
+
+        integer i = 0
+        repeat while i < 4
+            Label currentOutput = mainPage:GetLabel("Output " + i)
+            currentOutput:SetText(currentPhrase)
+            currentOutput:SetDescription(currentPhrase)
+            i = i + 1
+        end
+    end
+
+    action Start
+        phrases:Add("The quick brown fox jumps over the lazy dog")
+        phrases:Add("To be or not to be, that is the question")
+        phrases:Add("Lorem ipsum dolor sit amet")
+        phrases:Add("Try to be a rainbow in someone's cloud")
+
+        mainPage:SetName("Main Page")
+
+        SetBackgroundColor(NewColor(0.88, 0.89, 0.92))
+
+        Icon banner = CreateRectangle(NewColor(0.32, 0.35, 0.56, 0.57))
+        banner:SetFocusable(false)
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(60)
+        banner:SetPixelX(0)
+        banner:SetPixelY(540)
+        mainPage:Add(banner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Label Tester")
+        title:SetFontSize(50)
+        title:SetColor(White())
+        title:SetPixelX(20)
+        title:SetPixelY(550)
+        mainPage:Add(title)
+
+        Label output0 = CreateLabel()
+        output0:SetName("Output 0")
+        output0:SetText("")
+        output0:SetFontSize(30)
+        output0:SetColor(NewColor(0.75, 0.25, 0.25))
+        output0:SetPixelX(20)
+        output0:SetPixelY(500)
+        output0:SetMaximumWidth(360)
+        mainPage:Add(output0)
+
+        Label output1 = CreateLabel()
+        output1:SetName("Output 1")
+        output1:SetText("")
+        output1:SetFontSize(30)
+        output1:SetColor(NewColor(0.25, 0.75, 0.25))
+        output1:SetPixelX(20)
+        output1:SetPixelY(400)
+        output1:SetMaximumWidth(360)
+        mainPage:Add(output1)
+
+        Label output2 = CreateLabel()
+        output2:SetName("Output 2")
+        output2:SetText("")
+        output2:SetFontSize(30)
+        output2:SetColor(NewColor(0.25, 0.25, 0.75))
+        output2:SetPixelX(20)
+        output2:SetPixelY(300)
+        output2:SetMaximumWidth(360)
+        mainPage:Add(output2)
+
+        Label output3 = CreateLabel()
+        output3:SetName("Output 3")
+        output3:SetText("")
+        output3:SetFontSize(30)
+        output3:SetColor(NewColor(0.25, 0.25, 0.25))
+        output3:SetPixelX(20)
+        output3:SetPixelY(200)
+        output3:SetMaximumWidth(360)
+        mainPage:Add(output3)
+
+        phraseInput = CreateTextBox()
+        phraseInput:SetName("Enter a phrase")
+        phraseInput:SetFontSize(26)
+        phraseInput:SetPixelX(20)
+        phraseInput:SetPixelY(65)
+        phraseInput:SetPixelWidth(360)
+        phraseInput:SetPixelHeight(70)
+        mainPage:Add(phraseInput)
+
+        randomPhrase = CreateButton()
+        randomPhrase:SetName("Random Phrase")
+        randomPhrase:SetFontSize(20)
+        randomPhrase:SetPixelX(120)
+        randomPhrase:SetPixelY(10)
+        randomPhrase:SetPixelWidth(160)
+        randomPhrase:SetPixelHeight(40)
+        mainPage:Add(randomPhrase)
+
+        AddPage(mainPage)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

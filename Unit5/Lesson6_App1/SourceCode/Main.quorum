@@ -1,0 +1,180 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+/*
+DO THIS:
+Run the app, then discuss these questions with a partner.
+* What information does the user input?
+* How does the app process that information?
+    - What is being repeated? Where is there an opportunity to use a loop?
+* What information does the app output?
+
+After answering these questions, carefully read each individual part of the program.
+
+DICUSS:
+* On what lines of code is the program using a loop?
+* Which lines of code decide how many times to flip the coin?
+
+*/
+
+    integer heads = 0
+    integer tails = 0
+    integer totalFlips = 0
+
+    Button quarter = undefined
+    TextBox flipInput = undefined
+    Label headsOutput = undefined
+    Label tailsOutput = undefined
+
+    action ButtonActivated(Button button)
+        if IsInteger(flipInput:GetText())
+            heads = 0
+            tails = 0
+            totalFlips = cast(integer, flipInput:GetText())
+
+            repeat totalFlips times
+                integer flip = RandomNumber(0, 1)
+                if flip = 0
+                    // Increase heads by 1
+                    heads = heads + 1
+                else
+                    // Increase tails by 1
+                    tails = tails + 1
+                end
+            end
+
+            PlaySound("coin_3.ogg")
+            UpdateScreen()
+        end
+    end
+
+    action UpdateScreen()
+        headsOutput:SetText("" + heads)
+        headsOutput:SetDescription("" + heads)
+        tailsOutput:SetText("" + tails)
+        tailsOutput:SetDescription("" + tails)
+    end
+
+    action Start
+        Page mainPage
+        mainPage:SetName("Main Screen")
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Coin Flip Simulator")
+        title:SetFontSize(34)
+        title:SetPixelX(60)
+        title:SetPixelY(550)
+        mainPage:Add(title)
+        
+        quarter = CreateButton("Quarter.png")
+        quarter:SetPixelX(85)
+        quarter:SetPixelY(300)
+        quarter:SetPixelWidth(230)
+        quarter:SetPixelHeight(230)
+        mainPage:Add(quarter)
+
+        Label directions = CreateLabel()
+        directions:SetName("Directions")
+        directions:SetText("Choose the total flips. Then click the quarter.")
+        directions:SetFontSize(18)
+        directions:SetPixelX(25)
+        directions:SetPixelY(270)
+        mainPage:Add(directions)
+
+        Icon background = CreateRectangle(NewColor(0.15, 0.64, 0.79))
+        background:SetFocusable(false)
+        background:SetPixelWidth(400)
+        background:SetPixelHeight(250)
+        background:SetPixelX(0)
+        background:SetPixelY(0)
+        mainPage:Add(background)
+
+        Color bannerColor = NewColor(0.66, 0.84, 0.89)
+
+        Icon banner1 = CreateRectangle(bannerColor)
+        banner1:SetFocusable(false)
+        banner1:SetPixelX(20)
+        banner1:SetPixelY(180)
+        banner1:SetPixelWidth(360)
+        banner1:SetPixelHeight(50)
+        mainPage:Add(banner1)
+
+        Label totalFlipsLabel = CreateLabel()
+        totalFlipsLabel:SetFocusable(false)
+        totalFlipsLabel:SetText("Total Flips:")
+        totalFlipsLabel:SetFontSize(24)
+        totalFlipsLabel:SetPixelX(50)
+        totalFlipsLabel:SetPixelY(195)
+        mainPage:Add(totalFlipsLabel)
+
+        flipInput = CreateTextBox()
+        flipInput:SetName("Total Flips")
+        flipInput:SetFontSize(24)
+        flipInput:SetPixelX(200)
+        flipInput:SetPixelY(190)
+        flipInput:SetPixelWidth(170)
+        flipInput:SetPixelHeight(30)
+        mainPage:Add(flipInput)
+
+        Icon banner2 = CreateRectangle(bannerColor)
+        banner2:SetFocusable(false)
+        banner2:SetPixelX(20)
+        banner2:SetPixelY(110)
+        banner2:SetPixelWidth(360)
+        banner2:SetPixelHeight(50)
+        mainPage:Add(banner2)
+
+        Label headsLabel = CreateLabel()
+        headsLabel:SetFocusable(false)
+        headsLabel:SetText("Total heads:")
+        headsLabel:SetFontSize(24)
+        headsLabel:SetPixelX(50)
+        headsLabel:SetPixelY(125)
+        mainPage:Add(headsLabel)
+
+        headsOutput = CreateLabel()
+        headsOutput:SetName("Total heads")
+        headsOutput:SetFontSize(24)
+        headsOutput:SetPixelX(200)
+        headsOutput:SetPixelY(125)
+        mainPage:Add(headsOutput)
+
+        Icon banner3 = CreateRectangle(bannerColor)
+        banner3:SetFocusable(false)
+        banner3:SetPixelX(20)
+        banner3:SetPixelY(40)
+        banner3:SetPixelWidth(360)
+        banner3:SetPixelHeight(50)
+        mainPage:Add(banner3)
+
+        Label tailsLabel = CreateLabel()
+        tailsLabel:SetFocusable(false)
+        tailsLabel:SetText("Total tails:")
+        tailsLabel:SetFontSize(24)
+        tailsLabel:SetPixelX(50)
+        tailsLabel:SetPixelY(55)
+        mainPage:Add(tailsLabel)
+
+        tailsOutput = CreateLabel()
+        tailsOutput:SetName("Total tails")
+        tailsOutput:SetFontSize(24)
+        tailsOutput:SetPixelX(200)
+        tailsOutput:SetPixelY(55)
+        mainPage:Add(tailsOutput)
+
+        AddPage(mainPage)
+
+        UpdateScreen()
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
