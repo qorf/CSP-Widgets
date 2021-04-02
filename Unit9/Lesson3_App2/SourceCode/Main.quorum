@@ -3,26 +3,32 @@ use Libraries.Interface.Controls.Charts.BarChart
 
 //Create a DataFrame, load it, and set which column to focus on
 DataFrame frame
-//Notice that the data loads just fine into these frames and can be used
-//However, anywhere where the data does not conform to a number, Quorum
-//strips out the values. We can confirm this by outputting to the screen
-//a chart or outputting the DataFrame in Quorum Studio
-frame:Load("../Data/Other/Student Info.csv")
+frame:Load("../Data/Politics/Female State Legislators.csv")
 
 //You can also specify columns numerically. In this case, 
 //4 is average hours of sleep and 3 is favorite subject
-frame:AddSelectedColumn(4)
+frame:AddSelectedColumns("PercentageOfFemalesInLegislature")
 
-Filter filter
-filter:SetColumn(3)
-filter:SetFilter("Spanish")
-DataFrame newFrame = frame:Transform(filter)
-output newFrame:ToText()
+
+text state = "Texas"
+//filters work by specifying an expression. In the example below, we have to surround 
+//our text, because it is a text value, in double quotes. Numeric filters do not require this.
+text quote = state:GetDoubleQuote()
+frame:Filter("State = " + quote + state + quote)
+
+//Additional Example Filters
+//frame:Filter("PercentageOfFemalesInLegislature < 5")
+
+//We can also output the new filtered frame as well
+//output frame:ToText()
+
+//we can also save the new filtered data if we want to
+//frame:Save("FilteredFrame.csv")
 
 //Create a Bar chart of the average number of hours of sleep.
-BarChart chart = newFrame:BarChart()
+BarChart chart = frame:BarChart()
 chart:SetFontSize(30)
-chart:SetTitle("Unclean Student Info Chart")
-chart:SetXAxisTitle("Average Hours of Sleep")
+chart:SetTitle("Percentage of Female Legislators in the state of " + state)
+chart:SetXAxisTitle("Percentage")
 //We can make this bigger or smaller for our screen (width and height)
 chart:Display(1500,750)
