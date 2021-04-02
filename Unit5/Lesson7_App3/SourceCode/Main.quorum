@@ -1,0 +1,36 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+
+/*
+
+*/
+    action Main
+        // Create and assign variables
+        integer counter = 0
+        Array<integer> coinFlips
+
+        repeat while counter < 10
+            coinFlips:Add(RandomNumber(0, 1))
+            // Increase counter by 1 every time
+            // through the loop
+            counter = counter + 1
+        end
+
+        output "Here's 10 random coin flips"
+        output IntegerArrayToText(coinFlips)
+
+        // Create and assign variables
+        integer counter2 = 0
+        Array<integer> diceRolls
+
+        // In the space below write a while loop
+        // that will roll 10 dice. Use the code above to help.
+
+
+
+        output "Here's 10 random dice rolls"
+        output IntegerArrayToText(diceRolls)
+    end
+end

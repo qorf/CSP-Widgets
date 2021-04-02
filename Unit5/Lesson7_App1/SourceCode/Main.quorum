@@ -1,0 +1,18 @@
+/*
+DO THIS:
+This program prints the numbers 0-9 to the console.
+* Run the program to see how it works.
+* Edit the program to print the numbers 0-99.
+
+*/
+
+// Create and assign variable
+integer counter = 0
+
+repeat while counter < 10
+    output counter
+
+    // Increase the counter by 1 every time
+    // through the loop
+    counter = counter + 1
+end

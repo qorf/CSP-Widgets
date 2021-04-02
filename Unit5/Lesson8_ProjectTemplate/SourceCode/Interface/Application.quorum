@@ -1,0 +1,652 @@
+package Libraries.Curriculum.Code
+
+use Libraries.Game.Game
+use Libraries.Interface.Layouts.ManualLayout
+use Libraries.Game.Layer2D
+use Libraries.Containers.Array
+use Libraries.Interface.Item2D
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Item
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.GraphicsManager
+use Libraries.Game.GameStateManager
+use Libraries.Interface.Controls.Control
+use Libraries.Game.Graphics.Drawable
+use Libraries.Containers.HashTable
+use Libraries.Sound.Audio
+use Libraries.Interface.Events.FocusListener
+use Libraries.Interface.Events.FocusEvent
+use Libraries.Game.Graphics.Color
+use Libraries.Compute.Random
+use Libraries.Interface.Events.MouseListener
+use Libraries.Interface.Events.KeyboardListener
+use Libraries.Interface.Events.MouseMovementListener
+use Libraries.Interface.Events.KeyboardEvent
+use Libraries.Interface.Events.MouseEvent
+use Libraries.Containers.Iterator
+use Libraries.Compute.Math
+use Libraries.Interface.Events.TextChangeListener
+use Libraries.Interface.Events.TextChangeEvent
+use Libraries.Game.Graphics.Font
+use Libraries.System.File
+
+class Application is Game, FocusListener, KeyboardListener, MouseListener, MouseMovementListener, TextChangeListener
+
+    Page currentPage = undefined
+    GraphicsManager graphics = undefined
+    Random random
+    Math math
+
+    integer buttonCount = 0
+    integer labelCount = 0
+    integer imageCount = 0
+    integer textBoxCount = 0
+    integer radioButtonCount = 0
+    integer checkBoxCount = 0
+
+    Array<Page> pages
+    HashTable<text, Audio> sounds
+
+    FocusHighlight highlight = undefined
+    Color highlightColor
+    number highlightThickness = 5
+
+    Color color
+    Control currentTarget = undefined
+
+    boolean hasStarted = false
+
+    action CreateGame
+        SetScreenSize(400, 600)
+
+        CustomFocusManager focus
+        SetFocusManager(focus)
+
+        SetBackgroundColor(1, 1, 1)
+
+        highlightColor = highlightColor:Black()
+
+        ManualLayout layout
+        SetLayout(layout)
+
+        AddFocusListener(me)
+        AddKeyboardListener(me)
+        AddMouseListener(me)
+        AddMouseMovementListener(me)
+        AddTextChangeListener(me)
+
+        Start()
+        hasStarted = true
+
+        if currentPage = undefined
+            if pages:IsEmpty()
+                text dq = ""
+                dq = dq:GetDoubleQuote()
+                alert("You haven't added any pages to the Application. Use " + dq + "AddPage(pageVariable)" + dq + " to add pages.")
+            else
+                ShowNextPage()
+            end
+        end
+    end
+
+    blueprint action Start
+
+    action ShowPage(Page page)
+        ClearItems()
+
+        if pages:Has(page) = false
+            pages:Add(page)
+        end
+
+        Array<Item2D> items = page:GetItems()
+        integer i = 0
+        boolean focused = false
+        repeat while i < items:GetSize()
+            Item2D item = items:Get(i)
+            Add(item)
+            if not focused and item:IsFocusable()
+                item:Focus()
+                focused = true
+            end
+
+            i = i + 1
+        end
+
+        currentPage = page
+    end
+
+    action ShowNextPage
+        if currentPage not= undefined and pages:Has(currentPage)
+            integer index = pages:GetFirstLocation(currentPage)
+            if index < pages:GetSize() - 1
+                ShowPage(pages:Get(index + 1))
+            end
+        elseif pages:IsEmpty() = false
+            ShowPage(pages:GetFromFront())
+        else
+            text dq = ""
+            dq = dq:GetDoubleQuote()
+            alert("I can't show the next page because no pages have been added to the Application. Use " + dq + "AddPage(pageVariable)" + dq + " to add pages.")
+        end
+    end
+
+    action ShowPreviousPage
+        if currentPage not= undefined and pages:Has(currentPage)
+            integer index = pages:GetFirstLocation(currentPage)
+            if index > 0
+                ShowPage(pages:Get(index - 1))
+            end
+        elseif pages:IsEmpty() = false
+            ShowPage(pages:GetFromFront())
+        else
+            text dq = ""
+            dq = dq:GetDoubleQuote()
+            alert("I can't show the previous page because no pages have been added to the Application. Use " + dq + "AddPage(pageVariable)" + dq + " to add pages.")
+        end
+    end
+
+    action AddPage(Page page)
+        pages:Add(page)
+    end
+
+    action RemovePage(Page page)
+        pages:Remove(page)
+    end
+
+    private action ClearItems
+        Layer2D layer = GetCurrentLayer2D()
+        layer:Empty()
+
+        if highlight not= undefined
+            Add(highlight)
+        end
+    end
+
+    action GetCurrentPage returns Page
+        return currentPage
+    end
+
+    action GetPage(text name) returns Page
+        integer counter = 0
+        repeat while counter < pages:GetSize()
+            Page page = pages:Get(counter)
+            if page:GetName() = name
+                return page
+            end
+            counter = counter + 1
+        end
+
+        text dq = ""
+        dq = dq:GetDoubleQuote()
+        alert("There was no page named " + dq + name + dq)
+    end
+
+    action CreateButton returns Button
+        Button button
+        buttonCount = buttonCount + 1
+        button:SetName("Button " + buttonCount)
+        button:SetHorizontalLayoutMode(button:parent:Control:STANDARD)
+        button:SetVerticalLayoutMode(button:parent:Control:STANDARD)
+        DefaultButtonBehavior behavior
+        button:SetBehavior(behavior)
+        button:AddMouseMovementListener(me)
+        button:AddMouseListener(me)
+        return button
+    end
+
+    action CreateButton(text imageFile) returns Button
+        Button button = CreateButton()
+        Drawable drawable
+        drawable:Load("Images/" + imageFile)
+        button:SetIcon(drawable)
+        button:SetFont(undefined)
+        return button
+    end
+
+    action CreateLabel returns Label
+        Label label
+        labelCount = labelCount + 1
+        label:SetName("Label " + labelCount)
+        label:SetText("Default text")
+        label:SetFocusable(true)
+        label:SetAccessibilityCode(label:parent:Item:CUSTOM)
+        label:SetAcceptsMouseInput(false)
+        return label
+    end
+
+    action CreateIcon(text imageFile) returns Icon
+        Icon icon
+        imageCount = imageCount + 1
+        icon:Load("Images/" + imageFile)
+        icon:SetName("Icon " + imageCount)
+        icon:SetFocusable(true)
+        icon:SetAccessibilityCode(icon:parent:Item:CUSTOM)
+        icon:AddMouseMovementListener(me)
+        icon:AddMouseListener(me)
+        return icon
+    end
+
+    action CreateRectangle(Color color) returns Icon
+        Icon icon
+        imageCount = imageCount + 1
+        icon:LoadFilledRectangle(1, 1, color)
+        icon:SetName("Icon " + imageCount)
+        icon:SetFocusable(true)
+        icon:SetAccessibilityCode(icon:parent:Item:CUSTOM)
+        icon:AddMouseMovementListener(me)
+        icon:AddMouseListener(me)
+        return icon
+    end
+
+    action CreateTextBox returns TextBox
+        TextBox textBox
+        textBoxCount = textBoxCount + 1
+        textBox:SetName("TextBox " + textBoxCount)
+        textBox:SetPixelWidth(100)
+        textBox:SetPixelHeight(20)
+        textBox:AddMouseMovementListener(me)
+        textBox:AddMouseListener(me)
+        return textBox
+    end
+
+    action PlaySound(text fileName)
+        PlaySound(fileName, false)
+    end
+
+    action PlaySound(text fileName, boolean loop)
+        Audio audio = undefined
+        if sounds:HasKey(fileName)
+            audio = sounds:GetValue(fileName)
+        else
+            Audio newAudio
+            audio = newAudio
+            audio:Load("Sounds/" + fileName)
+            sounds:Add(fileName, audio)
+        end
+
+        if loop
+            audio:EnableLooping()
+        else
+            audio:DisableLooping()
+        end
+
+        audio:Play()
+    end
+
+    action StopSounds
+        Iterator<Audio> values = sounds:GetValueIterator()
+        repeat while values:HasNext()
+            values:Next():Stop()
+        end
+    end
+
+    action StopSound(text fileName)
+        if sounds:HasKey(fileName)
+            Audio audio = sounds:GetValue(fileName)
+            audio:Stop()
+        end
+    end
+
+    action ButtonActivated(Button button)
+        // To be overridden by the main file.
+    end
+
+    action MouseMoved(MouseEvent event)
+        // To be overriden by the main file.
+    end
+
+    action MousedOver(Control item, MouseEvent event)
+        // To be overridden by the main file.
+    end
+
+    action MousedOut(Control item, MouseEvent event)
+        // To be overridden by the main file.
+    end
+
+    action MouseClicked(Control item, MouseEvent event)
+        // To be overridden by the main file.
+    end
+
+    action MouseReleased(Control item, MouseEvent event)
+        // To be overridden by the main file.
+    end
+
+    action KeyPressed(KeyboardEvent keys)
+        // To be overridden by the main file.
+    end
+
+    action KeyReleased(KeyboardEvent keys)
+        // To be overridden by the main file.
+    end
+
+    action TextChanged(TextBox textBox)
+        // To be overridden by the main file.
+    end
+
+    action PressedKey(KeyboardEvent keys)
+        if hasStarted
+            KeyPressed(keys)
+            ForceLayout()
+        end
+    end
+
+    action ReleasedKey(KeyboardEvent keys)
+        if hasStarted
+            KeyReleased(keys)
+            ForceLayout()
+        end
+    end
+
+    action ClickedMouse(MouseEvent event)
+        if hasStarted
+            MouseClicked(GetControl(event:GetSource()), event)
+            ForceLayout()
+        end
+    end
+
+    action ReleasedMouse(MouseEvent event)
+        if hasStarted
+            MouseReleased(GetControl(event:GetSource()), event)
+            ForceLayout()
+        end
+    end
+
+    action MovedMouse(MouseEvent event)
+        if hasStarted
+            MouseMoved(event)
+    
+            Control target = GetControl(cast(Item2D, event:GetSource()))
+            if target not= currentTarget
+    
+                if currentTarget not= undefined
+                    MousedOut(currentTarget, event)
+                end
+    
+                if target not= undefined
+                    MousedOver(target, event)
+                end
+    
+                currentTarget = target
+            end
+    
+            ForceLayout()
+        end
+    end
+
+    action DraggedMouse(MouseEvent event)
+        if hasStarted
+            MovedMouse(event)
+        end
+    end
+
+    action TextChanged(TextChangeEvent event)
+        if hasStarted
+            if event:GetControl() is TextBox
+                TextChanged(cast(TextBox, event:GetControl()))
+                ForceLayout()
+            end
+        end
+    end
+
+    private action ForceLayout
+        SetLayout(GetLayout())
+    end
+
+    private action GetControl(Item source) returns Control
+        if not (source is Item2D)
+            return undefined
+        end
+
+        Item2D item = cast(Item2D, source)
+
+        repeat until item:GetParent() = undefined
+            item = item:GetParent()
+        end
+
+        if item is Control
+            return cast(Control, item)
+        else
+            return undefined
+        end
+    end
+
+    action SetBackgroundColor(Color color)
+        SetBackgroundColor(color:GetRed(), color:GetGreen(), color:GetBlue())
+    end
+
+    action SetBackgroundColor(number red, number green, number blue)
+        GameStateManager manager
+        graphics = manager:GetGameGraphics()
+        graphics:ClearScreenColor(red, green, blue, 1)
+    end
+
+    action ShowFocusHighlight(boolean show)
+        if show
+            if highlight = undefined
+                FocusHighlight focusHighlight
+                highlight = focusHighlight
+                highlight:SetColor(highlightColor)
+                highlight:SetThickness(highlightThickness)
+                Add(highlight)
+
+                if GetFocus() not= undefined
+                    highlight:SetFocus(cast(Item2D, GetFocus()))
+                    highlight:Show()
+                else
+                    highlight:Hide()
+                end
+            end
+        else
+            if highlight not= undefined
+                Remove(highlight)
+                highlight = undefined
+            end
+        end
+    end
+
+    action SetFocusHighlightColor(Color color)
+        if highlight not= undefined
+            highlight:SetColor(color)
+        end
+        highlightColor = color
+    end
+
+    action SetFocusHighlightThickness(number thickness)
+        if highlight not= undefined
+            highlight:SetThickness(thickness)
+        end
+        highlightThickness = thickness
+    end
+
+    action GainedFocus(FocusEvent event)
+        if highlight not= undefined and event:GetNewFocus() not= undefined
+            highlight:Show()
+            highlight:SetFocus(cast(Item2D, event:GetNewFocus()))
+        end
+    end
+
+    action LostFocus(FocusEvent event)
+        if highlight not= undefined and event:GetNewFocus() = undefined
+            highlight:Hide()
+        end
+    end
+
+    action RandomNumber(integer minimum, integer maximum) returns integer
+        return random:RandomIntegerBetween(minimum, maximum)
+    end
+
+    action Round(number value) returns integer
+        return cast(integer, math:Round(value))
+    end
+
+    action NewFont(text fontName, integer size) returns Font
+        fontName = fontName:ToLowerCase()
+        Font font
+        File file
+        file:SetPath("Fonts/" + fontName + ".ttf")
+        if file:Exists()
+            font:LoadFont(file)            
+        else
+            font:LoadFont(fontName)
+        end
+
+        font:SetSize(size)
+
+        return font
+    end
+
+    action NewColor(number red, number green, number blue) returns Color
+        return color:CustomColor(red, green, blue, 1.0)
+    end
+
+    action NewColor(number red, number green, number blue, number opacity) returns Color
+        return color:CustomColor(red, green, blue, opacity)
+    end
+
+    action White returns Color
+        return color:White()
+    end
+
+    action Black returns Color
+        return color:Black()
+    end
+
+    action Red returns Color
+        return color:Red()
+    end
+
+    action Green returns Color
+        return color:Green()
+    end
+
+    action Blue returns Color
+        return color:Blue()
+    end
+
+    action LightGray returns Color
+        return color:LightGray()
+    end
+
+    action Gray returns Color
+        return color:Gray()
+    end
+
+    action DarkGray returns Color
+        return color:DarkGray()
+    end
+
+    action Pink returns Color
+        return color:Pink()
+    end
+
+    action Orange returns Color
+        return color:Orange()
+    end
+
+    action Yellow returns Color
+        return color:Yellow()
+    end
+
+    action Magenta returns Color
+        return color:Magenta()
+    end
+
+    action Cyan returns Color
+        return color:Cyan()
+    end
+
+    action Olive returns Color
+        return color:Olive()
+    end
+
+    action Purple returns Color
+        return color:Purple()
+    end
+
+    action Maroon returns Color
+        return color:Maroon()
+    end
+
+    action Teal returns Color
+        return color:Teal()
+    end
+
+    action Navy returns Color
+        return color:Navy()
+    end
+
+    action IsInteger(text value) returns boolean
+        check
+            integer test = cast(integer, value)
+        detect e is Error
+            return false
+        end
+
+        return true
+    end
+
+    action IsNumber(text value) returns boolean
+        check
+            number test = cast(number, value)
+        detect e is Error
+            return false
+        end
+
+        return true
+    end
+
+    action JoinText(Array<text> list, text separator) returns text
+        text result = ""
+        integer counter = 0
+        repeat while counter < list:GetSize()
+            result = result + list:Get(counter)
+            if counter < list:GetSize() - 1
+                result = result + separator
+            end
+            counter = counter + 1
+        end
+        return result
+    end
+
+    action TextArrayToText(Array<text> array) returns text
+        text result = "["
+        text dq = result:GetDoubleQuote()
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + dq + array:Get(counter) + dq
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+
+    action IntegerArrayToText(Array<integer> array) returns text
+        text result = "["
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + array:Get(counter)
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+
+    action NumberArrayToText(Array<number> array) returns text
+        text result = "["
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + array:Get(counter)
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+end

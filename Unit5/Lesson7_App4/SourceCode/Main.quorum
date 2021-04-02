@@ -1,0 +1,18 @@
+/*
+In Quorum, a "repeat times" loop is a specialized loop that runs a specific
+number of times. Unlike the "repeat while" loop, the "repeat times" loop doesn't
+check a boolean statement on each run. You might still need a counter variable,
+though, if you need to know how far into the loop you are when the code is running!
+
+DO THIS:
+* Read the program and run it to see how it works.
+* Change the program so that it prints the numbers 0-99.
+
+*/
+
+integer counter = 0
+
+repeat 10 times
+    output counter
+    counter = counter + 1
+end
