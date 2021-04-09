@@ -1,0 +1,90 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Button
+use Libraries.Containers.Array
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+/*
+By combining the iterator variable "i" with strings (for example, ("Label " + i)
+in the program below) you can change the properties of many screen elements all at
+once.
+
+DO THIS:
+* Read the code below to understand how the "i" variable is being used 
+  inside the loop.
+* Update this program so that when you click the button, it changes the text and
+  description of each label to a random word from the "words" array.
+
+*/
+
+    Page page
+    Array<text> words
+
+    action ButtonActivated(Button button)
+        integer i = 0
+        repeat while i < 4
+            Label label = page:GetLabel("Label " + i)
+            Color randomColor = NewColor(RandomNumber(0, 255) / 255.0, RandomNumber(0, 255) / 255.0, RandomNumber(0, 255) / 255.0)          
+            label:SetColor(randomColor)
+
+            i = i + 1
+        end
+    end
+
+    action Start
+        words:Add("Let's")
+        words:Add("Randomize")
+        words:Add("This")
+        words:Add("Sentence")
+
+        Label label0 = CreateLabel()
+        label0:SetName("Label 0")
+        label0:SetFontSize(50)
+        label0:SetPixelX(60)
+        label0:SetPixelY(500)
+        page:Add(label0)
+
+        Label label1 = CreateLabel()
+        label1:SetName("Label 1")
+        label1:SetFontSize(50)
+        label1:SetPixelX(60)
+        label1:SetPixelY(400)
+        page:Add(label1)
+
+        Label label2 = CreateLabel()
+        label2:SetName("Label 2")
+        label2:SetFontSize(50)
+        label2:SetPixelX(60)
+        label2:SetPixelY(300)
+        page:Add(label2)
+
+        Label label3 = CreateLabel()
+        label3:SetName("Label 3")
+        label3:SetFontSize(50)
+        label3:SetPixelX(60)
+        label3:SetPixelY(200)
+        page:Add(label3)
+
+        Button randomize = CreateButton()
+        randomize:SetName("Randomize!")
+        randomize:SetFontSize(34)
+        randomize:SetPixelX(105)
+        randomize:SetPixelY(80)
+        randomize:SetPixelWidth(190)
+        randomize:SetPixelHeight(65)
+        page:Add(randomize)
+
+        label0:SetText(words:Get(0))
+        label1:SetText(words:Get(1))
+        label2:SetText(words:Get(2))
+        label3:SetText(words:Get(3))
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

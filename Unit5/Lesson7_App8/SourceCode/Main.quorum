@@ -1,0 +1,137 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+/*
+By combining the iterator variable "i" with strings (for example, "Dice " + i in the 
+program below) you can change the properties of many screen elements all at once.
+
+DO THIS:
+This program is supposed to roll 220 dice but it has several things that need to be improved.
+* Make it roll all 20 dice
+* Add code so that it calculates the number of even rolls
+* Update the code to make even rolls a different color than the odd rolls
+
+*/
+
+    Page page
+    Color paleGreen = NewColor(0.85, 1.0, 0.85)
+
+    Label oddsOutput = undefined
+    Label evensOutput = undefined
+    Button rollButton = undefined
+
+    action ButtonActivated(Button button)
+        integer odds = 0
+        integer i = 0
+        repeat while i < 10
+            integer roll = RandomNumber(1, 6)
+            Label label = page:GetLabel("Dice " + i)
+            label:SetText("" + roll)
+            label:SetDescription(label:GetText())
+
+            if roll = 1 or roll = 3 or roll = 5
+                odds = odds + 1
+            end
+
+            i = i + 1
+        end
+
+        oddsOutput:SetText("Total Odds: " + odds)
+        oddsOutput:SetDescription(oddsOutput:GetText())
+    end
+
+    action Start
+        SetBackgroundColor(NewColor(0.49, 0.42, 0.65))
+        Color darkPurple = NewColor(0.39, 0.35, 0.51)
+
+        Icon banner = CreateRectangle(darkPurple)
+        banner:SetFocusable(false)
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(60)
+        banner:SetPixelX(0)
+        banner:SetPixelY(540)
+        page:Add(banner)
+
+        Label title = CreateLabel()
+        title:SetText("Dice Roller")
+        title:SetColor(paleGreen)
+        title:SetFontSize(50)
+        title:SetPixelX(20)
+        title:SetPixelY(550)
+        page:Add(title)
+
+        integer i = 0
+        integer x = 15
+        integer y = 463
+        repeat while i < 20
+            Icon rectangle = CreateRectangle(darkPurple)
+            rectangle:SetFocusable(false)
+            rectangle:SetPixelWidth(62)
+            rectangle:SetPixelHeight(62)
+            rectangle:SetPixelX(x)
+            rectangle:SetPixelY(y)
+            page:Add(rectangle)
+
+            Label label = CreateLabel()
+            label:SetName("Dice " + i)
+            label:SetText("")
+            label:SetFontSize(50)
+            label:SetColor(paleGreen)
+            label:SetPixelX(x + 15)
+            label:SetPixelY(y + 10)
+            page:Add(label)
+
+            x = x + 77
+            i = i + 1
+
+            /*
+            The "mod" command divides the first integer by the second integer
+            and checks the remainder. If the remainder is 0, then "i" is a 
+            multiple of 5. In this case, that means we just finished a row of 5
+            squares, so we set the "x" and "y" variables to start puttings
+            squares on the next line down.
+            */
+            if i mod 5 = 0
+                x = 15
+                y = y - 77
+            end
+        end
+
+        oddsOutput = CreateLabel()
+        oddsOutput:SetColor(paleGreen)
+        oddsOutput:SetFontSize(40)
+        oddsOutput:SetPixelX(20)
+        oddsOutput:SetPixelY(160)
+        oddsOutput:SetText("Total Odds:")
+        page:Add(oddsOutput)
+
+        evensOutput = CreateLabel()
+        evensOutput:SetColor(paleGreen)
+        evensOutput:SetFontSize(40)
+        evensOutput:SetPixelX(20)
+        evensOutput:SetPixelY(110)
+        evensOutput:SetText("Total Evens:")
+        page:Add(evensOutput)
+
+        rollButton = CreateButton()
+        rollButton:SetBackgroundColor(paleGreen)
+        rollButton:SetFontSize(40)
+        rollButton:SetName("Roll Those Dice!")
+        rollButton:SetPixelX(48)
+        rollButton:SetPixelY(20)
+        rollButton:SetPixelWidth(304)
+        rollButton:SetPixelHeight(70)
+        page:Add(rollButton)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

@@ -1,0 +1,37 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+You can use the same loop to do multiple things. This program
+creates two lists of 10 random coin flips.
+
+DO THIS:
+* Run the program and read the code to understand how it works.
+* Update the program to fill the third list of random coin flips.
+  You don't need to add another loop.
+*/
+
+    action Main
+        // Create the empty lists
+        Array<integer> flips1
+        Array<integer> flips2
+        Array<integer> flips3
+
+        // For loop to fill the lists
+        repeat 10 times
+            flips1:Add(RandomNumber(0, 1))
+            flips2:Add(RandomNumber(0, 1))
+
+        end
+
+        // Display results
+        output "Flips 1"
+        output IntegerArrayToText(flips1)
+        output "Flips 2"
+        output IntegerArrayToText(flips2)
+        output "Flips 3"
+        output IntegerArrayToText(flips3)
+    end
+
+end

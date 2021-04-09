@@ -1,0 +1,15 @@
+/*
+When counting in loops, the counter doesn't need to count up by 1.
+You can update your variable however you want.
+
+DO THIS:
+* Run the program and read the code to understand how it works.
+* Change the program so that it displays the even numbers between 0 and 100.
+
+*/
+
+integer i = 0
+repeat while i < 20
+    output i
+    i = i + 3
+end

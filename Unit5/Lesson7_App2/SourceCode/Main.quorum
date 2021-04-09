@@ -1,0 +1,18 @@
+/*
+DO THIS:
+This program prints "Hello" to the console 10 times.
+* Run the program to see how it works.
+* Edit the program to print the word "Hello" 100 times.
+
+*/
+
+// Create and assign variable
+integer counter = 0
+
+repeat while counter < 10
+    output "Hello"
+
+    // Increase the counter by 1 every time
+    // through the loop
+    counter = counter + 1
+end

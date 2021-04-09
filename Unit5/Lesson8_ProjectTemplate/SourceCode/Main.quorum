@@ -1,0 +1,164 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Containers.Array
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+/*
+Build the Lock Screen Maker app, using your activity guide to help you plan.
+When you're done, submit your work.
+
+You can use the SwapImage function to change the image of an icon
+that's already on a page. The line below shows an example of how to use it.
+
+SwapImage(iconVariable, "New-Image.png")
+*/
+
+    // Add any extra variables you need here
+
+
+    Array<text> iconsList
+    Array<text> iconDescriptionList
+    Page page
+    Button colorButton = undefined
+    Button locationButton = undefined
+    Button shapeButton = undefined
+
+    action ButtonActivated(Button button)
+
+
+
+    end
+
+    action Start
+        iconsList:Add("Heart.png")
+        iconsList:Add("Music.png")
+        iconsList:Add("Smile.png")
+        iconsList:Add("Globe.png")
+        iconsList:Add("Tree.png")
+        iconsList:Add("Bolt.png")
+        iconsList:Add("Moon.png")
+        iconsList:Add("Star.png")
+
+        iconDescriptionList:Add("heart")
+        iconDescriptionList:Add("music note")
+        iconDescriptionList:Add("smiley face")
+        iconDescriptionList:Add("globe")
+        iconDescriptionList:Add("pine tree")
+        iconDescriptionList:Add("lightning bolt")
+        iconDescriptionList:Add("crescent moon")
+        iconDescriptionList:Add("star")
+
+        SetBackgroundColor(White())
+
+        Icon icon0 = CreateIcon("Heart.png")
+        icon0:SetName("Icon 0")
+        icon0:SetIconColor(Black())
+        icon0:SetPixelWidth(280)
+        icon0:SetPixelHeight(280)
+        icon0:SetPixelX(RandomNumber(0, 300))
+        icon0:SetPixelY(RandomNumber(60, 500))
+        icon0:SetDescription("A " + "black" + " " + iconDescriptionList:Get(0) + 
+            " positioned at " + icon0:GetPixelX() + ", " + icon0:GetPixelY())
+        page:Add(icon0)
+
+        Icon icon1 = CreateIcon("Heart.png")
+        icon1:SetName("Icon 1")
+        icon1:SetColor(Black())
+        icon1:SetPixelWidth(200)
+        icon1:SetPixelHeight(200)
+        icon1:SetPixelX(RandomNumber(0, 300))
+        icon1:SetPixelY(RandomNumber(60, 500))
+        icon1:SetDescription("A " + "black" + " " + iconDescriptionList:Get(0) + 
+            " positioned at " + icon1:GetPixelX() + ", " + icon1:GetPixelY())
+        page:Add(icon1)
+
+        Icon icon2 = CreateIcon("Heart.png")
+        icon2:SetName("Icon 2")
+        icon2:SetColor(Black())
+        icon2:SetPixelWidth(160)
+        icon2:SetPixelHeight(160)
+        icon2:SetPixelX(RandomNumber(0, 300))
+        icon2:SetPixelY(RandomNumber(60, 500))
+        icon2:SetDescription("A " + "black" + " " + iconDescriptionList:Get(0) + 
+            " positioned at " + icon2:GetPixelX() + ", " + icon2:GetPixelY())
+        page:Add(icon2)
+
+        Icon icon3 = CreateIcon("Heart.png")
+        icon3:SetName("Icon 3")
+        icon3:SetColor(Black())
+        icon3:SetPixelWidth(120)
+        icon3:SetPixelHeight(120)
+        icon3:SetPixelX(RandomNumber(0, 300))
+        icon3:SetPixelY(RandomNumber(60, 500))
+        icon3:SetDescription("A " + "black" + " " + iconDescriptionList:Get(0) + 
+            " positioned at " + icon3:GetPixelX() + ", " + icon3:GetPixelY())
+        page:Add(icon3)
+
+        Icon icon4 = CreateIcon("Heart.png")
+        icon4:SetName("Icon 4")
+        icon4:SetColor(Black())
+        icon4:SetPixelWidth(80)
+        icon4:SetPixelHeight(80)
+        icon4:SetPixelX(RandomNumber(0, 300))
+        icon4:SetPixelY(RandomNumber(60, 500))
+        icon4:SetDescription("A " + "black" + " " + iconDescriptionList:Get(0) + 
+            " positioned at " + icon4:GetPixelX() + ", " + icon4:GetPixelY())
+        page:Add(icon4)
+
+        Icon icon5 = CreateIcon("Heart.png")
+        icon5:SetName("Icon 5")
+        icon5:SetColor(Black())
+        icon5:SetPixelWidth(40)
+        icon5:SetPixelHeight(40)
+        icon5:SetPixelX(RandomNumber(0, 300))
+        icon5:SetPixelY(RandomNumber(60, 500))
+        icon5:SetDescription("A " + "black" + " " + iconDescriptionList:Get(0) + 
+            " positioned at " + icon5:GetPixelX() + ", " + icon5:GetPixelY())
+        page:Add(icon5)
+
+        colorButton = CreateButton()
+        colorButton:SetName("Colors!")
+        colorButton:SetPixelX(53)
+        colorButton:SetPixelY(10)
+        colorButton:SetPixelWidth(80)
+        colorButton:SetPixelHeight(40)
+        colorButton:SetFontSize(20)
+        colorButton:SetBackgroundColor(White())
+        page:Add(colorButton)
+
+        locationButton = CreateButton()
+        locationButton:SetName("Locations!")
+        locationButton:SetPixelX(143)
+        locationButton:SetPixelY(10)
+        locationButton:SetPixelWidth(104)
+        locationButton:SetPixelHeight(40)
+        locationButton:SetFontSize(20)
+        locationButton:SetBackgroundColor(White())
+        page:Add(locationButton)
+        
+        shapeButton = CreateButton()
+        shapeButton:SetName("Shapes!")
+        shapeButton:SetPixelX(258)
+        shapeButton:SetPixelY(10)
+        shapeButton:SetPixelWidth(90)
+        shapeButton:SetPixelHeight(40)
+        shapeButton:SetFontSize(20)
+        shapeButton:SetBackgroundColor(White())
+        page:Add(shapeButton)
+
+        AddPage(page)
+
+        // You can add extra code here to initialize lists
+        // or take care of any other one-time setup
+
+
+
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
