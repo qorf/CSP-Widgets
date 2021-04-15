@@ -1,0 +1,211 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Containers.Array
+
+class Main is Application
+/*
+DO THIS:
+Groups of 4: Student A, Student B, Student C, Student D
+
+INVESTIGATE:
+* Read through the code below
+* Each student focuses their attention on a single action. Re-read the code for that action.
+    - Student A: Average (lines 73-81)
+    - Student B: Slow (lines 83-93)
+    - Student C: Fast (lines 95-105)
+    - Student D: NumberedListDisplay (lines 107-116)
+
+DISCUSS:
+* How does your function work?
+    - What list does it use? How is it traversed using a loop?
+* How does the app work?
+
+MODIFY:
+* Create an action that adds together the total time of every element in the list.
+* Use "output" to print the result.
+* Call this action in the UpdateScreen action.
+*/
+
+    Array<integer> mileTimes
+    integer average = 0
+    integer fastest = 0
+    integer slowest = 0
+    integer totalMiles = 0
+    integer newTime = 0
+
+    Label averageOutput = undefined
+    Label totalMilesOutput = undefined
+    Label fastestOutput = undefined
+    Label slowestOutput = undefined
+    Label milesOutput = undefined
+    TextBox newMileInput = undefined
+    Button newMileButton = undefined
+
+    // When a new mile is added, the mile time is added
+    action ButtonActivated(Button button)
+        integer newTime = cast(integer, newMileInput:GetText())
+        mileTimes:Add(newTime)
+        totalMiles = totalMiles + 1
+
+        UpdateScreen()
+    end
+
+    action UpdateScreen
+        Average()
+        Fast()
+        Slow()
+        NumberedListDisplay()
+
+        averageOutput:SetText("Average: " + average)
+        averageOutput:SetDescription("" + average)
+        fastestOutput:SetText("Fastest: " + fastest)
+        fastestOutput:SetDescription("" + average)
+        slowestOutput:SetText("Slowest: " + slowest)
+        slowestOutput:SetDescription("" + slowest)
+        totalMilesOutput:SetText("Total Miles: " + totalMiles)
+        totalMilesOutput:SetDescription("" + totalMiles)
+        newMileInput:SetText("")
+    end
+
+    action Average
+        integer total = 0
+        integer i = 0
+        repeat while i < mileTimes:GetSize()
+            total = total + mileTimes:Get(i)
+            i = i + 1
+        end
+        average = total / mileTimes:GetSize()
+    end
+
+    action Slow
+        integer temp = mileTimes:Get(0)
+        integer i = 0
+        repeat while i < mileTimes:GetSize()
+            if mileTimes:Get(i) > temp
+                temp = mileTimes:Get(i)
+            end
+            i = i + 1
+        end
+        slowest = temp
+    end
+
+    action Fast
+        integer temp = mileTimes:Get(0)
+        integer i = 0
+        repeat while i < mileTimes:GetSize()
+            if mileTimes:Get(i) < temp
+                temp = mileTimes:Get(i)
+            end
+            i = i + 1
+        end
+        fastest = temp
+    end
+
+    action NumberedListDisplay
+        text temp = ""
+        integer i = 0
+        repeat while i < mileTimes:GetSize()
+            temp = temp + "Mile " + (i + 1) + ": " + mileTimes:Get(i) + "
+"
+            i = i + 1
+        end
+        milesOutput:SetText(temp)
+    end
+
+    action Start
+        Page homePage
+        SetBackgroundColor(NewColor(0.16, 0.16, 0.16))
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Mile Tracker")
+        title:SetSize(50)
+        title:SetPixelX(60)
+        title:SetPixelY(520)
+        title:SetFontColor(NewColor(0.84, 0.6, 0.74))
+        homePage:Add(title)
+
+        averageOutput = CreateLabel()
+        averageOutput:SetName("Average ")
+        averageOutput:SetText("Average: ")
+        averageOutput:SetFontColor(White())
+        averageOutput:SetSize(22)
+        averageOutput:SetPixelX(40)
+        averageOutput:SetPixelY(460)
+        homePage:Add(averageOutput)
+
+        totalMilesOutput = CreateLabel()
+        totalMilesOutput:SetName("Total Miles ")
+        totalMilesOutput:SetText("Total Miles: ")
+        totalMilesOutput:SetFontColor(White())
+        totalMilesOutput:SetSize(22)
+        totalMilesOutput:SetPixelX(16)
+        totalMilesOutput:SetPixelY(410)
+        homePage:Add(totalMilesOutput)
+
+        fastestOutput = CreateLabel()
+        fastestOutput:SetName("Fastest ")
+        fastestOutput:SetText("Fastest: ")
+        fastestOutput:SetFontColor(White())
+        fastestOutput:SetSize(22)
+        fastestOutput:SetPixelX(230)
+        fastestOutput:SetPixelY(460)
+        homePage:Add(fastestOutput)
+
+        slowestOutput = CreateLabel()
+        slowestOutput:SetName("Slowest ")
+        slowestOutput:SetText("Slowest: ")
+        slowestOutput:SetFontColor(White())
+        slowestOutput:SetSize(22)
+        slowestOutput:SetPixelX(225)
+        slowestOutput:SetPixelY(410)
+        homePage:Add(slowestOutput)
+
+        Icon background = CreateRectangle(White())
+        background:SetFocusable(false)
+        background:SetPixelX(50)
+        background:SetPixelY(90)
+        background:SetPixelWidth(300)
+        background:SetPixelHeight(300)
+        homePage:Add(background)
+
+        milesOutput = CreateLabel()
+        milesOutput:SetName("Miles list")
+        milesOutput:SetText("")
+        milesOutput:SetSize(22)
+        milesOutput:SetPixelX(55)
+        milesOutput:SetPixelY(365)
+        milesOutput:SetMaximumWidth(290)
+        homePage:Add(milesOutput)
+
+        newMileInput = CreateTextBox()
+        newMileInput:SetName("Time (in minutes)")
+        newMileInput:SetFontSize(20)
+        newMileInput:SetPixelX(30)
+        newMileInput:SetPixelY(30)
+        newMileInput:SetPixelWidth(160)
+        newMileInput:SetPixelHeight(40)
+        homePage:Add(newMileInput)
+
+        newMileButton = CreateButton()
+        newMileButton:SetName("New Mile Time")
+        newMileButton:SetBackgroundColor(NewColor(0.84, 0.6, 0.74))
+        newMileButton:SetFontSize(22)
+        newMileButton:SetFontColor(White())
+        newMileButton:SetPixelX(210)
+        newMileButton:SetPixelY(30)
+        newMileButton:SetPixelWidth(160)
+        newMileButton:SetPixelHeight(40)
+        homePage:Add(newMileButton)
+
+        AddPage(homePage)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

@@ -31,6 +31,8 @@ use Libraries.Interface.Events.TextChangeListener
 use Libraries.Interface.Events.TextChangeEvent
 use Libraries.Game.Graphics.Font
 use Libraries.System.File
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Compute.Statistics.DataFrameColumn
 
 class Application is Game, FocusListener, KeyboardListener, MouseListener, MouseMovementListener, TextChangeListener
 
@@ -649,8 +651,60 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         end
         return result + "]"
     end
-	
-	action SwapImage(Icon icon, text imageFile)
+
+    action SwapImage(Icon icon, text imageFile)
         icon:Load("Images/" + imageFile)
+    end
+
+    action GetTextColumn(DataFrame frame, text name) returns Array<text>
+        Array<text> result
+
+        DataFrameColumn column = frame:GetColumn(name)
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsText(i))
+            i = i + 1
+        end
+
+        return result
+    end
+
+    action GetIntegerColumn(DataFrame frame, text name) returns Array<integer>
+        Array<integer> result
+
+        DataFrameColumn column = frame:GetColumn(name)
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsInteger(i))
+            i = i + 1
+        end
+
+        return result
+    end
+
+    action GetNumberColumn(DataFrame frame, text name) returns Array<number>
+        Array<number> result
+
+        DataFrameColumn column = frame:GetColumn(name)
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsNumber(i))
+            i = i + 1
+        end
+
+        return result
+    end
+
+    action GetBooleanColumn(DataFrame frame, text name) returns Array<boolean>
+        Array<boolean> result
+
+        DataFrameColumn column = frame:GetColumn(name)
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsBoolean(i))
+            i = i + 1
+        end
+
+        return result
     end
 end

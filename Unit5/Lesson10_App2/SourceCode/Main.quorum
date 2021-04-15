@@ -1,0 +1,27 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+Read through the code and run it. What looks new?
+
+INVESTIGATE:
+* Look at the Data folder. What files are there?
+* Using a file browser, find one of the files and open it with Excel or another spreadsheet program.
+* What do the datasets look like?
+
+MODIFY:
+* Change the code below to output a different column from the Dogs dataset.
+*/
+
+    action Main
+        DataFrame data
+        data:Load("Data/Cats.csv")
+
+        Array<text> column = GetTextColumn(data, "Name")
+        output TextArrayToText(column)
+    end
+
+end

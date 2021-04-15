@@ -1,0 +1,165 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Containers.Array
+
+class Main is Application
+/*
+DO THIS:
+Run this program, watch the code run, and carefully read each part of the program.
+
+DISCUSS:
+Discuss these questions with a partner and be prepared to share answers with the class.
+* What are the names of the three lists in this program?
+* On what lines of code are the lists created?
+* On what lines of code are the lists filled?
+* How are these lists filled?
+* Find and open the Dogs.csv file in Excel or another spreadsheet program. What columns does this app use?
+* Look at the filter function. On what lines is the filtered list reset to be blank?
+* What condition is being checked to determine if an element belongs in a filtered list?
+
+*/
+
+    DataFrame dogs
+    text dogSize = "Small"
+
+    // These lists are undefined because we'll get them as columns
+    // from a DataFrame in the Start action
+    Array<text> dogNames = undefined
+    Array<number> dogHeights = undefined
+
+    // Set up a blank list to store the filtered names
+    Array<text> filteredDogNames
+
+    // Variables for items on the page
+    Icon picture = undefined
+    Label description = undefined
+    Button smallButton = undefined
+    Button mediumButton = undefined
+    Button largeButton = undefined
+
+    // When a size button is clicked, filter the lists and set up the screen.
+    action ButtonActivated(Button button)
+        if button = smallButton
+            dogSize = "Small"
+        elseif button = mediumButton
+            dogSize = "Medium"
+        else
+            dogSize = "Large"
+        end
+        Filter()
+    end
+
+    /*
+    Filters the lists, based on which button has been clicked.
+    If the dog height is under a certain amount and the selected
+    mode matches a value the corresponding name and image will be
+    stored in the filtered list.
+    */
+    action Filter
+        // The Empty command removes all items from the list.
+        // We clear out the filtered list before we filter again.
+        filteredDogNames:Empty()
+
+        /*
+        Traverses the dogHeights list
+        if dogHeights and dogSize meet certain conditions
+        the corresponding names are stored in the filtered list
+        */
+        integer i = 0
+        repeat while i < dogHeights:GetSize()
+            if dogHeights:Get(i) < 16 and dogSize = "Small"
+                filteredDogNames:Add(dogNames:Get(i))
+            elseif dogHeights:Get(i) >= 16 and dogHeights:Get(i) < 24 and dogSize = "Medium"
+                filteredDogNames:Add(dogNames:Get(i))
+            elseif dogHeights:Get(i) >= 24 and dogSize = "Large"
+                filteredDogNames:Add(dogNames:Get(i))
+            end
+            i = i + 1
+        end
+
+        UpdateScreen()
+    end
+
+    // Sets up the filtered list and the screen elements
+    action UpdateScreen
+        integer randomIndex = RandomNumber(0, filteredDogNames:GetSize() - 1)
+        text dogName = filteredDogNames:Get(randomIndex)
+        SwapImage(picture, dogName + ".jpg")
+        picture:SetDescription(dogName)
+        description:SetText(dogName)
+    end
+
+    action Start
+        dogs:Load("Data/Dogs.csv")
+        // Get data as lists from the dataset and store in our variables
+        dogNames = GetTextColumn(dogs, "Name")
+        dogHeights = GetNumberColumn(dogs, "Maximum Height")
+
+        Page page
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Random Dog Picker")
+        title:SetFontSize(40)
+        title:SetPixelX(25)
+        title:SetPixelY(540)
+        page:Add(title)
+
+        picture = CreateRectangle(White())
+        picture:SetPixelX(0)
+        picture:SetPixelY(150)
+        picture:SetPixelWidth(400)
+        picture:SetPixelHeight(350)
+        page:Add(picture)
+
+        SwapImage(picture, "Norfolk Terrier.jpg")
+
+        description = CreateLabel()
+        description:SetText("")
+        description:SetFocusable(false)
+        description:SetPixelX(20)
+        description:SetPixelY(110)
+        description:SetFontSize(32)
+        description:SetMaximumWidth(360)
+        page:Add(description)
+
+        smallButton = CreateButton()
+        smallButton:SetName("Small")
+        smallButton:SetFontSize(26)
+        smallButton:SetPixelWidth(80)
+        smallButton:SetPixelHeight(50)
+        smallButton:SetPixelX(45)
+        smallButton:SetPixelY(15)
+        page:Add(smallButton)
+
+        mediumButton = CreateButton()
+        mediumButton:SetName("Medium")
+        mediumButton:SetFontSize(26)
+        mediumButton:SetPixelWidth(110)
+        mediumButton:SetPixelHeight(50)
+        mediumButton:SetPixelX(145)
+        mediumButton:SetPixelY(15)
+        page:Add(mediumButton)
+
+        largeButton = CreateButton()
+        largeButton:SetName("Large")
+        largeButton:SetFontSize(26)
+        largeButton:SetPixelWidth(80)
+        largeButton:SetPixelHeight(50)
+        largeButton:SetPixelX(275)
+        largeButton:SetPixelY(15)
+        page:Add(largeButton)
+
+        AddPage(page)
+
+        Filter()
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

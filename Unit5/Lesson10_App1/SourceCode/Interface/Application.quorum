@@ -649,8 +649,4 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         end
         return result + "]"
     end
-	
-	action SwapImage(Icon icon, text imageFile)
-        icon:Load("Images/" + imageFile)
-    end
 end
