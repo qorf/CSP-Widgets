@@ -1,0 +1,64 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+This program imports data from the states table and filters it. The top part filters to
+get only the states that have been added to the United States since the year 1900.
+* Update the program to print the list of states that have a population of less
+  than one 1,000,000 (one million).
+* Use the code that filters the states by their admission date as an example.
+
+*/
+
+    action Main
+        DataFrame data
+        data:Load("Data/US States.csv")
+
+        // Create and assign lists of states and admission years
+        Array<text> stateList = GetTextColumn(data, "State Name")
+        Array<integer> yearList = GetIntegerColumn(data, "Admission Year")
+
+        // List of states with admission year after 1900
+        Array<text> since1900List
+
+        // Filtering the table
+        text state = ""
+        integer year = 0
+        integer i = 0
+        repeat while i < stateList:GetSize()
+            state = stateList:Get(i)
+            year = yearList:Get(i)
+            if (year > 1900)
+                since1900List:Add(state)
+            end
+            i = i + 1
+        end
+
+        output "States added since 1900:"
+        output TextArrayToText(since1900List)
+
+        // Create and assign list of populations
+        Array<integer> populationList = GetIntegerColumn(data, "Population")
+
+        // List of states with population less than one million
+        Array<text> smallPopulationList
+
+        integer population = 0
+        i = 0
+        repeat while i < stateList:GetSize()
+            state = stateList:Get(i)
+            population = populationList:Get(i)
+
+            // Add code here
+
+            i = i + 1
+        end
+
+        output "List of states with fewer than one million people"
+        output TextArrayToText(smallPopulationList)
+    end
+
+end

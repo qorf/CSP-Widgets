@@ -1,0 +1,36 @@
+use Libraries.Containers.Array
+
+/*
+DO THIS:
+This program prints every element in the list and also numbers them.
+Add code to print a numbered list of every element in the list of colors.
+*/
+
+// Creating and assigning list of animals.
+Array<text> favoritePets
+favoritePets:Add("dogs")
+favoritePets:Add("cats")
+favoritePets:Add("parrot")
+favoritePets:Add("guinea pig")
+favoritePets:Add("iguana")
+output "Here's my list of favorite pets"
+
+// Printing and numbering every element in pets list
+text pet = ""
+integer i = 0
+repeat while i < favoritePets:GetSize()
+    pet = favoritePets:Get(i)
+    output (i + 1) + ": " + pet
+    i = i + 1
+end
+
+// Creating and assigning list of colors
+Array<text> favoriteColors
+favoriteColors:Add("red")
+favoriteColors:Add("green")
+favoriteColors:Add("blue")
+favoriteColors:Add("orange")
+favoriteColors:Add("yellow")
+output "Here's my list of favorite colors"
+
+// Add code to print and number every element in the color list

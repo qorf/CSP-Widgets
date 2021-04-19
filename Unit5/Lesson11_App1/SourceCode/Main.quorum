@@ -1,0 +1,33 @@
+use Libraries.Containers.Array
+
+/*
+DO THIS:
+The program traverses the "fruits" list to print out all the different fruits.
+Add code to traverse and print out the "vegetables" list.
+*/
+
+// Creating and assigning list of fruits
+Array<text> fruits
+fruits:Add("apples")
+fruits:Add("oranges")
+fruits:Add("bananas")
+fruits:Add("peaches")
+fruits:Add("pears")
+
+// Traversing fruit list
+text fruit = ""
+integer i = 0
+repeat while i < fruits:GetSize()
+    fruit = fruits:Get(i)
+    output fruit
+    i = i + 1
+end
+
+
+Array<text> vegetables
+vegetables:Add("carrots")
+vegetables:Add("onions")
+vegetables:Add("celery")
+vegetables:Add("broccoli")
+
+// Add code to traverse the vegetables list

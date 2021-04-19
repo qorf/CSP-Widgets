@@ -1,0 +1,160 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Icon
+use Libraries.Containers.Array
+use Libraries.Game.Graphics.Color
+
+class Main is Application
+/*
+DO THIS:
+This app has users add their grades and then will calculate their average grade.
+* Read and run the code to understand how it works
+* Add code to the program to calculate the average of the grades when the user clicks the button
+* Test your program on a few different numbers to make sure it works
+
+*/
+
+    // Create and assign variables and lists
+
+    Array<integer> gradesList
+
+
+    // Extra variables for elements on the screen
+    TextBox gradeInput = undefined
+    Button addGrade = undefined
+    Label gradesLabel = undefined
+    Button averageGrade = undefined
+    Label averageOutput = undefined
+
+    action ButtonActivated(Button button)
+        if button = addGrade
+            integer newGrade = cast(integer, gradeInput:GetText())
+            gradesList:Add(newGrade)
+            UpdateScreen()
+        elseif button = averageGrade
+            // Add code here to make the app show the average grade on the
+            // "averageOutput" label when the user clicks the average grade button
+
+
+
+        end
+    end
+
+    action UpdateScreen
+        gradeInput:SetText("")
+        gradesLabel:SetText(JoinIntegers(gradesList, "
+"))
+    end
+
+    action Start
+        SetBackgroundColor(NewColor(0.77, 0.88, 0.33))
+        Color darkGreen = NewColor(0.34, 0.55, 0.18)
+        Color lightGreen = NewColor(0.89, 0.94, 0.67)
+        Color watermelonPink = NewColor(1, 0.53, 0.38)
+
+        Page page
+
+        Icon banner = CreateRectangle(darkGreen)
+        banner:SetFocusable(false)
+        banner:SetPixelWidth(400)
+        banner:SetPixelHeight(65)
+        banner:SetPixelX(0)
+        banner:SetPixelY(535)
+        page:Add(banner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Grades.ly")
+        title:SetColor(lightGreen)
+        title:SetFontSize(50)
+        title:SetPixelX(15)
+        title:SetPixelY(550)
+        page:Add(title)
+
+        gradeInput = CreateTextBox()
+        gradeInput:SetPixelX(40)
+        gradeInput:SetPixelY(480)
+        gradeInput:SetPixelWidth(150)
+        gradeInput:SetPixelHeight(30)
+        gradeInput:SetFontSize(22)
+        page:Add(gradeInput)
+
+        addGrade = CreateButton()
+        addGrade:SetName("Add Grade")
+        addGrade:SetPixelWidth(150)
+        addGrade:SetPixelHeight(30)
+        addGrade:SetPixelX(210)
+        addGrade:SetPixelY(480)
+        addGrade:SetBackgroundColor(watermelonPink)
+        page:Add(addGrade)
+
+        Icon banner2 = CreateRectangle(darkGreen)
+        banner2:SetFocusable(false)
+        banner2:SetPixelX(25)
+        banner2:SetPixelY(430)
+        banner2:SetPixelWidth(350)
+        banner2:SetPixelHeight(30)
+        page:Add(banner2)
+
+        Label listLabel = CreateLabel()
+        listLabel:SetName("List Title")
+        listLabel:SetText("My Grades")
+        listLabel:SetFontColor(lightGreen)
+        listLabel:SetFontSize(22)
+        listLabel:SetPixelX(140)
+        listLabel:SetPixelY(435)
+        page:Add(listLabel)
+
+        Icon background = CreateRectangle(lightGreen)
+        background:SetFocusable(false)
+        background:SetPixelX(25)
+        background:SetPixelY(180)
+        background:SetPixelWidth(350)
+        background:SetPixelHeight(250)
+        page:Add(background)
+        
+        gradesLabel = CreateLabel()
+        gradesLabel:SetName("Grades List")
+        gradesLabel:SetText("")
+        gradesLabel:SetFontSize(18)
+        gradesLabel:SetPixelX(30)
+        gradesLabel:SetPixelY(410)
+        page:Add(gradesLabel)
+
+        averageGrade = CreateButton()
+        averageGrade:SetName("Calculate Average Grade")
+        averageGrade:SetFontSize(22)
+        averageGrade:SetPixelX(80)
+        averageGrade:SetPixelY(120)
+        averageGrade:SetPixelWidth(260)
+        averageGrade:SetPixelHeight(45)
+        averageGrade:SetBackgroundColor(watermelonPink)
+        page:Add(averageGrade)
+
+        Icon background2 = CreateRectangle(lightGreen)
+        background2:SetFocusable(false)
+        background2:SetPixelX(25)
+        background2:SetPixelY(25)
+        background2:SetPixelWidth(350)
+        background2:SetPixelHeight(80)
+        page:Add(background2)
+
+        averageOutput = CreateLabel()
+        averageOutput:SetPixelX(30)
+        averageOutput:SetPixelY(80)
+        averageOutput:SetMaximumWidth(340)
+        averageOutput:SetFontSize(18)
+        averageOutput:SetName("Result")
+        averageOutput:SetText("Your average grade:")
+        page:Add(averageOutput)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

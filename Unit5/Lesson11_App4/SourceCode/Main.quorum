@@ -1,0 +1,68 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+/*
+DO THIS:
+This program filters the list of animals to only take the animals with more than 5 letters in
+their name. Add code to filter the list of students to those with names with 6 or more letters.
+The output should look like this example below:
+
+Which students have 6 or more letters in their names?
+["Clarissa", "Darien", "Francesco", "Giselle"]
+*/
+
+class Main is ConsoleApplication
+
+    action Main
+        // Create and assign list
+        Array<text> animals
+        animals:Add("alligator")
+        animals:Add("bird")
+        animals:Add("cow")
+        animals:Add("dog")
+        animals:Add("emu")
+        animals:Add("flamingo")
+        animals:Add("gorilla")
+        animals:Add("hippo")
+        
+        output "Which animals have more than 5 letters in their names?"
+        
+        // Filter animals to those with more than 5 letters
+        Array<text> animalsFiltered
+        text animal = ""
+        
+        integer i = 0
+        repeat while i < animals:GetSize()
+            animal = animals:Get(i)
+            if animal:GetSize() > 5
+                animalsFiltered:Add(animal)
+            end
+            i = i + 1
+        end
+        output TextArrayToText(animalsFiltered)
+        
+        // Create and assign a list of students
+        Array<text> students
+        students:Add("Angel")
+        students:Add("Ben")
+        students:Add("Clarissa")
+        students:Add("Darien")
+        students:Add("Elly")
+        students:Add("Francesco")
+        students:Add("Giselle")
+        students:Add("Henry")
+        
+        output "Which students have 6 or more letters in their names?"
+        
+        // Filter students to have those with 6 or more letters
+        Array<text> studentsFiltered
+        text student = ""
+        
+        // Add code to filter the list of students
+
+
+
+
+        output TextArrayToText(studentsFiltered)
+    end
+end
