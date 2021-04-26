@@ -1,0 +1,215 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Color
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Containers.Array
+
+class Main is Application
+
+    DataFrame data
+    Array<text> filteredCities
+    Array<text> filteredConditions
+    Array<text> filteredDescriptions
+    Array<text> filteredIcons
+    Array<number> filteredHighs
+    Array<number> filteredLows
+
+    Button forecastButton = undefined
+    Label cityLabel = undefined
+    Label highLabel = undefined
+    Label lowLabel = undefined
+    Label conditionLabel = undefined
+    Icon conditionIcon = undefined
+
+    action ButtonActivated(Button button)
+        integer index = RandomNumber(0, filteredConditions:GetSize() - 1)
+
+        cityLabel:SetText(filteredCities:Get(index))
+        cityLabel:SetDescription(cityLabel:GetText())
+
+        highLabel:SetText("" + filteredHighs:Get(index))
+        highLabel:SetDescription(highLabel:GetText())
+
+        lowLabel:SetText("" + filteredLows:Get(index))
+        lowLabel:SetDescription(lowLabel:GetText())
+
+        conditionLabel:SetText(filteredDescriptions:Get(index))
+        conditionLabel:SetDescription(conditionLabel:GetDescription())
+
+        SwapImage(conditionIcon, filteredIcons:Get(index))
+        conditionIcon:SetDescription(filteredConditions:Get(index))
+    end
+
+    action Start
+        data:Load("Data/Daily Weather.csv")
+        Array<text> dates = GetTextColumn(data, "Date")
+        Array<text> cities = GetTextColumn(data, "City")
+        Array<text> conditions = GetTextColumn(data, "Main Condition")
+        Array<text> descriptions = GetTextColumn(data, "Condition Description")
+        Array<text> icons = GetTextColumn(data, "Icon")
+        Array<number> highs = GetNumberColumn(data, "High Temperature")
+        Array<number> lows = GetNumberColumn(data, "Low Temperature")
+
+        integer i = 0
+        repeat while i < cities:GetSize()
+            if dates:Get(i) = "Sat 11/28"
+                filteredCities:Add(cities:Get(i))
+                filteredConditions:Add(conditions:Get(i))
+                filteredDescriptions:Add(descriptions:Get(i))
+                filteredIcons:Add(icons:Get(i))
+                filteredHighs:Add(highs:Get(i))
+                filteredLows:Add(lows:Get(i))
+            end
+
+            i = i + 1
+        end
+
+        Color darkBlue = NewColor(0, 0.61, 1)
+        Color lightBlue = NewColor(0.59, 0.83, 1)
+
+        Page page
+        page:SetName("Home")
+
+        Label title = CreateLabel()
+        title:SetFontSize(40)
+        title:SetName("Title")
+        title:SetText("Random Forecaster!")
+        title:SetPixelX(20)
+        title:SetPixelY(540)
+        page:Add(title)
+
+        Label description = CreateLabel()
+        description:SetFontSize(18)
+        description:SetPixelX(20)
+        description:SetPixelY(500)
+        description:SetName("Description")
+        description:SetText("What was the forecast on November 28th in...")
+        page:Add(description)
+
+        forecastButton = CreateButton()
+        forecastButton:SetName("Get Forecast")
+        forecastButton:SetBackgroundColor(darkBlue)
+        forecastButton:SetFontColor(White())
+        forecastButton:SetFontSize(30)
+        forecastButton:SetPixelWidth(186)
+        forecastButton:SetPixelHeight(60)
+        forecastButton:SetPixelX(107)
+        forecastButton:SetPixelY(420)
+        page:Add(forecastButton)
+
+        Icon mainBackground = CreateRectangle(darkBlue)
+        mainBackground:SetFocusable(false)
+        mainBackground:SetPixelWidth(400)
+        mainBackground:SetPixelHeight(400)
+        page:Add(mainBackground)
+
+        Icon background1 = CreateRectangle(lightBlue)
+        background1:SetFocusable(false)
+        background1:SetPixelX(25)
+        background1:SetPixelY(325)
+        background1:SetPixelWidth(350)
+        background1:SetPixelHeight(50)
+        page:Add(background1)
+
+        cityLabel = CreateLabel()
+        cityLabel:SetName("City")
+        cityLabel:SetText("CITY")
+        cityLabel:SetFontSize(40)
+        cityLabel:SetPixelX(50)
+        cityLabel:SetPixelY(335)
+        page:Add(cityLabel)
+
+        Icon background2 = CreateRectangle(lightBlue)
+        background2:SetFocusable(false)
+        background2:SetPixelX(25)
+        background2:SetPixelY(210)
+        background2:SetPixelWidth(125)
+        background2:SetPixelHeight(90)
+        page:Add(background2)
+
+        Label highBoxLabel = CreateLabel()
+        highBoxLabel:SetFocusable(false)
+        highBoxLabel:SetFontSize(22)
+        highBoxLabel:SetText("HIGH")
+        highBoxLabel:SetPixelX(60)
+        highBoxLabel:SetPixelY(275)
+        page:Add(highBoxLabel)
+
+        highLabel = CreateLabel()
+        highLabel:SetFontSize(30)
+        highLabel:SetPixelX(50)
+        highLabel:SetPixelY(230)
+        highLabel:SetName("High")
+        highLabel:SetText("")
+        highLabel:SetColor(White())
+        page:Add(highLabel)
+
+        Icon background3 = CreateRectangle(lightBlue)
+        background3:SetFocusable(false)
+        background3:SetPixelX(25)
+        background3:SetPixelY(100)
+        background3:SetPixelWidth(125)
+        background3:SetPixelHeight(90)
+        page:Add(background3)
+
+        Label lowBoxLabel = CreateLabel()
+        lowBoxLabel:SetFocusable(false)
+        lowBoxLabel:SetFontSize(22)
+        lowBoxLabel:SetText("LOW")
+        lowBoxLabel:SetPixelX(60)
+        lowBoxLabel:SetPixelY(165)
+        page:Add(lowBoxLabel)
+
+        lowLabel = CreateLabel()
+        lowLabel:SetFontSize(30)
+        lowLabel:SetPixelX(50)
+        lowLabel:SetPixelY(125)
+        lowLabel:SetName("Low")
+        lowLabel:SetText("")
+        lowLabel:SetColor(White())
+        page:Add(lowLabel)
+
+        Icon background4 = CreateRectangle(lightBlue)
+        background4:SetFocusable(false)
+        background4:SetPixelX(175)
+        background4:SetPixelY(100)
+        background4:SetPixelWidth(200)
+        background4:SetPixelHeight(200)
+        page:Add(background4)
+
+        conditionIcon = CreateIcon("Sunny.png")
+        conditionIcon:SetName("Condition")
+        conditionIcon:SetPixelX(175)
+        conditionIcon:SetPixelY(100)
+        conditionIcon:SetPixelWidth(200)
+        conditionIcon:SetPixelHeight(200)
+        page:Add(conditionIcon)
+
+        Icon background5 = CreateRectangle(lightBlue)
+        background5:SetFocusable(false)
+        background5:SetPixelX(25)
+        background5:SetPixelY(25)
+        background5:SetPixelWidth(350)
+        background5:SetPixelHeight(50)
+        page:Add(background5)
+
+        conditionLabel = CreateLabel()
+        conditionLabel:SetFontSize(20)
+        conditionLabel:SetPixelX(40)
+        conditionLabel:SetPixelY(55)
+        conditionLabel:SetMaximumWidth(320)
+        conditionLabel:SetName("Condition")
+        conditionLabel:SetText("CONDITION")
+        page:Add(conditionLabel)
+
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
