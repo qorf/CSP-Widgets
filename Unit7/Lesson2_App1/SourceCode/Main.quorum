@@ -1,0 +1,199 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+/*
+DO THIS:
+
+READ:
+Run this program and read the code carefully with a partner.
+
+DISCUSS:
+Discuss these questions with a partner and be prepared to share answers with the class.
+*How does Calculate() work?
+*What are the arguments passed through the parameter in Calculate() when it is called?
+*What types of data does the parameter require in the Calculate() function? Where can you find that information?
+*What is returned? What type of data?
+
+MODIFY:
+If time allows make these changes to the code
+*Add a divide button.
+*In addition to displaying if the number is even or odd, display if the number is divisible by 3.
+*/
+
+    TextBox input1 = undefined
+    TextBox input2 = undefined
+
+    Button plusButton = undefined
+    Button minusButton = undefined
+    Button multiplyButton = undefined
+
+    Label outputLabel = undefined
+    Label evenOddLabel = undefined
+
+    action ButtonActivated(Button button)
+        if button = plusButton
+            outputLabel:SetText(Calculate(" + "))
+        elseif button = minusButton
+            outputLabel:SetText(Calculate(" - "))
+        elseif button = multiplyButton
+            outputLabel:SetText(Calculate(" * "))
+        end
+    end
+
+// calculates the answer to the math problem 
+// displays whether the answer is even or odd
+// symbol {text} - the operator
+// return {text}
+    action Calculate(text symbol) returns text
+        number value1 = cast(number, input1:GetText())
+        number value2 = cast(number, input2:GetText())
+        number answer = 0
+
+        if symbol = " + "
+            answer = value1 + value2
+        elseif symbol = " - "
+            answer = value1 - value2
+        else
+            answer = value1 * value2
+        end
+
+        // the MOD operator "mod" - divides two numbers and returns the remainder
+        // in this case - if a number divided by two has a remainder of zero, it's an even number
+        if answer mod 2 = 0
+            evenOddLabel:SetText("The answer is an EVEN number.")
+        else
+            evenOddLabel:SetText("The answer is an ODD number.")
+        end
+
+        // outputText is now set to a string of the math problem written out
+        text outputText = value1 + " " + symbol + " " + value2 + " = " + answer
+
+        input1:SetText("")
+        input2:SetText("")
+        return outputText
+    end
+
+    action Start
+        Page page
+
+        Icon topBanner = CreateRectangle(NewColor(0, 0.58, 0.79))
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(65)
+        topBanner:SetPixelX(0)
+        topBanner:SetPixelY(520)
+        topBanner:SetFocusable(false)
+        page:Add(topBanner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Number Cruncher")
+        title:SetFontSize(30)
+        title:SetPixelX(75)
+        title:SetPixelY(555)
+        title:SetColor(White())
+        page:Add(title)
+
+        Label subtitle = CreateLabel()
+        subtitle:SetName("Subtitle")
+        subtitle:SetText("Enter two numbers and click the symbol to calculate!")
+        subtitle:SetFontSize(14)
+        subtitle:SetPixelX(35)
+        subtitle:SetPixelY(530)
+        subtitle:SetColor(White())
+        page:Add(subtitle)
+
+        input1 = CreateTextBox()
+        input1:SetPixelWidth(120)
+        input1:SetPixelHeight(80)
+        input1:SetPixelX(70)
+        input1:SetPixelY(400)
+        input1:SetBackgroundColor(NewColor(0.67, 0.81, 0.87))
+        input1:SetFontSize(50)
+        page:Add(input1)
+
+        input2 = CreateTextBox()
+        input2:SetPixelWidth(120)
+        input2:SetPixelHeight(80)
+        input2:SetPixelX(210)
+        input2:SetPixelY(400)
+        input2:SetBackgroundColor(NewColor(0.67, 0.81, 0.87))
+        input2:SetFontSize(50)
+        page:Add(input2)
+
+        plusButton = CreateButton()
+        plusButton:SetName("  + ")
+        plusButton:SetFontSize(40)
+        plusButton:SetPixelX(75)
+        plusButton:SetPixelY(300)
+        plusButton:SetPixelWidth(75)
+        plusButton:SetPixelHeight(65)
+        plusButton:SetBackgroundColor(NewColor(0.93, 0.98, 1))
+        plusButton:SetBorderColor(NewColor(0.67, 0.81, 0.87))
+        page:Add(plusButton)
+
+        minusButton = CreateButton()
+        minusButton:SetName("  - ")
+        minusButton:SetFontSize(40)
+        minusButton:SetPixelX(162)
+        minusButton:SetPixelY(300)
+        minusButton:SetPixelWidth(75)
+        minusButton:SetPixelHeight(65)
+        minusButton:SetBackgroundColor(NewColor(0.93, 0.98, 1))
+        minusButton:SetBorderColor(NewColor(0.67, 0.81, 0.87))
+        page:Add(minusButton)
+
+        multiplyButton = CreateButton()
+        multiplyButton:SetName("  x ")
+        multiplyButton:SetFontSize(35)
+        multiplyButton:SetPixelX(250)
+        multiplyButton:SetPixelY(300)
+        multiplyButton:SetPixelWidth(75)
+        multiplyButton:SetPixelHeight(65)
+        multiplyButton:SetBackgroundColor(NewColor(0.93, 0.98, 1))
+        multiplyButton:SetBorderColor(NewColor(0.67, 0.81, 0.87))
+        page:Add(multiplyButton)
+
+        Icon bottomBanner = CreateRectangle(NewColor(0, 0.58, 0.79))
+        bottomBanner:SetPixelWidth(400)
+        bottomBanner:SetPixelHeight(25)
+        bottomBanner:SetPixelX(0)
+        bottomBanner:SetPixelY(255)
+        bottomBanner:SetFocusable(false)
+        page:Add(bottomBanner)
+
+        Icon labelBackground = CreateRectangle(NewColor(0.93, 0.98, 1))
+        labelBackground:SetPixelWidth(400)
+        labelBackground:SetPixelHeight(255)
+        labelBackground:SetPixelX(0)
+        labelBackground:SetPixelY(0)
+        labelBackground:SetFocusable(false)
+        page:Add(labelBackground)
+
+        outputLabel = CreateLabel()
+        outputLabel:SetFontSize(36)
+        outputLabel:SetPixelX(60)
+        outputLabel:SetPixelY(170)
+        outputLabel:SetName("Output")
+        outputLabel:SetText("")
+        page:Add(outputLabel)
+
+        evenOddLabel = CreateLabel()
+        evenOddLabel:SetFontSize(15)
+        evenOddLabel:SetPixelX(90)
+        evenOddLabel:SetPixelY(30)
+        evenOddLabel:SetName("Even or Odd")
+        evenOddLabel:SetText("")
+        page:Add(evenOddLabel)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
