@@ -37,10 +37,13 @@ If time allows make these changes to the code
     action ButtonActivated(Button button)
         if button = plusButton
             outputLabel:SetText(Calculate(" + "))
+            outputLabel:SetDescription(outputLabel:GetText())
         elseif button = minusButton
             outputLabel:SetText(Calculate(" - "))
+            outputLabel:SetDescription(outputLabel:GetText())
         elseif button = multiplyButton
             outputLabel:SetText(Calculate(" * "))
+            outputLabel:SetDescription(outputLabel:GetText())
         end
     end
 
@@ -65,8 +68,10 @@ If time allows make these changes to the code
         // in this case - if a number divided by two has a remainder of zero, it's an even number
         if answer mod 2 = 0
             evenOddLabel:SetText("The answer is an EVEN number.")
+            evenOddLabel:SetDescription("The answer is an EVEN number.")
         else
             evenOddLabel:SetText("The answer is an ODD number.")
+            evenOddLabel:SetDescription("The answer is an ODD number.")
         end
 
         // outputText is now set to a string of the math problem written out
@@ -107,6 +112,7 @@ If time allows make these changes to the code
         page:Add(subtitle)
 
         input1 = CreateTextBox()
+        input1:SetName("Input Box 1")
         input1:SetPixelWidth(120)
         input1:SetPixelHeight(80)
         input1:SetPixelX(70)
@@ -116,6 +122,7 @@ If time allows make these changes to the code
         page:Add(input1)
 
         input2 = CreateTextBox()
+        input2:SetName("Input Box 2")
         input2:SetPixelWidth(120)
         input2:SetPixelHeight(80)
         input2:SetPixelX(210)
@@ -126,6 +133,7 @@ If time allows make these changes to the code
 
         plusButton = CreateButton()
         plusButton:SetName("  + ")
+        plusButton:SetDescription("Addition")
         plusButton:SetFontSize(40)
         plusButton:SetPixelX(75)
         plusButton:SetPixelY(300)
@@ -137,6 +145,7 @@ If time allows make these changes to the code
 
         minusButton = CreateButton()
         minusButton:SetName("  - ")
+        minusButton:SetDescription("Subtraction")
         minusButton:SetFontSize(40)
         minusButton:SetPixelX(162)
         minusButton:SetPixelY(300)
@@ -148,6 +157,7 @@ If time allows make these changes to the code
 
         multiplyButton = CreateButton()
         multiplyButton:SetName("  x ")
+        multiplyButton:SetDescription("Multiplication")
         multiplyButton:SetFontSize(35)
         multiplyButton:SetPixelX(250)
         multiplyButton:SetPixelY(300)

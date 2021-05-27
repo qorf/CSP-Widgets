@@ -1,0 +1,172 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Containers.Array
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Interface.Controls.TextBox
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Icon
+
+class Main is Application
+/*
+DO THIS:
+
+This is a Word Game Helper, that uses the Words dataset.
+
+READ:
+With a partner
+*Test the app.
+*Lines 37 - 43, 160 - 164: Read the code carefully. What is happening here?
+
+DO THIS:
+Each partner now reads the action on lines 45-69 carefully. After you are done, explain to your partner how the action works, what parameters it takes and what is returned.
+
+MODIFY:
+Extra Time?
+*Update the code so the user can type any number of letters, and only words that start with those letters and are the specified length will be displayed.
+*/
+
+    Array<text> wordList
+    Array<text> filteredWordList
+    
+    TextBox lengthInputBox = undefined
+    TextBox letterInputBox = undefined
+
+    Label outputLabel = undefined
+    Icon unclickable = undefined
+    Icon waitingImage = undefined
+
+    action TextChanged(TextBox textBox)
+        if textBox = lengthInputBox and lengthInputBox:GetText() not= ""
+            Filter(lengthInputBox:GetText():ParseInteger(), letterInputBox:GetText():ToLowerCase())
+        elseif textBox = letterInputBox
+            Filter(lengthInputBox:GetText():ParseInteger(), letterInputBox:GetText():ToLowerCase())
+        end
+    end
+
+    action Filter(integer len, text letter)
+        waitingImage:Show()
+        unclickable:Show()
+
+        filteredWordList:Empty()
+        outputLabel:SetText("")
+
+        integer i = 0
+        repeat wordList:GetSize() - 1 times
+            if wordList:Get(i):GetSize() = len and wordList:Get(i):GetSubtext(0,1) = letter
+                filteredWordList:AddToEnd(wordList:Get(i))
+            end
+            i = i + 1
+        end
+
+        if filteredWordList:GetSize() = 0
+            filteredWordList:AddToEnd("No Options Available")
+        end
+
+        waitingImage:Hide()
+        unclickable:Hide()
+
+        outputLabel:SetText(Join(filteredWordList, ", "))
+        outputLabel:SetDescription(outputLabel:GetText())
+    end
+
+    action Start
+        Page page
+
+        SetBackgroundColor(0.84, 0.87, 0.89)
+        Icon topBanner = CreateRectangle(NewColor(0.5, 0.65, 0.72))
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(50)
+        topBanner:SetPixelX(0)
+        topBanner:SetPixelY(520)
+        topBanner:SetFocusable(false)
+        page:Add(topBanner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Word Game Helper")
+        title:SetFontSize(34)
+        title:SetPixelX(60)
+        title:SetPixelY(535)
+        title:SetColor(White())
+        page:Add(title)
+
+        Label subtitle = CreateLabel()
+        subtitle:SetName("Subtitle")
+        subtitle:SetText("Select the word length and first letter. Suggested words appear below.")
+        subtitle:SetMaximumWidth(300)
+        subtitle:SetFontSize(17)
+        subtitle:SetPixelX(75)
+        subtitle:SetPixelY(490)
+        page:Add(subtitle)
+
+        lengthInputBox = CreateTextBox()
+        lengthInputBox:SetPixelWidth(75)
+        lengthInputBox:SetPixelHeight(45)
+        lengthInputBox:SetPixelX(120)
+        lengthInputBox:SetPixelY(390)
+        lengthInputBox:SetBackgroundColor(NewColor(0.7, 0.85, 0.92))
+        lengthInputBox:SetFontSize(40)
+        lengthInputBox:SetText("1")
+        lengthInputBox:SetName("Length Input Box")
+        page:Add(lengthInputBox)
+
+        letterInputBox = CreateTextBox()
+        letterInputBox:SetPixelWidth(75)
+        letterInputBox:SetPixelHeight(45)
+        letterInputBox:SetPixelX(215)
+        letterInputBox:SetPixelY(390)
+        letterInputBox:SetBackgroundColor(NewColor(0.7, 0.85, 0.92))
+        letterInputBox:SetFontSize(40)
+        letterInputBox:SetText("A")
+        letterInputBox:SetName("Letter Input Box")
+        page:Add(letterInputBox)
+
+        unclickable = CreateRectangle(NewColor(0.5, 0.65, 0.72, 0.45))
+        unclickable:SetPixelWidth(170)
+        unclickable:SetPixelHeight(45)
+        unclickable:SetPixelX(120)
+        unclickable:SetPixelY(390)
+        unclickable:SetFocusable(false)
+        page:Add(unclickable)
+
+        Icon labelBackground = CreateRectangle(NewColor(0.5, 0.65, 0.72))
+        labelBackground:SetPixelWidth(280)
+        labelBackground:SetPixelHeight(250)
+        labelBackground:SetPixelX(60)
+        labelBackground:SetPixelY(100)
+        labelBackground:SetFocusable(false)
+        page:Add(labelBackground)
+
+        outputLabel = CreateLabel()
+        outputLabel:SetName("output")
+        outputLabel:SetText("")
+        outputLabel:SetMaximumWidth(250)
+        outputLabel:SetPixelX(80)
+        outputLabel:SetPixelY(330)
+        outputLabel:SetFontColor(White())
+        outputLabel:SetFontSize(16)
+        page:Add(outputLabel)
+
+        waitingImage = CreateIcon("hourglass.png")
+        waitingImage:SetPixelWidth(80)
+        waitingImage:SetPixelHeight(125)
+        waitingImage:SetPixelX(160)
+        waitingImage:SetPixelY(165)
+        waitingImage:SetFocusable(false)
+        page:Add(waitingImage)
+
+        AddPage(page)
+
+
+        DataFrame data
+        data:Load("Data/Words.csv")
+        wordList = GetTextColumn(data, "Word")
+
+        Filter(lengthInputBox:GetText():ParseInteger(), letterInputBox:GetText():ToLowerCase())
+
+    end
+
+    action Main
+        StartGame()
+    end
+    
+end
