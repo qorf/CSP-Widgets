@@ -1,0 +1,49 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+
+DO THIS:
+*Read the code for the RandomGreeting function.
+*Finish the code for the RandomCompliment function so that it randomly adds a comment from the list to the name passed through the parameter.
+
+The output to the console should look something like this:
+Buenos dias, Benjamin
+Benjamin, your smile lights up the room!
+
+*/
+    action Main
+        RandomGreeting("Benjamin")
+        RandomCompliment("Benjamin")
+
+        RandomGreeting("Raji")
+        RandomCompliment("Raji")
+
+        RandomGreeting("Esmerelda")
+        RandomCompliment("Esmerelda")
+    end
+
+    action RandomGreeting(text name)
+        Array<text> greetings
+        greetings:Add("Good day, ")
+        greetings:Add("Bonjour, ")
+        greetings:Add("Buenos dias, ")
+        greetings:Add("Magandang araw, ")
+        output greetings:Get(RandomNumber(0,greetings:GetSize()-1)) + name
+    end
+
+    action RandomCompliment(text name)
+        Array<text> compliments
+        compliments:Add(", you have incredible hair!")
+        compliments:Add(", you are astonishingly smart!")
+        compliments:Add(", your fashion sense is unmatched!")
+        compliments:Add(", your smile lights up the room!")
+        compliments:Add(", you are uncommonly talented!")
+        compliments:Add(", you are ridiculously funny!")
+
+        // Add code so that the function outputs the person's
+        // name followed by random compliment from the list above.
+
+    end
+end

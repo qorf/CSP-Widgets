@@ -1,0 +1,22 @@
+
+
+class Main
+/*
+
+DO THIS:
+Call the function at least two more times with different names.
+
+*/
+    action Main
+        // Call fucntion
+        Compliment("Jesse")
+
+        // Call the function with two more names
+
+    end
+
+    // Declare function
+    action Compliment(text name)
+        output name + ", you're the best!"
+    end
+end

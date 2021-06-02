@@ -1,0 +1,52 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+This program works identically to the one you just wrote, but it has been organized differently because some functions return a value instead of logging them to the console.
+
+DO THIS:
+*Read the code for this program
+Finish the code for the RandomCompliment function. Use the comments and the code for RandomGreeting to help.
+
+*/
+    action Main
+        GreetAndCompliment("Benjamin")
+        GreetAndCompliment("Raji")
+        GreetAndCompliment("Esmerelda")
+    end
+
+    action GreetAndCompliment(text name)
+        output RandomGreeting() + name
+        output name + RandomCompliment()
+    end
+
+    // Generates a random greeting
+    // return {text} - random greeting, followed by a comma and space
+    action RandomGreeting returns text
+        Array<text> greetings
+        greetings:Add("Good day, ")
+        greetings:Add("Bonne journee, , ")
+        greetings:Add("Buenos dias, ")
+        greetings:Add("Magandang araw, ")
+        text randomGreet = greetings:Get(RandomNumber(0,greetings:GetSize()-1))
+        return randomGreet
+    end
+
+
+    // Generates a random compliment
+    // return {text} - random compliment, followed by exclamation point
+    action RandomCompliment returns text
+        Array<text> compliments
+        compliments:Add(", you have incredible hair!")
+        compliments:Add(", you are astonishingly smart!")
+        compliments:Add(", your fashion sense is unmatched!")
+        compliments:Add(", your smile lights up the room!")
+        compliments:Add(", you are uncommonly talented!")
+        compliments:Add(", you are ridiculously funny!")
+
+        // Write code to complete this function
+
+        return ""
+    end
+end

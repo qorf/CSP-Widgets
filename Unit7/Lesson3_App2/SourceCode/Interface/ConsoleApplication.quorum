@@ -1,0 +1,14 @@
+package Libraries.Curriculum.Code
+
+
+use Libraries.Compute.Random
+
+class ConsoleApplication
+
+    Random random
+
+    action RandomNumber(integer minimum, integer maximum) returns integer
+        return random:RandomIntegerBetween(minimum, maximum)
+    end
+
+end
