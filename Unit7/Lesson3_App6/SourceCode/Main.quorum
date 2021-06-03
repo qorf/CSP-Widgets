@@ -1,0 +1,325 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Font
+use Libraries.Interface.Controls.Checkbox
+use Libraries.Interface.Controls.Button
+use Libraries.Containers.Array
+
+
+class Main is Application
+/*
+
+DO THIS:
+*Try using this simple ordering app.
+*The TotalWithTax() function has a bug. Find and fix it.
+*Add comments for each function using the format below
+// function purpose...
+// parameterName {type} - explanation of parameter
+// return {type} - description of what's returned
+
+*/
+    Array<number> cost
+    Array<Checkbox> checkboxes
+
+
+    Button totalButton = undefined
+    Button taxButton = undefined
+
+    Label outputLabel = undefined
+
+    action ButtonActivated(Button button)
+        if button = totalButton
+            outputLabel:SetText(""+TotalCost())
+            outputLabel:SetDescription(""+TotalCost())
+        elseif button = taxButton
+            outputLabel:SetText(""+TotalWithTax(TotalCost()))
+            outputLabel:SetDescription(""+TotalWithTax(TotalCost()))
+        end
+        
+    end
+
+    action TotalCost() returns number
+        number total = 0
+
+        integer i = 0
+        repeat while i < 5
+            if checkboxes:Get(i):GetToggleState()
+                total = total + cost:Get(i)
+            end
+            i = i + 1
+        end
+        return total
+    end
+
+    action TotalWithTax(number amount) returns number
+        number total = amount + amount * 0.07
+        return 0
+    end
+
+    action Start
+        Checkbox hamburgerCheck
+        Checkbox cheeseCheck
+        Checkbox veggieCheck
+        Checkbox friesCheck
+        Checkbox drinkCheck
+
+        cost:Add(3.25)
+        cost:Add(4.25)
+        cost:Add(3.75)
+        cost:Add(3.50)
+        cost:Add(2.75)
+
+        checkboxes:Add(hamburgerCheck)
+        checkboxes:Add(cheeseCheck)
+        checkboxes:Add(veggieCheck)
+        checkboxes:Add(friesCheck)
+        checkboxes:Add(drinkCheck)
+        
+        SetBackgroundColor(0.92, 0.34, 0.34)
+        Page page
+
+        Font georgiaFont = NewFont("georgia", 16)
+
+        Icon topBanner = CreateRectangle(NewColor(0.98, 0.87, 0.33))
+        topBanner:SetPixelWidth(370)
+        topBanner:SetPixelHeight(62)
+        topBanner:SetPixelX(15)
+        topBanner:SetPixelY(525)
+        topBanner:SetFocusable(false)
+        page:Add(topBanner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Order Up!")
+        title:SetFont(georgiaFont)
+        title:SetFontSize(48)
+        title:SetPixelX(85)
+        title:SetPixelY(540)
+        page:Add(title)
+
+        Icon labelBackground1 = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+        Icon labelBackground2 = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+        Icon labelBackground3 = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+        Icon labelBackground4 = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+        Icon labelBackground5 = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+
+        labelBackground1:SetPixelWidth(370)
+        labelBackground1:SetPixelHeight(36)
+        labelBackground1:SetPixelX(15)
+        labelBackground1:SetPixelY(470)
+        labelBackground1:SetFocusable(false)
+        page:Add(labelBackground1)
+
+        labelBackground2:SetPixelWidth(370)
+        labelBackground2:SetPixelHeight(36)
+        labelBackground2:SetPixelX(15)
+        labelBackground2:SetPixelY(420)
+        labelBackground2:SetFocusable(false)
+        page:Add(labelBackground2)
+
+        labelBackground3:SetPixelWidth(370)
+        labelBackground3:SetPixelHeight(36)
+        labelBackground3:SetPixelX(15)
+        labelBackground3:SetPixelY(370)
+        labelBackground3:SetFocusable(false)
+        page:Add(labelBackground3)
+
+        labelBackground4:SetPixelWidth(370)
+        labelBackground4:SetPixelHeight(36)
+        labelBackground4:SetPixelX(15)
+        labelBackground4:SetPixelY(320)
+        labelBackground4:SetFocusable(false)
+        page:Add(labelBackground4)
+
+        labelBackground5:SetPixelWidth(370)
+        labelBackground5:SetPixelHeight(36)
+        labelBackground5:SetPixelX(15)
+        labelBackground5:SetPixelY(270)
+        labelBackground5:SetFocusable(false)
+        page:Add(labelBackground5)
+
+        Label hamLabel = CreateLabel()
+        hamLabel:SetText("Hamburger")
+        hamLabel:SetFont(georgiaFont)
+        hamLabel:SetFontSize(25)
+        hamLabel:SetFontColor(White())
+        hamLabel:SetPixelX(55)
+        hamLabel:SetPixelY(480)
+        hamLabel:SetFocusable(false)
+        page:Add(hamLabel)
+
+        Label cheeseLabel = CreateLabel()
+        cheeseLabel:SetText("Cheeseburger")
+        cheeseLabel:SetFont(georgiaFont)
+        cheeseLabel:SetFontSize(25)
+        cheeseLabel:SetFontColor(White())
+        cheeseLabel:SetPixelX(55)
+        cheeseLabel:SetPixelY(430)
+        cheeseLabel:SetFocusable(false)
+        page:Add(cheeseLabel)
+
+        Label veggieLabel = CreateLabel()
+        veggieLabel:SetText("Veggieburger")
+        veggieLabel:SetFont(georgiaFont)
+        veggieLabel:SetFontSize(25)
+        veggieLabel:SetFontColor(White())
+        veggieLabel:SetPixelX(55)
+        veggieLabel:SetPixelY(380)
+        veggieLabel:SetFocusable(false)
+        page:Add(veggieLabel)
+
+        Label friesLabel = CreateLabel()
+        friesLabel:SetText("Fries")
+        friesLabel:SetFont(georgiaFont)
+        friesLabel:SetFontSize(25)
+        friesLabel:SetFontColor(White())
+        friesLabel:SetPixelX(55)
+        friesLabel:SetPixelY(330)
+        friesLabel:SetFocusable(false)
+        page:Add(friesLabel)
+
+        Label drinkLabel = CreateLabel()
+        drinkLabel:SetText("Fountain Drink")
+        drinkLabel:SetFont(georgiaFont)
+        drinkLabel:SetFontSize(25)
+        drinkLabel:SetFontColor(White())
+        drinkLabel:SetPixelX(55)
+        drinkLabel:SetPixelY(280)
+        drinkLabel:SetFocusable(false)
+        page:Add(drinkLabel)
+
+        Label hamLabelCost = CreateLabel()
+        hamLabelCost:SetText("3.25")
+        hamLabelCost:SetFont(georgiaFont)
+        hamLabelCost:SetFontSize(18)
+        hamLabelCost:SetFontColor(White())
+        hamLabelCost:SetPixelX(320)
+        hamLabelCost:SetPixelY(485)
+        hamLabelCost:SetFocusable(false)
+        page:Add(hamLabelCost)
+
+        Label cheeseLabelCost = CreateLabel()
+        cheeseLabelCost:SetText("4.25")
+        cheeseLabelCost:SetFont(georgiaFont)
+        cheeseLabelCost:SetFontSize(18)
+        cheeseLabelCost:SetFontColor(White())
+        cheeseLabelCost:SetPixelX(320)
+        cheeseLabelCost:SetPixelY(435)
+        cheeseLabelCost:SetFocusable(false)
+        page:Add(cheeseLabelCost)
+
+        Label veggieLabelCost = CreateLabel()
+        veggieLabelCost:SetText("3.75")
+        veggieLabelCost:SetFont(georgiaFont)
+        veggieLabelCost:SetFontSize(18)
+        veggieLabelCost:SetFontColor(White())
+        veggieLabelCost:SetPixelX(320)
+        veggieLabelCost:SetPixelY(385)
+        veggieLabelCost:SetFocusable(false)
+        page:Add(veggieLabelCost)
+
+        Label friesLabelCost = CreateLabel()
+        friesLabelCost:SetText("3.50")
+        friesLabelCost:SetFont(georgiaFont)
+        friesLabelCost:SetFontSize(18)
+        friesLabelCost:SetFontColor(White())
+        friesLabelCost:SetPixelX(320)
+        friesLabelCost:SetPixelY(335)
+        friesLabelCost:SetFocusable(false)
+        page:Add(friesLabelCost)
+
+        Label drinkLabelCost = CreateLabel()
+        drinkLabelCost:SetText("2.75")
+        drinkLabelCost:SetFont(georgiaFont)
+        drinkLabelCost:SetFontSize(18)
+        drinkLabelCost:SetFontColor(White())
+        drinkLabelCost:SetPixelX(320)
+        drinkLabelCost:SetPixelY(285)
+        drinkLabelCost:SetFocusable(false)
+        page:Add(drinkLabelCost)
+
+        hamburgerCheck:SetName("")
+        hamburgerCheck:SetDescription("Hamburger 3.25")
+        hamburgerCheck:SetFontSize(20)
+        hamburgerCheck:SetPixelX(25)
+        hamburgerCheck:SetPixelY(475)
+        page:Add(hamburgerCheck)
+
+        cheeseCheck:SetName("")
+        cheeseCheck:SetDescription("Cheeseburger 4.25")
+        cheeseCheck:SetFontSize(20)
+        cheeseCheck:SetPixelX(25)
+        cheeseCheck:SetPixelY(425)
+        page:Add(cheeseCheck)
+
+        veggieCheck:SetName("")
+        veggieCheck:SetDescription("Veggieburger 3.75")
+        veggieCheck:SetFontSize(20)
+        veggieCheck:SetPixelX(25)
+        veggieCheck:SetPixelY(375)
+        page:Add(veggieCheck)
+
+        friesCheck:SetName("")
+        friesCheck:SetDescription("Fries 3.50")
+        friesCheck:SetFontSize(20)
+        friesCheck:SetPixelX(25)
+        friesCheck:SetPixelY(325)
+        page:Add(friesCheck)
+
+        drinkCheck:SetName("")
+        drinkCheck:SetDescription("Fountain Drink 2.75")
+        drinkCheck:SetFontSize(20)
+        drinkCheck:SetPixelX(25)
+        drinkCheck:SetPixelY(275)
+        page:Add(drinkCheck)
+        
+        totalButton = CreateButton()
+        totalButton:SetName("           Total")
+        totalButton:SetFont(georgiaFont)
+        totalButton:SetFontSize(20)
+        totalButton:SetBackgroundColor(NewColor(0.98, 0.87, 0.33))
+        totalButton:SetPixelWidth(175)
+        totalButton:SetPixelHeight(45)
+        totalButton:SetPixelX(15)
+        totalButton:SetPixelY(205)
+        page:Add(totalButton)
+
+        taxButton = CreateButton()
+        taxButton:SetName("   Total with Tax")
+        taxButton:SetFont(georgiaFont)
+        taxButton:SetFontSize(20)
+        taxButton:SetBackgroundColor(NewColor(0.98, 0.87, 0.33))
+        taxButton:SetPixelWidth(175)
+        taxButton:SetPixelHeight(45)
+        taxButton:SetPixelX(210)
+        taxButton:SetPixelY(205)
+        page:Add(taxButton)
+
+        Icon outputBackground = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+        outputBackground:SetPixelWidth(250)
+        outputBackground:SetPixelHeight(100)
+        outputBackground:SetPixelX(75)
+        outputBackground:SetPixelY(70)
+        outputBackground:SetFocusable(false)
+        page:Add(outputBackground)
+
+        outputLabel = CreateLabel()
+        outputLabel:SetName("Output")
+        outputLabel:SetText("") 
+        outputLabel:SetPixelX(150)
+        outputLabel:SetPixelY(125)
+        outputLabel:SetFont(georgiaFont)
+        outputLabel:SetFontSize(45)
+        outputLabel:SetFontColor(White())
+        page:Add(outputLabel)
+        
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

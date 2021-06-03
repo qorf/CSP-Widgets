@@ -1,0 +1,109 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Font
+use Libraries.Interface.Controls.Checkbox
+use Libraries.Interface.Controls.Button
+use Libraries.Containers.Array
+use Libraries.Interface.Controls.TextBox
+
+
+class Main is Application
+/*
+DO THIS:
+*We have taken our code for complimenting people, and turned it into an app. Read the code.
+*Complete the UpdateScreen function following the instructions in the comments of the code. When it works the user should see a random greeting and compliment when enter their name and click the button.
+*Add comments to the RandomCompliment function. Use the format shown below
+// function purpose...
+// parameterName {type} - explanation of parameter
+// return {type} - short description of what is returned
+*/
+
+    Button complimentButton = undefined
+
+    TextBox nameInput = undefined
+
+    Label outputLabel = undefined
+
+    action ButtonActivated(Button button)
+
+        
+    end
+
+    // Combines a random greeting in various languages with a name
+    // name {string} - the name of a person
+    // return {string} - the complete greeting which combines the random greeting with a name
+    action RandomGreeting(text name) returns text
+        Array<text> greetings
+        greetings:Add("Good day, ")
+        greetings:Add("Bonne journee, , ")
+        greetings:Add("Buenos dias, ")
+        greetings:Add("Magandang araw, ")
+        text statement = greetings:Get(RandomNumber(0,greetings:GetSize()-1)) + name + "."
+        return statement
+    end
+
+
+    // Write comments for the randomCompliment function here
+
+    action RandomCompliment(text name) returns text
+        Array<text> compliments
+        compliments:Add(", you have incredible hair!")
+        compliments:Add(", you are astonishingly smart!")
+        compliments:Add(", your fashion sense is unmatched!")
+        compliments:Add(", your smile lights up the room!")
+        compliments:Add(", you are uncommonly talented!")
+        compliments:Add(", you are ridiculously funny!")
+
+        text statement = name + compliments:Get(RandomNumber(0,compliments:GetSize()-1))
+        return statement
+    end
+
+    action Start
+        SetBackgroundColor(NewColor(0.21, 0.18, 0.29))
+        Page page
+
+        Icon topBanner = CreateRectangle(NewColor(0.13 ,0.11, 0.19))
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(70)
+        topBanner:SetPixelX(0)
+        topBanner:SetPixelY(530)
+        topBanner:SetFocusable(false)
+        page:Add(topBanner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("compliment.er")
+        title:SetFontColor(NewColor(0.85, 1, 0.65))
+        title:SetFontSize(50)
+        title:SetPixelX(50)
+        title:SetPixelY(550)
+        page:Add(title)
+    
+        Icon inputBorder = CreateRectangle(NewColor(0.85, 1, 0.65))
+        inputBorder:SetPixelWidth(344)
+        inputBorder:SetPixelHeight(64)
+        inputBorder:SetPixelX(28)
+        inputBorder:SetPixelY(418)
+        inputBorder:SetFocusable(false)
+        page:Add(inputBorder)
+
+        nameInput = CreateTextBox()
+        nameInput:SetBackgroundColor(NewColor(0.13 ,0.11, 0.19))
+        nameInput:SetFontColor(NewColor(0.85, 1, 0.65))
+        nameInput:SetFontSize(40)
+        nameInput:SetPixelWidth(340)
+        nameInput:SetPixelHeight(60)
+        nameInput:SetPixelX(30)
+        nameInput:SetPixelY(420)
+        page:Add(nameInput)
+
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

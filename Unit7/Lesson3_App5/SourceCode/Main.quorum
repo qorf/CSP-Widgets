@@ -1,0 +1,49 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+
+use Libraries.Containers.Array
+use Libraries.Compute.Statistics.DataFrame
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+*Run this program to see how it works. Notice that the LongestWord function simply returns the word "unknown".
+*Write the code for the LongestWord function, using the comments and the code for ShortestWord to help. When it works correctly this program should print the names of the longest state and dog names.
+*/
+    action Main
+        DataFrame frame
+
+        frame:Load("Data/US States.csv")        
+        Array<text> stateNames = GetTextColumn(frame, "State Name")
+
+        frame:Load("Data/Dogs.csv")
+        Array<text> dogNames = GetTextColumn(frame, "Name")
+
+
+        LongestShortest("states", stateNames)
+        LongestShortest("dogs", dogNames)
+    end
+
+    action LongestShortest(text typeOfList, Array<text> list)
+        text message = "There are many " + typeOfList
+        message = message + " but the one with the shortest name is " + ShortestWord(list)
+        message = message + " and the one with the longest name is " + LongestWord(list)
+        output message
+    end
+
+    action ShortestWord(Array<text> list) returns text
+        text shortest = list:Get(0)
+        integer i = 0
+        repeat while i < list:GetSize()
+            if (list:Get(i):GetSize() < shortest:GetSize())
+                shortest = list:Get(i)
+            end
+            i = i + 1
+        end
+        return shortest
+    end
+
+    action LongestWord(Array<text> list) returns text
+
+        return "unknown"
+    end
+end
