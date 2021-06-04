@@ -26,8 +26,9 @@ DO THIS:
     Label outputLabel = undefined
 
     action ButtonActivated(Button button)
-
-        
+        if button = complimentButton
+            UpdateScreen()
+        end
     end
 
     // Combines a random greeting in various languages with a name
@@ -59,6 +60,18 @@ DO THIS:
         return statement
     end
 
+    action UpdateScreen
+      // Get the user's name from the display and store in a variable
+    
+      // Create a local variable textOutput to store the return values of both RandomGreeting and RandomCompliment
+      // when both are called with the user's name passed through the parameter
+    
+    
+    
+      // Display textOutput on the screen in the output display area
+
+    end
+
     action Start
         SetBackgroundColor(NewColor(0.21, 0.18, 0.29))
         Page page
@@ -84,7 +97,7 @@ DO THIS:
         inputBorder:SetPixelWidth(344)
         inputBorder:SetPixelHeight(64)
         inputBorder:SetPixelX(28)
-        inputBorder:SetPixelY(418)
+        inputBorder:SetPixelY(423)
         inputBorder:SetFocusable(false)
         page:Add(inputBorder)
 
@@ -95,8 +108,37 @@ DO THIS:
         nameInput:SetPixelWidth(340)
         nameInput:SetPixelHeight(60)
         nameInput:SetPixelX(30)
-        nameInput:SetPixelY(420)
+        nameInput:SetPixelY(425)
         page:Add(nameInput)
+
+        complimentButton = CreateButton()
+        complimentButton:SetName("  Compliment")
+        complimentButton:SetBackgroundColor(NewColor(0.21, 0.18, 0.29))
+        complimentButton:SetBorderColor(NewColor(0.7, 0.58, 1))
+        complimentButton:SetBorderThickness(2)
+        complimentButton:SetFontColor(NewColor(0.85, 1, 0.65))
+        complimentButton:SetFontSize(35)
+        complimentButton:SetPixelWidth(250)
+        complimentButton:SetPixelHeight(65)
+        complimentButton:SetPixelX(75)
+        complimentButton:SetPixelY(320)
+        page:Add(complimentButton)
+
+        Icon labelBackground = CreateRectangle(White())
+        labelBackground:SetPixelWidth(340)
+        labelBackground:SetPixelHeight(205)
+        labelBackground:SetPixelX(30)
+        labelBackground:SetPixelY(80)
+        labelBackground:SetFocusable(false)
+        page:Add(labelBackground)
+
+        outputLabel = CreateLabel()
+        outputLabel:SetText("")
+        outputLabel:SetMaximumWidth(310)
+        outputLabel:SetPixelX(45)
+        outputLabel:SetPixelY(250)
+        outputLabel:SetFontSize(30)
+        page:Add(outputLabel)
 
 
         AddPage(page)
