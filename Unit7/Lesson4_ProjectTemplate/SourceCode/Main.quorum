@@ -1,0 +1,248 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Game.Graphics.Font
+use Libraries.Interface.Controls.Checkbox
+use Libraries.Interface.Controls.Button
+use Libraries.Containers.Array
+use Libraries.Interface.Controls.TextBox
+
+
+class Main is Application
+/*
+Build the Rock Paper Scissors app, using your activity guide to help you plan. When you're done, submit your work.
+*/
+
+    // List of icons that can be used in the game
+    Array<text> icons
+    // List of possible choices to play
+    Array<text> choices
+
+    // User and computer scores, started at 0
+    integer playerScore = 0
+    integer computerScore = 0
+
+    Label gameText = undefined
+
+    Icon computerOutput = undefined
+    Icon playerOutput = undefined
+
+    Label computerScoreOutput = undefined
+    Label playerScoreOutput = undefined
+
+    // Button for player to play rock
+    Button rockButton = undefined
+    // Button for player to play paper
+    Button paperButton = undefined
+    // Button for player to play scissors
+    Button scissorsButton = undefined
+
+    action ButtonActivated(Button button)
+    // Button for player to play rock
+        if button = rockButton
+            UpdateScreen("Rock")
+    // Button for player to play paper
+        elseif button = paperButton
+            UpdateScreen("Paper")
+    // Button for player to play scissors
+        elseif button = scissorsButton
+            UpdateScreen("Scissors")
+        end
+    end
+
+    // When the user clicks any of the three buttons it runs a round
+    // of rock paper scissors. This function determines who won the
+    // game and updates the screen and scores for each player.
+    action UpdateScreen(text playerChoice)
+
+        // Randomly choose the computer's choice and decide who wins
+        text computerChoice = RandomChoose(choices)
+        text winner = DecideWinner(playerChoice, computerChoice)
+
+        // Update the screen with the correct icon for each player
+        playerOutput:Load("Images/" + FindIcon(playerChoice))
+        playerOutput:SetDescription(playerChoice)
+        computerOutput:Load("Images/" + FindIcon(computerChoice))
+        computerOutput:SetDescription(computerChoice)
+
+        // Update the screen with the text explaining who won.
+        if winner = "Draw"
+            gameText:SetText("Draw!")
+            gameText:SetDescription("Draw!")
+        elseif winner = "Player"
+            gameText:SetText("You win!")
+            gameText:SetDescription("You win!")
+            playerScore = playerScore + 1
+            playerScoreOutput:SetText(""+playerScore)
+            playerScoreOutput:SetDescription(""+playerScore)
+        elseif winner = "Computer"
+            gameText:SetText("Computer wins!")
+            gameText:SetDescription("Computer wins!")
+            computerScore = computerScore + 1
+            computerScoreOutput:SetText(""+computerScore)
+            computerScoreOutput:SetDescription(""+computerScore)
+        end
+    end
+
+    // iconName {text} - either "Rock", "Paper", or "Scissors"
+    // return {text} - the icon associated with the string provided
+    action FindIcon(text iconName) returns text
+        return icons:Get(0)
+    end
+
+    // Randomly selects an item from the list provided and returns it
+    // list {Array<text>} - a list of items
+    // return {text} - a randomly chosen item from the list
+    action RandomChoose(Array<text> list) returns text
+        return list:Get(0)
+    end
+
+    // Decides who wins a round of rock paper scissors by taking the two 
+    // playerChoice {text} - either "Rock", "Paper", or "Scissors", the human player's choice
+    // computerChoice {text} - either "Rock", "Paper", or "Scissors", the computer player's choice
+    // return {text} - either "Draw", "Player", or "Computer", depending on who
+    action DecideWinner(text playerChoice, text computerChoice) returns text
+
+        return "Player"
+    end
+
+    action Start
+        icons:Add("rock.png")
+        icons:Add("paper.png")
+        icons:Add("scissors.png")
+
+        choices:Add("Rock")
+        choices:Add("Paper")
+        choices:Add("Scissors")
+
+        SetBackgroundColor(NewColor(0.79, 0.89, 0.33))
+        Page page
+        page:SetName("gameScreen")
+
+        Icon topBanner = CreateRectangle(NewColor(0.22,0.36,0.12))
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(45)
+        topBanner:SetPixelY(555)
+        topBanner:SetFocusable(false)
+        page:Add(topBanner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Rock Paper Scissors!")
+        title:SetFontColor(NewColor(0.95,0.98,0.84))
+        title:SetFontSize(36)
+        title:SetPixelX(30)
+        title:SetPixelY(565)
+        page:Add(title)
+
+        gameText = CreateLabel()
+        gameText:SetName("Game Text")
+        gameText:SetText("Ready to play?!")
+        gameText:SetFontSize(28)
+        gameText:SetPixelX(100)
+        gameText:SetPixelY(505)
+        page:Add(gameText)
+
+        Icon computerIcon = CreateIcon("computerIcon.png")
+        computerIcon:SetPixelX(30)
+        computerIcon:SetPixelY(365)
+        computerIcon:SetPixelWidth(80)
+        computerIcon:SetPixelHeight(80)
+        computerIcon:SetFocusable(false)
+        page:Add(computerIcon)
+
+        Icon playerIcon = CreateIcon("playerIcon.png")
+        playerIcon:SetPixelX(35)
+        playerIcon:SetPixelY(215)
+        playerIcon:SetPixelWidth(75)
+        playerIcon:SetPixelHeight(75)
+        playerIcon:SetFocusable(false)
+        page:Add(playerIcon)
+
+        Icon computerBorder = CreateRectangle(Black())
+        computerBorder:SetFocusable(false)
+        computerBorder:SetPixelWidth(128)
+        computerBorder:SetPixelHeight(128)
+        computerBorder:SetPixelX(136)
+        computerBorder:SetPixelY(346)
+        page:Add(computerBorder)
+
+        Icon computerBackground = CreateRectangle(NewColor(0.79, 0.89, 0.33))
+        computerBackground:SetFocusable(false)
+        computerBackground:SetPixelWidth(120)
+        computerBackground:SetPixelHeight(120)
+        computerBackground:SetPixelX(140)
+        computerBackground:SetPixelY(350)
+        page:Add(computerBackground)
+
+        Icon playerBorder = CreateRectangle(Black())
+        playerBorder:SetFocusable(false)
+        playerBorder:SetPixelWidth(128)
+        playerBorder:SetPixelHeight(128)
+        playerBorder:SetPixelX(136)
+        playerBorder:SetPixelY(186)
+        page:Add(playerBorder)
+
+        Icon playerBackground = CreateRectangle(NewColor(0.79, 0.89, 0.33))
+        playerBackground:SetFocusable(false)
+        playerBackground:SetPixelWidth(120)
+        playerBackground:SetPixelHeight(120)
+        playerBackground:SetPixelX(140)
+        playerBackground:SetPixelY(190)
+        page:Add(playerBackground)
+
+        computerOutput = CreateIcon("questionMark.png")
+        computerOutput:SetName("Computer Output")
+        computerOutput:SetPixelWidth(75)
+        computerOutput:SetPixelHeight(75)
+        computerOutput:SetPixelX(165)
+        computerOutput:SetPixelY(370)
+        page:Add(computerOutput)
+
+        computerScoreOutput = CreateLabel()
+        computerScoreOutput:SetName("Computer Score Output")
+        computerScoreOutput:SetText("0")
+        computerScoreOutput:SetFontSize(30)
+        computerScoreOutput:SetPixelX(325)
+        computerScoreOutput:SetPixelY(395)
+        page:Add(computerScoreOutput)
+
+        playerOutput = CreateIcon("questionMark.png")
+        playerOutput:SetName("Player Output")
+        playerOutput:SetPixelWidth(75)
+        playerOutput:SetPixelHeight(75)
+        playerOutput:SetPixelX(165)
+        playerOutput:SetPixelY(210)
+        page:Add(playerOutput)
+
+        playerScoreOutput = CreateLabel()
+        playerScoreOutput:SetName("Player Score Output")
+        playerScoreOutput:SetText("0")
+        playerScoreOutput:SetFontSize(30)
+        playerScoreOutput:SetPixelX(325)
+        playerScoreOutput:SetPixelY(235)
+        page:Add(playerScoreOutput)
+
+        rockButton = CreateButton("rockButton.png")
+        rockButton:SetName("Rock")
+        page:Add(rockButton)
+
+        paperButton = CreateButton("paperButton.png")
+        paperButton:SetName("Paper")
+        paperButton:SetPixelX(135)
+        page:Add(paperButton)
+
+        scissorsButton = CreateButton("scissorsButton.png")
+        scissorsButton:SetName("Scissors")
+        scissorsButton:SetPixelX(265)
+        page:Add(scissorsButton)
+
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

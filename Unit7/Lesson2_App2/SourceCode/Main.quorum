@@ -50,7 +50,7 @@ Extra Time?
         outputLabel:SetText("")
 
         integer i = 0
-        repeat wordList:GetSize() - 1 times
+        repeat wordList:GetSize() times
             if wordList:Get(i):GetSize() = len and wordList:Get(i):GetSubtext(0,1) = letter
                 filteredWordList:AddToEnd(wordList:Get(i))
             end
