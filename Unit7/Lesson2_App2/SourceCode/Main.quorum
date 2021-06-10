@@ -64,7 +64,7 @@ Extra Time?
         waitingImage:Hide()
         unclickable:Hide()
 
-        outputLabel:SetText(Join(filteredWordList, ", "))
+        outputLabel:SetText(JoinText(filteredWordList, ", "))
         outputLabel:SetDescription(outputLabel:GetText())
     end
 

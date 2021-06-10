@@ -1,0 +1,70 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+/*
+DO THIS:
+This program is being designed as a simple list library. Write tests to make sure the first function works. Then write the second two functions so that they pass the tests written.
+*/
+    action Main
+        //write three different tests for the fill function
+
+        Array<integer> multiplyList1
+        multiplyList1:Add(1)
+        multiplyList1:Add(2)
+        multiplyList1:Add(3)
+        output "Muliply [1,2,3] by 2 " + TextArrayToText(MultiplyBy(multiplyList1, 2))
+        Array<integer> multiplyList2
+        multiplyList2:Add(10)
+        multiplyList2:Add(20)
+        multiplyList2:Add(30)
+        output "Muliply [10,20,30] by 5 " + TextArrayToText(MultiplyBy(multiplyList2, 5))
+        Array<integer> multiplyList3
+        multiplyList3:Add(-1)
+        multiplyList3:Add(-2)
+        multiplyList3:Add(-3)
+        output "Muliply [-1,-2,-3] by 3 " + TextArrayToText(MultiplyBy(multiplyList3, 3))
+
+        Array<text> reverseList1
+        reverseList1:Add("1")
+        reverseList1:Add("2")
+        reverseList1:Add("3")
+        output "Reverse ['1','2','3'] " + TextArrayToText(Reverse(reverseList1))
+        Array<text> reverseList2
+        reverseList2:Add("yes")
+        reverseList2:Add("no")
+        reverseList2:Add("maybe")
+        output "Reverse ['yes','no','maybe'] " + TextArrayToText(Reverse(reverseList2))
+    end
+
+
+    // Creates a new list of the length given and with the same value repeated
+    // length {integer} - the length of the list to create
+    // value {text} - the value to appear in every item of 
+    action Fill(integer length, text value) returns Array<text>
+        Array<text> returnList
+        repeat length times
+            returnList:AddToEnd(value)
+        end
+        return returnList
+    end
+
+    action MultiplyBy(Array<integer> list, integer num) returns Array<text>
+        Array<text> returnList
+        // Write your code here
+
+        return returnList
+    end
+
+
+    // Returns a copy of the list given but in reverse order
+    // list {Array<text>} - the list to be reversed
+    // return {Array<text>} - a copy of the original list in reverse order
+    action Reverse(Array<text> list) returns Array<text>
+        Array<text> returnList
+        // Write your code here
+
+        return returnList
+    end
+
+end

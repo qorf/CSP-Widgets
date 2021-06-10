@@ -1,0 +1,107 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.TextBox
+
+
+class Main is Application
+/*
+This program uses the States Library from the previous lesson. You'll need to finish the app by writing code inside the NewState() function by using the functions in the States Library. You'll need to:
+*Pick a random state
+*Set the value of currentState to that state name
+*Update the flag on the screen to be that state
+*/
+    Icon flagImage = undefined
+    Label appText = undefined
+
+    TextBox stateNameInput = undefined
+    Button guessButton = undefined
+    Button newStateButton = undefined
+
+    StateLibrary stateLibrary
+    text currentState = ""
+
+    action ButtonActivated(Button button)
+        if button = newStateButton
+            NewState()
+        elseif button = guessButton
+            text guessState = stateNameInput:GetText()
+            if guessState = currentState
+                appText:SetText("Correct!")
+                appText:SetDescription("Correct!")
+            else
+                appText:SetText("Nope, that's not it!")
+                appText:SetDescription("Nope, that's not it!")
+            end
+        end
+    end
+
+    action NewState
+
+    end
+
+    action Start
+        SetBackgroundColor(1, 0.88, 0.29)
+        Page page
+        page:SetName("homeScreen")
+
+
+        flagImage = CreateIcon("placeholder.png")
+        flagImage:SetName("flag image")
+        flagImage:SetPixelWidth(380)
+        flagImage:SetPixelHeight(250)
+        flagImage:SetPixelX(10)
+        flagImage:SetPixelY(340)
+        page:Add(flagImage)
+
+        appText = CreateLabel()
+        appText:SetName("App Text")
+        appText:SetText("Guess the state!")
+        appText:SetFontSize(45)
+        appText:SetFontColor(NewColor(0.07, 0.29, 0.41))
+        appText:SetPixelX(30)
+        appText:SetPixelY(285)
+        page:Add(appText)
+
+        stateNameInput = CreateTextBox()
+        stateNameInput:SetPixelWidth(240)
+        stateNameInput:SetPixelHeight(50)
+        stateNameInput:SetPixelX(10)
+        stateNameInput:SetPixelY(110)
+        stateNameInput:SetFontSize(30)
+        stateNameInput:SetFontColor(NewColor(0.07, 0.29, 0.41))
+        page:Add(stateNameInput)
+
+        guessButton = CreateButton()
+        guessButton:SetName("Guess")
+        guessButton:SetPixelWidth(120)
+        guessButton:SetPixelHeight(50)
+        guessButton:SetPixelX(270)
+        guessButton:SetPixelY(110)
+        guessButton:SetBackgroundColor(NewColor(0.07, 0.29, 0.41))
+        guessButton:SetFontColor(White())
+        guessButton:SetFontSize(24)
+        page:Add(guessButton)
+
+        newStateButton = CreateButton()
+        newStateButton:SetName("New State!")
+        newStateButton:SetPixelWidth(380)
+        newStateButton:SetPixelHeight(50)
+        newStateButton:SetPixelX(10)
+        newStateButton:SetPixelY(50)
+        newStateButton:SetBackgroundColor(NewColor(0.07, 0.29, 0.41))
+        newStateButton:SetFontColor(White())
+        newStateButton:SetFontSize(24)
+        page:Add(newStateButton)
+
+        NewState()
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

@@ -1,0 +1,151 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Containers.Array
+
+class Main is Application
+/*
+DO THIS:
+
+READ:
+Run this program and read the code carefully with a partner. Try several different inputs.
+
+DISCUSS:
+Discuss with a partner and be prepared to share answers with the class.
+*Open StringsLibrary.quorum and look at each of the StringsLibrary functions. How do these functions work?
+
+TEST THE FUNCTIONS:
+*Re-read the documentation for each library function.
+*Add an output statement to the end of the program and call a function. Put in a reasonable argument in the space for the parameter.
+**For example: output stringsLibrary.FirstLetter("pizza")
+*Hit run to see the output.
+*Now add output statements to test the rest of the functions. Is the output what you would expect? Try several different inputs.
+*/
+    TextBox textInput = undefined
+    Button pigifyButton = undefined
+    Label textOutput = undefined
+
+    StringsLibrary stringsLibrary
+    
+
+    action ButtonActivated(Button button)
+    // when the Pigify button is clicked, call the updateScreen() function
+        if button = pigifyButton
+            UpdateScreen()
+        end
+    end
+
+    // resets the screen and calls the pigify() function passing through user input
+    action UpdateScreen()
+        text str = textInput:GetText()
+        text statement = Pigify(str)
+        textOutput:SetText(statement)
+        textOutput:SetDescription(statement)
+    end
+
+    // uses a set of rules to convert the user input into pig latin
+    // makes calls to the Strings library to manage the user input so it can be converted
+    action Pigify(text str) returns text
+        Array<text> list = stringsLibrary:SplitStringBySpace(str)
+        Array<text> newList
+
+        integer i = 0
+        repeat while i < list:GetSize()
+            text first = stringsLibrary:FirstLetter(list:Get(i))
+            text rest = stringsLibrary:AllButFirst(list:Get(i))
+            text temp = ""
+
+            if list:Get(i):GetSize() < 4
+                temp = list:Get(i)
+            elseif stringsLibrary:HasVowel(first) = true
+                temp = list:Get(i) + "ay"
+            else
+                temp = rest + first + "ay"
+            end
+            newList:AddToEnd(temp)
+
+            i = i + 1
+        end
+
+        text newString = JoinText(newList, " ")
+        return newString
+    end
+
+    action Start
+        SetBackgroundColor(1,0.86,0.82)
+        Page page
+
+        Icon instructionBackground = CreateRectangle(NewColor(1, 0.92, 0.90))
+        instructionBackground:SetPixelWidth(275)
+        instructionBackground:SetPixelHeight(70)
+        instructionBackground:SetPixelX(95)
+        instructionBackground:SetPixelY(490)
+        instructionBackground:SetFocusable(false)
+        page:Add(instructionBackground)
+
+        Icon piggy = CreateIcon("pig.png")
+        piggy:SetPixelY(480)
+        piggy:SetPixelWidth(125)
+        piggy:SetPixelHeight(113)
+        piggy:SetFocusable(false)
+        page:Add(piggy)
+
+        Label instructions = CreateLabel()
+        instructions:SetName("Instructions")
+        instructions:SetText("Type in a sentence. The Pig-ify engine will convert it to Pig Latin!")
+        instructions:SetPixelX(120)
+        instructions:SetPixelY(540)
+        instructions:SetFontSize(18)
+        instructions:SetFontColor(NewColor(0.27, 0.17, 0.18))
+        instructions:SetMaximumWidth(240)
+        page:Add(instructions)
+
+        textInput = CreateTextBox()
+        textInput:SetName("text input")
+        textInput:SetPixelX(40)
+        textInput:SetPixelY(360)
+        textInput:SetPixelWidth(330)
+        textInput:SetPixelHeight(100)
+        textInput:SetFontSize(18)
+        textInput:SetFontColor(NewColor(0.27, 0.17, 0.18))
+        page:Add(textInput)
+
+        pigifyButton = CreateButton()
+        pigifyButton:SetName("Pig-ify")
+        pigifyButton:SetPixelWidth(120)
+        pigifyButton:SetPixelHeight(45)
+        pigifyButton:SetPixelX(145)
+        pigifyButton:SetPixelY(285)
+        pigifyButton:SetBackgroundColor(NewColor(0.27, 0.17, 0.18))
+        pigifyButton:SetBorderThickness(0)
+        pigifyButton:SetFontColor(White())
+        pigifyButton:SetFontSize(26)
+        page:Add(pigifyButton)
+
+        Icon outputBackground = CreateRectangle(NewColor(1, 0.92, 0.90))
+        outputBackground:SetPixelWidth(330)
+        outputBackground:SetPixelHeight(190)
+        outputBackground:SetPixelX(40)
+        outputBackground:SetPixelY(75)
+        outputBackground:SetFocusable(false)
+        page:Add(outputBackground)
+
+        textOutput = CreateLabel()
+        textOutput:SetName("output")
+        textOutput:SetPixelX(60)
+        textOutput:SetPixelY(235)
+        textOutput:SetFontSize(24)
+        textOutput:SetFontColor(NewColor(0.27, 0.17, 0.18))
+        textOutput:SetMaximumWidth(300)
+        textOutput:SetText("")
+        page:Add(textOutput)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+end

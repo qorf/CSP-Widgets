@@ -1,0 +1,39 @@
+use Libraries.Containers.Array
+
+class StringsLibrary
+/*
+Useful functions for manipulating text
+*/
+
+    // Returns the first letter of a string
+    // str {text} - a string of characters
+    // return {text} - the first character of the string
+    action FirstLetter(text str) returns text
+        return str:GetSubtext(0,1)
+    end
+
+    // Returns a string with the first character removed
+    // str {text} - a string of characters
+    // return {text} - every character except the first
+    action AllButFirst(text str) returns text
+        return str:GetSubtext(1)
+    end
+
+    // Looks for a vowel in a string
+    // str {text} - a string of characters
+    // return {boolean} - returns true if a vowel is found, otherwise returns false
+    action HasVowel(text str) returns boolean
+        text lower = str:ToLowerCase()
+        if lower:Contains("a") or lower:Contains("e")  or lower:Contains("i")  or lower:Contains("o")  or lower:Contains("u")
+            return true
+        end
+        return false
+    end
+
+    // Splits a string into a list of words
+    // str {text} - a string of characters
+    // return {Array<text>} - a list with each element containing one word
+    action SplitStringBySpace(text str) returns Array<text>
+        return str:Split(" ")
+    end
+end

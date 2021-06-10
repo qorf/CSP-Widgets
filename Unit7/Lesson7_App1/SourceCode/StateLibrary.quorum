@@ -1,0 +1,99 @@
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Compute.Statistics.DataFrameColumn
+use Libraries.Compute.Random
+
+class StateLibrary
+/*
+Functions which filter specific data from the States database
+*/
+    // gives the abbreviation for a state
+    // stateName {text} - the name of a state
+    // return {text} - the two letter state abbreviation if the state exists, otherwise "Not found"
+    action StateAbbreviation(text stateName) returns text
+        DataFrame frame
+        frame:Load("Data/US States.csv")
+        DataFrameColumn allStateNames = frame:GetColumn("State Name")
+        DataFrameColumn allStateAbbreviations = frame:GetColumn("Code Name")
+
+        integer i = 0
+        repeat while i < allStateNames:GetSize()
+            if(allStateNames:GetAsText(i):ToLowerCase() = stateName:ToLowerCase())
+                return allStateAbbreviations:GetAsText(i)
+            end
+            i = i + 1
+        end
+
+        return "Not found"
+    end
+
+    // returns the skyline of a given state
+    // stateName {text} - the name of a state
+    // return {text} - the Image URL of the state skyline if the state exists, otherwise the code.logo
+    action StateSkyline(text stateName) returns text
+        DataFrame frame
+        frame:Load("Data/US States.csv")
+        DataFrameColumn allStateNames = frame:GetColumn("State Name")
+        DataFrameColumn allStateSkylines = frame:GetColumn("Skyline Background")
+
+        integer i = 0
+        repeat while i < allStateNames:GetSize()
+            if(allStateNames:GetAsText(i):ToLowerCase() = stateName:ToLowerCase())
+                return allStateSkylines:GetAsText(i)
+            end
+            i = i + 1
+        end
+
+        return "placeholder.png"
+    end
+
+    // returns the seal of a given state
+    // stateName {text} - the name of a state
+    // return {text} - the Image URL of the state seal if the state exists, otherwise the code.logo
+    action StateSeal(text stateName) returns text
+        DataFrame frame
+        frame:Load("Data/US States.csv")
+        DataFrameColumn allStateNames = frame:GetColumn("State Name")
+        DataFrameColumn allStateSeals = frame:GetColumn("State Seal")
+
+        integer i = 0
+        repeat while i < allStateNames:GetSize()
+            if(allStateNames:GetAsText(i):ToLowerCase() = stateName:ToLowerCase())
+                return allStateSeals:GetAsText(i)
+            end
+            i = i + 1
+        end
+
+        return "placeholder.png"
+    end
+
+    // returns the flag of a given state
+    // stateName {text} - the name of a state
+    // return {text} - the Image URL of the state flag if the state exists, otherwise the code.logo
+    action StateFlag(text stateName) returns text
+        DataFrame frame
+        frame:Load("Data/US States.csv")
+        DataFrameColumn allStateNames = frame:GetColumn("State Name")
+        DataFrameColumn allStateFlags = frame:GetColumn("State Flag")
+
+        integer i = 0
+        repeat while i < allStateNames:GetSize()
+            if(allStateNames:GetAsText(i):ToLowerCase() = stateName:ToLowerCase())
+                return allStateFlags:GetAsText(i)
+            end
+            i = i + 1
+        end
+
+        return "placeholder.png"
+    end
+
+    // returns a random state
+    // return {text} - the name of a random state
+    action RandomState() returns text
+        DataFrame frame
+        Random random
+        frame:Load("Data/US States.csv")
+        DataFrameColumn allStateNames = frame:GetColumn("State Name")
+        return allStateNames:GetAsText(random:RandomIntegerBetween(0,allStateNames:GetSize()-1))
+    end
+
+end

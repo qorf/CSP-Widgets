@@ -1,0 +1,144 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+
+class Main is Application
+/*
+DO THIS:
+READ: 
+Run this program and read the code carefully with a partner. Try several different inputs.
+
+DISCUSS:
+Discuss these questions with a partner and be prepared to share answers with the class.
+*What happens when the button is clicked?
+*The StateLibrary has 5 functions:
+    **StateAbbreviation
+    **StateSkyline
+    **StateSeal
+    **StateFlag
+    **RandomState
+*How do you think the library functions work?
+*Open the StateLibrary.quorum file. Read the code. How do the library functions work? Were your predictions correct?
+*/
+    TextBox stateInput = undefined
+    Button clickButton = undefined
+
+    Label stateOutput = undefined
+
+    Icon flagImage = undefined
+    Icon sealImage = undefined
+    Icon skylineImage = undefined
+
+    // set up the variables
+    StateLibrary stateLibrary
+    text state = ""
+
+    action ButtonActivated(Button button)
+        // gets the state name from the user
+        // sets up the screen by calling library functions and passing through the state name as an argument
+        if button = clickButton
+            state = stateInput:GetText()
+            stateOutput:SetText(state+ " - " + stateLibrary:StateAbbreviation(state) )
+            stateOutput:SetDescription(stateOutput:GetText())
+            SwapImage(skylineImage, stateLibrary:StateSkyline(state))
+            skylineImage:SetDescription(state)
+            SwapImage(sealImage, stateLibrary:StateSeal(state))
+            sealImage:SetDescription(state)
+            SwapImage(flagImage, stateLibrary:StateFlag(state))
+            flagImage:SetDescription(state)
+        end
+    end
+
+    action Start
+        SetBackgroundColor(0.49,0.42,0.65)
+        Page page
+        page:SetName("stateInfoScreen")
+
+        Icon topBanner = CreateRectangle(NewColor(0.33, 0.31, 0.45))
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(30)
+        topBanner:SetPixelY(555)
+        topBanner:SetFocusable(false)
+        page:Add(topBanner)
+
+        Icon outputBanner = CreateRectangle(NewColor(0.33, 0.31, 0.45))
+        outputBanner:SetPixelWidth(400)
+        outputBanner:SetPixelHeight(50)
+        outputBanner:SetPixelY(405)
+        outputBanner:SetFocusable(false)
+        page:Add(outputBanner)
+
+        Label title = CreateLabel()
+        title:SetFontColor(NewColor(0.85, 1, 0.85))
+        title:SetFontSize(24)
+        title:SetName("Title")
+        title:SetText("What state would you like to visit?")
+        title:SetPixelX(20)
+        title:SetPixelY(560)
+        page:Add(title)
+
+        stateInput = CreateTextBox()
+        stateInput:SetName("State Input")
+        stateInput:SetPixelX(10)
+        stateInput:SetPixelY(485)
+        stateInput:SetPixelWidth(255)
+        stateInput:SetPixelHeight(45)
+        stateInput:SetFontSize(28)
+        stateInput:SetFontColor(White())
+        stateInput:SetBackgroundColor(NewColor(0.30, 0.34, 0.37))
+        page:Add(stateInput)
+
+        clickButton = CreateButton()
+        clickButton:SetName("  Click!")
+        clickButton:SetPixelX(275)
+        clickButton:SetPixelY(485)
+        clickButton:SetPixelWidth(115)
+        clickButton:SetPixelHeight(45)
+        clickButton:SetFontSize(24)
+        clickButton:SetBackgroundColor(NewColor(0.85, 1, 0.85))
+        clickButton:SetBorderColor(NewColor(0.37, 1, 0.37))
+        page:Add(clickButton)
+
+        stateOutput = CreateLabel()
+        stateOutput:SetPixelX(40)
+        stateOutput:SetPixelY(415)
+        stateOutput:SetFontSize(40)
+        stateOutput:SetFontColor(NewColor(0.85, 1, 0.85))
+        stateOutput:SetName("State Output")
+        stateOutput:SetText("")
+        page:Add(stateOutput)
+
+
+        flagImage = CreateIcon("placeholder.png")
+        flagImage:SetName("Flag Image")
+        flagImage:SetPixelX(10)
+        flagImage:SetPixelY(255)
+        flagImage:SetPixelWidth(210)
+        flagImage:SetPixelHeight(130)
+        page:Add(flagImage)
+
+        sealImage = CreateIcon("placeholder.png")
+        sealImage:SetName("Seal Image")
+        sealImage:SetPixelX(260)
+        sealImage:SetPixelY(255)
+        sealImage:SetPixelWidth(130)
+        sealImage:SetPixelHeight(130)
+        page:Add(sealImage)
+
+        skylineImage = CreateIcon("placeholder.png")
+        skylineImage:SetName("Skyline Image")
+        skylineImage:SetPixelX(10)
+        skylineImage:SetPixelY(55)
+        skylineImage:SetPixelWidth(380)
+        skylineImage:SetPixelHeight(185)
+        page:Add(skylineImage)
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+end

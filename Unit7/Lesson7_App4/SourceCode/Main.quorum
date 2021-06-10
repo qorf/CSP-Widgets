@@ -1,0 +1,201 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+use Libraries.Containers.Array
+
+class Main is ConsoleApplication
+
+    action Main
+        output "All Uppercase"
+        output TextArrayToText(GetLetters("All", true))
+
+        output "All Lowercase"
+        output TextArrayToText(GetLetters("All", false))
+
+        output "Consonants Uppercase"
+        output TextArrayToText(GetLetters("Consonants", true))
+
+        output "Consonants Lowercase"
+        output TextArrayToText(GetLetters("Consonants", false))
+
+        output "Vowels Uppercase"
+        output TextArrayToText(GetLetters("Vowels", true))
+
+        output "Vowels Lowercase"
+        output TextArrayToText(GetLetters("Vowels", false))
+    end
+
+
+    // Returns a list of all lowercase letters
+    // return {Array<text>} - list of lowercase letters
+    action AllLower returns Array<text>
+        Array<text> list
+        list:Add("a")
+        list:Add("b")
+        list:Add("c")
+        list:Add("d")
+        list:Add("e")
+        list:Add("f")
+        list:Add("g")
+        list:Add("h")
+        list:Add("i")
+        list:Add("j")
+        list:Add("k")
+        list:Add("l")
+        list:Add("m")
+        list:Add("n")
+        list:Add("o")
+        list:Add("p")
+        list:Add("q")
+        list:Add("r")
+        list:Add("s")
+        list:Add("t")
+        list:Add("u")
+        list:Add("v")
+        list:Add("w")
+        list:Add("x")
+        list:Add("y")
+        list:Add("z")
+        return list
+    end
+
+    // Returns a list of all lowercase letters
+    // return {Array<text>} - list of lowercase letters
+    action AllUpper returns Array<text>
+        Array<text> list
+        list:Add("A")
+        list:Add("B")
+        list:Add("C")
+        list:Add("D")
+        list:Add("E")
+        list:Add("F")
+        list:Add("G")
+        list:Add("H")
+        list:Add("I")
+        list:Add("J")
+        list:Add("K")
+        list:Add("L")
+        list:Add("M")
+        list:Add("N")
+        list:Add("O")
+        list:Add("P")
+        list:Add("Q")
+        list:Add("R")
+        list:Add("S")
+        list:Add("T")
+        list:Add("U")
+        list:Add("V")
+        list:Add("W")
+        list:Add("X")
+        list:Add("Y")
+        list:Add("Z")
+        return list
+    end
+
+    // Returns a list of all lowercase letters
+    // return {Array<text>} - list of lowercase letters
+    action VowelsLower returns Array<text>
+        Array<text> list
+        list:Add("a")
+        list:Add("e")
+        list:Add("i")
+        list:Add("o")
+        list:Add("u")
+        return list
+    end
+
+
+    // Returns a list of all lowercase letters
+    // return {Array<text>} - list of lowercase letters
+    action VowelsUpper returns Array<text>
+        Array<text> list
+        list:Add("A")
+        list:Add("E")
+        list:Add("I")
+        list:Add("O")
+        list:Add("U")
+        return list
+    end
+
+    // Returns a list of all lowercase letters
+    // return {Array<text>} - list of lowercase letters
+    action ConsonantsLower returns Array<text>
+        Array<text> list
+        list:Add("b")
+        list:Add("c")
+        list:Add("d")
+        list:Add("f")
+        list:Add("g")
+        list:Add("h")
+        list:Add("j")
+        list:Add("k")
+        list:Add("l")
+        list:Add("m")
+        list:Add("n")
+        list:Add("p")
+        list:Add("q")
+        list:Add("r")
+        list:Add("s")
+        list:Add("t")
+        list:Add("v")
+        list:Add("w")
+        list:Add("x")
+        list:Add("y")
+        list:Add("z")
+        return list
+    end
+
+
+    action ConsonantsUpper returns Array<text>
+        Array<text> list
+        list:Add("B")
+        list:Add("C")
+        list:Add("D")
+        list:Add("F")
+        list:Add("G")
+        list:Add("H")
+        list:Add("J")
+        list:Add("K")
+        list:Add("L")
+        list:Add("M")
+        list:Add("N")
+        list:Add("P")
+        list:Add("Q")
+        list:Add("R")
+        list:Add("S")
+        list:Add("T")
+        list:Add("V")
+        list:Add("W")
+        list:Add("X")
+        list:Add("Y")
+        list:Add("Z")
+        return list
+    end
+
+
+    // Returns a list of letters
+    // letterType {text} - "All", "Consonants", or "Vowels"
+    // upper {boolean} - whether the letters should be upper case. If false, returns lowercase
+    // return {Array<text>} - a list of letters
+    action GetLetters(text letterType, boolean upper) returns Array<text>
+        if letterType = "All"
+            if upper
+                return AllUpper()
+            else
+                return AllLower()
+            end
+        elseif letterType = "Consonants"
+            if upper
+                return ConsonantsLower()
+            else
+                return ConsonantsUpper()
+            end
+        elseif letterType = "Vowels"
+            if upper
+                return VowelsLower()
+            else
+                VowelsUpper()
+            end
+        end
+        return undefined
+    end
+
+end

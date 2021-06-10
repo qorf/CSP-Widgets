@@ -31,8 +31,6 @@ use Libraries.Interface.Events.TextChangeListener
 use Libraries.Interface.Events.TextChangeEvent
 use Libraries.Game.Graphics.Font
 use Libraries.System.File
-use Libraries.Compute.Statistics.DataFrameColumn
-use Libraries.Compute.Statistics.DataFrame
 
 class Application is Game, FocusListener, KeyboardListener, MouseListener, MouseMovementListener, TextChangeListener
 
@@ -253,35 +251,8 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         return textBox
     end
 
-    //added for this app
-    action GetTextColumn(DataFrame frame, text name) returns Array<text>
-        Array<text> result
-
-        DataFrameColumn column = frame:GetColumn(name)
-        integer i = 0
-        repeat while i < column:GetSize()
-            result:Add(column:GetAsText(i))
-            i = i + 1
-        end
-
-        return result
-    end
-
-    //added for this app
-    action JoinText(Array<text> array, text joinText) returns text
-        text result = ""
-        if array:GetSize() = 1
-            return array:Get(0)
-        end
-        integer i = 0
-        repeat array:GetSize() times
-            result = result + array:Get(i)
-            if i < array:GetSize() - 1
-                result = result + joinText
-            end
-            i = i + 1
-        end
-        return result
+    action SwapImage(Icon icon, text imageFile)
+        icon:Load("Images/" + imageFile)
     end
 
     action PlaySound(text fileName)
