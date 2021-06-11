@@ -24,8 +24,12 @@ Useful functions for manipulating text
     // return {boolean} - returns true if a vowel is found, otherwise returns false
     action HasVowel(text str) returns boolean
         text lower = str:ToLowerCase()
-        if lower:Contains("a") or lower:Contains("e")  or lower:Contains("i")  or lower:Contains("o")  or lower:Contains("u")
-            return true
+        integer i = 0
+        repeat while i < lower:GetSize()
+            if lower:GetCharacter(i) = "a" or lower:GetCharacter(i) = "e"  or lower:GetCharacter(i) = "i" or lower:GetCharacter(i) = "o" or lower:GetCharacter(i) = "u"
+                return true
+            end
+            i = i + 1
         end
         return false
     end
@@ -34,6 +38,19 @@ Useful functions for manipulating text
     // str {text} - a string of characters
     // return {Array<text>} - a list with each element containing one word
     action SplitStringBySpace(text str) returns Array<text>
-        return str:Split(" ")
+        Array<text> tempList
+        text tempWord = ""
+        integer i = 0
+        repeat while i < str:GetSize()
+            if str:GetCharacter(i) = " "
+                tempList:AddToEnd(tempWord)
+                tempWord = ""
+            else
+                tempWord = tempWord + str:GetCharacter(i)
+            end
+            i = i + 1
+        end
+        tempList:AddToEnd(tempWord)
+        return tempList
     end
 end

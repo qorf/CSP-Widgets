@@ -1,0 +1,64 @@
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Compute.Statistics.DataFrameColumn
+use Libraries.Compute.Random
+use Libraries.Containers.Array
+class Cats
+/*
+Library for using the cats data set.
+*/
+    // Returns the name of a random breed of cat
+    // return {text} - the name of a random cat breed
+    action RandomBreed returns text
+        DataFrame frame
+        Random random
+        frame:Load("Data/Cats.csv")
+
+        DataFrameColumn breeds = frame:GetColumn("Name")
+        return breeds:GetAsText(random:RandomIntegerBetween(0, breeds:GetSize() - 1))
+    end
+
+    // Returns the image of a given cat breed
+    // searchBreed {text} - the name of the breed to search for
+    // return {text} - the URL of the searched cat breed, or "Not found" if it wasn't found
+    action BreedImage(text searchBreed) returns text
+        DataFrame frame
+        frame:Load("Data/Cats.csv")
+
+        DataFrameColumn breeds = frame:GetColumn("Name")
+        DataFrameColumn images = frame:GetColumn("Image")
+
+        integer i = 0
+        repeat while i < breeds:GetSize()
+            if breeds:GetAsText(i) = searchBreed
+                return images:GetAsText(i)
+            end
+            i = i + 1
+        end
+
+        return "Not Found"
+    end
+
+    // Returns the list of all cat breeds
+    // return {Array<text>} - a list of cat breed names as strings
+    action AllBreeds returns Array<text>
+        DataFrame frame
+        frame:Load("Data/Cats.csv")
+        Array<text> result
+
+        DataFrameColumn column = frame:GetColumn("Name")
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsText(i))
+            i = i + 1
+        end
+
+        return result
+    end
+
+    // Returns the location of a random cat picture
+    // return {text} - the URL of a random cat image
+    action RandomImage returns text
+        return BreedImage(RandomBreed())
+    end
+
+end

@@ -1,0 +1,97 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.TextBox
+
+
+class Main is Application
+/*
+DO THIS:
+This simple program should show a random cat and the name of the breed every time the user clicks the button. A library called "Cats" has been added to the program to help.
+*Read the documentation for each of the functions in the Cats library
+*Use the provided functions to finish building the app.
+*The user should see a new random cat and the name of the breed every time they click the button
+*/
+    Icon catImage = undefined
+    Label appName = undefined
+
+    Label breedName = undefined
+    Button nextButton = undefined
+
+    Cats cats
+
+    action ButtonActivated(Button button)
+        if button = nextButton
+        // Write your code here
+        // If you want to swap the image of an icon you can use the SwapImage(Icon icon, text imageFile) action
+
+            
+        end
+    end
+
+
+    action Start
+        SetBackgroundColor(1, 0.64, 0)
+        Page page
+
+        Icon topBanner = CreateRectangle(NewColor(0.30, 0.19, 0))
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(40)
+        topBanner:SetPixelY(560)
+        topBanner:SetFocusable(false)
+        page:Add(topBanner)
+
+        appName = CreateLabel()
+        appName:SetName("App Name")
+        appName:SetText("Cat Randomizer")
+        appName:SetFontSize(30)
+        appName:SetFontColor(White())
+        appName:SetPixelX(25)
+        appName:SetPixelY(570)
+        page:Add(appName)
+
+        catImage = CreateIcon("placeholder.png")
+        catImage:SetName("cat image")
+        catImage:SetPixelWidth(380)
+        catImage:SetPixelHeight(380)
+        catImage:SetPixelX(10)
+        catImage:SetPixelY(170)
+        page:Add(catImage)
+
+        Icon outputBanner = CreateRectangle(NewColor(0.30, 0.19, 0))
+        outputBanner:SetPixelWidth(380)
+        outputBanner:SetPixelHeight(45)
+        outputBanner:SetPixelX(10)
+        outputBanner:SetPixelY(115)
+        outputBanner:SetFocusable(false)
+        page:Add(outputBanner)
+
+        breedName = CreateLabel()
+        breedName:SetName("Breed Name")
+        breedName:SetText("")
+        breedName:SetPixelX(45)
+        breedName:SetPixelY(125)
+        breedName:SetFontColor(White())
+        breedName:SetFontSize(30)
+        page:Add(breedName)
+
+        nextButton = CreateButton()
+        nextButton:SetName("Show me another!")
+        nextButton:SetPixelWidth(380)
+        nextButton:SetPixelHeight(50)
+        nextButton:SetPixelX(10)
+        nextButton:SetPixelY(50)
+        nextButton:SetBackgroundColor(NewColor(0.29, 0.78, 0.82))
+        nextButton:SetFontSize(24)
+        page:Add(nextButton)
+
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end

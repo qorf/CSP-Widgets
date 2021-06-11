@@ -1,0 +1,68 @@
+id,Name,Minimum Life Span,Maximum Life Span,Minimum Weight,Maximum Weight,Temperament,Origin,Image
+1,Abyssinian,14.0,15.0,7.0,10.0,"Active, Energetic, Independent, Intelligent, Gentle",Egypt,Abyssinian.jpg
+2,Aegean,9.0,12.0,7.0,10.0,"Affectionate, Social, Intelligent, Playful, Active",Greece,Aegean.jpg
+3,American Bobtail,11.0,15.0,7.0,16.0,"Intelligent, Interactive, Lively, Playful, Sensitive",United States,American Bobtail.jpg
+4,American Curl,12.0,16.0,5.0,10.0,"Affectionate, Curious, Intelligent, Interactive, Lively, Playful, Social",United States,American Curl.jpg
+5,American Shorthair,15.0,17.0,8.0,15.0,"Active, Curious, Easy Going, Playful, Calm",United States,American Shorthair.jpg
+6,American Wirehair,14.0,18.0,8.0,15.0,"Affectionate, Curious, Gentle, Intelligent, Interactive, Lively, Loyal, Playful, Sensible, Social",United States,American Wirehair.jpg
+7,Arabian Mau,12.0,14.0,8.0,16.0,"Affectionate, Agile, Curious, Independent, Playful, Loyal",United Arab Emirates,Arabian Mau.jpg
+8,Australian Mist,12.0,16.0,7.0,15.0,"Lively, Social, Fun-loving, Relaxed, Affectionate",Australia,Australian Mist.jpg
+9,Balinese,10.0,15.0,4.0,10.0,"Affectionate, Intelligent, Playful",United States,Balinese.jpg
+10,Bambino,12.0,14.0,4.0,9.0,"Affectionate, Lively, Friendly, Intelligent",United States,Bambino.jpg
+11,Bengal,12.0,15.0,6.0,12.0,"Alert, Agile, Energetic, Demanding, Intelligent",United States,Bengal.jpg
+12,Birman,14.0,15.0,6.0,15.0,"Affectionate, Active, Gentle, Social",France,Birman.jpg
+13,Bombay,12.0,16.0,6.0,11.0,"Affectionate, Dependent, Gentle, Intelligent, Playful",United States,Bombay.jpg
+14,British Longhair,12.0,14.0,8.0,18.0,"Affectionate, Easy Going, Independent, Intelligent, Loyal, Social",United Kingdom,British Longhair.jpg
+15,British Shorthair,12.0,17.0,12.0,20.0,"Affectionate, Easy Going, Gentle, Loyal, Patient, calm",United Kingdom,British Shorthair.jpg
+16,Burmese,15.0,16.0,6.0,12.0,"Curious, Intelligent, Gentle, Social, Interactive, Playful, Lively",Burma,Burmese.jpg
+17,Burmilla,10.0,15.0,6.0,13.0,"Easy Going, Friendly, Intelligent, Lively, Playful, Social",United Kingdom,Burmilla.jpg
+18,California Spangled,10.0,14.0,10.0,15.0,"Affectionate, Curious, Intelligent, Loyal, Social",United States,California Spangled.jpg
+19,Chantilly-Tiffany,14.0,16.0,7.0,12.0,"Affectionate, Demanding, Interactive, Loyal",United States,Chantilly-Tiffany.jpg
+20,Chartreux,12.0,15.0,6.0,15.0,"Affectionate, Loyal, Intelligent, Social, Lively, Playful",France,Chartreux.jpg
+21,Chausie,12.0,14.0,7.0,15.0,"Affectionate, Intelligent, Playful, Social",Egypt,Chausie.jpg
+22,Cheetoh,12.0,14.0,8.0,15.0,"Affectionate, Gentle, Intelligent, Social",United States,Cheetoh.jpg
+23,Colorpoint Shorthair,12.0,16.0,4.0,10.0,"Affectionate, Intelligent, Playful, Social",United States,Colorpoint Shorthair.jpg
+24,Cornish Rex,11.0,14.0,5.0,9.0,"Affectionate, Intelligent, Active, Curious, Playful",United Kingdom,Cornish Rex.jpg
+25,Cymric,8.0,14.0,8.0,13.0,"Gentle, Loyal, Intelligent, Playful",Canada,Cymric.jpg
+26,Cyprus,12.0,15.0,8.0,16.0,"Affectionate, Social",Cyprus,Cyprus.jpg
+27,Devon Rex,10.0,15.0,5.0,10.0,"Highly interactive, Mischievous, Loyal, Social, Playful",United Kingdom,Devon Rex.jpg
+28,Donskoy,12.0,15.0,10.0,12.0,"Playful, affectionate, loyal, social",Russia,Donskoy.jpg
+29,Dragon Li,12.0,15.0,9.0,12.0,"Intelligent, Friendly, Gentle, Loving, Loyal",China,Dragon Li.jpg
+30,Egyptian Mau,18.0,20.0,6.0,14.0,"Agile, Dependent, Gentle, Intelligent, Lively, Loyal, Playful",Egypt,Egyptian Mau.jpg
+31,European Burmese,10.0,15.0,7.0,14.0,"Sweet, Affectionate, Loyal",Burma,European Burmese.jpg
+32,Exotic Shorthair,12.0,15.0,7.0,14.0,"Affectionate, Sweet, Loyal, Quiet, Peaceful",United States,Exotic Shorthair.jpg
+33,Havana Brown,10.0,15.0,6.0,10.0,"Affectionate, Curious, Demanding, Friendly, Intelligent, Playful",United Kingdom,Havana Brown.jpg
+34,Himalayan,9.0,15.0,7.0,14.0,"Dependent, Gentle, Intelligent, Quiet, Social",United States,Himalayan.jpg
+35,Japanese Bobtail,14.0,16.0,5.0,10.0,"Active, Agile, Clever, Easy Going, Intelligent, Lively, Loyal, Playful, Social",Japan,Japanese Bobtail.jpg
+36,Javanese,10.0,12.0,5.0,10.0,"Active, Devoted, Intelligent, Playful",United States,Javanese.jpg
+37,Khao Manee,10.0,12.0,8.0,12.0,"Calm, Relaxed, Talkative, Playful, Warm",Thailand,Khao Manee.jpg
+38,Korat,10.0,15.0,7.0,11.0,"Active, Loyal, highly intelligent, Expressive, Trainable",Thailand,Korat.jpg
+39,Kurilian,15.0,20.0,8.0,15.0,"Independent, highly intelligent, clever, inquisitive, sociable, playful, trainable",Russia,Kurilian.jpg
+40,LaPerm,10.0,15.0,6.0,10.0,"Affectionate, Friendly, Gentle, Intelligent, Playful, Quiet",Thailand,LaPerm.jpg
+41,Maine Coon,12.0,15.0,12.0,18.0,"Adaptable, Intelligent, Loving, Gentle, Independent",United States,Maine Coon.jpg
+42,Malayan,12.0,18.0,6.0,13.0,"Affectionate, Interactive, Playful, Social",United Kingdom,Malayan.jpg
+43,Manx,12.0,14.0,7.0,13.0,"Easy Going, Intelligent, Loyal, Playful, Social",Isle of Man,Manx.jpg
+44,Munchkin,10.0,15.0,5.0,9.0,"Agile, Easy Going, Intelligent, Playful",United States,Munchkin.jpg
+45,Nebelung,11.0,16.0,7.0,11.0,"Gentle, Quiet, Shy, Playful",United States,Nebelung.jpg
+46,Norwegian Forest Cat,12.0,16.0,8.0,16.0,"Sweet, Active, Intelligent, Social, Playful, Lively, Curious",Norway,Norwegian Forest Cat.jpg
+47,Ocicat,12.0,14.0,7.0,15.0,"Active, Agile, Curious, Demanding, Friendly, Gentle, Lively, Playful, Social",United States,Ocicat.jpg
+48,Oriental,12.0,14.0,5.0,10.0,"Energetic, Affectionate, Intelligent, Social, Playful, Curious",United States,Oriental.jpg
+49,Persian,14.0,15.0,9.0,14.0,"Affectionate, loyal, Sedate, Quiet",Iran (Persia),Persian.jpg
+50,Pixie-bob,13.0,16.0,8.0,17.0,"Affectionate, Social, Intelligent, Loyal",United States,Pixie-bob.jpg
+51,Ragamuffin,12.0,16.0,8.0,20.0,"Affectionate, Friendly, Gentle, Calm",United States,Ragamuffin.jpg
+52,Ragdoll,12.0,17.0,12.0,20.0,"Affectionate, Friendly, Gentle, Quiet, Easygoing",United States,Ragdoll.jpg
+53,Russian Blue,10.0,16.0,5.0,11.0,"Active, Dependent, Easy Going, Gentle, Intelligent, Loyal, Playful, Quiet",Russia,Russian Blue.jpg
+54,Savannah,17.0,20.0,8.0,25.0,"Curious, Social, Intelligent, Loyal, Outgoing, Adventurous, Affectionate",United States,Savannah.jpg
+55,Scottish Fold,11.0,14.0,5.0,11.0,"Affectionate, Intelligent, Loyal, Playful, Social, Sweet, Loving",United Kingdom,Scottish Fold.jpg
+56,Selkirk Rex,14.0,15.0,6.0,16.0,"Active, Affectionate, Dependent, Gentle, Patient, Playful, Quiet, Social",United States,Selkirk Rex.jpg
+57,Siamese,12.0,15.0,8.0,15.0,"Active, Agile, Clever, Sociable, Loving, Energetic",Thailand,Siamese.jpg
+58,Siberian,12.0,15.0,8.0,16.0,"Curious, Intelligent, Loyal, Sweet, Agile, Playful, Affectionate",Russia,Siberian.jpg
+59,Singapura,12.0,15.0,5.0,8.0,"Affectionate, Curious, Easy Going, Intelligent, Interactive, Lively, Loyal",Singapore,Singapura.jpg
+60,Snowshoe,14.0,19.0,7.0,12.0,"Affectionate, Social, Intelligent, Sweet-tempered",United States,Snowshoe.jpg
+61,Somali,12.0,16.0,6.0,12.0,"Mischievous, Tenacious, Intelligent, Affectionate, Gentle, Interactive, Loyal",Somalia,Somali.jpg
+62,Sphynx,12.0,14.0,6.0,12.0,"Loyal, Inquisitive, Friendly, Quiet, Gentle",Canada,Sphynx.jpg
+63,Tonkinese,14.0,16.0,6.0,12.0,"Curious, Intelligent, Social, Lively, Outgoing, Playful, Affectionate",Canada,Tonkinese.jpg
+64,Toyger,12.0,15.0,7.0,15.0,"Playful, Social, Intelligent",United States,Toyger.jpg
+65,Turkish Angora,15.0,18.0,5.0,10.0,"Affectionate, Agile, Clever, Gentle, Intelligent, Playful, Social",Turkey,Turkish Angora.jpg
+66,Turkish Van,12.0,17.0,7.0,20.0,"Agile, Intelligent, Loyal, Playful, Energetic",Turkey,Turkish Van.jpg
+67,York Chocolate,13.0,15.0,12.0,18.0,"Playful, Social, Intelligent, Curious, Friendly",United States,York Chocolate.jpg
