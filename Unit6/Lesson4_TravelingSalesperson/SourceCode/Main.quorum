@@ -38,9 +38,7 @@ class Main is Application
     integer maximumX = 360
     integer minimumY = 120
     integer maximumY = 560
-    integer numberOfNodes = 11
-    integer gridXIndexMax = cast(integer,((maximumX - minimumX) / numberOfNodes))
-    integer gridYIndexMax = cast(integer,((maximumY - minimumY) / numberOfNodes))  
+    integer numberOfNodes = 11 
     
     action ButtonActivated(Button button)
         if button is Node
@@ -59,11 +57,7 @@ class Main is Application
             elseif button:GetDescription() = "New Level"
                 solution:Empty()
                 page:Remove(startNode)
-                Iterator<Node> element = graph:GetIterator()
-                repeat while element:HasNext()
-                   page:Remove(element:Next())
-                end
-                //startNode = CreateNode(true, 0, 0, RandomNumber(minimumX,maximumX), RandomNumber(minimumY, maximumY)) 
+                //grid = CreateGrid(minimumX, maximumX, minimumY, maximumY, numberOfNodes, startNode, page)
                 solution:Add(startNode)
                 page:Add(startNode)
                 CreateGraphs(numberOfNodes, page, graph, startNode, minimumX, maximumX, minimumY, maximumY)
@@ -90,14 +84,18 @@ class Main is Application
 
     action Start
 
+        Grid grid
+
+        grid:Initialize(maximumX, minimumX,maximumY,minimumY,numberOfNodes)
+        grid:Fill(false)
+
+        
         //startNode = CreateNode(true, 0, 0, RandomNumber(minimumX,maximumX), RandomNumber(minimumY, maximumY)) 
         solution:Add(startNode)
         page:Add(startNode)
 
         //PrintSolution(solution)
-        //CreateGraphs(numberOfNodes, page, graph, startNode, minimumX, maximumX, minimumY, maximumY)
-        output gridXIndexMax
-        output gridYIndexMax 
+        //grid = CreateGrid(minimumX, maximumX, minimumY, maximumY, numberOfNodes, startNode, page)
 
         distanceText = CreateLabel()
         distanceText:SetName("Total Distance Label")

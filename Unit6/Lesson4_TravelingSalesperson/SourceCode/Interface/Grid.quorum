@@ -1,0 +1,63 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Containers.Array
+use Libraries.Containers.Iterator
+
+class Grid
+    Array<boolean> grid
+        
+    integer index = 0
+    integer random = 0
+    integer rows = 0
+    integer columns = 0
+    integer gridSize = 0
+    integer gridSubdivision = 3
+
+    action Initialize(integer maximumX, integer minimumX, 
+                      integer maximumY, integer minimumY, 
+                      integer numberOfNodes)
+        // determine rows
+        rows = cast(integer, ((maximumX - minimumX ) / numberOfNodes )/ gridSubdivision)
+        // determine columns        
+        columns = cast(integer, ((maximumY - minimumY ) / numberOfNodes )/ gridSubdivision)
+        // determine the total number of elements
+        gridSize = rows*columns 
+    end
+
+    action GetRows() returns integer
+         return rows
+    end
+
+    action GetColumns() returns integer
+        return columns
+    end
+
+    action GetGridSize() returns integer
+        return gridSize
+    end
+
+    action Fill(boolean fill)
+        repeat gridSize times     
+            grid:Add(fill)
+        end
+    end
+
+    action Use2DIndex(integer row, integer column) returns integer
+        return row + column * rows
+    end
+
+    action GetXPixel()
+        
+    end
+
+    action GetYPixel()
+
+    end
+
+    action SetElement(integer index, integer jndex, boolean fill)
+        grid:Add(Use2DIndex(index, jndex), fill)
+    end
+
+    action IsFilled(integer index, integer jndex) returns boolean
+        return grid:Get(Use2DIndex(index, jndex))
+    end
+end

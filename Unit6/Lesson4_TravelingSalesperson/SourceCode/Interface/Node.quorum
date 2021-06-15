@@ -44,6 +44,7 @@ class Node is Button
     boolean isStart = false
     text myDistance = ""
     Label label
+    integer gridNumber = 0
 
     action GetIsStart() returns boolean
         return isStart
@@ -65,6 +66,10 @@ class Node is Button
         return myDistance
     end
 
+    action GetGridLocation() returns integer
+        return gridNumber
+    end
+
     action ToggleLabel(boolean flag)
         if flag
             label:Hide()
@@ -81,6 +86,10 @@ class Node is Button
     action SetDistance(text distance)
         myDistance = distance
     end 
+
+    action SetGridLocation(integer gridLocation)
+        gridNumber = gridLocation
+    end
 
     action SetIsStart(boolean start)
         isStart = start

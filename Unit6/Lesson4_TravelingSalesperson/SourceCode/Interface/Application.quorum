@@ -611,6 +611,7 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         Node node
         Color color
         integer mySize = 41
+        Drawable drawable
 
         node:SetIsStart(amIStart)
         node:SetSize(mySize, mySize)
@@ -619,7 +620,6 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         node:SetPixelWidth(mySize)
         node:SetPixelHeight(mySize)
         if node:GetIsStart()
-            Drawable drawable
             drawable:LoadFilledCircle((mySize/2), color:CustomColor(0.11,0.55,0.45, 1.0))
             node:SetIcon(drawable)
             node:SetIconColor(color:CustomColor(0.11,0.55,0.45, 1.0))
@@ -631,7 +631,6 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
             node:SetDistance("0")
             node:SetDescription("0")
         else
-            Drawable drawable
             drawable:LoadFilledCircle((mySize/2), color:CustomColor(0.99,0.72,0.34, 1.0))
             node:SetIcon(drawable)
             node:SetIconColor(color:CustomColor(0.99,0.72,0.34, 1.0))
@@ -698,14 +697,7 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
     action CreateGraphs(integer numberOfNodes, Page page, Array<boolean> grid, Node startNode, 
                         integer minimumX, integer maximumX, integer minimumY, integer maximumY)
  
-        integer i = 0
-        repeat numberOfNodes times
-            Node node
-            node = CreateNode(false, startNode:GetPixelX(), startNode:GetPixelY(), grid)
-            node:SetName(cast(text,i))
-            page:Add(node)
-            i = i + 1
-        end
+
     end
     
     action FlattenArrayIndex(integer i, integer j, integer rowSize) returns integer
@@ -723,4 +715,32 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
     action RandomWithinGrid(integer cellPixelWidth, integer cellPixelHeight, integer offset, Node node)
         
     end
+
+    // root is a boolean array
+    /*
+    action CreateGrid(integer minimumX, integer maximumX, integer minimumY, 
+                      integer maximumY, integer numberOfNodes, Node startNode, Page page)
+                      returns Array<boolean> 
+        Array<Array<boolean>> gridRows
+         
+        integer index = 0
+        integer random = 0
+        // determine rows
+        integer rows = cast(integer, ((maximumX - minimumX ) / numberOfNodes )/3)
+        // determine columns        
+        integer columns = cast(integer, ((maximumY - minimumY ) / numberOfNodes )/3)
+        // determine the total number of elements
+        integer gridSize = rows*columns 
+
+
+
+        repeat numberOfNodes times
+            random = RandomNumber(0, gridSize)
+            grid:Add(random, true) 
+        end  
+
+        return grid
+        
+    end
+    */
 end
