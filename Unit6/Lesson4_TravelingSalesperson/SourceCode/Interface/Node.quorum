@@ -1,0 +1,105 @@
+package Libraries.Curriculum.Code
+
+use Libraries.Game.Game
+use Libraries.Interface.Layouts.ManualLayout
+use Libraries.Game.Layer2D
+use Libraries.Containers.Array
+use Libraries.Interface.Item2D
+use Libraries.Interface.Controls.Button
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Item
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Icon
+use Libraries.Game.Graphics.GraphicsManager
+use Libraries.Game.GameStateManager
+use Libraries.Interface.Controls.Control
+use Libraries.Game.Graphics.Drawable
+use Libraries.Containers.HashTable
+use Libraries.Sound.Audio
+use Libraries.Interface.Events.FocusListener
+use Libraries.Interface.Events.FocusEvent
+use Libraries.Game.Graphics.Color
+use Libraries.Compute.Random
+use Libraries.Interface.Events.MouseListener
+use Libraries.Interface.Events.KeyboardListener
+use Libraries.Interface.Events.MouseMovementListener
+use Libraries.Interface.Events.KeyboardEvent
+use Libraries.Interface.Events.MouseEvent
+use Libraries.Containers.Iterator
+use Libraries.Compute.Math
+use Libraries.Interface.Events.TextChangeListener
+use Libraries.Interface.Events.TextChangeEvent
+use Libraries.Game.Graphics.Font
+use Libraries.System.File
+
+class Node is Button
+    on create
+        Add(label)
+        label:SetLeftPadding(7)
+        label:Hide()
+    end
+
+    text myName = ""
+    text neighborId = ""
+    boolean isStart = false
+    text myDistance = ""
+    Label label
+
+    action GetIsStart() returns boolean
+        return isStart
+    end
+
+    action GetLabel() returns Label
+        return label
+    end
+
+    action GetName() returns text
+        return myName
+    end
+
+    action GetNeighborId() returns text
+        return neighborId
+    end
+
+    action GetDistance() returns text
+        return myDistance
+    end
+
+    action ToggleLabel(boolean flag)
+        if flag
+            label:Hide()
+        else
+            label:Show()
+        end
+    end
+
+    action CalculateDistanceFromStart(number startX, number startY) returns integer
+        Math math
+        return cast(integer, math:SquareRoot(math:RaiseToPower(startX-me:GetPixelX(),2) + math:RaiseToPower(startY-me:GetPixelY(),2)))
+    end
+
+    action SetDistance(text distance)
+        myDistance = distance
+    end 
+
+    action SetIsStart(boolean start)
+        isStart = start
+    end
+
+    action SetLabelText(text labelText)
+        label:SetFontSize(18)
+        label:SetText(labelText)
+        label:SetDescription(label:GetText())
+    end
+
+    action SetNeighbor(Node node)
+        neighborId = node:GetName()
+    end
+
+    action SetName(text name)
+        myName = name
+    end
+
+    
+    
+end
