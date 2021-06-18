@@ -41,10 +41,12 @@ class Node is Button
 
     text myName = ""
     text neighborId = ""
-    boolean isStart = false
     text myDistance = ""
+    boolean isStart = false
+    boolean isAddedToSolution = false
     Label label
-    integer gridNumber = 0
+    integer id = 0
+    integer nodeSize = 0 
 
     action GetIsStart() returns boolean
         return isStart
@@ -66,8 +68,16 @@ class Node is Button
         return myDistance
     end
 
-    action GetGridLocation() returns integer
-        return gridNumber
+    action GetId() returns integer
+        return id
+    end
+    
+    action GetNodeSize() returns integer
+       return nodeSize
+    end
+
+    action GetIsAddedToSolution() returns boolean
+        return isAddedToSolution
     end
 
     action ToggleLabel(boolean flag)
@@ -80,17 +90,23 @@ class Node is Button
 
     action CalculateDistanceFromStart(number startX, number startY) returns integer
         Math math
-        return cast(integer, math:SquareRoot(math:RaiseToPower(startX-me:GetPixelX(),2) + math:RaiseToPower(startY-me:GetPixelY(),2)))
+        return cast(integer, 
+                    math:SquareRoot(math:RaiseToPower(startX-me:GetPixelX(),2) +
+                    math:RaiseToPower(startY-me:GetPixelY(),2)))
     end
 
     action SetDistance(text distance)
         myDistance = distance
     end 
 
-    action SetGridLocation(integer gridLocation)
-        gridNumber = gridLocation
+    action SetId(integer gridId)
+        id = gridId
     end
 
+    action SetNodeSize(integer size)
+        nodeSize = size
+    end
+    
     action SetIsStart(boolean start)
         isStart = start
     end
@@ -109,6 +125,28 @@ class Node is Button
         myName = name
     end
 
+    action SetIsAddedToSolution(boolean value)
+        isAddedToSolution = value
+    end
+
+    action SetSizeWidthHeight(integer mySize)
+        SetSize(mySize,mySize)
+        SetPixelWidth(mySize)
+        SetPixelHeight(mySize)
+    end
+
+    action SetSizeAndColor(Color color)
+        Drawable drawable
+        drawable:LoadFilledCircle((nodeSize/2), color)
+        SetIcon(drawable)
+        SetIconColor(color)
+        SetBackgroundColor(color)
+        SetBorderColor(color)
+    end
     
-    
+    action SetLabelDistanceDescription(text name, text distance)
+        SetLabelText(name)
+        SetDistance(distance)
+        SetDescription(distance)
+    end
 end

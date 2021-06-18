@@ -1,6 +1,9 @@
+package Libraries.Curriculum.Code
+
 use Libraries.Curriculum.Code.all
 use Libraries.Containers.Array
 use Libraries.Containers.Iterator
+use Libraries.Compute.Random
 
 class Grid
     Array<boolean> grid
@@ -9,16 +12,27 @@ class Grid
     integer random = 0
     integer rows = 0
     integer columns = 0
+    integer gridWidth = 0
+    integer gridOffset = 1
     integer gridSize = 0
-    integer gridSubdivision = 3
+    integer numberOfNodes = 0
+    integer Xminimum = 0
+    integer Xmaximum = 0
+    integer Yminimum = 0
+    integer Ymaximum = 0
 
     action Initialize(integer maximumX, integer minimumX, 
                       integer maximumY, integer minimumY, 
-                      integer numberOfNodes)
+                      integer width)
+        Xminimum = minimumX
+        Yminimum = minimumY
+        Xmaximum = maximumX
+        Ymaximum = maximumY
+        gridWidth = width
         // determine rows
-        rows = cast(integer, ((maximumX - minimumX ) / numberOfNodes )/ gridSubdivision)
+        rows = cast(integer, ((maximumX - minimumX ) / gridWidth + gridOffset ))
         // determine columns        
-        columns = cast(integer, ((maximumY - minimumY ) / numberOfNodes )/ gridSubdivision)
+        columns = cast(integer, ((maximumY - minimumY ) / gridWidth + gridOffset ))
         // determine the total number of elements
         gridSize = rows*columns 
     end
@@ -45,19 +59,44 @@ class Grid
         return row + column * rows
     end
 
-    action GetXPixel()
-        
+    action GetXPixelFromRow(integer row) returns integer
+        return row * gridWidth + Xminimum // + RandomNumber(1,3)
     end
 
-    action GetYPixel()
+    action GetYPixelFromColumn(integer column) returns integer
+        return column * gridWidth + Yminimum // + RandomNumber(1,3)
+    end
 
+    action IsSet(integer index, integer jndex) returns boolean
+        return grid:Get(Use2DIndex(index, jndex))
     end
 
     action SetElement(integer index, integer jndex, boolean fill)
         grid:Add(Use2DIndex(index, jndex), fill)
     end
 
-    action IsFilled(integer index, integer jndex) returns boolean
-        return grid:Get(Use2DIndex(index, jndex))
+    action RandomNumber(integer minimum, integer maximum) returns integer
+        Random random
+        return random:RandomIntegerBetween(minimum, maximum)
+    end
+
+    action Empty()
+        grid:Empty()
+    end
+
+    action ResetGrid(boolean value)
+        grid:Empty()
+        Fill(value)
+    end
+
+    action Print() returns text
+        text solutionList = ""
+        Iterator<boolean> element = grid:GetIterator()
+        repeat while element:HasNext()
+            if element:Next() = true
+                solutionList = solutionList + "," +  element:Next() 
+            end   
+        end
+        return solutionList
     end
 end

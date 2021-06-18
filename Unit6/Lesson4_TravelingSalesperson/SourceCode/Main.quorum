@@ -22,48 +22,70 @@ class Main is Application
     Button newLevelButton = undefined
     Button resetButton = undefined
     Label distanceText
+    Label solutionPath
     integer totalDistance = 0
-    Array<boolean> grid
-    Array<Node> graph
+    Array<Node> nodeList
     Array<Node> solution
 
     // start variables
     Page page
     Node startNode
+    Grid grid
     
     integer i = 0
     integer j = 200
     integer iterator = 8
-    integer minimumX = 5
-    integer maximumX = 360
-    integer minimumY = 120
-    integer maximumY = 560
+    integer minimumX = 10
+    integer maximumX = 350
+    integer minimumY = 130
+    integer maximumY = 550
+    integer nodeSize = 31
     integer numberOfNodes = 11 
     
     action ButtonActivated(Button button)
         if button is Node
            Node node = cast(Node, button)
-           if not node:GetIsStart()
-              node:SetIsStart(true)  
+           if not node:GetIsAddedToSolution()
+              startNode:SetSizeAndColor(DarkGray())
+              solution:GetFromEnd():SetSizeAndColor(DarkGray())
+              node:SetIsAddedToSolution(true)
+              node:SetSizeAndColor(StartGreen())  
               solution:Add(node)
+              solutionPath:SetText(Print())
+              Recalculate(nodeList, node:GetPixelX(), node:GetPixelY())
               totalDistance = totalDistance + cast(integer, node:GetDistance())
               distanceText:SetText("Total Distance:      " + cast(text, totalDistance))
+              Print()
            end
         else 
             if button:GetDescription() = "Reset"
-                ResetSolutionArray(solution)
+                ResetSolution(solution)
+                ResetNodelist()
+                Recalculate(nodeList, startNode:GetPixelX(), startNode:GetPixelY())    
                 totalDistance = 0
-                distanceText:SetText("Total Distance:      " + cast(text, totalDistance))
+                distanceText:SetText("Total Distance:         " + "0")
+                solutionPath:SetText(Print()) 
             elseif button:GetDescription() = "New Level"
                 solution:Empty()
                 page:Remove(startNode)
-                //grid = CreateGrid(minimumX, maximumX, minimumY, maximumY, numberOfNodes, startNode, page)
+                RemoveAllNodes(nodeList, page)
+                grid:ResetGrid(false)
+                Recalculate(nodeList, startNode:GetPixelX(), startNode:GetPixelY()) 
+                totalDistance = 0 
+                distanceText:SetText("Total Distance:         " + "0")
+                startNode = CreateNode(true,0,0)
+                SetNodeInGrid(grid, startNode)
                 solution:Add(startNode)
+                solutionPath:SetText(Print())
                 page:Add(startNode)
-                CreateGraphs(numberOfNodes, page, graph, startNode, minimumX, maximumX, minimumY, maximumY)
-                
-                // pull node stuff from start put in separate action
-                // make action to reset totaldistance and label
+                repeat numberOfNodes times
+                    Node node = CreateNode(false, startNode:GetPixelX(), startNode:GetPixelY())
+                    SetNodeInGrid(grid, node)
+                    text distance = cast(text,node:CalculateDistanceFromStart(startNode:GetPixelX(), startNode:GetPixelY()))
+                    node:SetLabelDistanceDescription(distance, distance)
+                    nodeList:Add(node)
+                    page:Add(node)
+                end
             end
         end
     end
@@ -82,36 +104,92 @@ class Main is Application
         end
     end
 
+    action PrintPixel(Node node, Node startNode)
+            output startNode:GetPixelX() + ", " + startNode:GetPixelY()
+            output node:GetPixelX() + ", " + node:GetPixelY()
+            output "-----------------------------------------------------"
+    end
+
+    action ResetNodelist() 
+        integer i = 0 
+        repeat while i < nodeList:GetSize()
+            nodeList:Get(i):SetIsAddedToSolution(false)
+            nodeList:Get(i):SetSizeAndColor(Banana())
+            i = i + 1
+        end
+    end
+
+    action Print() returns text
+       integer index = 0
+       text solutionList = ""
+        repeat while index < solution:GetSize()
+            if index = solution:GetSize() -1
+                solutionList = solutionList + solution:Get(index):GetDescription()
+            else
+                solutionList = solutionList +  solution:Get(index):GetDescription() + ", "
+            end
+            index = index + 1
+        end
+        return solutionList
+    end
+
+    action Recalculate(Array<Node> list, number startX, number startY)
+        integer index = 0
+        repeat while index < list:GetSize()
+            if not list:Get(index):GetIsAddedToSolution()
+                text distance = cast(text,list:Get(index):CalculateDistanceFromStart(startX, startY))
+                list:Get(index):SetLabelDistanceDescription(distance, distance)
+            end
+            index = index + 1
+        end 
+    end
+
     action Start
 
-        Grid grid
-
-        grid:Initialize(maximumX, minimumX,maximumY,minimumY,numberOfNodes)
+        grid:Initialize(maximumX, minimumX,maximumY,minimumY,nodeSize)
         grid:Fill(false)
-
         
-        //startNode = CreateNode(true, 0, 0, RandomNumber(minimumX,maximumX), RandomNumber(minimumY, maximumY)) 
+        startNode = CreateNode(true,0,0)
+        SetNodeInGrid(grid, startNode)
         solution:Add(startNode)
+        startNode:SetIsAddedToSolution(true)
         page:Add(startNode)
-
-        //PrintSolution(solution)
-        //grid = CreateGrid(minimumX, maximumX, minimumY, maximumY, numberOfNodes, startNode, page)
+        
+        repeat numberOfNodes times
+            Node node = CreateNode(false, startNode:GetPixelX(), startNode:GetPixelY())
+            SetNodeInGrid(grid, node)
+            text distance = cast(text,node:CalculateDistanceFromStart(startNode:GetPixelX(), startNode:GetPixelY()))
+            node:SetLabelDistanceDescription(distance, distance)
+            nodeList:Add(node)
+            page:Add(node)
+        end
+        // set x y pixel to node
+        // repeat number of node times
 
         distanceText = CreateLabel()
         distanceText:SetName("Total Distance Label")
-        distanceText:SetText("Total Distance:      " + cast(text, totalDistance)) // add field with variable 
-        distanceText:SetFontSize(20)
+        distanceText:SetText("Total Distance:         " + cast(text, totalDistance)) // add field with variable 
+        distanceText:SetFontSize(15)
         distanceText:SetPixelX(0)
         distanceText:SetPixelY(100)
         distanceText:SetColor(Black())
         page:Add(distanceText)
+
+        solutionPath = CreateLabel()
+        solutionPath:SetName("Solution Path")
+        solutionPath:SetText(Print()) 
+        solutionPath:SetFontSize(15)
+        solutionPath:SetPixelX(10)
+        solutionPath:SetPixelY(75)
+        solutionPath:SetColor(Black())
+        page:Add(solutionPath)
         
         newLevelButton = CreateButton()
         newLevelButton:SetName("New Level")
         newLevelButton:SetDescription("New Level")
         newLevelButton:SetFontSize(20)
         newLevelButton:SetPixelX(50)
-        newLevelButton:SetPixelY(25)
+        newLevelButton:SetPixelY(15)
         newLevelButton:SetPixelWidth(110)
         newLevelButton:SetPixelHeight(55)
         newLevelButton:SetBackgroundColor(NewColor(0.93, 0.98, 1))
@@ -123,7 +201,7 @@ class Main is Application
         resetButton:SetDescription("Reset")
         resetButton:SetFontSize(20)
         resetButton:SetPixelX(250)
-        resetButton:SetPixelY(25)
+        resetButton:SetPixelY(15)
         resetButton:SetPixelWidth(100)
         resetButton:SetPixelHeight(55)
         resetButton:SetBackgroundColor(NewColor(0.93, 0.98, 1))
@@ -137,7 +215,6 @@ class Main is Application
         bottomBanner:SetPixelY(0)
         bottomBanner:SetFocusable(false)
         //page:Add(bottomBanner)
-        number first = 3.0 mod 2
         
         AddPage(page)
 

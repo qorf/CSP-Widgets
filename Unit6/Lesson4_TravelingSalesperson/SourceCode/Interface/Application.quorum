@@ -586,6 +586,14 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         return color:Navy()
     end
 
+    action StartGreen returns Color
+        return color:CustomColor(0.11,0.55,0.45, 1.0)
+    end
+
+    action Banana returns Color
+        return color:CustomColor(0.99,0.72,0.34, 1.0)
+    end
+
     action IsInteger(text value) returns boolean
         check
             integer test = cast(integer, value)
@@ -607,40 +615,22 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
     end
 
     // NODE methods
-    action CreateNode(boolean amIStart, number startX, number startY, Array<boolean> grid) returns Node
+    action CreateNode(boolean amIStart, number startX, number startY) returns Node
         Node node
         Color color
-        integer mySize = 41
-        Drawable drawable
-
+        integer mySize = 31
+        node:SetNodeSize(mySize)
         node:SetIsStart(amIStart)
-        node:SetSize(mySize, mySize)
-        //node:SetPixelX(x)
-        //node:SetPixelY(y)
-        node:SetPixelWidth(mySize)
-        node:SetPixelHeight(mySize)
+        node:SetSizeWidthHeight(mySize)
         if node:GetIsStart()
-            drawable:LoadFilledCircle((mySize/2), color:CustomColor(0.11,0.55,0.45, 1.0))
-            node:SetIcon(drawable)
-            node:SetIconColor(color:CustomColor(0.11,0.55,0.45, 1.0))
+            node:SetSizeAndColor(StartGreen())
             node:SetFont(undefined)
-            node:SetBackgroundColor(color:CustomColor(0.11,0.55,0.45, 1.0))
-            node:SetBorderColor(color:CustomColor(0.11,0.55,0.45, 1.0))
             node:GetLabel():SetLeftPadding(0) 
-            node:SetLabelText("Start")
-            node:SetDistance("0")
-            node:SetDescription("0")
+            node:SetLabelDistanceDescription("Start", "0")
         else
-            drawable:LoadFilledCircle((mySize/2), color:CustomColor(0.99,0.72,0.34, 1.0))
-            node:SetIcon(drawable)
-            node:SetIconColor(color:CustomColor(0.99,0.72,0.34, 1.0))
+            node:SetSizeAndColor(Banana())
+            node:GetLabel():SetLeftPadding(0)   
             node:SetFont(undefined)
-            node:SetBackgroundColor(color:CustomColor(0.99,0.72,0.34, 1.0))
-            node:SetBorderColor(color:CustomColor(0.99,0.72,0.34, 1.0))
-            text distance = cast(text,node:CalculateDistanceFromStart(startX, startY))
-            node:SetLabelText(distance)
-            node:SetDistance(distance)
-            node:SetDescription(distance)
         end
         node:SetFocusable(true)
         node:SetAccessibilityCode(node:parent:Item:CUSTOM)
@@ -654,93 +644,45 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
     end
 
     action AddNodeToSolution(Array<Node> solution, Node node)
+         integer index = 0
+         
          solution:Add(node)
     end
 
     action ResetSolution(Array<Node> solution) returns integer
         Node node = solution:Get(0)
-        
+        node:SetSizeAndColor(StartGreen())
         solution:Empty()
-
         solution:Add(node)
-
         return 0 
     end
 
-    action PrintSolution(Array<Node> solution)
-        Iterator<Node> element = solution:GetIterator()
-
+    action RemoveAllNodes(Array<Node> nodeList, Page page)
+        Iterator<Node> element = nodeList:GetIterator()
         repeat while element:HasNext()
-            output element:Next():GetDistance()
+            page:Remove(element:Next())
+        end
+        nodeList:Empty()
+    end
+
+    action GetRandom(integer value) returns integer
+        return RandomNumber(0, value-1)
+    end
+    
+    action SetNodeInGrid(Grid grid, Node node)
+        integer row = GetRandom(grid:GetRows())
+        integer column = GetRandom(grid:GetColumns())
+        repeat while grid:IsSet(row, column)
+        // check to see if position in grid is empty
+        // while not empty pick another row and column
+            row = GetRandom(grid:GetRows())
+            column = GetRandom(grid:GetColumns())
+        end
+        // if it is empty assign it to grid
+        grid:SetElement(row, column, true)
+        node:SetPixelX(grid:GetXPixelFromRow(row))
+        node:SetPixelY(grid:GetYPixelFromColumn(column))
         end
     end
-
-    action PrintArray(Array<integer> array)
-        Iterator<integer> element = array:GetIterator()
-
-        repeat while element:HasNext()
-            output element:Next()
-        end
-    end
-
-    action ResetSolutionArray(Array<Node> solution)
-        Node node = solution:Get(0)
-        Iterator<Node> iterator = solution:GetIterator()
-        // change colors 
-        // set booleans
-        solution:Empty()
-        solution:Add(node)
-        
-    end
     
-    
-    action CreateGraphs(integer numberOfNodes, Page page, Array<boolean> grid, Node startNode, 
-                        integer minimumX, integer maximumX, integer minimumY, integer maximumY)
- 
-
-    end
-    
-    action FlattenArrayIndex(integer i, integer j, integer rowSize) returns integer
-        return i + j * rowSize
-    end
-
-    action SetGrid(integer i, integer j, integer numberOfNodes, Array<boolean> grid)
-        grid:Add(FlattenArrayIndex(i,j, numberOfNodes), true)
-    end
-
-    action IsOccupied(integer i, integer j, integer numberOfNodes, Array<boolean> grid) returns boolean
-        return grid:Get(FlattenArrayIndex(i,j,numberOfNodes)) 
-    end
-
-    action RandomWithinGrid(integer cellPixelWidth, integer cellPixelHeight, integer offset, Node node)
-        
-    end
-
-    // root is a boolean array
-    /*
-    action CreateGrid(integer minimumX, integer maximumX, integer minimumY, 
-                      integer maximumY, integer numberOfNodes, Node startNode, Page page)
-                      returns Array<boolean> 
-        Array<Array<boolean>> gridRows
-         
-        integer index = 0
-        integer random = 0
-        // determine rows
-        integer rows = cast(integer, ((maximumX - minimumX ) / numberOfNodes )/3)
-        // determine columns        
-        integer columns = cast(integer, ((maximumY - minimumY ) / numberOfNodes )/3)
-        // determine the total number of elements
-        integer gridSize = rows*columns 
-
-
-
-        repeat numberOfNodes times
-            random = RandomNumber(0, gridSize)
-            grid:Add(random, true) 
-        end  
-
-        return grid
-        
-    end
-    */
 end
