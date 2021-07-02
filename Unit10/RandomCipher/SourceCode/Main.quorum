@@ -1,0 +1,196 @@
+use Libraries.Compute.Random
+use Libraries.Containers.HashTable
+use Libraries.Containers.Array
+use Libraries.Containers.Support.SortableContainer
+
+text sample = "Kezfpe gk gl izk hikgrhso zrgpgiws, kehrh gl w chrkwgi bhwfko gi keh krwtgkgzi kewk ewl ehst krfh dzr lz szip gi czxmfkgip kewk w izjgch'l dgrlk gikhrwckgzi ngke czth lezfst gihjgkwbso rhlfsk gi kezlh lwxh uzjgws nzrtl: 'Ehssz nzrst!'"
+
+HashTable<text, text> substitutions
+Array<integer> frequency
+Random random
+text currentCharacter = "a"
+text alphabet = "abcdefghijklmnopqrstuvwxyz"
+integer unicodeA = alphabet:GetUnicodeInteger(0)
+
+repeat while not alphabet:IsEmpty()
+    integer index = random:RandomInteger(alphabet:GetSize() - 1)
+    text letter = alphabet:GetCharacter(index)
+    
+    text previous = ""
+    text remaining = ""
+    if index > 0
+        previous = alphabet:GetSubtext(0, index)
+    end
+
+    if index < (sample:GetSize() - 1)
+        remaining = alphabet:GetSubtext(index + 1)
+    end
+
+    alphabet = previous + remaining
+
+    substitutions:Add(currentCharacter, letter)
+    substitutions:Add(currentCharacter:ToUpperCase(), letter:ToUpperCase())
+    currentCharacter = currentCharacter:GetUnicodeValue(currentCharacter:GetUnicodeInteger(0) + 1)
+    frequency:Add(0)
+end
+
+integer counter = 0
+repeat while counter < sample:GetSize()
+    text character = sample:GetCharacter(counter)
+    
+    if substitutions:HasKey(character)
+        text previous = ""
+        text remaining = ""
+        if counter > 0
+            previous = sample:GetSubtext(0, counter)
+        end
+
+        if counter < (sample:GetSize() - 1)
+            remaining = sample:GetSubtext(counter + 1)
+        end
+
+        text newLetter = substitutions:GetValue(character)
+
+        sample = previous + substitutions:GetValue(character) + remaining
+        integer index = newLetter:ToLowerCase():GetUnicodeInteger(0) - unicodeA
+        frequency:Set(index, frequency:Get(index) + 1)
+    end
+
+    counter = counter + 1
+end
+
+Array<SortableContainer<integer, text>> sorting
+
+counter = 0
+text capitalA = "A"
+integer aCode = capitalA:GetUnicodeInteger(0)
+repeat while counter < frequency:GetSize()
+    SortableContainer<integer, text> entry
+    entry:Set(frequency:Get(counter), capitalA:GetUnicodeValue(aCode + counter))
+    sorting:Add(entry)
+    counter = counter + 1
+end
+
+sorting:Sort()
+
+text newLine = capitalA:GetLineFeed()
+
+text outStatement = "A random substitution has been applied to the text, producing this encrypted value: "
+outStatement = outStatement + newLine + sample + newLine
+outStatement = outStatement + "Each character appears in the encrypted text the following number of times: "
+
+counter = 26
+repeat while counter > 0
+    counter = counter - 1
+    SortableContainer<integer, text> entry = sorting:Get(counter)
+    outStatement = outStatement + entry:GetValue() + ": " + entry:GetSorter()
+    if counter not= 0
+        outStatement = outStatement + ", "
+    end
+end
+
+text toSwap = input(outStatement + newLine + newLine + "Enter two letters to swap.")
+
+repeat while toSwap not= ""
+
+    text firstSwap = ""
+    text secondSwap = ""
+    counter = 0
+    text endLetters = "azAZ"
+    integer lowerA = endLetters:GetUnicodeInteger(0)
+    integer lowerZ = endLetters:GetUnicodeInteger(1)
+    integer capA = endLetters:GetUnicodeInteger(2)
+    integer capZ = endLetters:GetUnicodeInteger(3)
+
+    repeat while counter < toSwap:GetSize()
+        text currentLetter = toSwap:GetCharacter(counter)
+        integer currentCode = currentLetter:GetUnicodeInteger(0)
+        if (currentCode >= lowerA and currentCode <= lowerZ) or (currentCode >= capA and currentCode <= capZ)
+            if firstSwap = ""
+                firstSwap = currentLetter:ToLowerCase()
+            else
+                secondSwap = currentLetter:ToLowerCase()
+                counter = toSwap:GetSize()
+            end
+        end 
+        counter = counter + 1
+    end
+
+    if secondSwap not= ""
+
+        // Garbage values unlikely to ever appear in the text.
+        text capitalReplacement = "$#2!"
+        text lowerReplacement = "%@1&"
+
+        repeat while sample:Contains(firstSwap)
+            sample = sample:Replace(firstSwap, lowerReplacement)
+        end
+
+        repeat while sample:Contains(firstSwap:ToUpperCase())
+            sample = sample:Replace(firstSwap:ToUpperCase(), capitalReplacement)
+        end
+
+        repeat while sample:Contains(secondSwap)
+            sample = sample:Replace(secondSwap, firstSwap)
+        end
+
+        repeat while sample:Contains(secondSwap:ToUpperCase())
+            sample = sample:Replace(secondSwap:ToUpperCase(), firstSwap:ToUpperCase())
+        end
+
+        repeat while sample:Contains(lowerReplacement)
+            sample = sample:Replace(lowerReplacement, secondSwap)
+        end
+
+        repeat while sample:Contains(capitalReplacement)
+            sample = sample:Replace(capitalReplacement, secondSwap:ToUpperCase())
+        end
+
+        integer frequencyCounter = 0
+        repeat while frequencyCounter < 26
+            frequency:Set(frequencyCounter, 0)
+            frequencyCounter = frequencyCounter + 1
+        end
+
+        frequencyCounter = 0
+        repeat while frequencyCounter < sample:GetSize()
+            text letter = sample:GetCharacter(frequencyCounter)
+            integer letterCode = letter:GetUnicodeInteger(0)
+            if (letterCode >= lowerA and letterCode <= lowerZ) or (letterCode >= capA and letterCode <= capZ)
+                integer index = letter:ToLowerCase():GetUnicodeInteger(0) - unicodeA
+                frequency:Set(index, frequency:Get(index) + 1)
+            end
+            frequencyCounter = frequencyCounter + 1
+        end
+
+        sorting:Empty()
+        frequencyCounter = 0
+
+        repeat while frequencyCounter < frequency:GetSize()
+            SortableContainer<integer, text> entry
+            entry:Set(frequency:Get(frequencyCounter), capitalA:GetUnicodeValue(aCode + frequencyCounter))
+            sorting:Add(entry)
+            frequencyCounter = frequencyCounter + 1
+        end
+
+        sorting:Sort()
+
+        outStatement = sample + newLine + newLine + "Each character appears in the encrypted text the following number of times: " + newLine
+
+        frequencyCounter = 26
+        repeat while frequencyCounter > 0
+            frequencyCounter = frequencyCounter - 1
+            SortableContainer<integer, text> entry = sorting:Get(frequencyCounter)
+            outStatement = outStatement + entry:GetValue() + ": " + entry:GetSorter()
+            if frequencyCounter not= 0
+                outStatement = outStatement + ", "
+            end
+        end
+
+        toSwap = input(outStatement + newLine + newLine + "Enter two letters to swap, or leave blank to exit.")
+    else
+        toSwap = ""
+    end
+end
+
+output "Final value: " + newLine + sample
