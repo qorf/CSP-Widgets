@@ -1,0 +1,18 @@
+use Libraries.Curriculum.Code.ConsoleApplication
+
+// change "MyLibrary" to whatever you want to call your library
+class MyLibrary is ConsoleApplication
+/*
+Use this to write your library.
+*/
+    action Main
+    // Main should only be called if this file is the program start
+    // Use this Main to write output statement to check your library
+
+
+    end
+
+    // Write your Library functions here
+
+
+end

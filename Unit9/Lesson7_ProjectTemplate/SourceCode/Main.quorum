@@ -1,0 +1,11 @@
+use Libraries.Compute.Statistics.DataFrame
+
+/*
+Data Story Workspace
+Use this template as a workspace for your data story
+*/
+
+
+//Create a DataFrame, load it, and set which column to focus on
+DataFrame frame
+

@@ -1,0 +1,120 @@
+package Libraries.Curriculum.Code
+
+use Libraries.Containers.Array
+use Libraries.Compute.Random
+use Libraries.Compute.Statistics.DataFrame
+use Libraries.Compute.Statistics.DataFrameColumn
+
+class ConsoleApplication
+
+    Random random
+
+    action RandomNumber(integer minimum, integer maximum) returns integer
+        return random:RandomIntegerBetween(minimum, maximum)
+    end
+
+    action JoinText(Array<text> list, text separator) returns text
+        text result = ""
+        integer counter = 0
+        repeat while counter < list:GetSize()
+            result = result + list:Get(counter)
+            if counter < list:GetSize() - 1
+                result = result + separator
+            end
+            counter = counter + 1
+        end
+        return result
+    end
+
+    action TextArrayToText(Array<text> array) returns text
+        text result = "["
+        text dq = result:GetDoubleQuote()
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + dq + array:Get(counter) + dq
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+
+    action IntegerArrayToText(Array<integer> array) returns text
+        text result = "["
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + array:Get(counter)
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+
+    action NumberArrayToText(Array<number> array) returns text
+        text result = "["
+        integer counter = 0
+        repeat while counter < array:GetSize()
+            result = result + array:Get(counter)
+            if counter not= array:GetSize() - 1
+                result = result + ", "
+            end
+            counter = counter + 1
+        end
+        return result + "]"
+    end
+
+    action GetTextColumn(DataFrame frame, text name) returns Array<text>
+        Array<text> result
+
+        DataFrameColumn column = frame:GetColumn(name)
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsText(i))
+            i = i + 1
+        end
+
+        return result
+    end
+
+    action GetIntegerColumn(DataFrame frame, text name) returns Array<integer>
+        Array<integer> result
+
+        DataFrameColumn column = frame:GetColumn(name)
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsInteger(i))
+            i = i + 1
+        end
+
+        return result
+    end
+
+    action GetNumberColumn(DataFrame frame, text name) returns Array<number>
+        Array<number> result
+
+        DataFrameColumn column = frame:GetColumn(name)
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsNumber(i))
+            i = i + 1
+        end
+
+        return result
+    end
+
+    action GetBooleanColumn(DataFrame frame, text name) returns Array<boolean>
+        Array<boolean> result
+
+        DataFrameColumn column = frame:GetColumn(name)
+        integer i = 0
+        repeat while i < column:GetSize()
+            result:Add(column:GetAsBoolean(i))
+            i = i + 1
+        end
+
+        return result
+    end
+end

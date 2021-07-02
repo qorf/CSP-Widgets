@@ -1,0 +1,30 @@
+use Libraries.Curriculum.Code.all
+
+
+class Main is Application
+/*
+Create Performance Task
+It's time to complete the Create Performance Task. Complete it here.
+
+This is an empty template if you plan to start from a new project. All this project does is load an empty page
+and it is up to you to add to it. 
+
+You can refer back to previous apps if you get stuck on how to do something like add buttons or change pages. 
+
+If you wish to work off a previous app overwrite this file with the Main of the previous app.
+*/
+
+
+    action Start
+        Page page
+
+
+
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end
+
+end
