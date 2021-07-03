@@ -1,0 +1,45 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Containers.Array
+use Libraries.Containers.Iterator
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Control
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Events.MouseEvent
+use Libraries.Compute.Random
+
+/* 
+Instructions go here, do last so line numbers are correct.
+Icon images and colored boxes 
+Update the description only when text changes
+look in application.quorum for rectangle sounds buttons
+Make sure screen reader works ctrl 5 match code order to screen readeer
+*/
+class Main is Application
+    
+    
+    Page page
+    text sample = ""
+    text newLine = sample:GetLineFeed()
+    TextBox message = undefined
+
+    action Start
+        integer x = GetScreenWidth()
+        integer y = GetScreenHeight()
+        message = CreateTextBox()
+        message:SetWidth(x - x/2)
+        message:SetHeight(y - y/2)
+        message:SetPixelWidth(x/2)
+        message:SetPixelHeight(y/2)
+        message:SetPosition(0, y/2)
+        message:SetText(WordWrap("Hello my name is Tim. I am a programmer, a gamer, and a teacher. What I want to do right now is graduate by December.", 33))
+        page:Add(message)
+        AddPage(page)
+    end
+
+    action Main
+        StartGame()
+    end 
+
+end

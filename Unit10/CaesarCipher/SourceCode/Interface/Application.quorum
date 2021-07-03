@@ -59,7 +59,7 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
     boolean hasStarted = false
 
     action CreateGame
-        SetScreenSize(400, 600)
+        SetScreenSize(800, 800)
 
         CustomFocusManager focus
         SetFocusManager(focus)
@@ -245,7 +245,8 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         textBoxCount = textBoxCount + 1
         textBox:SetName("TextBox " + textBoxCount)
         textBox:SetPixelWidth(100)
-        textBox:SetPixelHeight(20)
+        textBox:SetPixelHeight(200)
+        textBox:SetBackgroundColor(Gray())
         textBox:AddMouseMovementListener(me)
         textBox:AddMouseListener(me)
         return textBox
@@ -610,4 +611,33 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         return result
     end
 
+    action WordWrap(text t, integer lineSize) returns text
+
+        if t:GetSize() < lineSize
+            return t
+        else
+            text wrappedText = ""
+            text newLine = wrappedText:GetLineFeed()
+            text temp = t
+            integer indexStart = 0
+            integer indexEnd = lineSize - 1 
+            integer textBlockSize = t:GetSize() / lineSize
+
+            // generate offset by checking last characters in wrapped text 
+            // if it is not white space subtract those letters from end 
+            // add text to next line 
+            // subtract offset from end 
+
+            repeat while textBlockSize > 0
+                wrappedText = wrappedText + temp:GetSubtext(indexStart, indexEnd) + newLine
+                indexStart = indexEnd
+                indexEnd = indexEnd + lineSize
+                textBlockSize = textBlockSize - 1
+            end
+            if not temp:GetSubtext(indexStart, temp:GetSize()):IsEmpty()
+                wrappedText = wrappedText + temp:GetSubtext(indexStart, temp:GetSize()) + newLine
+            end
+            return wrappedText
+        end
+    end
 end

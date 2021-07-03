@@ -1,0 +1,131 @@
+use Libraries.Curriculum.Code.all
+use Libraries.Containers.Array
+use Libraries.Containers.Iterator
+use Libraries.Game.Graphics.Label
+use Libraries.Interface.Controls.TextBox
+use Libraries.Interface.Controls.Button
+use Libraries.Interface.Controls.Control
+use Libraries.Interface.Controls.Icon
+use Libraries.Interface.Events.MouseEvent
+use Libraries.Compute.Random
+
+/* 
+Instructions go here, do last so line numbers are correct.
+Icon images and colored boxes 
+Update the description only when text changes
+look in application.quorum for rectangle sounds buttons
+Make sure screen reader works ctrl 5 match code order to screen readeer
+
+class Main is Application
+
+    boolean running = true
+    integer offset = 0
+    text newLine = sample:GetLineFeed()
+    text dq = sample:GetDoubleQuote()
+    
+    text constants = "aAzZ"
+    integer lowerA = constants:GetUnicodeInteger(0)
+    integer capitalA = constants:GetUnicodeInteger(1)
+    integer lowerZ = constants:GetUnicodeInteger(2)
+    integer capitalZ = constants:GetUnicodeInteger(3)
+
+    action GetText(text selection) return text
+        integer select = cast(integer, selection)
+        
+        text sample1 = "Hggnkpi oa yca vjtqwij vjg fctmpguu. Iwkfgf da c dgcvkpi jgctv. K ecp'v vgnn yjgtg vjg lqwtpga yknn gpf. Dwv K mpqy yjgtg vq uvctv. Vjga vgnn og K'o vqq aqwpi vq wpfgtuvcpf. Vjga uca K'o ecwijv wr kp c ftgco. Ygnn nkhg yknn rcuu og da kh K fqp'v qrgp wr oa gagu. Ygnn vjcv'u hkpg da og. Uq ycmg og wr yjgp kv'u cnn qxgt. Yjgp K'o ykugt cpf K'o qnfgt. Cnn vjku vkog K ycu hkpfkpi oaugnh. Cpf K fkfp'v mpqy K ycu nquv. Uq ycmg og wr yjgp kv'u cnn qxgt. Yjgp K'o ykugt cpf K'o qnfgt. Cnn vjku vkog K ycu hkpfkpi oaugnh. Cpf K fkfp'v mpqy K ycu nquv. K vtkgf ecttakpi vjg ygkijv qh vjg yqtnf. Dwv K qpna jcxg vyq jcpfu. Jqrg K igv vjg ejcpeg vq vtcxgn vjg yqtnf. Dwv K fqp'v jcxg cpa rncpu. Ykuj vjcv K eqwnf uvca hqtgxgt vjku aqwpi. Pqv chtckf vq enqug oa gagu. Nkhg'u c icog ocfg hqt gxgtaqpg. Cpf nqxg ku vjg rtkbg. Uq ycmg og wr yjgp kv'u cnn qxgt Yjgp K'o ykugt cpf K'o qnfgt. Cnn vjku vkog K ycu hkpfkpi oaugnh Cpf K fkfp'v mpqy K ycu nquv. Uq ycmg og wr yjgp kv'u cnn qxgt. Yjgp K'o ykugt cpf K'o qnfgt. Cnn vjku vkog K ycu hkpfkpi oaugnh. Cpf K fkfp'v mpqy K ycu nquv."
+        
+        text sample2 = "Hc ps, cf bch hc ps: hvoh wg hvs eisghwcb: Kvshvsf 'hwg bcpzsf wb hvs awbr hc gittsf Hvs gzwbug obr offckg ct cihfouscig tcfhibs, Cf hc hoys ofag ouowbgh o gso ct hfcipzsg, Obr pm cddcgwbu sbr hvsa? Hc rws: hc gzssd; Bc acfs; obr pm o gzssd hc gom ks sbr Hvs vsofh-oqvs obr hvs hvcigobr bohifoz gvcqyg Hvoh tzsgv wg vswf hc, 'hwg o qcbgiaaohwcb Rsjcihzm hc ps kwgv'r. Hc rws, hc gzssd; Hc gzssd: dsfqvobqs hc rfsoa: om, hvsfs'g hvs fip; Tcf wb hvoh gzssd ct rsohv kvoh rfsoag aom qcas Kvsb ks vojs gvittzsr ctt hvwg acfhoz qcwz, Aigh uwjs ig doigs: hvsfs'g hvs fsgdsqh Hvoh aoysg qozoawhm ct gc zcbu zwts; Tcf kvc kcizr psof hvs kvwdg obr gqcfbg ct hwas, Hvs cddfsggcf'g kfcbu, hvs dfcir aob'g qcbhiaszm, Hvs dobug ct rsgdwgsr zcjs, hvs zok'g rszom, Hvs wbgczsbqs ct cttwqs obr hvs gdifbg Hvoh dohwsbh asfwh ct hvs ibkcfhvm hoysg, Kvsb vs vwagszt awuvh vwg eiwshig aoys Kwhv o pofs pcrywb? kvc kcizr tofrszg psof, Hc ufibh obr gksoh ibrsf o ksofm zwts, Pih hvoh hvs rfsor ct gcashvwbu othsf rsohv, Hvs ibrwgqcjsf'r qcibhfm tfca kvcgs pcifb Bc hfojszzsf fshifbg, dinnzsg hvs kwzz Obr aoysg ig fohvsf psof hvcgs wzzg ks vojs Hvob tzm hc chvsfg hvoh ks ybck bch ct? Hvig qcbgqwsbqs rcsg aoys qckofrg ct ig ozz; Obr hvig hvs bohwjs vis ct fsgczihwcb Wg gwqyzwsr c'sf kwhv hvs dozs qogh ct hvciuvh, Obr sbhsfdfwgsg ct ufsoh dwhv obr acasbh Kwhv hvwg fsuofr hvswf qiffsbhg hifb okfm, Obr zcgs hvs boas ct oqhwcb.-Gcth mci bck! Hvs towf Cdvszwo! Bmadv, wb hvm cfwgcbg Ps ozz am gwbg fsasapsf'r."
+        
+        text sample3 = "M qiwwih yt xsrmklx, M pswx ersxliv jmklx M wxmpp qiww yt fyx M'pp nywx wxevx ekemr M oiit jeppmrk hsar, M oiit sr lmxxmrk xli kvsyrh M epaecw kix yt rsa xs wii alex'w ribx Fmvhw hsr'x nywx jpc, xlic jepp hsar erh kix yt Rsfshc pievrw amxlsyx kixxmrk mx avsrk M asr'x kmzi yt, rs M asr'x kmzi mr 'Xmp M viegl xli irh erh xlir M'pp wxevx ekemr Rs M asr'x piezi, M aerre xvc izivcxlmrk M aerre xvc izir xlsykl M gsyph jemp M asr'x kmzi yt, rs M asr'x kmzi mr 'Xmp M viegl xli irh erh xlir M'pp wxevx ekemr Rs, M asr'x piezi, M aerre xvc izivcxlmrk M aerre xvc izir xlsykl M gsyph jemp Sl, sl, sl, sl, sl Xvc izivcxlmrk Sl, sl, sl, sl, sl Xvc izivcxlmrk Sl, sl, sl, sl, sl Xvc izivcxlmrk Sl, sl, sl, sl, sl Psso lsa jev csy'zi gsqi, csy jmppih csyv lievx amxl pszi Fefc csy'zi hsri irsykl, xeoi e hiit fviexl Hsr'x fiex csyvwipj yt, hsr'x riih xs vyr ws jewx Wsqixmqiw ai gsqi pewx, fyx ai hmh syv fiwx M asr'x kmzi yt, rs M asr'x kmzi mr 'Xmp M viegl xli irh erh xlir M'pp wxevx ekemr Rs M asr'x piezi, M aerre xvc izivcxlmrk M aerre xvc izir xlsykl M gsyph jemp M asr'x kmzi yt, rs M asr'x kmzi mr 'Xmp M viegl xli irh erh xlir M'pp wxevx ekemr Rs M asr'x piezi, M aerre xvc izivcxlmrk M aerre xvc izir xlsykl M gsyph jemp M'pp oiit sr qeomrk xlswi ria qmwxeoiw M'pp oiit sr qeomrk xliq izivc hec Xlswi ria qmwxeoiw Sl, sl, sl, sl, sl Xvc izivcxlmrk Sl, sl, sl, sl, sl Xvc izivcxlmrk Sl, sl, sl, sl, sl Xvc izivcxlmrk Sl, sl, sl, sl, sl Xvc izivcxlmrk"
+        
+        text sample = sample1
+        if select = 2
+            sample = sample2
+        elseif select = 3
+            sample = sample3
+        elseif select not= 1
+            select = 1
+            output "I didn't recognize the selection you asked for. Using the first sample as a default."
+        end
+
+        return sample
+    end
+
+    action Start
+        text selection = input("Three encryption samples are available. Please enter an integer between 1 and 3 to select a sample.")
+        text response = GetText(selection)
+    end
+    
+    action Main
+        StartGame()
+    end 
+
+end
+
+
+
+
+
+repeat while running
+
+    text offsetText = input("With an offset of " + offset + ", the encrypted value is: " + newLine + newLine + sample + newLine + newLine + "Enter a new offset, or "
+        + dq + "Exit" + dq + " to exit the program.")
+
+    if offsetText:EqualsIgnoringCase("exit")
+        running = false
+    else
+        offset = cast(integer, offsetText)
+        if offset >= 26
+            offset = offset mod 26
+        elseif offset <= -26
+            offset = -((-offset) mod 26)
+        end
+
+        if select = 1
+            sample = sample1
+        elseif select = 2
+            sample = sample2
+        elseif select = 3
+            sample = sample3
+        end
+
+        integer counter = 0
+        repeat while counter < sample:GetSize()
+            integer character = sample:GetUnicodeInteger(counter)
+
+            if character >= lowerA and character <= lowerZ
+                character = character + offset
+                if character < lowerA
+                    character = character + 26
+                elseif character > lowerZ
+                    character = character - 26
+                end
+            elseif character >= capitalA and character <= capitalZ
+                character = character + offset
+                if character < capitalA
+                    character = character + 26
+                elseif character > capitalZ
+                    character = character - 26
+                end
+            end
+
+            text previous = ""
+            text remaining = ""
+            if counter > 0
+                previous = sample:GetSubtext(0, counter)
+            end
+
+            if counter < (sample:GetSize() - 1)
+                remaining = sample:GetSubtext(counter + 1)
+            end
+
+            sample = previous + sample:GetUnicodeValue(character) + remaining
+
+            counter = counter + 1
+        end
+    end
+end
+
+output "Program finished. Final result: " + newLine + newLine + sample
+
+*/
