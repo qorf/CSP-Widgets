@@ -620,18 +620,28 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
             text newLine = wrappedText:GetLineFeed()
             text temp = t
             integer indexStart = 0
-            integer indexEnd = lineSize - 1 
+            integer indexEnd = lineSize 
             integer textBlockSize = t:GetSize() / lineSize
-
+            integer offset = 0
             // generate offset by checking last characters in wrapped text 
             // if it is not white space subtract those letters from end 
             // add text to next line 
             // subtract offset from end 
 
             repeat while textBlockSize > 0
-                wrappedText = wrappedText + temp:GetSubtext(indexStart, indexEnd) + newLine
-                indexStart = indexEnd
-                indexEnd = indexEnd + lineSize
+                output indexStart + ", " + indexEnd 
+                if t:GetSize() > lineSize
+                    offset = GetOffset(temp:GetSubtext(indexStart, indexEnd))
+                    if offset > 1
+                        wrappedText = wrappedText + temp:GetSubtext(indexStart, indexEnd - offset) + newLine + temp:GetSubtext(indexEnd - offset, indexEnd)
+                        indexStart = indexEnd
+                        indexEnd = indexEnd + offset + lineSize
+                    else
+                        wrappedText = wrappedText + temp:GetSubtext(indexStart, indexEnd) + newLine
+                        indexStart = indexEnd
+                        indexEnd = indexEnd + lineSize
+                    end
+                end
                 textBlockSize = textBlockSize - 1
             end
             if not temp:GetSubtext(indexStart, temp:GetSize()):IsEmpty()
@@ -639,5 +649,24 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
             end
             return wrappedText
         end
+    end
+
+    action GetOffset(text subtext) returns integer
+        integer numberOfLetters = subtext:GetSize()
+        integer index = numberOfLetters - 1
+        integer offset = 0
+        repeat while numberOfLetters > 0
+           if  not subtext:GetCharacter(index):Equals(" ")
+              numberOfLetters = numberOfLetters - 1
+              index = index - 1
+              offset = offset + 1
+           else
+              numberOfLetters = 0 
+           end
+        end
+        if offset = subtext:GetSize()
+           offset = 0
+        end
+        return offset
     end
 end
