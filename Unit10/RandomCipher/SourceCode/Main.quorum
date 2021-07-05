@@ -2,7 +2,7 @@ use Libraries.Compute.Random
 use Libraries.Containers.HashTable
 use Libraries.Containers.Array
 use Libraries.Containers.Support.SortableContainer
-/*
+
 text sample = "Kezfpe gk gl izk hikgrhso zrgpgiws, kehrh gl w chrkwgi bhwfko gi keh krwtgkgzi kewk ewl ehst krfh dzr lz szip gi czxmfkgip kewk w izjgch'l dgrlk gikhrwckgzi ngke czth lezfst gihjgkwbso rhlfsk gi kezlh lwxh uzjgws nzrtl: 'Ehssz nzrst!'"
 
 HashTable<text, text> substitutions
@@ -194,4 +194,3 @@ repeat while toSwap not= ""
 end
 
 output "Final value: " + newLine + sample
-*/
