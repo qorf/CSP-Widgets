@@ -21,7 +21,7 @@ class Main is Application
         * Run the project if you haven't already. See what the app looks like.
         * Read the comments above each of the listed properties.
         * Try changing each of the values to match the examples given in the comments.
-
+        * Run the project again to see the changes that you made.
         */
 
         // SetScreenSize sets how large the screen is in pixels. The first number represents the width, and the second represents the height.
