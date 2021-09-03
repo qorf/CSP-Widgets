@@ -54,6 +54,7 @@ class Main is Application
 
         Label paragraph1 = CreateLabel()
         paragraph1:SetName("Description")
+        //paragraph1:SetName(englishParagraph1)
         paragraph1:SetFontSize(16)
         paragraph1:SetText(englishParagraph1)
         paragraph1:SetMaximumWidth(300)
