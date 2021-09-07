@@ -1,0 +1,46 @@
+// Slide Assignment Operator
+output "Slide: Assignment Operator"
+integer pow = 3
+output pow
+pow = 5
+output pow
+
+// Slide Do This
+output "Slide Do This"
+text pizza = "3"
+output pizza
+text tacos = "the best"
+pizza = "yum"
+output pizza
+output tacos
+
+// Slide Assign a Variable with Expression
+// NOTE with Quorum you cannot change the "type" of the variable once its been declared (e.g. zow can only hold integers)
+output "Slide: Assign a Variable with Expression"
+integer zow = 4 - 1
+text fly = 2 + "day"
+output zow
+output fly
+integer fly2 = 3 * 3
+text zow2 = 4 + "now" 
+output fly2
+output zow2
+
+// Slide Do This and Compare
+output "Slide: Do This and Compare"
+integer fuzz = 5
+integer clip = fuzz + 2
+output fuzz
+output clip
+fuzz = clip + 1
+text clip2 = "gr" + fuzz
+output fuzz
+output clip2
+fuzz = fuzz + 1
+output fuzz
+fuzz = fuzz + 1
+output fuzz
+fuzz = fuzz + 1
+output fuzz
+
+
