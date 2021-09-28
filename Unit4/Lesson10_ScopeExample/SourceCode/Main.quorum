@@ -1,0 +1,19 @@
+class Main
+    // Create and assign a global Variable
+    integer points = 0
+
+    action changePoints()
+        // Create and assign variables in the local scope
+        integer boom = 5
+        integer points = 1000
+        output "Inside the action I have " + cast(text, points)
+    end
+
+    action Main
+        
+        // make an action call
+        changePoints()
+        output "Outside the action I have " + cast(text, points)
+    end
+end
+
