@@ -14,7 +14,7 @@ class Main is Application
 
         Label directions = CreateLabel()
         directions:SetName("Directions")
-        directions:SetText("This pet rock needs some love. If you click on him enough times, he just might evolve into a very special pet rock. Use the buttons at the bottom to upgrade your clicker!")               
+        directions:SetText("This pet rock needs some love. If you select him enough times, he just might evolve into a very special pet rock. Use the buttons at the bottom to upgrade your selects!")               
         directions:SetPixelX(25)
         directions:SetPixelY(560)
         directions:SetMaximumWidth(350)
@@ -60,8 +60,8 @@ class Main is Application
         page:Add(descriptor)
 
         Label clickLabel = CreateLabel()
-        clickLabel:SetName("Clicks")
-        clickLabel:SetText("Clicks: 0")
+        clickLabel:SetName("Selects")
+        clickLabel:SetText("Selects: 0")
         clickLabel:SetDescription("0")
         clickLabel:SetFontSize(20)
         clickLabel:SetColor(NewColor(0, 0.58, 0.79))
@@ -70,7 +70,7 @@ class Main is Application
         page:Add(clickLabel)
 
         Label clickPowerLabel = CreateLabel()
-        clickPowerLabel:SetName("Click Power")
+        clickPowerLabel:SetName("Select Power")
         clickPowerLabel:SetText("+1")
         clickPowerLabel:SetFontSize(20)
         clickPowerLabel:SetColor(NewColor(0, 0.58, 0.79))
@@ -88,7 +88,7 @@ class Main is Application
         
         Label upgradeLabel = CreateLabel()
         upgradeLabel:SetName("Banner")
-        upgradeLabel:SetText("Upgrade Clicker")
+        upgradeLabel:SetText("Upgrade Selector")
         upgradeLabel:SetFontSize(20)
         upgradeLabel:SetColor(White())
         upgradeLabel:SetPixelX(125)
@@ -96,7 +96,7 @@ class Main is Application
         page:Add(upgradeLabel)
 
         Button upgrade1 = CreateButton()
-        upgrade1:SetName("+2 (cost = 5 clicks)")
+        upgrade1:SetName("+2 (cost = 5 selects)")
         upgrade1:SetFontSize(16)
         upgrade1:SetPixelX(25)
         upgrade1:SetPixelY(20)
@@ -105,7 +105,7 @@ class Main is Application
         page:Add(upgrade1)
 
         Button upgrade2 = CreateButton()
-        upgrade2:SetName("+20 (cost = 20 clicks)")
+        upgrade2:SetName("+20 (cost = 20 selects)")
         upgrade2:SetFontSize(16)
         upgrade2:SetPixelX(200)
         upgrade2:SetPixelY(20)
@@ -124,8 +124,8 @@ class Main is Application
             clicks = clicks + clickPower
 
             Page page = GetCurrentPage()
-            Label clicksLabel = page:GetLabel("Clicks")
-            clicksLabel:SetText("Clicks: " + clicks)
+            Label clicksLabel = page:GetLabel("Selects")
+            clicksLabel:SetText("Selects: " + clicks)
             clicksLabel:SetDescription("" + clicks)
             
             // If we're ready to go from level 1 to 2
@@ -161,16 +161,16 @@ EVOLUTION COMPLETE")
 
 
         // If user clicked the first upgrade
-        if name = "+2 (cost = 5 clicks)" and clicks >= 5
+        if name = "+2 (cost = 5 selects)" and clicks >= 5
             clicks = clicks - 5
             clickPower = 2
             
             Page page = GetCurrentPage()
-            Label clicksLabel = page:GetLabel("Clicks")
-            clicksLabel:SetText("Clicks: " + clicks)
+            Label clicksLabel = page:GetLabel("Selects")
+            clicksLabel:SetText("Selects: " + clicks)
             clicksLabel:SetDescription("" + clicks)
 
-            Label powerLabel = page:GetLabel("Click Power")
+            Label powerLabel = page:GetLabel("Select Power")
             powerLabel:SetText("+2")
             powerLabel:SetDescription("+2")
             powerLabel:Focus()
@@ -181,21 +181,21 @@ EVOLUTION COMPLETE")
         end
 
         // If user clicked the second upgrade
-        if name = "+20 (cost = 20 clicks)" and clicks >= 20
+        if name = "+20 (cost = 20 selects)" and clicks >= 20
             clicks = clicks - 20
             clickPower = 20
             
             Page page = GetCurrentPage()
-            Label clicksLabel = page:GetLabel("Clicks")
-            clicksLabel:SetText("Clicks: " + clicks)
+            Label clicksLabel = page:GetLabel("Selects")
+            clicksLabel:SetText("Selects: " + clicks)
             clicksLabel:SetDescription("" + clicks)
 
-            Label powerLabel = page:GetLabel("Click Power")
+            Label powerLabel = page:GetLabel("Select Power")
             powerLabel:SetText("+20")
             powerLabel:SetDescription("+20")
             powerLabel:Focus()
 
-            Button upgrade1 = page:GetButton("+2 (cost = 5 clicks)")
+            Button upgrade1 = page:GetButton("+2 (cost = 5 selects)")
             upgrade1:Hide()
 
             button:Hide()

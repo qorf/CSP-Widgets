@@ -199,7 +199,7 @@ class Main is Application
 
         Label directions = CreateLabel()
         directions:SetName("Directions")
-        directions:SetText("Click the words to build a poem")
+        directions:SetText("Select the words to build a poem")
         directions:SetFontSize(20)
         directions:SetColor(NewColor(0.64, 0.24, 0.24))
         directions:SetPixelX(60)
