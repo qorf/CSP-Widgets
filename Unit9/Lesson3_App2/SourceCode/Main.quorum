@@ -8,6 +8,7 @@ frame:Load("../Data/Politics/Female State Legislators.csv")
 //You can also specify columns numerically. In this case, 
 //4 is average hours of sleep and 3 is favorite subject
 frame:AddSelectedColumns("PercentageOfFemalesInLegislature")
+frame:AddSelectedFactors("Year")
 
 
 text state = "Texas"
@@ -29,6 +30,6 @@ frame:Filter("State = " + quote + state + quote)
 BarChart chart = frame:BarChart()
 chart:SetFontSize(30)
 chart:SetTitle("Percentage of Female Legislators in the state of " + state)
-chart:SetXAxisTitle("Percentage")
+chart:SetXAxisTitle("Year")
 //We can make this bigger or smaller for our screen (width and height)
 chart:Display(1500,750)

@@ -1,5 +1,5 @@
 use Libraries.Compute.Statistics.DataFrame
-use Libraries.Interface.Controls.Charts.BarChart
+use Libraries.Interface.Controls.Charts.Histogram
 
 //Create a DataFrame, load it, and set which column to focus on
 DataFrame frame
@@ -14,7 +14,7 @@ frame:Load("../Data/Other/Student Info.csv")
 frame:AddSelectedColumn(4)
 
 //Create a Bar chart of the average number of hours of sleep.
-BarChart chart = frame:BarChart()
+Histogram chart = frame:Histogram()
 chart:SetFontSize(30)
 chart:SetTitle("Unclean Student Info Chart")
 chart:SetXAxisTitle("Average Hours of Sleep")
