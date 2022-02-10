@@ -13,8 +13,7 @@ frame:AddSelectedColumns("Maximum Life Span")
 //Create a histogram with a bin width of 5. Leaving this 
 //blank has the system calculate the bin width on its own
 //Display tells it to load it, show it, and make it accessible
-Histogram chart = frame:Histogram()
-chart:SetFontSize(30)
+Histogram chart = frame:Histogram(5)
 chart:SetTitle("Maximum Life Span")
 chart:SetXAxisTitle("Maximum Life Span")
 chart:Display(1500,750)
