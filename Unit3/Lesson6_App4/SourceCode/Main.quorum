@@ -94,6 +94,7 @@ class Main is Application
         AddPage(page1)
     end
 
+//START HERE
     action ButtonActivated(Button button)
         text name = button:GetName()
 
@@ -141,6 +142,7 @@ class Main is Application
             newIcon:SetPixelHeight(220)
             page:Replace(currentIcon, newIcon)
 
+            //YOUR CODE GOES HERE
             
         end
     end

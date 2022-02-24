@@ -69,6 +69,7 @@ class Main is Application
 
     end
 
+//START HERE
     action MousedOver(Control item, MouseEvent event)
         // This code runs when an item in the game is moused over.
 

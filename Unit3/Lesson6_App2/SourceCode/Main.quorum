@@ -7,7 +7,9 @@ class Main is Application
         StartGame()
     end
 
+//START HERE
     action Start
+        //ADD YOUR CODE HERE somewhere inside this action
         output "Starting my program!"
 
         SetScreenSize(400, 600)
