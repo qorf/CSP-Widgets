@@ -159,7 +159,8 @@ class Main is Application
             Node node = CreateNode(false, startNode:GetPixelX(), startNode:GetPixelY())
             SetNodeInGrid(grid, node)
             text distance = cast(text,node:CalculateDistanceFromStart(startNode:GetPixelX(), startNode:GetPixelY()))
-            node:SetLabelDistanceDescription(distance, distance)
+            text name = "My distance from start is " + distance
+            node:SetLabelDistanceDescription(distance, name)
             nodeList:Add(node)
             page:Add(node)
         end
