@@ -7,7 +7,7 @@ use Libraries.Game.Graphics.Color
 
 class Main is Application
 /*
-DO THIS:
+START HERE DO THIS:
 Run this program and carefully read each individual part of the program.
 
 DISCUSS:
@@ -25,7 +25,7 @@ MODIFY:
 Edit the if-statement on lines 46-49 so that the topsIndex is set to 0 if the user hits the
 right button when they're already at the end of the list.
 */
-
+    //LOOK AT LINES 29-32
     Array<Icon> topsList
     Array<Icon> bottomsList
     integer topsIndex = 0
@@ -37,21 +37,21 @@ right button when they're already at the end of the list.
     Button nextTop = undefined
     Button previousBottom = undefined
     Button nextBottom = undefined
-
+    //LOOK AT LINES 41-61
     action ButtonActivated(Button button)
         if button = previousTop
             if topsIndex > 0
                 topsIndex = topsIndex - 1
             end
         elseif button = nextTop
-            if topsIndex < topsList:GetSize() - 1
+            if topsIndex < topsList:GetSize() - 1   //LOOK AT LINE 47
                 topsIndex = topsIndex + 1
             end
         elseif button = previousBottom
             if bottomsIndex > 0
                 bottomsIndex = bottomsIndex - 1
             end
-        elseif button = nextBottom
+        elseif button = nextBottom //LOOK AT LINES 54-60
             if bottomsIndex < bottomsList:GetSize() - 1
                 bottomsIndex = bottomsIndex + 1
             end

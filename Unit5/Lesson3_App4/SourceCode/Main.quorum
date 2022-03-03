@@ -8,7 +8,7 @@ use Libraries.Containers.Array
 
 class Main is Application
 /*
-DO THIS:
+START HERE DO THIS:
 Make this Magic 8 Ball app work!
 * When the screen is clicked, make a random string the answers list display on the 8 Ball
 * Use the Random List Access Pattern to update the code
@@ -37,7 +37,7 @@ to generate a random integer between two values.)
     end
 
     action UpdateScreen
-        // Update the indext to a random number
+        //YOUR CODE GOES HERE Update the indext to a random number
         // Use the Random List Access Pattern
 
 

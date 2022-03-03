@@ -3,7 +3,7 @@ use Libraries.Containers.Array
 
 class Main is ConsoleApplication
 /*
-DO THIS:
+START HERE DO THIS:
 * Print to the console the first, third, fifth, and last animals in the list using the list name and index.
 * Don't forget list indexes in Quorum start at 0, so the last index is always list:GetSize() - 1
 
@@ -27,15 +27,15 @@ DO THIS:
         output animals:Get(0)
 
         output "The third animal in the list is a: "
-        // Print to the console the third animal using the list name and index
+        //YOUR CODE GOES HERE Print to the console the third animal using the list name and index
 
 
         output "The fifth animal in the list is a: "
-        // Print to the console the fifth animal using the list name and index
+        //YOUR CODE GOES HERE Print to the console the fifth animal using the list name and index
 
 
         output "The last animal in the list is a: "
-        // Print the last animal in the list to the console.
+        //YOUR CODE GOES HERE Print the last animal in the list to the console.
 
         
     end

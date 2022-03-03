@@ -7,7 +7,7 @@ use Libraries.Containers.Array
 use Libraries.Game.Graphics.Color
 
 class Main is Application
-/*
+/*START HERE
 DO THIS:
 We can turn a list of food into a Food Diary app
 * Read the code
@@ -25,14 +25,14 @@ NOTE: Take a look at line 37. Can you figure out how "JoinText" works?
     action ButtonActivated(Button button)
         text newFood = diaryInput:GetText()
 
-        // Use "Add" to add a new item to the food diary list
+        //YOUR CODE GOES HERE Use "Add" to add a new item to the food diary list
 
 
         diaryInput:SetText("")
         PlaySound("puzzle_game_accent_a_01.ogg")
         UpdateScreen()
     end
-
+    //LOOK AT LINE 37
     action UpdateScreen
         diaryOutput:SetText(JoinText(food, ", "))
         diaryOutput:SetDescription(diaryOutput:GetText())

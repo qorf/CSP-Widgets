@@ -1,4 +1,4 @@
-/*
+/* START HERE
 The characters in a string each have an index.
 * text:GetSize() returns the length of a string.
 * text:Subtext(start, end) returns a portion of the string, beginning at the start
@@ -19,8 +19,8 @@ output "The longest animal name is " + longestAnimal
 output "It has " + longestAnimal:GetSize() + " characters"
 output "Its first letter is " + longestAnimal:GetSubtext(0, 1)
 
-// Print the name, length, and first letter of the longestCountry
+//YOUR CODE GOES HERE Print the name, length, and first letter of the longestCountry
 
 
 
-// Print the name, length, and first letter of the longestCity
+//YOUR CODE GOES HERE Print the name, length, and first letter of the longestCity

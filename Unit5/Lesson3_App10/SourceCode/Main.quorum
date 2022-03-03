@@ -2,7 +2,7 @@ use Libraries.Curriculum.Code.ConsoleApplication
 use Libraries.Containers.Array
 
 class Main is ConsoleApplication
-/*
+/*START HERE
 DO THIS:
 This program creates two lists. Use the "RemoveAt(index)" and "Add(index, element)" commands
 to fix the following problems:
@@ -31,7 +31,7 @@ to fix the following problems:
 
         animals:RemoveAt(2)
 
-        // Add code to remove the other two numbers from the list
+        //YOUR CODE GOES HERE Add code to remove the other two numbers from the list
 
         output TextArrayToText(animals)
 

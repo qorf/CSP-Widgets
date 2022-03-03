@@ -7,7 +7,7 @@ use Libraries.Containers.Array
 
 class Main is Application
 /*
-DO THIS:
+START HERE DO THIS:
 This app should let the user scroll through their classes, but the left button isn't working.
 * Read the starter code
 * Add code to the "leftButton" so the user can scroll back to the left after scrolling to the right.
@@ -26,9 +26,9 @@ This app should let the user scroll through their classes, but the left button i
 
     action ButtonActivated(Button button)
         if button = leftButton
-            // Use the Scroll Pattern to decrease the index
+            //YOUR CODE GOES HERE Use the Scroll Pattern to decrease the index
 
-            // Call UpdateScreen()
+            //YOUR CODE GOES HERE Call UpdateScreen()
 
             PlaySound("puzzle_game_accent_small_d_01.ogg")
         elseif button = rightButton

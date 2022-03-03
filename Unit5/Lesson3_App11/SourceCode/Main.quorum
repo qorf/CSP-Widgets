@@ -7,7 +7,7 @@ use Libraries.Game.Graphics.Color
 use Libraries.Containers.Array
 
 class Main is Application
-/*
+/* START HERE
 DO THIS:
 This app keeps track of the user's top ten favorite songs. The user
 should be able to add new songs into the list.
@@ -30,13 +30,13 @@ should be able to add new songs into the list.
 
     action ButtonActivated(Button button)
         if button = updateButton
-            // Add code to get the name of the new song and its position in the list
+            //YOUR CODE GOES HERE Add code to get the name of the new song and its position in the list
 
 
-            // Add code to insert the song into the list at the position indicated
+            //YOUR CODE GOES HERE Add code to insert the song into the list at the position indicated
 
 
-            // Add code to remove the last item from the list
+            //YOUR CODE GOES HERE Add code to remove the last item from the list
 
 
             PlaySound("whoosh_4.ogg")

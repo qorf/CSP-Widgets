@@ -3,7 +3,7 @@ use Libraries.Containers.Array
 
 class Main is ConsoleApplication
 /*
-DO THIS:
+START HERE DO THIS:
 In addition to numbers, lists care store strings.
 * Read the starter code for the list "trees" and run the program
 * Create your own list with three of your favorite songs in it
@@ -20,8 +20,8 @@ In addition to numbers, lists care store strings.
         output ""
 
         output "My Favorite Songs:"
-        // Create a list with three of your favorite songs
-        // Print the list to the console
+        //YOUR CODE GOES HERE Create a list with three of your favorite songs
+        //YOUR CODE GOES HERE Print the list to the console
 
 
     end

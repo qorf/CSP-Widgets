@@ -1,4 +1,4 @@
-/*
+/*START HERE
 This program is trying to use substrings to pull out different parts of a date
 stored as a string in the format MM/DD/YYYY. For example, February 10th, 2015
 would be 02/10/2015.

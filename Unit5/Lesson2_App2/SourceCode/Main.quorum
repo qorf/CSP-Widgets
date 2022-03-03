@@ -7,7 +7,7 @@ use Libraries.Containers.Array
 
 class Main is Application
 /*
-DO THIS:
+START HERE DO THIS:
 Run this program and carefully read each individual part of the program.
 
 DISCUSS:
@@ -24,10 +24,10 @@ MODIFY:
 */
 
     Array<text> peopleList
-
+    
     Label peopleLabel = undefined
     TextBox newPersonInput = undefined
-    Button addButton = undefined
+    Button addButton = undefined    //LOOK AT LINE 30
     Button assignButton = undefined
     Label pairLabel = undefined
 
@@ -38,9 +38,9 @@ MODIFY:
     end
 
     action ButtonActivated(Button button)
-        if button = addButton
+        if button = addButton   //LOOK AT LINE 41
             text newPerson = newPersonInput:GetText()
-            peopleList:Add(0, newPerson)
+            peopleList:Add(0, newPerson)    //LOOK AT LINES 43-44
             newPersonInput:SetText("")
         elseif button = assignButton
             if peopleList:GetSize() >= 2

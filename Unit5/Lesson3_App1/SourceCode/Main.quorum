@@ -3,7 +3,7 @@ use Libraries.Containers.Array
 
 class Main is ConsoleApplication
 /*
-DO THIS:
+START HERE DO THIS:
 * Read the code
 * Create a new list of numbers for the array "myUnluckyNumbers"
 * Use "IntegerArrayToText" to turn the array into a text value
@@ -20,12 +20,12 @@ DO THIS:
         output "My Lucky Numbers:"
         output IntegerArrayToText(myLuckyNumbers)
 
-        // Create a list of four numbers
+        //YOUR CODE GOES HERE Create a list of four numbers
 
 
         output "My Unlucky Numbers:"
 
-        // Print the list to the console
+        //YOUR CODE GOES HERE Print the list to the console
 
 
     end
