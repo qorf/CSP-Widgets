@@ -5,7 +5,7 @@ use Libraries.Game.Graphics.Label
 use Libraries.Game.Graphics.Color
 
 class Main is Application
-/*
+/*START HERE
 By combining the iterator variable "i" with strings (for example, ("Label " + i)
 in the program below) you can change the properties of many screen elements all at
 once.

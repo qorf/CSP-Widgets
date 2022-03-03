@@ -4,7 +4,9 @@ use Libraries.Containers.Array
 class Main is ConsoleApplication
 
 /*
-
+DO THIS:
+This program simulates a random coin flip using a while loop to fill an array and print the results
+* Run the program to see how it works.
 */
     action Main
         // Create and assign variables
@@ -25,7 +27,7 @@ class Main is ConsoleApplication
         integer counter2 = 0
         Array<integer> diceRolls
 
-        // In the space below write a while loop
+        //YOUR CODE GOES HERE In the space below write a while loop
         // that will roll 10 dice. Use the code above to help.
 
 

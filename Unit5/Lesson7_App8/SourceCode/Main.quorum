@@ -5,7 +5,7 @@ use Libraries.Game.Graphics.Label
 use Libraries.Game.Graphics.Color
 
 class Main is Application
-/*
+/*START HERE
 By combining the iterator variable "i" with strings (for example, "Dice " + i in the 
 program below) you can change the properties of many screen elements all at once.
 
@@ -24,6 +24,7 @@ This program is supposed to roll 220 dice but it has several things that need to
     Label evensOutput = undefined
     Button rollButton = undefined
 
+    //YOUR CODE GOES HERE
     action ButtonActivated(Button button)
         integer odds = 0
         integer i = 0
@@ -101,6 +102,7 @@ This program is supposed to roll 220 dice but it has several things that need to
             end
         end
 
+        //YOUR CODE GOES HERE 
         oddsOutput = CreateLabel()
         oddsOutput:SetColor(paleGreen)
         oddsOutput:SetFontSize(40)

@@ -6,7 +6,7 @@ use Libraries.Game.Graphics.Label
 use Libraries.Game.Graphics.Color
 
 class Main is Application
-/*
+/*START HERE
 DO THIS:
 Run the app, then discuss these questions with a partner.
 * What information does the user input?

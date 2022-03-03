@@ -2,7 +2,7 @@ use Libraries.Curriculum.Code.ConsoleApplication
 use Libraries.Containers.Array
 
 class Main is ConsoleApplication
-/*
+/*START HERE
 You can use the same loop to do multiple things. This program
 creates two lists of 10 random coin flips.
 
