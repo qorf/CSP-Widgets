@@ -3,6 +3,9 @@ use Libraries.Interface.Controls.Button
 use Libraries.Interface.Controls.Icon
 use Libraries.Game.Graphics.Label
 
+//START HERE
+//Explore the app and write down at least two examples where the app seems to be keeping track of a piece of information or using it to make decisions.
+
 class Main is Application
 
     integer clicks = 0
