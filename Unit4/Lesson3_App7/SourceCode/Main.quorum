@@ -5,7 +5,7 @@ use Libraries.Interface.Controls.Icon
 use Libraries.Game.Graphics.Label
 
 class Main is Application
-    /*
+    /*START HERE
     The counter pattern can be used with strings too.
 
     DO THIS:
@@ -81,14 +81,11 @@ class Main is Application
     action ButtonActivated(Button button)
         // When the button is clicked, add the new reminder to the screen on a new line.
         // The reminder input box should be cleared out for the next reminder.
-
+        //LOOK AT LINE 85
         newReminder = reminderInput:GetText()
-
+        //YOUR CODE GOES HERE
         allReminders = allReminders + newReminder
         reminderText:SetText(allReminders)
-
-
-
 
 
     end

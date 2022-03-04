@@ -1,4 +1,4 @@
-/*
+/* START HERE
 There's a few rules for variable names:
     * Capitalization matters. "myVar" is not the same as "myvar".
     * Variable names can't have spaces in them. "myVar" and "my_var" are allowed but "my var" is not.
@@ -42,5 +42,5 @@ output "It's the best"
 output "petType"
 output "in the world!"
 
-// Add three lines to the story here.
+//YOUR CODE GOES HERE Add three lines to the story here.
 // Make sure to reference at least one variable.

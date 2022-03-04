@@ -5,7 +5,7 @@ use Libraries.Game.Graphics.Label
 
 class Main is Application
 
-    /*
+    /*START HERE
     The counter pattern is "myVar = myVar + 1". The expression on the right "myVar + 1" is evaluated first.
     The new value is then assigned to "myVar". This pattern lets a variable "count" by whatever amount is added. 
 
@@ -117,7 +117,7 @@ class Main is Application
         of dollars by 20. Update the text on the screen.
         */
         if name = "+$20"
-            // Add code here to make the +$20 button work
+            //YOUR CODE GOES HERE Add code here to make the +$20 button work
 
             PlaySound("ring_2.ogg")
         end

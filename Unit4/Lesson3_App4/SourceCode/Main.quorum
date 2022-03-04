@@ -1,4 +1,4 @@
-/*
+/*START HERE
 Variables can be created and assigned using a single command, like "integer myAge = 16".
 In fact, in Quorum, we must always assign a starting value to integer, number, or text variables!
 
@@ -29,11 +29,11 @@ output myAge + 10
 output "years old"
 
 output "In fifty years I will be"
-// Add code here to calculate your age in 50 years.
+//YOUR CODE GOES HERE Add code here to calculate your age in 50 years.
 
 output "years old"
 
 output "I have lived for about"
-// Add code here to calculate your age in months.
+//YOUR CODE GOES HERE Add code here to calculate your age in months.
 
 output "months"

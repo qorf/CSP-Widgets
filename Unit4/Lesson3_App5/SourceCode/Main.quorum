@@ -1,4 +1,4 @@
-/*
+/*START HERE
 The + operator can be used to join or "concatenate" two strings or a number and a string.
     * "sun" + "rise" evaluates to "sunrise"
     * 4 + "ever" evaluates to "4ever"
@@ -30,11 +30,11 @@ output "How many weeks have you been alive?"
 output "I've been alive about " + (age * 52) + " weeks!
 "
 
-// Add code to answer the following questions. Make sure your
+//YOUR CODE GOES HERE Add code to answer the following questions. Make sure your
 // answer prints on a single line.
 
 output "How many days have you been alive?"
-// Add code here. There are 365 days in a year.
+//YOUR CODE GOES HERE Add code here. There are 365 days in a year.
 
 output "How many months have you been alive?"
-// Add code here. There are 12 months in a year.
+//YOUR CODE GOES HERE Add code here. There are 12 months in a year.

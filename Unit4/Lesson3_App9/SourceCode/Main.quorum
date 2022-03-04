@@ -3,7 +3,7 @@ use Libraries.Interface.Controls.Button
 use Libraries.Game.Graphics.Label
 
 class Main is Application
-/*
+/*START HERE 
 This program keeps track of the money collected and tickets sold for a performance.
 There are three variables already created that store the cost of an adult, child, and senior tickets.
 
@@ -95,13 +95,13 @@ tickets sold and the total money collected. Use the code for the "Adult" button 
             PlaySound("coin_2.ogg")
         end
 
-        // Add code to make this button work
+        //YOUR CODE GOES HERE Add code to make this button work
         if name = "Child Ticket"
 
             PlaySound("coin_2.ogg")
         end
 
-        // Add code to make this button work
+        //YOUR CODE GOES HERE Add code to make this button work
         if name = "Senior Ticket"
 
             PlaySound("coin_2.ogg")
