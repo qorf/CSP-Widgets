@@ -5,7 +5,7 @@ use Libraries.Game.Graphics.Label
 use Libraries.Interface.Controls.Icon
 
 class Main is Application
-    /*
+    /*START HERE
     Remember the "Can I Adopt a Cat?" Flowchart? Build an app that answers that question.
     This project has two parts. Do them in order.
 
@@ -122,12 +122,12 @@ class Main is Application
         // A "cast" changes variables from one type to another. This code turns the 
         // text inside the "ageInput" text box into an integer.
         age = cast(integer, ageInput:GetText())
-        // Using the code above as a guide, write a line of code to update
+        //YOUR CODE GOES HERE Using the code above as a guide, write a line of code to update
         // the "money" variable using the "moneyInput" text box.
 
 
 
-        // Write an expression below that checks if age is over 14 and money equals 40.
+        //YOUR CODE GOES HERE Write an expression below that checks if age is over 14 and money equals 40.
         if ( )
             yesCat:Show()
             yesCat:Focus()

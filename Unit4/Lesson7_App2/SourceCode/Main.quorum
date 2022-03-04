@@ -1,4 +1,4 @@
-/*
+/*START HERE
 DO THIS:
 1. Read the code and predict how questions 1 or 2 will be answered.
 2. Run the code and watch the console to check your prediction.
@@ -18,10 +18,10 @@ output "Q2: Is lives times three equal to score?"
 output (lives * 3) = score
 output ""
 
-// Add code to answer the following two questions
+//YOUR CODE GOES HERE Add code to answer the following two questions
 output "Q3: Is score minus lives greater than five?"
 
 output ""
 
-// 
+//YOUR CODE GOES HERE 
 output "Q4: Is score times two greater than or equal to lives times ten?"

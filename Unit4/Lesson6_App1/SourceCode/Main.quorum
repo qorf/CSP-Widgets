@@ -5,7 +5,7 @@ use Libraries.Interface.Controls.TextBox
 use Libraries.Interface.Controls.Button
 
 class Main is Application
-    /*
+    /* START HERE
     DO THIS:
     Play the game at least once. Then with a partner, choose one of the three code sections below:
     * Section 1: lines 132-149

@@ -3,7 +3,7 @@ use Libraries.Interface.Controls.Button
 use Libraries.Game.Graphics.Label
 
 class Main is Application
-/*
+/*START HERE
 Debug this code. The star never turns orange.
 
 DO THIS:

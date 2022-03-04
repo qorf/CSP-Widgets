@@ -1,4 +1,4 @@
-/*
+/*START HERE
 Some conditional statements can be written as Boolean expressions, and vice versa.
 Let's see what this looks like.
 
@@ -20,7 +20,7 @@ end
 output x
 
 // Example #2: The Boolean expression is written for you.
-// Below it, write the conditional statement that represents the same thing
+//YOUR CODE GOES HERE Below it, write the conditional statement that represents the same thing
 integer a = 3
 boolean b = (a > 2)
 output b

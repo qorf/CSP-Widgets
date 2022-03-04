@@ -3,7 +3,7 @@ use Libraries.Interface.Controls.Button
 use Libraries.Game.Graphics.Label
 
 class Main is Application
-/*
+/*START HERE
 Add code to this project so that the star changes color based on the number of clicks.
 
 DO THIS:
@@ -43,6 +43,7 @@ DO THIS:
         clickLabel:SetText("Number of clicks: " + clicks)
         clickLabel:SetDescription(clickLabel:GetText())
 
+        //YOUR CODE GOES HERE
         if clicks < 5
             star:SetIconColor(Red())
             PlaySound("vibrant_game_positive_item_2.ogg")

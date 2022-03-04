@@ -3,7 +3,7 @@ use Libraries.Interface.Controls.Button
 use Libraries.Game.Graphics.Label
 
 class Main is Application
-/*
+/*START HERE
 Build an App where the star changes colors and plays a sound based on the number of clicks.
 
 DO THIS:
@@ -41,7 +41,7 @@ DO THIS:
         clicks = clicks + 1
         clickLabel:SetText("Number of clicks: " + clicks)
         clickLabel:SetDescription(clickLabel:GetText())
-
+        //YOUR CODE GOES HERE LOOK AT LINE 45
         if ( )
             star:SetIconColor(Red())
             PlaySound("vibrant_game_positive_item_2.ogg")
