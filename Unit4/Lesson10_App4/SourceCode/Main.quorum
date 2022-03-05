@@ -5,7 +5,7 @@ use Libraries.Game.Graphics.Label
 
 class Main is Application
 /*
-This program has declared an UpdateScreen function but it isn't called anywhere in the program.
+START HERE This program has declared an UpdateScreen function but it isn't called anywhere in the program.
 
 DO THIS:
 * Read the code to understand how it works, in particular the UpdateScreen function.
@@ -85,7 +85,7 @@ DO THIS:
 
         AddPage(page)
 
-        // Add code to update the screen
+        //YOUR CODE GOES HERE Add code to update the screen
 
 
     end
@@ -96,7 +96,7 @@ DO THIS:
         // update the screen
         if button = downButton
             thumbsUp = thumbsUp - 1
-            // Add code to update the screen
+            //YOUR CODE GOES HERE Add code to update the screen
 
 
 
@@ -105,7 +105,7 @@ DO THIS:
         // update the screen
         elseif button = upButton
             thumbsUp = thumbsUp + 1
-            // Add code to update the screen
+            //YOUR CODE GOES HERE Add code to update the screen
 
 
         end

@@ -1,5 +1,5 @@
 /*
-This program will draw a building in the console using characters from the keyboard.
+START HERE This program will draw a building in the console using characters from the keyboard.
 
 DO THIS:
 * Run the program and look at the output in the console to see how it works.
@@ -9,6 +9,7 @@ DO THIS:
 
 // When the program starts, it will execute the code in the Main action.
 action Main
+    //YOUR CODE GOES HERE
     Roof()
     Floor()
     Lobby()

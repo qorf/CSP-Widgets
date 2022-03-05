@@ -4,7 +4,7 @@ use Libraries.Game.Graphics.Label
 
 class Main is Application
 /*
-This program keeps track of tickets purchased for a performance. One of the buttons
+START HERE This program keeps track of tickets purchased for a performance. One of the buttons
 already has working code inside of it. The other two buttons will work very similarly.
 Rather than write repeated code, practice creating an UpdateScreen function that you
 can call for each button.
@@ -54,12 +54,12 @@ DO THIS:
             PlaySound("coin_2.ogg")
         end
 
-        // Add code to make this button work
+        //YOUR CODE GOES HERE Add code to make this button work
         if name = "Child Ticket"
 
         end
 
-        // Add code to make this button work
+        //YOUR CODE GOES HERE Add code to make this button work
         if name = "Senior Ticket"
 
         end

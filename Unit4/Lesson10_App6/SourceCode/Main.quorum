@@ -5,7 +5,7 @@ use Libraries.Game.Graphics.Label
 
 class Main is Application
 /*
-DO THIS:
+START HERE DO THIS:
 This program should "buy" an apple every time the apple is clicked but
 it doesn't seem to be working.
 * Run the code to see how it works.

@@ -1,5 +1,5 @@
 /*
-Functions help you avoid repeated code in your program.
+START HERE Functions help you avoid repeated code in your program.
 If you are ever using the same pieces of code over and over you should declare a
 function once at the bottom of your program and call it every time you need to use it.
 
