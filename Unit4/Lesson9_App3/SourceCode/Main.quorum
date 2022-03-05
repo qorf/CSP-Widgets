@@ -5,7 +5,7 @@ use Libraries.Interface.Controls.TextBox
 use Libraries.Interface.Controls.Button
 
 class Main is Application
-    /*
+    /*START HERE
     This is the Lemon Squeeze app you worked on earlier in the unit.
     It has repeated blocks of code that should be replaced by a function.
 
@@ -41,6 +41,7 @@ class Main is Application
     TextBox userNameInput = undefined
     TextBox passwordInput = undefined
 
+    //START HERE
     action ButtonActivated(Button button)
         text name = button:GetName()
 

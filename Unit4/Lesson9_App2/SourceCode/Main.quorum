@@ -4,7 +4,7 @@ use Libraries.Interface.Controls.Button
 
 class Main is Application
 
-    /*
+    /*START HERE
     DO THIS:
     Read this program and predict how it will run. Then run it and discuss with a partner.
 
@@ -51,6 +51,7 @@ class Main is Application
         counter:SetDescription(counter:GetText())
         PlaySound("app_button_1.ogg")
 
+        //YOUR CODE GOES HERE Modify the following code code
         if count >= 10 or count <= -5
             SetBackgroundColor(NewColor(0, 0.68, 0.74))
             ShowNextPage()

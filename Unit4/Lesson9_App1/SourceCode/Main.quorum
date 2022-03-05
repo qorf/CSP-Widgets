@@ -1,4 +1,4 @@
-/*
+/*START HERE
 This code is using a function to display the lyrics of a song. 
 There's a few places where this program skips the chorus.
 
@@ -39,7 +39,7 @@ action Main
     output "And love is the prize"
     
     // Chorus
-    // Add code here to sing the chorus twice
+    //YOUR CODE GOES HERE Add code here to sing the chorus twice
     
 
     // Bridge
@@ -49,7 +49,7 @@ action Main
     output "I didn't know I was lost"
     
     // Chorus
-    // Add code here to sing the chorus once
+    //YOUR CODE GOES HERE Add code here to sing the chorus once
     
 
 end
