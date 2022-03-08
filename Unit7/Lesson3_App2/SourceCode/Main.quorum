@@ -3,7 +3,7 @@ use Libraries.Containers.Array
 
 class Main is ConsoleApplication
 /*
-
+START HERE
 DO THIS:
 *Read the code for the RandomGreeting function.
 *Finish the code for the RandomCompliment function so that it randomly adds a comment from the list to the name passed through the parameter.
@@ -42,7 +42,7 @@ Benjamin, your smile lights up the room!
         compliments:Add(", you are uncommonly talented!")
         compliments:Add(", you are ridiculously funny!")
 
-        // Add code so that the function outputs the person's
+        //YOUR CODE GOES HERE Add code so that the function outputs the person's
         // name followed by random compliment from the list above.
 
     end

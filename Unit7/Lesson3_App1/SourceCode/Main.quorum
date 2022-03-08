@@ -2,16 +2,16 @@
 
 class Main
 /*
-
+START HERE
 DO THIS:
 Call the function at least two more times with different names.
 
 */
     action Main
-        // Call fucntion
+        // Call function
         Compliment("Jesse")
 
-        // Call the function with two more names
+        //YOUR CODE GOES HERE Call the function with two more names
 
     end
 

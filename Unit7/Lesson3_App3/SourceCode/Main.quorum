@@ -2,7 +2,7 @@ use Libraries.Curriculum.Code.ConsoleApplication
 use Libraries.Containers.Array
 
 class Main is ConsoleApplication
-/*
+/*START HERE
 This program works identically to the one you just wrote, but it has been organized differently because some functions return a value instead of logging them to the console.
 
 DO THIS:
@@ -45,7 +45,7 @@ Finish the code for the RandomCompliment function. Use the comments and the code
         compliments:Add(", you are uncommonly talented!")
         compliments:Add(", you are ridiculously funny!")
 
-        // Write code to complete this function
+        //YOUR CODE GOES HERE Write code to complete this function
 
         return ""
     end

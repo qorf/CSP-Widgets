@@ -9,7 +9,7 @@ use Libraries.Interface.Controls.Icon
 use Libraries.Interface.Events.MouseEvent
 use Libraries.Compute.Random
 
-/* 
+/*START HERE 
 Instructions go here, do last so line numbers are correct.
 Icon images and colored boxes 
 Update the description only when text changes

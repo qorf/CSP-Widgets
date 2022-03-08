@@ -9,7 +9,7 @@ use Libraries.Containers.Array
 
 class Main is Application
 /*
-
+START HERE
 DO THIS:
 *Try using this simple ordering app.
 *The TotalWithTax() function has a bug. Find and fix it.

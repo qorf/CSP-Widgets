@@ -5,7 +5,7 @@ use Libraries.Interface.Controls.TextBox
 use Libraries.Interface.Controls.Button
 
 class Main is Application
-/*
+/*START HERE
 DO THIS:
 
 READ:
@@ -45,6 +45,8 @@ If time allows make these changes to the code
             outputLabel:SetText(Calculate(" * "))
             outputLabel:SetDescription(outputLabel:GetText())
         end
+
+        //YOUR CODE GOES HERE for divide button
     end
 
 // calculates the answer to the math problem 
