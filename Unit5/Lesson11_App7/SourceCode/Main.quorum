@@ -7,7 +7,7 @@ use Libraries.Containers.Array
 use Libraries.Game.Graphics.Color
 
 class Main is Application
-/*
+/*START HERE
 DO THIS:
 This app has users add their grades and then will calculate their average grade.
 * Read and run the code to understand how it works
@@ -34,7 +34,7 @@ This app has users add their grades and then will calculate their average grade.
             gradesList:Add(newGrade)
             UpdateScreen()
         elseif button = averageGrade
-            // Add code here to make the app show the average grade on the
+            //YOUR CODE GOES HERE Add code here to make the app show the average grade on the
             // "averageOutput" label when the user clicks the average grade button
 
 

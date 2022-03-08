@@ -1,6 +1,6 @@
 use Libraries.Containers.Array
 
-/*
+/*START HERE
 DO THIS:
 This program prints every element in the list and also numbers them.
 Add code to print a numbered list of every element in the list of colors.
@@ -33,4 +33,4 @@ favoriteColors:Add("orange")
 favoriteColors:Add("yellow")
 output "Here's my list of favorite colors"
 
-// Add code to print and number every element in the color list
+//YOUR CODE GOES HERE Add code to print and number every element in the color list

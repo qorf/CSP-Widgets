@@ -3,7 +3,7 @@ use Libraries.Compute.Statistics.DataFrame
 use Libraries.Containers.Array
 
 class Main is ConsoleApplication
-/*
+/*START HERE
 DO THIS:
 This program imports data from the states table and filters it. The top part filters to
 get only the states that have been added to the United States since the year 1900.
@@ -52,7 +52,7 @@ get only the states that have been added to the United States since the year 190
             state = stateList:Get(i)
             population = populationList:Get(i)
 
-            // Add code here
+            //YOUR CODE GOES HERE Add code here
 
             i = i + 1
         end

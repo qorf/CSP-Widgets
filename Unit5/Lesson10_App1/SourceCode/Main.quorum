@@ -6,7 +6,7 @@ use Libraries.Interface.Controls.Button
 use Libraries.Containers.Array
 
 class Main is Application
-/*
+/*START HERE
 DO THIS:
 Groups of 4: Student A, Student B, Student C, Student D
 
@@ -69,7 +69,7 @@ MODIFY:
         totalMilesOutput:SetDescription("" + totalMiles)
         newMileInput:SetText("")
     end
-
+    //LOOK AT LINES 73-81
     action Average
         integer total = 0
         integer i = 0
@@ -79,7 +79,7 @@ MODIFY:
         end
         average = total / mileTimes:GetSize()
     end
-
+    //LOOK AT LINES 83-93
     action Slow
         integer temp = mileTimes:Get(0)
         integer i = 0
@@ -91,7 +91,7 @@ MODIFY:
         end
         slowest = temp
     end
-
+    //LOOK AT LINES 95-105
     action Fast
         integer temp = mileTimes:Get(0)
         integer i = 0
@@ -103,7 +103,7 @@ MODIFY:
         end
         fastest = temp
     end
-
+    //LOOK AT LINES 107-116
     action NumberedListDisplay
         text temp = ""
         integer i = 0

@@ -1,7 +1,7 @@
 use Libraries.Curriculum.Code.ConsoleApplication
 use Libraries.Containers.Array
 
-/*
+/*START HERE
 DO THIS:
 This program filters the list of animals to only take the animals with more than 5 letters in
 their name. Add code to filter the list of students to those with names with 6 or more letters.
@@ -58,7 +58,7 @@ class Main is ConsoleApplication
         Array<text> studentsFiltered
         text student = ""
         
-        // Add code to filter the list of students
+        //YOUR CODE GOES HERE Add code to filter the list of students
 
 
 

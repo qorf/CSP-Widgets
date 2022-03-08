@@ -6,7 +6,7 @@ use Libraries.Game.Graphics.Label
 use Libraries.Containers.Array
 
 class Main is Application
-/*
+/*START HERE
 DO THIS:
 Run this program, watch the code run, and carefully read each part of the program.
 

@@ -1,6 +1,6 @@
 use Libraries.Containers.Array
 
-/*
+/*START HERE
 DO THIS:
 The program traverses the "fruits" list to print out all the different fruits.
 Add code to traverse and print out the "vegetables" list.
@@ -30,4 +30,4 @@ vegetables:Add("onions")
 vegetables:Add("celery")
 vegetables:Add("broccoli")
 
-// Add code to traverse the vegetables list
+//YOUR CODE GOES HERE Add code to traverse the vegetables list

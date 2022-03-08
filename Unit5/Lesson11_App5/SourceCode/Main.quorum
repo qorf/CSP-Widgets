@@ -1,6 +1,6 @@
 use Libraries.Containers.Array
 
-/*
+/*START HERE
 DO THIS:
 This program traverses a list of prices to find the minimum price.
 Add code to traverse the list to find the maximum price.
@@ -38,7 +38,7 @@ number maxPrice = prices:Get(0)
 // Traver the list to find the maximum value
 i = 0
 repeat while i < prices:GetSize()
-    // Add code here
+    //YOUR CODE GOES HERE Add code here
 
 
 

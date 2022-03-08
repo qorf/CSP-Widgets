@@ -1,6 +1,6 @@
 use Libraries.Containers.Array
 
-/*
+/*START HERE
 DO THIS:
 This program traverses two parallel lists to print the price of each piece of fruit.
 There are two other parallel lists of students and what grade they're in.
@@ -56,5 +56,7 @@ grades:Add(10)
 grades:Add(12)
 grades:Add(10)
 grades:Add(9)
+
+//YOUR CODE GOES HERE
 
 
