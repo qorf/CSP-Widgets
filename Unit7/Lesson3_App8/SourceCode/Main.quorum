@@ -1,4 +1,4 @@
-/*
+/*START HERE
 DO THIS:
 
 This is the MOD operator: mod
@@ -16,22 +16,22 @@ output 5 mod 2
 output 1
 output ""
 
-// ouput your answer - check that the two lines match in the console
+//YOUR CODE GOES HERE ouput your answer - check that the two lines match in the console
 output 2 mod 3
 
 output ""
 
-// ouput your answer - check that the two lines match in the console
+//YOUR CODE GOES HERE ouput your answer - check that the two lines match in the console
 output 10 mod 2
 
 output ""
 
-// ouput your answer - check that the two lines match in the console
+//YOUR CODE GOES HERE ouput your answer - check that the two lines match in the console
 output 2 mod 4
 
 output ""
 
-// ouput your answer - check that the two lines match in the console
+//YOUR CODE GOES HERE ouput your answer - check that the two lines match in the console
 output 7 mod 1
 
 output ""

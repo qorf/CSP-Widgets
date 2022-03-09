@@ -6,7 +6,8 @@ use Libraries.Interface.Controls.TextBox
 
 
 class Main is Application
-/*
+/*START HERE
+DO THIS:
 This program uses the States Library from the previous lesson. You'll need to finish the app by writing code inside the NewState() function by using the functions in the States Library. You'll need to:
 *Pick a random state
 *Set the value of currentState to that state name

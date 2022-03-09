@@ -9,7 +9,7 @@ use Libraries.Interface.Controls.TextBox
 
 
 class Main is Application
-/*
+/* START HERE
 DO THIS:
 *We have taken our code for complimenting people, and turned it into an app. Read the code.
 *Complete the UpdateScreen function following the instructions in the comments of the code. When it works the user should see a random greeting and compliment when enter their name and click the button.
@@ -45,7 +45,7 @@ DO THIS:
     end
 
 
-    // Write comments for the randomCompliment function here
+    //YOUR COMMENT GOES HERE Write comments for the randomCompliment function here
 
     action RandomCompliment(text name) returns text
         Array<text> compliments
@@ -60,15 +60,15 @@ DO THIS:
         return statement
     end
 
+    //YOUR CODE GOES HERE
     action UpdateScreen
-      // Get the user's name from the display and store in a variable
+      //YOUR CODE GOES HERE Get the user's name from the display and store in a variable
     
-      // Create a local variable textOutput to store the return values of both RandomGreeting and RandomCompliment
-      // when both are called with the user's name passed through the parameter
+      //YOUR CODE GOES HERE Create a local variable textOutput to store the return values of both RandomGreeting and RandomCompliment
+      //YOUR CODE GOES HERE when both are called with the user's name passed through the parameter
     
     
-    
-      // Display textOutput on the screen in the output display area
+      //YOUR CODE GOES HERE Display textOutput on the screen in the output display area
 
     end
 

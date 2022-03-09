@@ -6,7 +6,7 @@ use Libraries.Interface.Controls.TextBox
 
 
 class Main is Application
-/*
+/*START HERE
 DO THIS:
 This simple program should show a random cat and the name of the breed every time the user clicks the button. A library called "Cats" has been added to the program to help.
 *Read the documentation for each of the functions in the Cats library
@@ -23,7 +23,7 @@ This simple program should show a random cat and the name of the breed every tim
 
     action ButtonActivated(Button button)
         if button = nextButton
-        // Write your code here
+        //YOUR CODE GOES HERE Write your code here
         // If you want to swap the image of an icon you can use the SwapImage(Icon icon, text imageFile) action
 
             

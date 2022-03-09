@@ -1,5 +1,5 @@
 class Main
-/*
+/*START HERE
 DO THIS:
 Before exporting a library it's a good idea to test functions with different input values to make sure that they export correctly.
 *Debug the issues with these programs, using the tests written for each to check what's wrong with them.

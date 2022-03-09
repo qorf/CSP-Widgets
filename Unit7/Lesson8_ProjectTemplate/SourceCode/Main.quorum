@@ -1,5 +1,5 @@
 use Libraries.Curriculum.Code.ConsoleApplication
-
+//START HERE
 // change "MyLibrary" to whatever you want to call your library
 class MyLibrary is ConsoleApplication
 /*
@@ -12,7 +12,7 @@ Use this to write your library.
 
     end
 
-    // Write your Library functions here
+    //YOUR CODE GOES HERE Write your Library functions here
 
 
 end

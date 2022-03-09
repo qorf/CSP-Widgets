@@ -5,7 +5,7 @@ use Libraries.Interface.Controls.TextBox
 use Libraries.Interface.Controls.Button
 
 class Main is Application
-/*
+/*START HERE
 DO THIS:
 READ: 
 Run this program and read the code carefully with a partner. Try several different inputs.

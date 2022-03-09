@@ -1,6 +1,12 @@
 use Libraries.Curriculum.Code.ConsoleApplication
 use Libraries.Containers.Array
 
+/*START HERE
+DO THIS:
+Students should debug a simple library for manipulating strings 
+*
+*/
+
 class Main is ConsoleApplication
 
     action Main

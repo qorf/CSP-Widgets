@@ -2,7 +2,7 @@ use Libraries.Curriculum.Code.ConsoleApplication
 use Libraries.Containers.Array
 
 class Main is ConsoleApplication
-/*
+/*START HERE
 DO THIS:
 This program is being designed as a simple list library. Write tests to make sure the first function works. Then write the second two functions so that they pass the tests written.
 */
@@ -51,7 +51,7 @@ This program is being designed as a simple list library. Write tests to make sur
 
     action MultiplyBy(Array<integer> list, integer num) returns Array<text>
         Array<text> returnList
-        // Write your code here
+        //YOUR CODE GOES HERE Write your code here
 
         return returnList
     end
@@ -62,7 +62,7 @@ This program is being designed as a simple list library. Write tests to make sur
     // return {Array<text>} - a copy of the original list in reverse order
     action Reverse(Array<text> list) returns Array<text>
         Array<text> returnList
-        // Write your code here
+        //YOUR CODE GOES HERE Write your code here
 
         return returnList
     end
