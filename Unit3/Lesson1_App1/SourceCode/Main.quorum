@@ -186,10 +186,7 @@ class Main is Application
         timerDirections:SetPixelX(260)
         timerDirections:SetPixelY(350)
         /*
-        By default, objects have a "Z" value of 0.
-        Objects with lower Z values will appear in front of objects
-        with higher Z values. So this will put the directions in front
-        of the timer button.
+v
         */
         timerDirections:SetZ(-1)
         page3:Add(timerDirections)

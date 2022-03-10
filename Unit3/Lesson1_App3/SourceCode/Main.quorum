@@ -15,20 +15,49 @@ class Main is Application
         // Set the window size to 400 pixels wide by 600 pixels tall.
         SetScreenSize(400, 600)
 
+        /*
+         There are two primary ways to set the color of a component.
+        
+        You can use the NewColor command to create any color by mixing red, green, and blue.
+        It accepts three numbers between 0.0 and 1.0, which represent the red, green, and blue
+        components, respectively. For example, "NewColor(1.0, 0.0, 0.5)" will make a new color
+        with 100% red, 0% blue, and 50% green, which combines to make a reddish-orange.
+
+        The other way to create a color is by using one of the color commands, which provides
+        you with a common color. Here's the full list of all the color commands you can use:
+        White()
+        Black()
+        Red()
+        Green()
+        Blue()
+        LightGray()
+        Gray()
+        DarkGray()
+        Pink()
+        Orange()
+        Yellow()
+        Magenta()
+        Cyan()
+        Olive()
+        Purple()
+        Maroon()
+        Teal()
+        Navy()
+        */
         // Set the background color to white (100% red, 100% green, 100% blue).
         SetBackgroundColor(1.0, 1.0, 1.0)
 
-        // Turn on focus highlighting and set its properties.
-        // This will let us see what we're currently accessing via the keyboard.
+        /* The next 3 lines following this comments turn on focus highlighting and set its properties.
+        This will let us see what we're currently accessing via the keyboard.*/
         ShowFocusHighlight(true)
         SetFocusHighlightColor(NewColor(0, 0, 1))
         SetFocusHighlightThickness(4)
 
-        // Create the first page of the app.
+        // The next 2 lines create the first page of the app and set its name property
         Page page1
         page1:SetName("Home Page")
 
-        // Place a colored background behind the introduction text.
+        // The next 6 lines create an icon and place a colored background behind the introduction text.
         Icon coloredBackground = CreateRectangle(NewColor(0.94, 0.87, 0.80))
         coloredBackground:SetPercentageWidth(1.0)
         coloredBackground:SetPixelHeight(200)
@@ -37,7 +66,7 @@ class Main is Application
         coloredBackground:SetFocusable(false)
         page1:Add(coloredBackground)
 
-        // Add the introduction text to the top of the page.
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label introduction = CreateLabel()
         introduction:SetName("Introduction")
         introduction:SetText("Here in beautiful, sunny Hamilton our residents are working hard to add beauty to our city streets. The current plan approved by the town committee involves placing baskets of flowers on all street lamp posts located on Main and Cross streets from May through October. ")
@@ -48,6 +77,7 @@ class Main is Application
         page1:Add(introduction)
 
         //Place a red square on the left side of the screen.
+        // The next 7 lines create an Icon and set its properties (name, percentage width, set pixel location, etc.)
         Icon colorPreview = CreateRectangle(NewColor(1, 0, 0))
         colorPreview:SetName("Color Preview")
         colorPreview:SetDescription("A red square, previewing one of the possible colors of the flowers.")
@@ -62,6 +92,7 @@ class Main is Application
         Color white = White()
 
         // One of the three buttons that let the user preview flower colors.
+        // The next 9 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button redButton = CreateButton()
         redButton:SetName("Red")
         redButton:SetPixelWidth(80)
@@ -74,6 +105,7 @@ class Main is Application
         page1:Add(redButton)
 
         // The second of the three buttons for previewing flower colors.
+        // The next 9 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button blueButton = CreateButton()
         blueButton:SetName("Blue")
         blueButton:SetPixelWidth(80)
@@ -86,6 +118,7 @@ class Main is Application
         page1:Add(blueButton)
 
         // The last button for previewing flower colors.
+        // The next 9 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button purpleButton = CreateButton()
         purpleButton:SetName("Purple")
         purpleButton:SetPixelWidth(80)
@@ -108,6 +141,7 @@ class Main is Application
         page1:Add(flowerPot)
 
         // We add a label here that has directions to use the buttons to see flower colors.
+        // The next 7 lines create an Icon and set its properties (name, percentage width, set pixel location, etc.)
         Label colorDirections = CreateLabel()
         colorDirections:SetName("Directions")
         colorDirections:SetText("Click to see the different color options for the flowers.")
@@ -118,6 +152,7 @@ class Main is Application
         page1:Add(colorDirections)
 
         // This label tells the user who made the app.
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label author = CreateLabel()
         author:SetName("Author")
         author:SetText("Hamilton Township Improvement Project")
@@ -128,6 +163,7 @@ class Main is Application
         page1:Add(author)
 
         // We add a button to the bottom of the screen to go to the next page of the app.
+        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button nextButton = CreateButton("Right Arrow.png")
         nextButton:SetName("Continue")
         nextButton:SetPixelWidth(60)
@@ -139,15 +175,15 @@ class Main is Application
         /*
         Now that we've set up our page, we can add it to the app.
         Because this is the very first page we've added, it'll be the first
-        page we see when we open the app. 
+        page we see when we open the app. The line following this comment adds the page to the app
         */
         AddPage(page1)
 
-        // Code for the second page of the app.
+        // The next 2 lines create the code for the second page of the app.
         Page page2
         page2:SetName("Page 2")
         
-        // This section makes the text at the top of the second page.
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label handlingTrash = CreateLabel()
         handlingTrash:SetName("Handling Trash")
         handlingTrash:SetText("Making our town more beautiful starts with each and every one of our residents taking pride in their surroundings. If you see trash, pick it up and throw it away. If you see a can or a bottle that can be recycled, please make the effort to place that item in the recycling bins we have placed around town. Click below to make sure you know how where to place any trash you find on the streets. ")
@@ -158,6 +194,7 @@ class Main is Application
         page2:Add(handlingTrash)
 
         // Make a button that looks like a recycling bin.
+        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button recyclingButton = CreateButton("Recycling Bin.jpg")
         recyclingButton:SetName("Recycling Bin")
         recyclingButton:SetPixelWidth(100)
@@ -167,6 +204,7 @@ class Main is Application
         page2:Add(recyclingButton)
 
         // Make a button that looks like a flower pot.
+        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button flowerButton = CreateButton("Flower Pot.jpg")
         flowerButton:SetName("Flower Pot")
         flowerButton:SetPixelWidth(150)
@@ -176,6 +214,7 @@ class Main is Application
         page2:Add(flowerButton)
 
         // Make a button that looks like a trash can.
+        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button trashButton = CreateButton("Trash Bin.jpg")
         trashButton:SetName("Trash Bin")
         trashButton:SetPixelWidth(100)
@@ -185,6 +224,7 @@ class Main is Application
         page2:Add(trashButton)
 
         // This label tells the user to click a button, and when they do, we'll change what it says.
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label responsiveText = CreateLabel()
         responsiveText:SetName("Responsive Text")
         responsiveText:SetText("Click one of the pictures above.")
@@ -195,6 +235,7 @@ class Main is Application
         page2:Add(responsiveText)
 
         // This button goes to the next page.
+        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button nextButton2 = CreateButton("Right Arrow.png")
         nextButton2:SetName("Continue")
         nextButton2:SetPixelWidth(60)
@@ -210,11 +251,12 @@ class Main is Application
         */
         AddPage(page2)
 
-        // Code for the final page of the app.
+        // The next two lines create the final page of the app.
         Page lastPage
         lastPage:SetName("Last Page")
         
         // This creates the label at the top of the last page.
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label townGarden = CreateLabel()
         townGarden:SetName("Town Garden")
         townGarden:SetText("The town is also working on improving the quality of life for the residents with a community garden. If you are interested in volunteering to help weed, plant, or harvest, please stop by the town office. ")
@@ -225,6 +267,7 @@ class Main is Application
         lastPage:Add(townGarden)
 
         // This code creates an image in the middle of the page.
+        // The next 7 lines create an Icon and set its properties (name, percentage width, set pixel location, etc.)
         Icon gardenImage = CreateIcon("Growing Plants.jpg")
         gardenImage:SetName("Garden Sketch")
         gardenImage:SetDescription("A sketch of garden plants growing")
@@ -235,6 +278,7 @@ class Main is Application
         lastPage:Add(gardenImage)
 
         // Finally, we have a button to go back to the first page.
+        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
         Button homeButton = CreateButton("House.png")
         homeButton:SetName("Home")
         homeButton:SetPixelWidth(60)
@@ -243,12 +287,12 @@ class Main is Application
         homeButton:SetPixelY(0)
         lastPage:Add(homeButton)
 
-        // As always, once we finish setting up a page, we have to add it to the application.
+        // As always, once we finish setting up a page, the next line of code adds the page to the app
         AddPage(lastPage)
     end
 
     /*
-    This code will run any time a button is clicked or activated using the keyboard.
+    This code action will run any time a button is clicked or activated using the keyboard.
     */
     action ButtonActivated(Button button)
         text name = button:GetName()
@@ -328,7 +372,7 @@ class Main is Application
     end
 
     /*
-    This code automatically handles some background stuff.
+    The code following this comment automatically handles some background stuff.
 
     It's not important to know what this does, but don't remove it or change it!
     */
