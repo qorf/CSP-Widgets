@@ -1,6 +1,15 @@
 use Libraries.Compute.Statistics.DataFrame
 use Libraries.Interface.Controls.Charts.LineChart
 
+
+/*
+//START HERE 
+DO THIS:
+* This project opens an accessible chart of the chocolate data for the last five years. It provides an accessible and explorable alternative of the data.
+* This chart gives us information: a collection of facts and patterns extracted from data. We can use this information to identify trends, make connections and address problems.
+* Now students use charting to look for 'data stories'. Depending on class time, allow students to share their data stories with partners or with the class as a whole.
+*/
+
 DataFrame frame
 frame:Load("../Data/Other/GoogleTrendsChocolate.csv")
 frame:AddSelectedColumn(1)

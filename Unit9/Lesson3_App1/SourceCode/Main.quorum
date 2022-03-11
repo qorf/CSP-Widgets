@@ -1,6 +1,14 @@
 use Libraries.Compute.Statistics.DataFrame
 use Libraries.Interface.Controls.Charts.Histogram
 
+/*
+START HERE DO THIS:
+* Students will try filtering a DataFrame using this widget application.
+* Open the file Unit9/Data/Other/Student Info.csv in any program that reads Comma Separated Values files. We recommend Excel.
+* Change the code to generate charts or histograms related to the columns Average Hours of Sleep or Favorite Subject
+*/
+
+
 //Create a DataFrame, load it, and set which column to focus on
 DataFrame frame
 //Notice that the data loads just fine into these frames and can be used

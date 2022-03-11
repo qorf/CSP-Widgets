@@ -1,6 +1,13 @@
 use Libraries.Compute.Statistics.DataFrame
 use Libraries.Interface.Controls.Charts.BarChart
 
+/*
+START HERE DO THIS:
+* Students will experiment with filters such as filtering the chart by state
+*/
+
+
+
 //Create a DataFrame, load it, and set which column to focus on
 DataFrame frame
 frame:Load("../Data/Politics/Female State Legislators.csv")

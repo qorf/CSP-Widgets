@@ -1,6 +1,14 @@
 use Libraries.Compute.Statistics.DataFrame
 use Libraries.Interface.Controls.Charts.Histogram
 
+/*
+START HERE DO THIS:
+* This lesson introduces students to making charts on Quorum, specifically a bar chart and histogram
+* Students will modify columns and set certain chart settings to create their own charts using the dataset 
+* Read the comments below to modify certain parts of the code according to the directions given on the accompanying website
+*/
+
+
 //Create a DataFrame, load it, and set which column to focus on
 DataFrame frame
 //go up a folder from this project (../), find the Data/Animals folder, then find the file named Dogs.csv
