@@ -56,7 +56,7 @@ class Main is Application
         */
         SetBackgroundColor(White())
 
-        // Code to create the bell icon.
+       // The next 6 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon bell = CreateIcon("Bell Icon.png")
         bell:SetName("Bell")
         bell:SetPixelWidth(80)
@@ -71,7 +71,7 @@ class Main is Application
 
         homePage:Add(bell)
 
-        // Code to create the app title.
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label title = CreateLabel()
         title:SetPixelX(110)
         title:SetPixelY(520)
@@ -88,7 +88,7 @@ class Main is Application
 
         homePage:Add(title)
 
-        // Code to create the description label.
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label description = CreateLabel()
         description:SetPixelX(75)
         description:SetPixelY(460)
@@ -105,7 +105,7 @@ class Main is Application
 
         homePage:Add(description)
 
-        // Code for the text box.
+      // The next 6 lines create a textbox and set its properties (PixelWidth, default text, max width, etc.)
         TextBox textBox = CreateTextBox()
         textBox:SetPixelWidth(250)
         textBox:SetPixelHeight(175)
@@ -122,9 +122,9 @@ class Main is Application
 
         homePage:Add(textBox)
 
-        // Code for the smaller, secondary text field.
+      // The next 6 lines create a textbox and set its properties (PixelWidth, default text, max width, etc.)
         TextBox textField = CreateTextBox()
-        textField:SetPixelX(25)
+        textField:SetPixelX(75)
         textField:SetPixelY(125)
         textField:SetPixelWidth(250)
         textField:SetPixelHeight(40)
@@ -139,10 +139,10 @@ class Main is Application
 
         homePage:Add(textField)
 
-        // Code for the first button.
+      // The next 5 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button button1 = CreateButton()
-        button1:SetPixelX(300)
-        button1:SetPixelY(125)
+        button1:SetPixelX(50)
+        button1:SetPixelY(50)
         button1:SetPixelWidth(75)
         button1:SetPixelHeight(40)
         
@@ -156,9 +156,9 @@ class Main is Application
 
         homePage:Add(button1)
 
-        // Code for the second button.
+      // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button button2 = CreateButton()
-        button2:SetPixelX(150)
+        button2:SetPixelX(200)
         button2:SetPixelY(50)
         button2:SetPixelWidth(100)
         button2:SetPixelHeight(50)

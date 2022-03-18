@@ -80,7 +80,7 @@ class Main is Application
         instructions:SetPixelY(450)
         page1:Add(instructions)
 
-        // The next 7 lines  create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 7 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button beginButton = CreateButton()
         beginButton:SetName("Begin")
         beginButton:SetPixelWidth(100)
@@ -98,7 +98,7 @@ class Main is Application
         beginButton:SetFontColor(white)
         page1:Add(beginButton)
 
-        // The next 7 lines  create an Icon and set its properties (name, percentage width, set pixel location, etc.)
+       // The next 7 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon sillyBird = CreateIcon("Silly Bird.jpg")
         sillyBird:SetName("Silly Bird")
         sillyBird:SetDescription("A weird looking bird that's tilting its head to the side")
@@ -125,7 +125,7 @@ class Main is Application
         question1:SetPixelY(560)
         page2:Add(question1)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button ostrich = CreateButton("Ostrich.png")
         ostrich:SetName("Ostrich")
         ostrich:SetPixelWidth(150)
@@ -145,7 +145,7 @@ class Main is Application
         ostrichLabel:SetFocusable(false)
         page2:Add(ostrichLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button emu = CreateButton("Emu.png")
         emu:SetName("Emu")
         emu:SetPixelX(225)
@@ -165,7 +165,7 @@ class Main is Application
         emuLabel:SetFocusable(false)
         page2:Add(emuLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button falcon = CreateButton("Peregrine Falcon.png")
         falcon:SetName("Peregrine Falcon")
         falcon:SetPixelX(25)
@@ -185,7 +185,7 @@ class Main is Application
         falconLabel:SetFocusable(false)
         page2:Add(falconLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button penguin = CreateButton("Penguin.png")
         penguin:SetName("Penguin")
         penguin:SetPixelX(250)
@@ -222,7 +222,7 @@ class Main is Application
         question2:SetPixelY(560)
         page3:Add(question2)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button swan = CreateButton("Swan.png")
         swan:SetName("Swan")
         swan:SetPixelWidth(150)
@@ -242,7 +242,7 @@ class Main is Application
         swanLabel:SetFocusable(false)
         page3:Add(swanLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button budgie = CreateButton("Budgie.png")
         budgie:SetName("Budgie")
         budgie:SetPixelX(200)
@@ -262,7 +262,7 @@ class Main is Application
         budgieLabel:SetFocusable(false)
         page3:Add(budgieLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button parrot = CreateButton("Parrot.png")
         parrot:SetName("Parrot")
         parrot:SetPixelX(10)
@@ -282,7 +282,7 @@ class Main is Application
         parrotLabel:SetFocusable(false)
         page3:Add(parrotLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button eagle = CreateButton("Eagle.png")
         eagle:SetName("Eagle")
         eagle:SetPixelX(200)
@@ -319,7 +319,7 @@ class Main is Application
         question3:SetPixelY(560)
         page4:Add(question3)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button robin = CreateButton("Robin.png")
         robin:SetName("Robin")
         robin:SetPixelWidth(150)
@@ -339,7 +339,7 @@ class Main is Application
         robinLabel:SetFocusable(false)
         page4:Add(robinLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button hummingbird = CreateButton("Hummingbird.png")
         hummingbird:SetName("Hummingbird")
         hummingbird:SetPixelX(200)
@@ -359,7 +359,7 @@ class Main is Application
         hummingbirdLabel:SetFocusable(false)
         page4:Add(hummingbirdLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button woodpecker = CreateButton("Woodpecker.png")
         woodpecker:SetName("Woodpecker")
         woodpecker:SetPixelX(10)
@@ -379,7 +379,7 @@ class Main is Application
         woodpeckerLabel:SetFocusable(false)
         page4:Add(woodpeckerLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button blueJay = CreateButton("Blue Jay.png")
         blueJay:SetName("Blue Jay")
         blueJay:SetPixelX(200)
@@ -427,7 +427,7 @@ class Main is Application
         description:SetPixelY(430)
         winPage:Add(description)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button playAgain = CreateButton()
         playAgain:SetName("Play Again")
         playAgain:SetPixelWidth(100)
@@ -445,7 +445,7 @@ class Main is Application
         // The following line adds the play again page to the win page
         winPage:Add(playAgain)
 
-        // The next 7 lines create an Icon and set its properties (name, percentage width, set pixel location, etc.)
+       // The next 7 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon happyBird = CreateIcon("Happy Ostrich.jpg")
         happyBird:SetName("Happy Ostrich")
         happyBird:SetDescription("An ostrich with a big happy smile!")
@@ -473,7 +473,7 @@ class Main is Application
         loseLabel:SetFontSize(60)
         losePage:Add(loseLabel)
 
-        // The next 6 lines create a button and set its properties (name, text, Font size, max width, etc.)
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button tryAgain = CreateButton()
         tryAgain:SetName("Try Again")
         tryAgain:SetPixelWidth(100)

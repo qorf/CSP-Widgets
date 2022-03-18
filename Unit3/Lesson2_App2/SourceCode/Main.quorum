@@ -24,8 +24,9 @@ class Main is Application
         * Run the project again to see the changes that you made.
         */
 
-        // SetScreenSize sets how large the screen is in pixels. The first number represents the width, and the second represents the height.
-        // Try making the screen larger by increasing both values to 800.
+        /* The code following these comments uses the SetScreenSize action. 
+           SetScreenSize sets how large the screen is in pixels. The first number represents the width, and the second represents the height.
+           Try making the screen larger by increasing both values to 800. */
         SetScreenSize(400, 600)
 
         /*
@@ -39,7 +40,7 @@ class Main is Application
         ShowFocusHighlight(false)
 
         // This code changes how many pixels thick the edges of the rectangle are when we turn the focus highlight on.
-        // Try making the value smaller or larger and see the difference if you have the focus highlighting on.
+        // The current value is 5. Try making the value smaller or larger and see the difference if you have the focus highlighting on.
         SetFocusHighlightThickness(5)
 
         // We can also set what color the focus rectangle is -- try replacing "Blue()" with "Red()" or "Green()".
@@ -54,10 +55,39 @@ class Main is Application
 
         /*
         This code sets the color of the background.
+       
+         The line of code following this comment sets the background color to white (100% red, 100% green, 100% blue).
+         There are two primary ways to set the color of a component.
+        
+        You can use the NewColor command to create any color by mixing red, green, and blue.
+        It accepts three numbers between 0.0 and 1.0, which represent the red, green, and blue
+        components, respectively. For example, "NewColor(1.0, 0.0, 0.5)" will make a new color
+        with 100% red, 0% blue, and 50% green, which combines to make a reddish-orange.
+
+        The other way to create a color is by using one of the color commands, which provides
+        you with a common color. Here's the full list of all the color commands you can use:
+        White()
+        Black()
+        Red()
+        Green()
+        Blue()
+        LightGray()
+        Gray()
+        DarkGray()
+        Pink()
+        Orange()
+        Yellow()
+        Magenta()
+        Cyan()
+        Olive()
+        Purple()
+        Maroon()
+        Teal()
+        Navy()
         */
         SetBackgroundColor(White())
 
-        // Code to create the bell icon.
+       // The next 6 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon bell = CreateIcon("Bell Icon.png")
         bell:SetName("Bell")
         bell:SetPixelWidth(80)
@@ -68,7 +98,7 @@ class Main is Application
 
         homePage:Add(bell)
 
-        // Code to create the app title.
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label title = CreateLabel()
         title:SetPixelX(110)
         title:SetPixelY(520)
@@ -79,7 +109,7 @@ class Main is Application
 
         homePage:Add(title)
 
-        // Code to create the description label.
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label description = CreateLabel()
         description:SetPixelX(75)
         description:SetPixelY(460)
@@ -90,7 +120,7 @@ class Main is Application
 
         homePage:Add(description)
 
-        // Code for the text box.
+        // The next 8 lines create a textbox and set its properties (PixelWidth, default text, max width, etc.)
         TextBox textBox = CreateTextBox()
         textBox:SetPixelWidth(250)
         textBox:SetPixelHeight(175)
@@ -102,10 +132,10 @@ class Main is Application
 
         homePage:Add(textBox)
 
-        // Code for the smaller, secondary text field.
+        // The next 8 lines create a textbox and set its properties (PixelWidth, default text, max width, etc.)
         TextBox textField = CreateTextBox()
-        textField:SetPixelX(25)
-        textField:SetPixelY(125)
+        textField:SetPixelX(75)
+        textField:SetPixelY(175)
         textField:SetPixelWidth(250)
         textField:SetPixelHeight(40)
         textField:SetText("You can type here too!")
@@ -114,26 +144,31 @@ class Main is Application
 
         homePage:Add(textField)
 
-        // Code for the first button.
+        // The next 10 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button button1 = CreateButton()
-        button1:SetPixelX(300)
-        button1:SetPixelY(125)
-        button1:SetPixelWidth(75)
-        button1:SetPixelHeight(40)
+        button1:SetName("Left")
+        button1:SetDescription(" This button is orange.")
+        button1:SetPixelX(75)
+        button1:SetPixelY(50)
+        button1:SetPixelWidth(100)
+        button1:SetPixelHeight(50)
+        button1:SetFontSize(22)
         button1:SetBackgroundColor(Orange())
         button1:SetFontColor(Black())
         button1:SetBorderColor(Black())
 
         homePage:Add(button1)
 
-        // Code for the second button.
+        // The next 10 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Button button2 = CreateButton()
-        button2:SetPixelX(150)
+        button2:SetName("Right")
+        button2:SetDescription(" This button is green.")
+        button2:SetPixelX(220)
         button2:SetPixelY(50)
         button2:SetPixelWidth(100)
         button2:SetPixelHeight(50)
         button2:SetFontSize(22)
-        button2:SetBackgroundColor(Orange())
+        button2:SetBackgroundColor(Green())
         button2:SetFontColor(Black())
         button2:SetBorderColor(Black())
 
@@ -143,7 +178,7 @@ class Main is Application
     end
 
     /*
-    This code automatically handles some background stuff.
+    The code below this comment automatically handles some background stuff.
 
     It's not important to know what this does, but don't remove it or change it!
     */

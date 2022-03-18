@@ -28,14 +28,43 @@ class Main is Application
     end
 
     action Start
-        // Set the window size to 400 pixels wide by 600 pixels tall.
+        // The next line sets the window size to 400 pixels wide by 600 pixels tall.
         SetScreenSize(400, 600)
 
-        // Set the background color to white.
+        /*
+         The  next line of code after the comment sets the background color to white.
+         There are two primary ways to set the color of a component.
+        
+        You can use the NewColor command to create any color by mixing red, green, and blue.
+        It accepts three numbers between 0.0 and 1.0, which represent the red, green, and blue
+        components, respectively. For example, "NewColor(1.0, 0.0, 0.5)" will make a new color
+        with 100% red, 0% blue, and 50% green, which combines to make a reddish-orange.
+
+        The other way to create a color is by using one of the color commands, which provides
+        you with a common color. Here's the full list of all the color commands you can use:
+        White()
+        Black()
+        Red()
+        Green()
+        Blue()
+        LightGray()
+        Gray()
+        DarkGray()
+        Pink()
+        Orange()
+        Yellow()
+        Magenta()
+        Cyan()
+        Olive()
+        Purple()
+        Maroon()
+        Teal()
+        Navy()
+        */
         SetBackgroundColor(1.0, 1.0, 1.0)
 
-        // Turn on focus highlighting and set its properties.
-        // This will let us see what we're currently accessing via the keyboard.
+        // The lines after these comments turn on focus highlighting and set its properties.
+        // This will let us display what we're currently accessing via the keyboard.
         ShowFocusHighlight(true)
         SetFocusHighlightThickness(4)
 
@@ -43,6 +72,7 @@ class Main is Application
         Page page1
         page1:SetName("Home Page")
 
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)   
         Label titleLabel = CreateLabel()
         titleLabel:SetName("Title")
         titleLabel:SetText(englishTitle)
@@ -52,6 +82,7 @@ class Main is Application
         titleLabel:SetPixelY(560)
         page1:Add(titleLabel)
 
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label paragraph1 = CreateLabel()
         paragraph1:SetName("Description")
         //paragraph1:SetName(englishParagraph1)
@@ -62,6 +93,7 @@ class Main is Application
         paragraph1:SetPixelY(500)
         page1:Add(paragraph1)
 
+       // The next 7 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon titleImage = CreateIcon("Filled Water Glass.jpg")
         titleImage:SetName("Banner")
         titleImage:SetDescription("A glass that is being filled with water.")
@@ -71,6 +103,7 @@ class Main is Application
         titleImage:SetPixelY(175)
         page1:Add(titleImage)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button spanishButton = CreateButton()
         spanishButton:SetName("Spanish")
         spanishButton:SetPixelWidth(80)
@@ -78,10 +111,12 @@ class Main is Application
         spanishButton:SetPixelX(0)
         spanishButton:SetPixelY(36)
 
+        // The next 2 lines create a color and add that color to the button background
         Color spanishColor = NewColor(0.8, 0.8, 1.0)
         spanishButton:SetBackgroundColor(spanishColor)
         page1:Add(spanishButton)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button englishButton = CreateButton()
         englishButton:SetName("English")
         englishButton:SetPixelWidth(80)
@@ -89,10 +124,12 @@ class Main is Application
         englishButton:SetPixelX(0)
         englishButton:SetPixelY(0)
 
+        // The next 2 lines create a color and add that color to the button background
         Color englishColor = NewColor(1.0, 0.8, 0.8)
         englishButton:SetBackgroundColor(englishColor)
         page1:Add(englishButton)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button nextButton = CreateButton()
         nextButton:SetName("Next")
         nextButton:SetPixelWidth(80)
@@ -100,6 +137,7 @@ class Main is Application
         nextButton:SetPixelX(320)
         nextButton:SetPixelY(0)
 
+        // The next 2 lines create a color and add that color to the button background
         Color nextColor = NewColor(0.5, 1.0, 0.5)
         nextButton:SetBackgroundColor(nextColor)
         page1:Add(nextButton)
@@ -110,6 +148,7 @@ class Main is Application
         Page page2
         page2:SetName("Tip 1 Page")
 
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label tip1 = CreateLabel()
         tip1:SetName("Tip 1")
         tip1:SetText(englishTip1)
@@ -119,6 +158,7 @@ class Main is Application
         tip1:SetFontSize(18)
         page2:Add(tip1)
 
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label directions1 = CreateLabel()
         directions1:SetName("Directions")
         directions1:SetText(englishDirections1)
@@ -128,6 +168,7 @@ class Main is Application
         directions1:SetPixelY(400)
         page2:Add(directions1)
 
+       // The next 7 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button glassBottle = CreateButton("Glass Water Bottle.png")
         glassBottle:SetName("Glass Bottle")
         glassBottle:SetDescription("A reusable glass bottle.")
@@ -137,6 +178,7 @@ class Main is Application
         glassBottle:SetPixelY(150)
         page2:Add(glassBottle)
 
+       // The next 7 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button plasticBottle = CreateButton("Disposable Water Bottle.png")
         plasticBottle:SetName("Disposable Bottle")
         plasticBottle:SetDescription("A disposable plastic bottle.")
@@ -146,6 +188,7 @@ class Main is Application
         plasticBottle:SetPixelY(150)
         page2:Add(plasticBottle)
 
+       // The next 7 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button nextButton2 = CreateButton()
         nextButton2:SetName("Next")
         nextButton2:SetPixelWidth(80)
@@ -161,6 +204,7 @@ class Main is Application
         Page page3
         page3:SetName("Tip 2 Page")
 
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label tip2 = CreateLabel()
         tip2:SetName("Tip 2")
         tip2:SetText(englishTip2)
@@ -170,6 +214,7 @@ class Main is Application
         tip2:SetFontSize(18)
         page3:Add(tip2)
 
+        // The next 7 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon showeringDuck = CreateIcon("Showering Rubber Duck.jpg")
         showeringDuck:SetName("Showering Duck")
         showeringDuck:SetDescription("A rubber duck is taking a shower.")
@@ -179,18 +224,17 @@ class Main is Application
         showeringDuck:SetPixelY(150)
         page3:Add(showeringDuck)
 
+        // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label timerDirections = CreateLabel()
         timerDirections:SetName("Directions")
         timerDirections:SetText(englishDirections2)
         timerDirections:SetMaximumWidth(120)
         timerDirections:SetPixelX(260)
         timerDirections:SetPixelY(350)
-        /*
-v
-        */
         timerDirections:SetZ(-1)
         page3:Add(timerDirections)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button timerButton = CreateButton("5 Minute Timer.png")
         timerButton:SetName("Timer")
         timerButton:SetPixelWidth(78)
@@ -199,6 +243,7 @@ v
         timerButton:SetPixelY(220)
         page3:Add(timerButton)
 
+       // The next 7 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button homeButton = CreateButton()
         homeButton:SetName("Home")
         homeButton:SetPixelWidth(80)
@@ -211,6 +256,9 @@ v
         AddPage(page3)
     end
 
+    /* The rest of the code is more complex then the students current experience. In later lessons this will be explained. For now students should understand that this code 
+       is the action that makes the program do different things when a button is selected. 
+    */
     action ButtonActivated(Button button)
         if button:GetName() = "Spanish"
             Page page1 = GetPage("Home Page")
