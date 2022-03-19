@@ -16,19 +16,22 @@ class Main is Application
     This is where we put all of our code to set up our pages and create the user interface.
     */
     action Start
-        // Sets the screen to be 400 pixels wide and 600 pixels tall.
+        // The next line of code sets the screen to be 400 pixels wide and 600 pixels tall.
         SetScreenSize(400, 600)
 
+        // The next 2 lines create the home page and set its name property
         Page homePage
         homePage:SetName("Home Page")
 
         /*
-        This line of code makes a button out of an image. You can use your own custom image
-        by placing it in the Images folder in the project. This works for loading Icons too!
+        The lines following this comment create a button and set its properties (name, background color, pixel position, max width, etc.)
+        This code makes House.png into a button using the CreateButton() action. You can use your own custom image
+        by placing the .png file in the Images folder in the project and then using the text name inside the CreateButton() action. This works for loading Icons images too!
 
-        Try downloading a picture of a cat and placing it in the project's Image folder. Then
-        load your picture into a button by changing the line of code below.
+        Try downloading a png of a cat and placing it in the project's Image folder. Then
+        load your picture into a button by changing the text in line of code below.
         */
+
         Button button = CreateButton("House.png")
 
         button:SetPixelWidth(200)
@@ -53,7 +56,7 @@ class Main is Application
     end
 
     /*
-    This code automatically handles some background stuff.
+    The code below this comment automatically handles some background stuff.
 
     It's not important to know what this does, but don't remove it or change it!
     */

@@ -10,15 +10,15 @@ class Main is Application
     This is where we put all of our code to set up our pages and create the user interface.
     */
     action Start
-        // Set the screen to be  400 pixels wide and 600 pixels tall.
+        // The following line of code sets the screen to be  400 pixels wide and 600 pixels tall.
         SetScreenSize(400, 600)
-        // Sets the Background Color with the custom pixel colors R = 1.0, G = 0.85, and B = 0.81
+        // The following line of code sets the Background Color with the custom pixel colors R = 1.0, G = 0.85, and B = 0.81. See Unit3 Lesson 2 App 1 for how to use colors in quorum
         SetBackgroundColor(NewColor(1.0, 0.85, 0.81))
-        // Creates the home page object and sets its name property
+        // The following 2 lines of code creates the home page object and sets its name property
         Page homePage
         homePage:SetName("Home Page")
 
-        // This code creates the colored background at the top of the app.
+      // The next 5 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon rectangle = CreateRectangle(NewColor(1.0, 0.92, 0.9))
         rectangle:SetPixelWidth(400)
         rectangle:SetPixelHeight(150)
@@ -26,7 +26,7 @@ class Main is Application
         rectangle:SetPixelY(450)
         homePage:Add(rectangle)        
 
-        // Code for the label at the top of the app.
+      // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label title = CreateLabel()
         title:SetText("Movie Times")
         title:SetPixelX(100)
@@ -36,7 +36,7 @@ class Main is Application
         homePage:Add(title)
 
         /*
-        The code below creates an icon, but its properties are wrong.
+        The code following this comment creates an icon, but its properties are wrong.
         We want the icon to be smaller and directly to the left of the title.
         We should also make it a darker color so we can see it more easily against the background.
 
@@ -91,7 +91,7 @@ class Main is Application
     end
 
     /*
-    This code automatically handles some background stuff.
+    The code below this comment automatically handles some background stuff.
 
     It's not important to know what this does, but don't remove it or change it!
     */

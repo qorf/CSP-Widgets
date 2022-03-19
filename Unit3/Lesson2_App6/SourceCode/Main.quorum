@@ -5,12 +5,12 @@ use Libraries.Interface.Controls.Button
 
 class Main is Application
 
+    action Start
     /*
-    When the app starts, this code runs.
-
+    When the app starts, the code after this comment runs.
+    By now students should be familiar with these setup lines of code. If they need a refresher please go back to Apps 1-5 in this unit. 
     This is where we put all of our code to set up our pages and create the user interface.
     */
-    action Start
         SetScreenSize(400, 600)
         ShowFocusHighlight(true)
         SetFocusHighlightThickness(4)
@@ -37,29 +37,28 @@ class Main is Application
 
         */
 
-        // Code for the title label.
+      // The next line creates a label.
         Label title = CreateLabel()
 
-        // We currently set a name for the title, but it's not very meaningful.
-        // Replace the name below with a better one.
+        // We currently set a name for the title using literal text, but it's not very meaningful.
+        // Replace the text in the next line of code with a better one.
         title:SetName("item")
 
         title:SetText("Cookie Clicker")
         title:SetPixelX(50)
         title:SetPixelY(530)
-        // SetMaximumWidth tells the label how wide the text is allowed to get before it breaks it up into multiple lines
+        // The SetMaximumWidth() action tells the label how wide the text is allowed to get before it breaks it up into multiple lines
         title:SetMaximumWidth(300)
         title:SetFontSize(46)
         title:SetFontColor(NewColor(0.35, 0.72, 0.90))
         homePage:Add(title)
 
 
-        // Code for the directions label.
+        // The next line is the code for the directions label. This label doesn't currently have name.
         Label directions = CreateLabel()
 
-        // This label doesn't currently have name.
-        // On the line below, use SetName on the "directions" label to give it a meaningful name.
-
+        // Write some code to us the SetName() action on the "directions" label to give it a meaningful name.
+        // YOUR CODE HERE
 
         directions:SetText("Click the cookie")
         directions:SetPixelX(100)
@@ -70,10 +69,10 @@ class Main is Application
         homePage:Add(directions)
 
 
-        // Code for the cookie icon.
+      // The next line creates an Icon that uses the Cookie.png from the Images folder.
         Icon cookie = CreateIcon("Cookie.png")
 
-        // This icon doesn't have a name yet. Just like you did with the directions, give it a meaningful name on the line below.
+        // This icon doesn't have a name yet. Using the same action you did with the directions label, give it a meaningful name on the line below.
 
 
         /*
@@ -84,6 +83,8 @@ class Main is Application
         Use the "SetDescription" action on the "cookie" icon and give it a meaningful description just below this comment.
         */
 
+        // YOUR CODE HERE
+
         cookie:SetPixelX(100)
         cookie:SetPixelY(200)
         cookie:SetPixelWidth(200)
@@ -91,12 +92,13 @@ class Main is Application
         homePage:Add(cookie)
 
 
-        // Code for the play button.
+        // The next line creates a button
         Button playButton = CreateButton()
 
         // The play button also needs a good name. This name will appear as the text on the button!
         // Give the button a good name on the line below.
 
+        // YOUR CODE HERE
 
         playButton:SetPixelWidth(100)
         playButton:SetPixelHeight(40)
@@ -110,7 +112,7 @@ class Main is Application
     end
 
     /*
-    This code automatically handles some background stuff.
+    The code below this comment automatically handles some background stuff.
 
     It's not important to know what this does, but don't remove it or change it!
     */

@@ -6,12 +6,12 @@ use Libraries.Interface.Controls.TextBox
 
 class Main is Application
 
+    action Start
     /*
-    When the app starts, this code runs.
-
+    When the app starts, the code after this comment runs.
+    By now students should be familiar with these setup lines of code. If they need a refresher please go back to Apps 1-5 in this unit. 
     This is where we put all of our code to set up our pages and create the user interface.
     */
-    action Start
         // SetScreenSize sets how large the screen is in pixels. The first number represents the width, and the second represents the height.
         SetScreenSize(400, 600)
 
@@ -26,11 +26,11 @@ class Main is Application
 
         // Set the background color as a percentage of red, green, and blue values. 
         // The default value sends 100% of each color, which makes white.
-        // You can change the values here to change the color!
+        // You can change the values in the parenthesis to change the color!
         SetBackgroundColor(1.0, 1.0, 1.0)
 
         /*
-        We need a page to put all of our elements onto for our app. We can do that with code that looks like this:
+        We need a page to put all of our elements onto for our app. We can do that with code that looks like the next two following lines:
 
         Page homePage
         homePage:SetName("Home Page")
@@ -39,7 +39,7 @@ class Main is Application
         DO THIS: Write some code below to make a page for your application.
         */
 
-
+        // YOUR CODE HERE
 
         /*
         DO THIS: In the section below, recreate the sample app, which has the following features:
@@ -56,30 +56,31 @@ class Main is Application
 
         CREATING ELEMENTS
 
-        // Creates an icon using a picture in the Images folder
+        // This next line creates an icon using a picture in the Images folder
         Icon iconID = CreateIcon("Image.jpg")
 
-        // Creates a colored rectangle. You can replace the color with any of the normal color commands.
+        // This next line creates a colored rectangle. You can replace the color with any of the normal color commands.
         Icon iconID = CreateRectangle(NewColor(0, 0, 0))
 
-        // Creates a button with text on it.
+        // This next line creates a button with text on it.
         Button buttonID = CreateButton()
 
-        // Creates a button using a picture in the Images folder
+        // This next line creates a button using a picture in the Images folder
         Button buttonID = CreateButton("Image.jpg")
 
-        // Creates a label.
+        // This next line creates a label.
         Label labelID = CreateLabel()
 
-        // Creates a text box.
+        // This next line creates a text box.
         TextBox textBoxID = CreateTextBox()
 
-        // Adds an element to a page. If an element isn't on a page, it won't appear in your app!
-        // You can replace the "pageID" with the ID of your page, and the "elementID" with the ID of your element.
-        pageID:Add(elementID)
+        // This next line after the comments adds an element to a page. If an element isn't on a page, it won't appear in your app!
+        // You can replace the "homePage" with the ID of your page, and the "elementID" with the ID of your element.
+        homePage:Add(elementID)
 
         SETTING PROPERTIES
 
+        // The following comments refer to itemID but this can be any one of the elements you created above, like labelID or textBoxID
         // Sets the x position of the bottom-left corner of the item, measured in pixels.
         itemID:SetPixelX(25)
 
@@ -116,7 +117,7 @@ class Main is Application
         // Sets how many pixels wide the text in a Label can be before the text is wrapped onto the next line.
         labelID:SetMaximumWidth(300)
 
-        USING COLORS
+        HOW TO USE COLORS IN QUORUM
 
         // Makes a color by mixing red, green, and blue. Each number is between 0 (for 0% brightness) or 1 (for 100% brightness).
         NewColor(0.5, 0.75, 1.0)
@@ -141,14 +142,16 @@ class Main is Application
         Teal()
         Navy()
 
-        Use these commands to recreate the app. Don't forget to replace the example item IDs with
+        Use these commands to recreate the app. 
+        
+        Don't forget to replace the example item IDs with
         the ID of the items you've made!
         */
 
-
+        // YOUR CODE HERE
 
         /*
-        DO THIS: Once you've added everything to the page, add the page to the app. The code should look like this:
+        DO THIS: Once you've added everything to the page, add the page to the app. The code should look like the following line of code:
 
         AddPage(homePage)
 

@@ -14,22 +14,23 @@ class Main is Application
     end
 
     action Start
-        // Set the window size to 400 pixels wide by 600 pixels tall.
+        // The next line of code sets the window size to 400 pixels wide by 600 pixels tall.
         SetScreenSize(400, 600)
 
-        // Set the background color to white.
+        // The next line of code sets the background color to white.
         SetBackgroundColor(1.0, 1.0, 1.0)
 
-        // Turn on focus highlighting and set its properties.
-        // This will let us see what we're currently accessing via the keyboard.
+        /* The code below this comment turn on focus highlighting and set its properties.
+           This will let us see what we're currently accessing via the keyboard. */
         ShowFocusHighlight(true)
         SetFocusHighlightColor(NewColor(0, 0, 1))
         SetFocusHighlightThickness(4)
 
-        // The first page of the app.
+        // The next 2 lines of code create the first page of the app and set its name
         Page page1
         page1:SetName("Home Page")
 
+       // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label titleLabel = CreateLabel()
         titleLabel:SetName("Title")
         titleLabel:SetText("Bird Quiz!")
@@ -39,6 +40,7 @@ class Main is Application
         titleLabel:SetPixelY(520)
         page1:Add(titleLabel)
 
+       // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label instructions = CreateLabel()
         instructions:SetName("Instructions")
         instructions:SetText("Think you know birds? Time to test your knowledge.")
@@ -48,6 +50,7 @@ class Main is Application
         instructions:SetPixelY(450)
         page1:Add(instructions)
 
+       // The next 7 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button beginButton = CreateButton()
         beginButton:SetName("Begin")
         beginButton:SetPixelWidth(100)
@@ -55,12 +58,15 @@ class Main is Application
         beginButton:SetPixelX(150)
         beginButton:SetPixelY(360)
         beginButton:SetFontSize(20)
+
+        // The next 4 lines create a color and set the font to that color
         Color beginColor = NewColor(0.1, 0.75, 0.6)
         beginButton:SetBackgroundColor(beginColor)
         Color white = NewColor(1, 1, 1)
         beginButton:SetFontColor(white)
         page1:Add(beginButton)
 
+        // The next 7 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon sillyBird = CreateIcon("Silly Bird.jpg")
         sillyBird:SetName("Silly Bird")
         sillyBird:SetDescription("A weird looking bird that's tilting its head to the side")
@@ -72,10 +78,11 @@ class Main is Application
 
         AddPage(page1)
 
-        // The second page of the application.
+        // The next 2 lines of code create the second page of the app and set its name
         Page page2
         page2:SetName("Question 1")
 
+       // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label question1 = CreateLabel()
         question1:SetName("Question 1")
         question1:SetText("What bird is the fastest on land?")
@@ -85,6 +92,7 @@ class Main is Application
         question1:SetPixelY(560)
         page2:Add(question1)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button ostrich = CreateButton("Ostrich.png")
         ostrich:SetName("Ostrich")
         ostrich:SetPixelWidth(150)
@@ -93,6 +101,7 @@ class Main is Application
         ostrich:SetPixelY(300)
         page2:Add(ostrich)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)\
         Label ostrichLabel = CreateLabel()
         ostrichLabel:SetText("Ostrich")
         ostrichLabel:SetMaximumWidth(100)
@@ -103,6 +112,7 @@ class Main is Application
         ostrichLabel:SetFocusable(false)
         page2:Add(ostrichLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button emu = CreateButton("Emu.png")
         emu:SetName("Emu")
         emu:SetPixelX(225)
@@ -111,6 +121,7 @@ class Main is Application
         emu:SetPixelHeight(175)
         page2:Add(emu)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label emuLabel = CreateLabel()
         emuLabel:SetText("Emu")
         emuLabel:SetMaximumWidth(100)
@@ -121,6 +132,7 @@ class Main is Application
         emuLabel:SetFocusable(false)
         page2:Add(emuLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button falcon = CreateButton("Peregrine Falcon.png")
         falcon:SetName("Peregrine Falcon")
         falcon:SetPixelX(25)
@@ -129,6 +141,7 @@ class Main is Application
         falcon:SetPixelHeight(200)
         page2:Add(falcon)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label falconLabel = CreateLabel()
         falconLabel:SetText("Peregrine Falcon")
         falconLabel:SetMaximumWidth(150)
@@ -139,6 +152,7 @@ class Main is Application
         falconLabel:SetFocusable(false)
         page2:Add(falconLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button penguin = CreateButton("Penguin.png")
         penguin:SetName("Penguin")
         penguin:SetPixelX(250)
@@ -147,6 +161,7 @@ class Main is Application
         penguin:SetPixelHeight(200)
         page2:Add(penguin)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label penguinLabel = CreateLabel()
         penguinLabel:SetText("Penguin")
         penguinLabel:SetMaximumWidth(100)
@@ -159,10 +174,11 @@ class Main is Application
 
         AddPage(page2)
 
-        // The third page of the application.
+        // The next 2 lines of code create the third page of the app and set its name
         Page page3
         page3:SetName("Question 2")
 
+       // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label question2 = CreateLabel()
         question2:SetName("Question 2")
         question2:SetText("What bird can live the longest?")
@@ -172,6 +188,7 @@ class Main is Application
         question2:SetPixelY(560)
         page3:Add(question2)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button swan = CreateButton("Swan.png")
         swan:SetName("Swan")
         swan:SetPixelWidth(150)
@@ -180,6 +197,7 @@ class Main is Application
         swan:SetPixelY(300)
         page3:Add(swan)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label swanLabel = CreateLabel()
         swanLabel:SetText("Swan")
         swanLabel:SetMaximumWidth(100)
@@ -190,6 +208,7 @@ class Main is Application
         swanLabel:SetFocusable(false)
         page3:Add(swanLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button budgie = CreateButton("Budgie.png")
         budgie:SetName("Budgie")
         budgie:SetPixelX(200)
@@ -198,6 +217,7 @@ class Main is Application
         budgie:SetPixelHeight(155)
         page3:Add(budgie)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label budgieLabel = CreateLabel()
         budgieLabel:SetText("Budgie")
         budgieLabel:SetMaximumWidth(100)
@@ -208,6 +228,7 @@ class Main is Application
         budgieLabel:SetFocusable(false)
         page3:Add(budgieLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button parrot = CreateButton("Parrot.png")
         parrot:SetName("Parrot")
         parrot:SetPixelX(10)
@@ -216,6 +237,7 @@ class Main is Application
         parrot:SetPixelHeight(200)
         page3:Add(parrot)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label parrotLabel = CreateLabel()
         parrotLabel:SetText("Parrot")
         parrotLabel:SetMaximumWidth(150)
@@ -226,6 +248,7 @@ class Main is Application
         parrotLabel:SetFocusable(false)
         page3:Add(parrotLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button eagle = CreateButton("Eagle.png")
         eagle:SetName("Eagle")
         eagle:SetPixelX(200)
@@ -234,6 +257,7 @@ class Main is Application
         eagle:SetPixelHeight(150)
         page3:Add(eagle)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label eagleLabel = CreateLabel()
         eagleLabel:SetText("Eagle")
         eagleLabel:SetMaximumWidth(100)
@@ -246,10 +270,11 @@ class Main is Application
 
         AddPage(page3)
 
-        // The fourth page of the application.
+        // The next 2 lines of code create the fourth page of the app and set its name
         Page page4
         page4:SetName("Question 3")
 
+       // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label question3 = CreateLabel()
         question3:SetName("Question 3")
         question3:SetText("What bird can fly backwards?")
@@ -259,6 +284,7 @@ class Main is Application
         question3:SetPixelY(560)
         page4:Add(question3)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button robin = CreateButton("Robin.png")
         robin:SetName("Robin")
         robin:SetPixelWidth(150)
@@ -267,6 +293,7 @@ class Main is Application
         robin:SetPixelY(300)
         page4:Add(robin)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label robinLabel = CreateLabel()
         robinLabel:SetText("Robin")
         robinLabel:SetMaximumWidth(100)
@@ -277,6 +304,7 @@ class Main is Application
         robinLabel:SetFocusable(false)
         page4:Add(robinLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button hummingbird = CreateButton("Hummingbird.png")
         hummingbird:SetName("Hummingbird")
         hummingbird:SetPixelX(200)
@@ -285,6 +313,7 @@ class Main is Application
         hummingbird:SetPixelHeight(155)
         page4:Add(hummingbird)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label hummingbirdLabel = CreateLabel()
         hummingbirdLabel:SetText("Hummingbird")
         hummingbirdLabel:SetMaximumWidth(100)
@@ -295,6 +324,7 @@ class Main is Application
         hummingbirdLabel:SetFocusable(false)
         page4:Add(hummingbirdLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button woodpecker = CreateButton("Woodpecker.png")
         woodpecker:SetName("Woodpecker")
         woodpecker:SetPixelX(10)
@@ -303,6 +333,7 @@ class Main is Application
         woodpecker:SetPixelHeight(200)
         page4:Add(woodpecker)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label woodpeckerLabel = CreateLabel()
         woodpeckerLabel:SetText("Woodpecker")
         woodpeckerLabel:SetMaximumWidth(150)
@@ -313,6 +344,7 @@ class Main is Application
         woodpeckerLabel:SetFocusable(false)
         page4:Add(woodpeckerLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button blueJay = CreateButton("Blue Jay.png")
         blueJay:SetName("Blue Jay")
         blueJay:SetPixelX(200)
@@ -321,6 +353,7 @@ class Main is Application
         blueJay:SetPixelHeight(150)
         page4:Add(blueJay)
 
+       // The next 6 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label blueJayLabel = CreateLabel()
         blueJayLabel:SetText("Blue Jay")
         blueJayLabel:SetMaximumWidth(100)
@@ -333,10 +366,11 @@ class Main is Application
 
         AddPage(page4)
 
-        // We'll show this next page if the player wins the quiz.
+        // The next 2 lines of code create the win page of the app and set its name
         Page winPage
         winPage:SetName("Victory")
         
+       // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label winLabel = CreateLabel()
         winLabel:SetName("Congratulations")
         winLabel:SetText("You Win!!")
@@ -346,6 +380,7 @@ class Main is Application
         winLabel:SetFontSize(60)
         winPage:Add(winLabel)
 
+       // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.)
         Label description = CreateLabel()
         description:SetName("Description")
         description:SetText("You are a bird expert.")
@@ -355,6 +390,7 @@ class Main is Application
         description:SetPixelY(430)
         winPage:Add(description)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button playAgain = CreateButton()
         playAgain:SetName("Play Again")
         playAgain:SetPixelWidth(100)
@@ -362,6 +398,7 @@ class Main is Application
         playAgain:SetPixelX(150)
         playAgain:SetPixelY(340)
 
+        // The next 4 lines create a color and set the font to that color
         Color playAgainColor = NewColor(0.1, 0.75, 0.6)
         playAgain:SetBackgroundColor(playAgainColor)
         Color playAgainFontColor = NewColor(1, 1, 1)
@@ -369,6 +406,7 @@ class Main is Application
 
         winPage:Add(playAgain)
 
+        // The next 7 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon happyBird = CreateIcon("Happy Ostrich.jpg")
         happyBird:SetName("Happy Ostrich")
         happyBird:SetDescription("An ostrich with a big happy smile!")
@@ -380,12 +418,13 @@ class Main is Application
 
         AddPage(winPage)
 
-        // The final page is shown if the player loses.
+        // The next 2 lines of code create the lose page of the app and set its name
         Page losePage
         losePage:SetName("Lose Page")
-        
+       
+       // The next 7 lines create a label and set its properties (name, text, Font size, max width, etc.) 
         Label loseLabel = CreateLabel()
-        loseLabel:SetName("Loss")
+        loseLabel:SetName("Last Page")
         loseLabel:SetText("You Lose!!")
         loseLabel:SetMaximumWidth(300)
         loseLabel:SetPixelX(50)
@@ -393,6 +432,7 @@ class Main is Application
         loseLabel:SetFontSize(60)
         losePage:Add(loseLabel)
 
+       // The next 6 lines create a button and set its properties (name, background color, pixel position, max width, etc.)
         Button tryAgain = CreateButton()
         tryAgain:SetName("Try Again")
         tryAgain:SetPixelWidth(100)
@@ -400,6 +440,7 @@ class Main is Application
         tryAgain:SetPixelX(150)
         tryAgain:SetPixelY(340)
 
+        // The next 4 lines create a color and set the font to that color
         Color tryAgainColor = NewColor(0.1, 0.75, 0.6)
         tryAgain:SetBackgroundColor(tryAgainColor)
         Color tryAgainFontColor = NewColor(1, 1, 1)
@@ -407,6 +448,7 @@ class Main is Application
 
         losePage:Add(tryAgain)
 
+        // The next 7 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon shoebill = CreateIcon("Shoebill.jpg")
         shoebill:SetName("Shoebill")
         shoebill:SetDescription("A shoebill, a giant bird with a big, long beak.")
@@ -418,6 +460,8 @@ class Main is Application
 
         AddPage(losePage)
     end
+
+    /* The code below this comment contains the logic used for detecting when a button is activated */
 
     action ButtonActivated(Button button)
         text name = button:GetName()
