@@ -40,7 +40,7 @@ MODIFY:
     action ButtonActivated(Button button)
         if button = addButton   //LOOK AT LINE 41
             text newPerson = newPersonInput:GetText()
-            peopleList:Add(0, newPerson)    //LOOK AT LINES 43-44
+            peopleList:Add(0, newPerson)    //LOOK AT THE NEXT 2 LINES OF CODE (SHOULD BE LINES 43-44)
             newPersonInput:SetText("")
         elseif button = assignButton
             if peopleList:GetSize() >= 2

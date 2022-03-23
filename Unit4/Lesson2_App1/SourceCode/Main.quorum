@@ -75,12 +75,12 @@ class Main is Application
 
         AddPage(thermostat)
     end
-    //LOOK AT LINES 79-80
+    //LOOK AT THE NEXT TWO LINES OF CODE
     integer temperature = 70
     text tempF = ""
 
     action ButtonActivated(Button button)
-        //START HERE INVESTIGATE LINES 84-93
+        //START HERE LOOK AT THE NEXT 10 LINES OF CODE
         PlaySound("sharp_switch.ogg")
         text name = button:GetName()
 
@@ -91,7 +91,7 @@ class Main is Application
             fahrenheit:SetText(tempF)
             fahrenheit:SetDescription(tempF)
         end
-        //LOOK AT LINES 95-101
+        //LOOK AT THE NEXT 7 LINES OF CODE
         // Button to increase the temperature by one degree F.
         if name = "Thermostat Up"
             temperature = temperature + 1
