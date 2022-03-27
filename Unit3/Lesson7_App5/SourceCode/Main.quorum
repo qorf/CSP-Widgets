@@ -8,7 +8,7 @@ class Main is Application
     action Start
         SetBackgroundColor(1, 0.88, 0.29)
 
-        // Play this music and loop it forever.
+        // The next line of code tells the program to play this music and loop it forever.
         PlaySound("vibrant_game_harping_down_forever_loop_1.ogg", true)
 
         Page homePage
@@ -60,7 +60,7 @@ class Main is Application
         Label info = CreateLabel()
         info:SetName("Information")
         
-        // If we put our text in multiple lines here, it'll appear in multiple lines in our label.
+        // NOTE: If we set our text in multiple lines here by putting a new line after each line, it'll appear in multiple lines in our label.
         info:SetText("Where: Gymnasium
 When: Friday during lunch
 What to Bring: An open mind!")
@@ -71,7 +71,7 @@ What to Bring: An open mind!")
         detailsPage:Add(info)
 
         Label detailsLabel = CreateLabel()
-        detailsLabel:SetName("Details")
+        detailsLabel:SetName("Details L")
         detailsLabel:SetText("You can sign up for clubs through the end of the month. Make sure you follow up after the Club Fair with any groups you want to join.")           
         detailsLabel:SetFontSize(18)
         detailsLabel:SetColor(NewColor(0.36, 0.72, 0.91))
@@ -95,15 +95,15 @@ What to Bring: An open mind!")
     end
 
     action ButtonActivated(Button button)
-
-        // If we click the "Event Details" button, show the Details Page
+        // START HERE
+        // The following 4 lines of code make the program show the Details Page if we select the "Event Details" button, 
         if button:GetName() = "Event Details"
             Page nextPage = GetPage("Details Page")
             ShowPage(nextPage)
         end
 
-        // If we click the "Go Back" button, show the Home Page
-
+        // If we select the "Go Back" button, we want to show the Home Page
+        // YOUR CODE GOES HERE
     end
 
     action Main

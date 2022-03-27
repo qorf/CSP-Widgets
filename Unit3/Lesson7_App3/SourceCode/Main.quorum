@@ -61,7 +61,7 @@ class Main is Application
     end
 
     action ButtonActivated(Button button)
-        // Play a moo sound when the user clicks the cow
+        // This selection statement code plays a moo sound when the user selects the cow
         if button:GetName() = "Cow Image"
             PlaySound("moo.ogg")
         
@@ -72,7 +72,7 @@ class Main is Application
             directions:SetDescription("Cow")
         end
 
-        // Play a rooster sound when the user clicks the rooster
+        // This selection statement code should play a rooster sound when the user selects the rooster
         if button:GetName() = "Rooster Iamge"
             PlaySound("pig.ogg")
         
@@ -83,7 +83,7 @@ class Main is Application
             directions:SetDescription("Pig")
         end
 
-        // Play a pig sound when the user clicks the pig
+        // This selection statement code should play a pig sound when the user clicks the pig
         if button:GetName() = "Pig Image"
             PlaySound("rooster.ogg")
         

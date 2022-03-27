@@ -57,22 +57,22 @@ class Main is Application
         AddPage(page)
     end
 
+
+    // The following code action runs when a button is clicked or activated with the keyboard.
     action ButtonActivated(Button button)
-        // This code runs when a button is clicked or activated with the keyboard.
 
 
     end
 
+    // The following code action runs when the mouse moves inside the app window.
     action MouseMoved(MouseEvent event)
-        // This code runs when the mouse moves inside the app window.
 
 
     end
 
 //START HERE
+    // The following code action runs when an item in the game is moused over.
     action MousedOver(Control item, MouseEvent event)
-        // This code runs when an item in the game is moused over.
-
 
         // When the user puts their mouse over the hawk move both
         // birds but play a sad sound and put sad text
@@ -117,28 +117,29 @@ class Main is Application
         end
     end
 
+    // The following code action runs when the user moves the mouse off of an item.
     action MousedOut(Control item, MouseEvent event)
-        // This code runs when the user moves the mouse off of an item.
 
 
     end
 
+
+    // The following code action runs when the user clicks the mouse.
     action MouseClicked(Control item, MouseEvent event)
-        // This code runs when the user clicks the mouse.
-        // If they clicked on an item, it's available here via the "item" ID.
+        // If they selected an item, it's properties are available here using the "item" ID.
 
 
     end
 
+    // The following code action runs when the user releases the mouse.
     action MouseReleased(Control item, MouseEvent event)
-        // This code runs when the user releases the mouse.
-        // If they released it over an item, it's available here via the "item" ID.
+        // If they released it over an item, it's properties are available here using the "item" ID.
 
 
     end
 
+    // The following code action runs when the user presses a key on the keyboard.
     action KeyPressed(KeyboardEvent keys)
-        // This code runs when the user presses a key on the keyboard.
 
         if keys:keyCode = keys:SPACE
             PlaySound("hop.ogg")

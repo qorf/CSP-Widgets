@@ -27,12 +27,16 @@ class Main is Application
 
     action MousedOver(Control item, MouseEvent event)
         // When the smiley face is moused over, move it
+        // which properties set the coordinates?
         if item:GetName() = "Smiley Face"
             Page page = GetCurrentPage()
             Icon smiley = page:GetIcon("Smiley Face")
 
-            smiley:SetPixelX(RandomNumber(0, 600))
-            smiley:SetPixelY(RandomNumber(0, 600))
+            number randomNumber1 = RandomNumber(0, 600)
+            number randomNumber2 = RandomNumber(0, 600)
+            smiley:SetPixelX(randomNumber1)
+
+            smiley:SetPixelY(randomNumber2)
 
             PlaySound("arcade_game_jump_1.ogg")
             smiley:SetDescription("A smiley face at " + smiley:GetPixelX() + ", " + smiley:GetPixelY() + ". Mouse over or press any key to move it to a new position!")         
@@ -41,12 +45,15 @@ class Main is Application
 
     action KeyPressed(KeyboardEvent event)
         // When any key is pressed, move the smiley face
-
+        // which properties set the coordinates?
         Page page = GetCurrentPage()
         Icon smiley = page:GetIcon("Smiley Face")
 
-        smiley:SetPixelX(RandomNumber(0, 600))
-        smiley:SetPixelY(RandomNumber(0, 600))
+            number randomNumber1 = RandomNumber(0, 600)
+            number randomNumber2 = RandomNumber(0, 600)
+            smiley:SetPixelX(randomNumber1)
+
+            smiley:SetPixelY(randomNumber2)
 
         PlaySound("arcade_game_jump_1.ogg")
         smiley:SetDescription("A smiley face at " + smiley:GetPixelX() + ", " + smiley:GetPixelY() + ". Mouse over or press any key to move it to a new position!")         

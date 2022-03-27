@@ -90,8 +90,8 @@ class Main is Application
     end
 
     action ButtonActivated(Button button)
-
-        // If the calm button is activated, update the page with a calm image, text, and song
+        // START HERE
+        // In the following code if the calm button is selected, update the page with a calm image, text, and song
         if button:GetName() = "Calm"
             Page page = GetCurrentPage()
             Button calmButton = page:GetButton("Calm")
@@ -116,12 +116,12 @@ class Main is Application
             newDisplay:SetPixelHeight(220)
             page:Replace(oldDisplay, newDisplay)
 
-            // Stop any sounds that are already playing. Then play the new music on loop.
+            // The next two lines of code stop any sounds that are already playing and then play the new music on loop.
             StopSounds()
             PlaySound("stabilizing_breath_loop1.ogg", true)
         end
 
-        // If the tired button is activated, update the page with a tired image, text, and song
+        // In the following code if the tired button is activated, update the page with a tired image, text, and song
         if button:GetName() = "Tired"
             Page page = GetCurrentPage()
             Button calmButton = page:GetButton("Calm")
@@ -151,7 +151,7 @@ class Main is Application
             PlaySound("vibrant_game_harping_down_forever_loop_1.ogg", true)
         end
 
-
+        // YOUR CODE GOES HERE
 
     end
 

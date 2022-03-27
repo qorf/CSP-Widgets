@@ -18,7 +18,8 @@ class Main is Application
         homePage:SetName("Home Page")
         
         Button button = CreateButton()
-        button:SetName("This is a button!")
+        button:SetName("I can have a name")
+        button:SetDescription("I can have a description")
         button:SetPixelX(125)
         button:SetPixelY(300)
         button:SetPixelWidth(150)
