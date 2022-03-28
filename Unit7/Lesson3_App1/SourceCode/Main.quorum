@@ -1,11 +1,9 @@
 
-
 class Main
 /*
 START HERE
 DO THIS:
 Call the function at least two more times with different names.
-
 */
     action Main
         // Call function
@@ -15,7 +13,7 @@ Call the function at least two more times with different names.
 
     end
 
-    // Declare function
+    //the action on lines 18-20 Declares the function
     action Compliment(text name)
         output name + ", you're the best!"
     end

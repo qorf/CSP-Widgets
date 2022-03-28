@@ -49,8 +49,8 @@ If time allows make these changes to the code
         //YOUR CODE GOES HERE for divide button
     end
 
-// calculates the answer to the math problem 
-// displays whether the answer is even or odd
+// The action Calculate calculates the answer to the math problem 
+// the output displays whether the answer is even or odd
 // symbol {text} - the operator
 // return {text}
     action Calculate(text symbol) returns text
@@ -66,7 +66,7 @@ If time allows make these changes to the code
             answer = value1 * value2
         end
 
-        // the MOD operator "mod" - divides two numbers and returns the remainder
+        // the next 7 lines of code represents the MOD operator "mod" - divides two numbers and returns the remainder
         // in this case - if a number divided by two has a remainder of zero, it's an even number
         if answer mod 2 = 0
             evenOddLabel:SetText("The answer is an EVEN number.")
@@ -76,7 +76,7 @@ If time allows make these changes to the code
             evenOddLabel:SetDescription("The answer is an ODD number.")
         end
 
-        // outputText is now set to a string of the math problem written out
+        // the next line of code sets the variable outputText to a string of the math problem written out
         text outputText = value1 + " " + symbol + " " + value2 + " = " + answer
 
         input1:SetText("")

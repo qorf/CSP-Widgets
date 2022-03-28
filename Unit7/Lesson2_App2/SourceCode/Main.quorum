@@ -33,7 +33,7 @@ Extra Time?
     Label outputLabel = undefined
     Icon unclickable = undefined
     Icon waitingImage = undefined
-    //LOOK AT THE NExt 7 LINES OF CODE (SHOULD BE LINES 37-43) Read the code carefully. What is happening here?
+    //LOOK AT THE NEXT 7 LINES OF CODE (SHOULD BE LINES 37-43) Read the code carefully. What is happening here?
     action TextChanged(TextBox textBox)
         if textBox = lengthInputBox and lengthInputBox:GetText() not= ""
             Filter(lengthInputBox:GetText():ParseInteger(), letterInputBox:GetText():ToLowerCase())
@@ -41,7 +41,7 @@ Extra Time?
             Filter(lengthInputBox:GetText():ParseInteger(), letterInputBox:GetText():ToLowerCase())
         end
     end
-    //LOOK AT THE NEXT 25 LINES OF CODE (SHOULD BE LINES 45-69) explain to your partner how the action works, what parameters it takes and what is returned.
+    //LOOK AT THE NEXT 25 LINES OF CODE (SHOULD BE LINES 45-69 if no code is modified above) explain to your partner how the action works, what parameters it takes and what is returned.
     action Filter(integer len, text letter)
         waitingImage:Show()
         unclickable:Show()
@@ -156,7 +156,7 @@ Extra Time?
 
         AddPage(page)
 
-        //LOOK AT THE NEXT 5 LINES OF CODE (SHOULD BE LINES 160-164) Read the code carefully. What is happening here?
+        //LOOK AT THE NEXT 5 LINES OF CODE (SHOULD BE LINES 160-164 if no code is modified above) Read the code carefully. What is happening here?
         DataFrame data
         data:Load("Data/Words.csv")
         wordList = GetTextColumn(data, "Word")
