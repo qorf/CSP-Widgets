@@ -19,7 +19,8 @@ class Main is Application
 
     /*
     For complex variables like Buttons or Labels, we can declare them "undefined".
-    This means the variable is empty, and we'll fill it later.
+    Undefined means the variable is empty, and we'll create it and set its properties later. 
+    This code gets the variable ready for use later. Find dollarsLabel = CreateLabel() for the code where we use this variable. 
     */
     Label dollarsLabel = undefined
 
@@ -62,7 +63,8 @@ class Main is Application
         banner2:SetPixelY(300)
         homePage:Add(banner2)
 
-        // Give a value to the "undefined" variable we declared earlier.
+        /* The following 7 lines of code give a value to the "undefined" variable we declared earlier. Note we do not have to put the Label type before dollarsLable because
+            we declared it earlier. */
         dollarsLabel = CreateLabel()
         dollarsLabel:SetName("Dollars")
         dollarsLabel:SetText("$0")
@@ -99,8 +101,8 @@ class Main is Application
         text name = button:GetName()
 
         /*
-        When the button is clicked, increase the value
-        of dollars by 5. Update the text on the screen.
+        The following code is for if the $5 button is selected
+        then we increase the value of dollars by 5. Update the text on the screen.
         */
         if name = "+$5"
             dollars = dollars + 5
@@ -113,8 +115,8 @@ class Main is Application
         end
 
         /*
-        When the button is clicked, increase the value
-        of dollars by 20. Update the text on the screen.
+        The following code is for if the button is selected then we
+        increase the value of dollars by 20. Update the text on the screen.
         */
         if name = "+$20"
             //YOUR CODE GOES HERE Add code here to make the +$20 button work

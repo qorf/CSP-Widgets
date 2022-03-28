@@ -12,7 +12,7 @@ DO THIS:
 3. Add code in the else section to change the star's color using "Orange()", and play the sound "hop.ogg"           
 */    
 
-    // Create variables
+    // The next 3 lines create variables and initialize the clicks variable to 0
     integer clicks = 0
     Button star = undefined
     Label clickLabel = undefined
@@ -21,6 +21,7 @@ DO THIS:
         Page page
     
         star = CreateButton("Star Icon.png")
+        star:SetName("Star")
         star:SetPixelWidth(400)
         star:SetPixelHeight(400)
         star:SetPixelX(0)
@@ -29,6 +30,7 @@ DO THIS:
         page:Add(star)
 
         clickLabel = CreateLabel()
+        clickLabel:SetName("Clicks")
         clickLabel:SetPixelX(50)
         clickLabel:SetPixelY(50)
         clickLabel:SetFontSize(20)

@@ -204,7 +204,7 @@ class Main is Application
         if name = "Log In"
             PlaySound("app_button_1.ogg")
             Page thermostatPage = GetPage("Thermostat")
-            //START HERE Look at Line 208's nameField:GetText(). After that find the userName variable and add an ! at the end of the string
+            //START HERE Look at next line's code nameField:GetText(). How can we concatinate the userName variable and an exclaimation point at the end of the text?
             text userName = nameField:GetText()
             text myName = "Hi, " + userName
             greetings:SetText(myName)

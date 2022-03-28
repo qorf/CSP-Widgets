@@ -3,7 +3,8 @@ use Libraries.Interface.Controls.Icon
 use Libraries.Interface.Controls.Button
 use Libraries.Interface.Controls.TextBox
 use Libraries.Game.Graphics.Label
-
+/* All the code in this sample app has been used in previous apps. If you are not sure 
+    what a section of code does, you might want to refer to previous apps where a similar code block is used. */
 class Main is Application
 
     integer likes = 0
@@ -113,6 +114,7 @@ class Main is Application
             PlaySound("app_button_1.ogg")
         end
 
+        // Note that there is no word wrapping like in other text documents so some long text might overfill the box and not be visible even though it is present.
         if name = "Post Comment"
             comments = comments + "
 " + newCommentInput:GetText()

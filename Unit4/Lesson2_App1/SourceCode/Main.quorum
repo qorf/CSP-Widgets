@@ -84,7 +84,7 @@ class Main is Application
         PlaySound("sharp_switch.ogg")
         text name = button:GetName()
 
-        // Button to decrease the temperature by one degree F.
+        // This code is used to make the button to decrease the temperature by one degree F.
         if name = "Thermostat Down"
             temperature = temperature - 1
             tempF = temperature + " F"
@@ -92,7 +92,7 @@ class Main is Application
             fahrenheit:SetDescription(tempF)
         end
         //LOOK AT THE NEXT 7 LINES OF CODE
-        // Button to increase the temperature by one degree F.
+        // This code is used to make the button to increase the temperature by one degree F.
         if name = "Thermostat Up"
             temperature = temperature + 1
             tempF = temperature + " F"

@@ -21,7 +21,7 @@ Clicks & Color:
 30+: Pink()
 */    
 
-    // Create variables
+    // The next 3 lines create variables and initialize the clicks variable to 0
     integer clicks = 0
     Button star = undefined
     Label clickLabel = undefined
@@ -30,6 +30,7 @@ Clicks & Color:
         Page page
     
         star = CreateButton("Star Icon.png")
+        star:SetName("Star")
         star:SetPixelWidth(400)
         star:SetPixelHeight(400)
         star:SetPixelX(0)
@@ -38,6 +39,7 @@ Clicks & Color:
         page:Add(star)
 
         clickLabel = CreateLabel()
+        clickLabel:SetName("Clicks")
         clickLabel:SetPixelX(50)
         clickLabel:SetPixelY(50)
         clickLabel:SetFontSize(20)

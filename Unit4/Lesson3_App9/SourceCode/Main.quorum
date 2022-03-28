@@ -13,13 +13,14 @@ DO THIS:
 tickets sold and the total money collected. Use the code for the "Adult" button as a guide.
 */
 
-    // Create and assign values to variables
+    // The next 5 lines creates and initialize values to variables
     number dollars = 0
     integer tickets = 0
     number adultPrice = 12.50
     number childPrice = 8.50
     number seniorPrice = 10
 
+    // The next 2 linies create two labels but make them empty
     Label dollarsLabel = undefined
     Label ticketsLabel = undefined
 
@@ -80,12 +81,13 @@ tickets sold and the total money collected. Use the code for the "Adult" button 
         text name = button:GetName()
 
         if name = "Adult Ticket"
-            // Increase tickets sold
+            // The next line increases tickets sold
             tickets = tickets + 1
 
-            // Increase dollars collected
+            // The next line increase dollars collected
             dollars = dollars + adultPrice
 
+            // The next 4 lines update the labels with the new dollars and tickets amounts
             dollarsLabel:SetText("$" + dollars)
             dollarsLabel:SetDescription("$" + dollars)
 

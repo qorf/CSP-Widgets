@@ -122,7 +122,7 @@ class Main is Application
     action ButtonActivated(Button button)
         text name = button:GetName()
 
-        // If user clicked on the pet rock
+        // The following code is for if user clicked on the pet rock
         if name:Contains("Pet Rock")
             clicks = clicks + clickPower
 
@@ -131,7 +131,7 @@ class Main is Application
             clicksLabel:SetText("Selects: " + clicks)
             clicksLabel:SetDescription("" + clicks)
             
-            // If we're ready to go from level 1 to 2
+            // This nested if logic is for if we're ready to go from level 1 to 2
             if clicks >= 10 and name:Contains("Level 1")
                 button:Hide()
 
@@ -145,7 +145,7 @@ class Main is Application
                 PlaySound("vibrant_game_positive_item_2.ogg")
             end
 
-            // If we're ready to go from level 2 to 3
+            // This nested if logic is for if we're ready to go from level 2 to 3
             if clicks >= 100 and name:Contains("Level 2")
                 button:Hide()
 
@@ -163,7 +163,7 @@ EVOLUTION COMPLETE")
         end
 
 
-        // If user clicked the first upgrade
+        // This nested if logic is for if user clicked the first upgrade
         if name = "+2 (cost = 5 selects)" and clicks >= 5
             clicks = clicks - 5
             clickPower = 2
@@ -183,7 +183,7 @@ EVOLUTION COMPLETE")
             PlaySound("hollow_bell_notification.ogg")
         end
 
-        // If user clicked the second upgrade
+        // This nested if logic is for if user clicked the second upgrade
         if name = "+20 (cost = 20 selects)" and clicks >= 20
             clicks = clicks - 20
             clickPower = 20

@@ -114,7 +114,7 @@ class Main is Application
     end
 
     action ButtonActivated(Button button)
-        // Resets the images each time adoptButton is clicked.
+        // The next 2 lines reset the yesCat and noCat images each time adoptButton is clicked.
         yesCat:Hide()
         noCat:Hide()
 
@@ -129,9 +129,11 @@ class Main is Application
 
         //YOUR CODE GOES HERE Write an expression below that checks if age is over 14 and money equals 40.
         if ( )
+            // the next 2 lines make the yesCat Icon visible in the app and allow it to have focus
             yesCat:Show()
             yesCat:Focus()
         else
+            // the next 2 lines make the noCat Icon visible in the app and allow it to have focus
             noCat:Show()
             noCat:Focus()
         end

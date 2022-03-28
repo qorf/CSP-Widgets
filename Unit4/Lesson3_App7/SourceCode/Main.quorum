@@ -14,8 +14,8 @@ class Main is Application
     3. Add code so that the reminder input is cleared out when you click the "Remind!" button.
     */
 
-    // Create and assign variables
-    // Feel free to change the reminder
+    /* The next two lines of code create and assign variables
+     Feel free to change the reminder "Feed the cats" */
     text allReminders = "Feed the cats"
     text newReminder = ""
 
@@ -50,7 +50,7 @@ class Main is Application
         reminderText:SetMaximumWidth(330)
         reminderText:SetFontSize(20)
 
-        // Put the first reminder on the screen.
+        // The next line of code puts the first reminder on the screen.
         reminderText:SetText(allReminders)
 
         page:Add(reminderText)
@@ -79,9 +79,9 @@ class Main is Application
     end
 
     action ButtonActivated(Button button)
-        // When the button is clicked, add the new reminder to the screen on a new line.
+        // In this action when the button is selected, add the new reminder to the screen on a new line.
         // The reminder input box should be cleared out for the next reminder.
-        //LOOK AT LINE 85
+        // read the next line of code and make sure you understand what it does.
         newReminder = reminderInput:GetText()
         //YOUR CODE GOES HERE
         allReminders = allReminders + newReminder

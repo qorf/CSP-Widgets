@@ -11,7 +11,7 @@ DO THIS:
 2. Remove the line that creates the local variable inside the action to remove the local variable.
 */
 
-    // Create and assign variables
+    // The next 2 lines of code creates variables and initializes the integer clicks to 0
     integer clicks = 0
     Label counter = undefined
 
@@ -42,8 +42,9 @@ DO THIS:
     end
 
     action ButtonActivated(Button button)
-        // This line creates the scope issue.
-        // You should only create variables once, and at the start of your program.
+        /* The next line creates a variable called clicks and initializes it to 0. 
+         Did we create and initialize this another variable with the same name somewhere else? How does this affect the code? 
+          if you are not sure try turning the line into a comment. */
         integer clicks = 0
 
         clicks = clicks + 1

@@ -8,9 +8,7 @@ class Main is Application
     /* START HERE
     DO THIS:
     Play the game at least once. Then with a partner, choose one of the three code sections below:
-    * Section 1: lines 132-149
-    * Section 2: lines 151-167
-    * Section 3: lines 169-192
+    Use Find (Control + F) to go to the comment where the First Section, Second Section, and Third Section start
 
     Read the code in your section carefully, make sure you understand how each line works.
 
@@ -24,16 +22,16 @@ class Main is Application
     Right now the game keeps going when the player has 0 lives. Fix this problem.
     */
 
-    // Create and assign variables
+    // The next 2 lines create and assign variables
     integer score = 0
     integer lives = 3
 
-    // Variables for the pages of the application.
+    // The next 2 lines create variables for the pages of the application.
     // This will let us easily swap between them later.
     Page homePage
     Page gamePage
 
-    // Variables for a few of the elements in the app so we can easily modify them later.
+    // The next 4 lines create variables for a few of the elements in the app so we can easily modify them later.
     // These start undefined (or empty) and we assign values to them in "Start".
     TextBox instructions = undefined
     Button lemon = undefined
@@ -43,7 +41,7 @@ class Main is Application
     action Start
         SetBackgroundColor(NewColor(0.59, 0.76, 0.34))
 
-        // Add the elements for the home page.
+        // The following code adds the elements for the home page.
 
         Icon banner = CreateRectangle(NewColor(0.41, 0.53, 0.24))
         banner:SetFocusable(false)
@@ -94,7 +92,7 @@ Avoid limes!")
 
         AddPage(homePage)
 
-        // Add the elements to the game page.
+        // The following code adds the elements to the game page.
         lime = CreateButton("Lime.png")
         lime:SetName("Lime")
         lime:SetPixelWidth(200)
@@ -129,7 +127,8 @@ Avoid limes!")
     action ButtonActivated(Button button)
         text name = button:GetName()
 
-        // Button to start the game
+        // First Section
+        // The is the code, called an event handler, for if the Play button is selected to start the game
         if name = "Play!"
             PlaySound("vibrant_game_cartoon_start_game_2_long.ogg")
 
@@ -148,42 +147,44 @@ Avoid limes!")
             ShowPage(gamePage)
         end
 
-        // Event handler for when the lemon is clicked
+        // Second Section
+        // Event handler for when the lemon button is selected
         if name = "Lemon"
             PlaySound("collect_item_bling_1.ogg")
 
-            // Increase the score
+            // The next line increases the score
             score = score + 1
 
-            // Move the lemon and line to random locations
+            // The next 4 lines move the lemon and line to random locations
             lime:SetPixelX(RandomNumber(0, 200))
             lime:SetPixelY(RandomNumber(50, 400))
             lemon:SetPixelX(RandomNumber(0, 200))
             lemon:SetPixelY(RandomNumber(50, 400))
 
-            // Update screen text
+            // The next 2 lines update screen text
             scoreLabel:SetText("Score: " + score + " Lives: " + lives)
             scoreLabel:SetDescription(score + " Lives: " + lives)
         end
 
-        // Event handler for when the lime is clicked
+        // Third Section
+        // Event handler for when the lime button is selected
         if name = "Lime"
             PlaySound("retro_game_enemy_spawn_7.ogg")
 
-            // Decrease lives
+            // The next line decrease lives
             lives = lives - 1
 
-            // Move the lemon and line to random locations
+            // The next 4 lines moves the lemon and line to random locations
             lime:SetPixelX(RandomNumber(0, 200))
             lime:SetPixelY(RandomNumber(50, 400))
             lemon:SetPixelX(RandomNumber(0, 200))
             lemon:SetPixelY(RandomNumber(50, 400))
 
-            // Update screen text
+            // The next 2 lines update screen text
             scoreLabel:SetText("Score: " + score + " Lives: " + lives)
             scoreLabel:SetDescription(score + " Lives: " + lives)
 
-            // End game when you run out of lives
+            // The next 2 lines of code end game when you the lives count gets to be less than 0
             if lives < 0
                 instructions:SetText("You collected " + score + " lemons!
 Play again?")
