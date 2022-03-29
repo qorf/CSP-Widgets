@@ -21,13 +21,11 @@ class Main is Application
 
     */
 
-    // Create variables and assign values
+    // The next 5 lines create variables and initialize the count variable to 0
     integer count = 0
-
     Label counter = undefined
     Button downButton = undefined
     Button upButton = undefined
-
     Label finalCount = undefined
 
     action ButtonActivated(Button button)
@@ -45,7 +43,7 @@ class Main is Application
         end
     end
 
-    // Declare the UpdateScreen function
+    // The next line declares the UpdateScreen action. The lines that follow then define the UpdateScreen action that will update the screen with the current count
     action UpdateScreen
         counter:SetText("" + count)
         counter:SetDescription(counter:GetText())

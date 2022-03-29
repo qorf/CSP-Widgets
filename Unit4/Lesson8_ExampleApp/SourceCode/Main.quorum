@@ -38,6 +38,7 @@ class Main is Application
         homePage:Add(title)
     
         Icon building = CreateIcon("Building Icon.png")
+        building:SetName("Building")
         building:SetFocusable(false)
         building:SetPixelWidth(80)
         building:SetPixelHeight(80)
@@ -90,6 +91,7 @@ class Main is Application
         homePage:Add(ageInput)
 
         Label discountLabel = CreateLabel()
+        discountLabel:SetName("Discount")
         discountLabel:SetFocusable(false)
         discountLabel:SetText("Discount Code:")
         discountLabel:SetFontSize(24)

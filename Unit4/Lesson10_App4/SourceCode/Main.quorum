@@ -5,7 +5,7 @@ use Libraries.Game.Graphics.Label
 
 class Main is Application
 /*
-START HERE This program has declared an UpdateScreen function but it isn't called anywhere in the program.
+START HERE This program has declared an UpdateScreen action but it isn't called anywhere in the program.
 
 DO THIS:
 * Read the code to understand how it works, in particular the UpdateScreen function.
@@ -14,7 +14,7 @@ DO THIS:
 
 */
 
-    // Create and assign variables
+    // The next 8 lines create and initialize variables. ThumbsUp and mood are given values while the rest are empty to be filled in in Start
     integer thumbsUp = 5
     text mood = ""
 
@@ -28,7 +28,7 @@ DO THIS:
     action Start
         Page page
 
-        // Add the controls to the screen        
+        // The following code adds the controls to the screen        
         neutralFace = CreateIcon("Neutral Face.png")
         neutralFace:SetName("Neutral Face")
         neutralFace:SetPixelWidth(200)
@@ -43,7 +43,7 @@ DO THIS:
         sadFace:SetPixelHeight(200)
         sadFace:SetPixelX(100)
         sadFace:SetPixelY(350)
-        // Hide the sad face so it doesn't appear until we want it to
+        // The next line of code hides the sad face so it doesn't appear until we want it to
         sadFace:Hide()
         page:Add(sadFace)
 
@@ -53,13 +53,13 @@ DO THIS:
         happyFace:SetPixelHeight(200)
         happyFace:SetPixelX(100)
         happyFace:SetPixelY(350)
-        // Hide the happy face so it doesn't appear until we want it to
+        // The next line of code hides the happy face so it doesn't appear until we want it to
         happyFace:Hide()
         page:Add(happyFace)
         
         moodLabel = CreateLabel()
-        moodLabel:SetName("Mood")
-        moodLabel:SetText("Thumbs Up: 0 Mood: Neutral")
+        moodLabel:SetName("Mood Label")
+        moodLabel:SetText("0 Thumbs Up Neutral Mood")
         moodLabel:SetFontSize(24)
         moodLabel:SetPixelX(35)
         moodLabel:SetPixelY(250)
@@ -91,7 +91,7 @@ DO THIS:
     end
 
     action ButtonActivated(Button button)
-        // When the down button is clicked
+        // The code below should do the following when the down button is selected
         // decrease the thumbs up by one and
         // update the screen
         if button = downButton
@@ -100,7 +100,7 @@ DO THIS:
 
 
 
-        // When the up button is clicked
+        // The code below should do the following when the up button is selected
         // increase the thumbsUp by one and
         // update the screen
         elseif button = upButton
@@ -111,8 +111,8 @@ DO THIS:
         end
     end
 
-    // Function to update the screen. It first checks
-    // the number of thumbs up. Then it changes the mood
+    // The following code is an action to update the screen. The code should:
+    // First check the number of thumbs up. Then change the mood
     // variable and uses it to update the text on the screen.
     action UpdateScreen
         if thumbsUp < 0

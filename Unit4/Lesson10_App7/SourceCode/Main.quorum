@@ -21,13 +21,14 @@ DO THIS:
 
 */
 
-    // Create and assign values to variables
+    // The next 5 lines create and initialize variables.
     number dollars = 0
     integer tickets = 0
     number adultPrice = 12.50
     number childPrice = 8.50
     number seniorPrice = 10
 
+    // The next 3 lines create variables that are empty and will be set later in Start
     Label dollarsLabel = undefined
     Label ticketsLabel = undefined
     Label soldOutLabel = undefined
@@ -35,7 +36,7 @@ DO THIS:
     action ButtonActivated(Button button)
         text name = button:GetName()
 
-        // This button already works
+        // The following code is for a button that already works
         if name = "Adult Ticket"
             // Increase tickets sold and dollars collected
             tickets = tickets + 1
@@ -66,6 +67,7 @@ DO THIS:
 
     end
 
+    // The following code is the Start action code for this app.
     action Start
         Page page
         page:SetName("Main Page")

@@ -13,7 +13,7 @@ it doesn't seem to be working.
 
 */
 
-    // Create and assign variables
+    // The next 8 lines create and initialize variables. dollars and apples are given values while the rest are empty to be filled in in Start
     integer dollars = 5
     integer apples = 0
 
@@ -22,12 +22,14 @@ it doesn't seem to be working.
     Label resultLabel = undefined
     Label walletLabel = undefined
 
+    // The following action is our ButtonActivated action that students should be familar with. 
     action ButtonActivated(Button button)
         if button = appleButton
             BuyApple()
         end
     end
 
+    // The follow action is a BuyApple action. What does it do?
     action BuyApple()
         integer dollars = 5
         integer apples = 0
@@ -42,6 +44,7 @@ it doesn't seem to be working.
         walletLabel:SetDescription("" + dollars)
     end
 
+    // The following code is the start action for this app
     action Start
         Page page
         page:SetName("Home")

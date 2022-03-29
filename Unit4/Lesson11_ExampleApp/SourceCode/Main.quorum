@@ -15,48 +15,48 @@ When you're done, submit your work.
 As part of the app, you will need to change the font in a label. The
 code below shows an example of how to do it.
 
-// Get the Arial font at 16 point size
+// The following line of code is an example of how to get the Arial font at 16 point size
 Font arial = NewFont("Arial", 16)
 
-// Load the font into a label
+// The following line of code is an example of how to load the font into a label
 label:SetFont(arial)
 
 */
 
-    // Create and assign variables.
+    // The following section is for creating and assign variables.
 
 
 
 
 
-    // The background for the quote.
+    // This line of code creates background for the quote but leaves it empty for now
     Icon background = undefined
 
-    // The label that shows the quote.
+    // This line of code creates the label that shows the quote but leaves it empty for now.
     Label quoteLabel = undefined
 
-    // The TextBox where the user can type in their quote.
+    // This line of code creates the the TextBox where the user can type in their quote but leaves it empty for now.
     TextBox quoteInput = undefined
 
-    // Buttons for selecting the font style
+    // The next 4 lines of code create buttons for selecting the font style.
     Button arialButton = undefined
     Button georgiaButton = undefined
     Button impactButton = undefined
     Button verdanaButton = undefined
 
-    // Buttons for selecting the background color
+    // The next 4 lines of code create buttons for selecting the background color
     Button blueButton = undefined
     Button greenButton = undefined
     Button pinkButton = undefined
     Button lavenderButton = undefined
 
-    // Buttons for selecting the font size
+    // The next 4 lines of code create buttons for selecting the font size
     Button font16Button = undefined
     Button font20Button = undefined
     Button font24Button = undefined
     Button font28Button = undefined
 
-    // The label that comments on the user's design.
+    // The next line of code creates the label that comments on the user's design.
     Label feedbackLabel = undefined
 
     action ButtonActivated(Button button)
@@ -71,7 +71,7 @@ label:SetFont(arial)
 
     end
 
-
+    // The following code is for our Start action for this app
     action Start
         Page page
         page:SetName("Main Page")

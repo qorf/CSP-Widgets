@@ -6,16 +6,17 @@ use Libraries.Game.Graphics.Label
 use Libraries.Game.Graphics.Color
 
 class Main is Application
-    // Create and assign variables.
+    // The next 4 lines of code create and initialize variables.
     text name = ""
     text mealType = ""
     integer price = 15
     text recommendation = ""
 
+    // The next line of code creates a color for the label. See apps in Unit 3 for how colors in programs work if you need a refresher.
     Color labelColor = NewColor(0.85, 1, 0.85)
 
     /*
-    Variables for the controls on the page.
+    The code after this comment creates variables for the controls on the page.
     We start by making these undefined, or empty,
     and then we give them values in our Start action.
     */
@@ -56,6 +57,7 @@ class Main is Application
         UpdateScreen()
     end
 
+    // This is an action that will update the screen when it is called. 
     action UpdateScreen
         currentPrice:SetText("$" + price)
         currentPrice:SetDescription(currentPrice:GetDescription())
@@ -80,6 +82,7 @@ class Main is Application
         resultLabel:SetDescription(resultLabel:GetText())
     end
 
+    // The following code is the Start action for this app
     action Start
         SetBackgroundColor(NewColor(0.5, 0.42, 0.65))
 
