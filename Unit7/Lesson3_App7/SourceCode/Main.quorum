@@ -27,11 +27,12 @@ DO THIS:
 
     action ButtonActivated(Button button)
         if button = complimentButton
+             outputLabel:SetDescription("Compliment Button")
             UpdateScreen()
         end
     end
 
-    // Combines a random greeting in various languages with a name
+    // the next 9 lines of code combines a random greeting in various languages with a name
     // name {string} - the name of a person
     // return {string} - the complete greeting which combines the random greeting with a name
     action RandomGreeting(text name) returns text
@@ -60,7 +61,7 @@ DO THIS:
         return statement
     end
 
-    //YOUR CODE GOES HERE
+    //YOUR CODE GOES HERE inside the UpdateScreen action
     action UpdateScreen
       //YOUR CODE GOES HERE Get the user's name from the display and store in a variable
     

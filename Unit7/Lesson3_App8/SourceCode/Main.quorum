@@ -11,7 +11,7 @@ DO THIS:
 *Put in an output statement with your answer after each MOD statement. Run the program to check your answers. 
 */
 
-//Example
+//the next 3 lines of code shows an example
 output 5 mod 2
 output 1
 output ""

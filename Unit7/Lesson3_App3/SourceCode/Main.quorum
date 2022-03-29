@@ -21,7 +21,7 @@ Finish the code for the RandomCompliment function. Use the comments and the code
         output name + RandomCompliment()
     end
 
-    // Generates a random greeting
+    // the next 9 lines of code generates a random greeting
     // return {text} - random greeting, followed by a comma and space
     action RandomGreeting returns text
         Array<text> greetings
@@ -34,7 +34,7 @@ Finish the code for the RandomCompliment function. Use the comments and the code
     end
 
 
-    // Generates a random compliment
+    // the next 8 lines of code generates a random compliment you will be tasked to add some code inside this action
     // return {text} - random compliment, followed by exclamation point
     action RandomCompliment returns text
         Array<text> compliments

@@ -18,13 +18,13 @@ Note - For the purposes of this level:
 
 */
     action Main
-    // Displays information about three different people in the console. 
+    // the next 3 lines of code displays information about three different people in the console. 
         NameAndAge("Lenora", 15, "March")
         NameAndAge("Tan", 3, "July")
         NameAndAge("Laquan", 9, "October")
     end
 
-    // Displays information about a person in the console.
+    // the next 3 lines of code displays information about a person in the console.
     // name {text} - the person's name
     // age {integer} - the person's age in years
     // birthMonth {text} - a month of the year, e.g. "January"
@@ -33,7 +33,7 @@ Note - For the purposes of this level:
         output name + " was born in " + birthMonth + " which is in the " + MonthToSeason(birthMonth)
     end
 
-    // Translates an age in years into a text description
+    // the next 16 lines of code translates an age in years into a text description
     // years {number} - the age in years
     // return {string} - a text description of the age as "an infant", "a preschooler", "a grade schooler", "a teenager", "an adult"
     action AgeToDescription(integer years) returns text
@@ -54,11 +54,11 @@ Note - For the purposes of this level:
         return description
     end
 
-    // Converts a month to the season of the year
+    //the action MonthToSeason converts a month to the season of the year
     // month {text} - a month of the year, "January", "February", ...., "December"
     // return {text} - a season of the year, "Spring", "Summer", "Fall", "Winter"
     action MonthToSeason(text month) returns text
-
+        //YOUR CODE GOES HERE
         return ""
     end
 end

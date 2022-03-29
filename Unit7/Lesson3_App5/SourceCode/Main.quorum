@@ -7,8 +7,10 @@ class Main is ConsoleApplication
 /*START HERE
 DO THIS:
 *Run this program to see how it works. Notice that the LongestWord function simply returns the word "unknown".
-*Write the code for the LongestWord function, using the comments and the code for ShortestWord to help. When it works correctly this program should print the names of the longest state and dog names.
+*Write the code for the LongestWord function, using the comments and the code for ShortestWord to help. 
+*When it works correctly this program should print the names of the longest state and dog names.
 */
+    //the next 13 lines of code loads the data from the csv file into an array and makes the function calls to calculate the shortest and longest names
     action Main
         DataFrame frame
 
@@ -23,6 +25,7 @@ DO THIS:
         LongestShortest("dogs", dogNames)
     end
 
+    //the next 6 lines of code outputs the longest and shortest words
     action LongestShortest(text typeOfList, Array<text> list)
         text message = "There are many " + typeOfList
         message = message + " but the one with the shortest name is " + ShortestWord(list)
@@ -30,6 +33,7 @@ DO THIS:
         output message
     end
 
+    //the next 11 lines of code calculates the shortest word in the list
     action ShortestWord(Array<text> list) returns text
         text shortest = list:Get(0)
         integer i = 0
@@ -42,9 +46,9 @@ DO THIS:
         return shortest
     end
     
-    //YOUR CODE GOES HERE
+    //Complete the LongestWord function so that the program calculates the names of the longest state and dog names.
     action LongestWord(Array<text> list) returns text
-
+        //YOUR CODE GOES HERE
         return "unknown"
     end
 end

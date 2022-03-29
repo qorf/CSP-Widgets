@@ -28,6 +28,7 @@ DO THIS:
 
     Label outputLabel = undefined
 
+    //the following 8 line of code is the ButtonActivated action which sets the output of the button properties when it is clicked
     action ButtonActivated(Button button)
         if button = totalButton
             outputLabel:SetText(""+TotalCost())
@@ -39,6 +40,7 @@ DO THIS:
         
     end
 
+    //the next 12 lines of code is the TotalCost action which returns the total cost of the items selected
     action TotalCost() returns number
         number total = 0
 
@@ -52,6 +54,7 @@ DO THIS:
         return total
     end
 
+    //the next 4 lines of code calculates the total with tax, but there is currently a bug in this code that needs to be fixed
     action TotalWithTax(number amount) returns number
         number total = amount + amount * 0.07
         return 0
