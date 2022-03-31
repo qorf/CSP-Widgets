@@ -53,7 +53,7 @@ class Main is Application
               solution:Add(node)
               solutionPath:SetText(Print())
               Recalculate(nodeList, node:GetPixelX(), node:GetPixelY())
-              totalDistance = totalDistance + cast(integer, node:GetDistance())
+              totalDistance = totalDistance + node:GetDistance()
               distanceText:SetText("Total Distance:      " + cast(text, totalDistance))
               Print()
            end
@@ -81,8 +81,7 @@ class Main is Application
                 repeat numberOfNodes times
                     Node node = CreateNode(false, startNode:GetPixelX(), startNode:GetPixelY())
                     SetNodeInGrid(grid, node)
-                    text distance = cast(text,node:CalculateDistanceFromStart(startNode:GetPixelX(), startNode:GetPixelY()))
-                    node:SetLabelDistanceDescription(distance, distance)
+                    node:SetLabelDistanceDescription(node:CalculateDistanceFromStart(startNode:GetPixelX(), startNode:GetPixelY()))
                     nodeList:Add(node)
                     page:Add(node)
                 end
@@ -104,6 +103,20 @@ class Main is Application
         end
     end
 
+    action Print() returns text
+       integer index = 0
+       text solutionList = ""
+        repeat while index < solution:GetSize()
+            if index = solution:GetSize() -1
+                solutionList = solutionList + cast(text,solution:Get(index):GetDistance())
+            else
+                solutionList = solutionList +  cast(text,solution:Get(index):GetDistance()) + ", "
+            end
+            index = index + 1
+        end
+        return solutionList
+    end
+
     action PrintPixel(Node node, Node startNode)
             output startNode:GetPixelX() + ", " + startNode:GetPixelY()
             output node:GetPixelX() + ", " + node:GetPixelY()
@@ -119,32 +132,34 @@ class Main is Application
         end
     end
 
-    action Print() returns text
-       integer index = 0
-       text solutionList = ""
-        repeat while index < solution:GetSize()
-            if index = solution:GetSize() -1
-                solutionList = solutionList + solution:Get(index):GetDescription()
-            else
-                solutionList = solutionList +  solution:Get(index):GetDescription() + ", "
-            end
-            index = index + 1
-        end
-        return solutionList
-    end
-
     action Recalculate(Array<Node> list, number startX, number startY)
         integer index = 0
         repeat while index < list:GetSize()
             if not list:Get(index):GetIsAddedToSolution()
-                text distance = cast(text,list:Get(index):CalculateDistanceFromStart(startX, startY))
-                list:Get(index):SetLabelDistanceDescription(distance, distance)
+                list:Get(index):SetLabelDistanceDescription(list:Get(index):CalculateDistanceFromStart(startX, startY))
             end
             index = index + 1
         end 
     end
 
     action Start
+
+        Icon topBanner = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+        topBanner:SetFocusable(false)
+        topBanner:SetPixelWidth(400)
+        topBanner:SetPixelHeight(40)
+        topBanner:SetPixelX(0)
+        topBanner:SetPixelY(560)
+        page:Add(topBanner)
+
+        Label title = CreateLabel()
+        title:SetName("Title")
+        title:SetText("Traveling Salesperson")
+        title:SetFontSize(25)
+        title:SetColor(White())
+        title:SetPixelX(15)
+        title:SetPixelY(570)
+        page:Add(title)
 
         grid:Initialize(maximumX, minimumX,maximumY,minimumY,nodeSize)
         grid:Fill(false)
@@ -158,9 +173,7 @@ class Main is Application
         repeat numberOfNodes times
             Node node = CreateNode(false, startNode:GetPixelX(), startNode:GetPixelY())
             SetNodeInGrid(grid, node)
-            text distance = cast(text,node:CalculateDistanceFromStart(startNode:GetPixelX(), startNode:GetPixelY()))
-            text name = "My distance from start is " + distance
-            node:SetLabelDistanceDescription(distance, name)
+            node:SetLabelDistanceDescription(node:CalculateDistanceFromStart(startNode:GetPixelX(), startNode:GetPixelY()))
             nodeList:Add(node)
             page:Add(node)
         end

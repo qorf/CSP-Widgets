@@ -64,7 +64,7 @@ class Main is Application
 
         Label title = CreateLabel()
         title:SetName("Title")
-        title:SetText("RemindME")
+        title:SetText("My Reminders")
         title:SetFontSize(50)
         title:SetColor(White())
         title:SetPixelX(15)
@@ -87,18 +87,10 @@ class Main is Application
         background:SetPixelY(225)
         page:Add(background)
 
-        /*
-        Label reminderOutput = undefined
-        Button leftButton = undefined
-        Label countOutput = undefined
-        Button rightButton = undefined
-        TextBox reminderInput = undefined
-        Button addButton = undefined
-        */
-
         reminderOutput = CreateLabel()
         reminderOutput:SetFontSize(40)
-        reminderOutput:SetText("Add reminders!")
+        reminderOutput:SetName("This is your reminder to")
+        reminderOutput:SetText("Add a Reminder")
         reminderOutput:SetPixelX(25)
         reminderOutput:SetPixelY(475)
         reminderOutput:SetMaximumWidth(350)
@@ -107,6 +99,7 @@ class Main is Application
         Color gold = NewColor(0.98, 0.87, 0.34)
 
         leftButton = CreateButton("Left Button.png")
+        leftButton:SetName("Previous")
         leftButton:SetIconColor(gold)
         leftButton:SetPixelWidth(60)
         leftButton:SetPixelHeight(60)
@@ -124,6 +117,7 @@ class Main is Application
         page:Add(countOutput)
         
         rightButton = CreateButton("Right Button.png")
+        rightButton:SetName("Next")
         rightButton:SetIconColor(gold)
         rightButton:SetPixelWidth(60)
         rightButton:SetPixelHeight(60)

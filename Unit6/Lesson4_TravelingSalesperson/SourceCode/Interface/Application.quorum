@@ -626,7 +626,7 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
             node:SetSizeAndColor(StartGreen())
             node:SetFont(undefined)
             node:GetLabel():SetLeftPadding(0) 
-            node:SetLabelDistanceDescription("Start", "0")
+            node:SetStartLabelDescription()
         else
             node:SetSizeAndColor(Banana())
             node:GetLabel():SetLeftPadding(0)   

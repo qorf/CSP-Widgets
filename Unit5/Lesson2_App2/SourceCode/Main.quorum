@@ -7,15 +7,17 @@ use Libraries.Containers.Array
 
 class Main is Application
 /*
-START HERE DO THIS:
+START HERE 
+DO THIS:
 Run this program and carefully read each individual part of the program.
 
 DISCUSS:
 Discuss these questions with a partner and be prepared to share answers with the class.
-* Line 30: What does the JoinText command do? Why is it necessary for this app to run?
-* Line 41: Why does this conditional read "peopleList:GetSize() >= 2"? What would break
+Use Find (Control + F) to search for each discussion 
+* First Discussion: What does the JoinText command do? Why is it necessary for this app to run?
+* Second Discussion: Why does this conditional read "peopleList:GetSize() >= 2"? What would break
   if it read "peopleList:GetSize() >= 1" instead?
-* Lines 43-44: What would happen if you switched the order of these two lines of code?
+* Third Discussion: What would happen if you switched the order of these two lines of code?
 
 MODIFY:
 * Change the default names that are available when this app starts running.
@@ -32,17 +34,20 @@ MODIFY:
     Label pairLabel = undefined
 
     action UpdateScreen
+        //  First Discussion
         text people = JoinText(peopleList, "
 ")
         peopleLabel:SetText(people)
     end
 
     action ButtonActivated(Button button)
-        if button = addButton   //LOOK AT LINE 41
+        if button = addButton
+            // Third Discussion 
             text newPerson = newPersonInput:GetText()
-            peopleList:Add(0, newPerson)    //LOOK AT THE NEXT 2 LINES OF CODE (SHOULD BE LINES 43-44)
+            peopleList:Add(0, newPerson)    
             newPersonInput:SetText("")
         elseif button = assignButton
+            // Second Discussion
             if peopleList:GetSize() >= 2
                 integer randomIndex1 = RandomNumber(0, peopleList:GetSize() - 1)
                 text randomPerson1 = peopleList:Get(randomIndex1)
@@ -54,7 +59,8 @@ MODIFY:
 
                 pairLabel:SetText(randomPerson1 + " and " + randomPerson2)
             else
-                pairLabel:SetText("Add more people to make a pair")
+                pairLabel:SetText("No more pairs. 
+Add more people to make a pair")
             end
         end
 
@@ -66,8 +72,9 @@ MODIFY:
         page:SetName("Main")
 
         /*
+        For the code following this comment
         We need to add our first items into the list.
-        We have to do this inside of an action -- trying to add
+        We have to do this inside this action -- In Quorurm trying to add
         to a list outside of an action is an error!
         */
         peopleList:Add("You")
@@ -112,9 +119,9 @@ MODIFY:
         Label peopleBannerLabel = CreateLabel()
         peopleBannerLabel:SetFocusable(false)
         peopleBannerLabel:SetFontColor(White())
-        peopleBannerLabel:SetText("People")
+        peopleBannerLabel:SetText("People who can be Paired")
         peopleBannerLabel:SetFontSize(28)
-        peopleBannerLabel:SetPixelX(160)
+        peopleBannerLabel:SetPixelX(40)
         peopleBannerLabel:SetPixelY(495)
         page:Add(peopleBannerLabel)
 
@@ -127,7 +134,7 @@ MODIFY:
         page:Add(peopleBackground)
 
         peopleLabel = CreateLabel()
-        peopleLabel:SetName("People")
+        peopleLabel:SetName("People who can be Paired")
         peopleLabel:SetFontSize(22)
         peopleLabel:SetPixelX(35)
         peopleLabel:SetPixelY(465)

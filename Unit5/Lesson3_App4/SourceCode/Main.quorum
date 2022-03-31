@@ -8,7 +8,8 @@ use Libraries.Containers.Array
 
 class Main is Application
 /*
-START HERE DO THIS:
+START HERE
+DO THIS:
 Make this Magic 8 Ball app work!
 * When the screen is clicked, make a random string the answers list display on the 8 Ball
 * Use the Random List Access Pattern to update the code
@@ -23,25 +24,25 @@ to generate a random integer between two values.)
     Label answerOutput = undefined
 
     action MouseClicked(Control item, MouseEvent event)
-        // If the left mouse button is clicked, update the screen.
+        // The following code is if the left mouse button is selected, update the screen.
         if event:mouseButton = event:LEFT
             UpdateScreen()
         end
     end
 
     action KeyPressed(KeyboardEvent event)
-        // If the spacebar is pressed, update the screen.
+        // The following code is if the spacebar is pressed, update the screen.
         if event:keyCode = event:SPACE
             UpdateScreen()
         end
     end
 
     action UpdateScreen
-        //YOUR CODE GOES HERE Update the indext to a random number
+        // Directions: Update the index to a random number
         // Use the Random List Access Pattern
+        // YOUR CODE GOES HERE 
 
-
-        // Set the text of "answerOutput"
+        // The following code sets the text and description of "answerOutput"
         answerOutput:SetText(answers:Get(index))
         answerOutput:SetDescription(answerOutput:GetText())
         PlaySound("bubble_pop_cluster_2.ogg")
