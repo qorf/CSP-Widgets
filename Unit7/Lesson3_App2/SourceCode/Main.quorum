@@ -13,6 +13,7 @@ Buenos dias, Benjamin
 Benjamin, your smile lights up the room!
 
 */
+    //the next 10 lines of code declares the action Main which has the names of the people that will be receiving the compliment
     action Main
         RandomGreeting("Benjamin")
         RandomCompliment("Benjamin")
@@ -24,6 +25,7 @@ Benjamin, your smile lights up the room!
         RandomCompliment("Esmerelda")
     end
 
+    //the next 8 lines of code declares the RandomGreeting action which has an array of the different possible greetings
     action RandomGreeting(text name)
         Array<text> greetings
         greetings:Add("Good day, ")
@@ -33,6 +35,8 @@ Benjamin, your smile lights up the room!
         output greetings:Get(RandomNumber(0,greetings:GetSize()-1)) + name
     end
 
+    //the next 9 lines of code declares the action RandomCompliment which has an array of the different possible compliments
+    //add code here to output the person's name followed by a random compliment from the array
     action RandomCompliment(text name)
         Array<text> compliments
         compliments:Add(", you have incredible hair!")
