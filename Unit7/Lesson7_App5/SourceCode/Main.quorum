@@ -7,7 +7,7 @@ DO THIS:
 This program is being designed as a simple list library. Write tests to make sure the first function works. Then write the second two functions so that they pass the tests written.
 */
     action Main
-        //write three different tests for the fill function
+        //YOUR CODE GOES HERE write three different tests for the fill function
 
         Array<integer> multiplyList1
         multiplyList1:Add(1)
@@ -38,7 +38,7 @@ This program is being designed as a simple list library. Write tests to make sur
     end
 
 
-    // Creates a new list of the length given and with the same value repeated
+    // the next 7 lines of code creates a new list of the length given and with the same value repeated
     // length {integer} - the length of the list to create
     // value {text} - the value to appear in every item of 
     action Fill(integer length, text value) returns Array<text>
@@ -57,7 +57,7 @@ This program is being designed as a simple list library. Write tests to make sur
     end
 
 
-    // Returns a copy of the list given but in reverse order
+    // the next 5+ lines of code returns a copy of the list given but in reverse order
     // list {Array<text>} - the list to be reversed
     // return {Array<text>} - a copy of the original list in reverse order
     action Reverse(Array<text> list) returns Array<text>

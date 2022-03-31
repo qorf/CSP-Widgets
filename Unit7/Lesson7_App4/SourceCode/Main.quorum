@@ -30,7 +30,7 @@ class Main is ConsoleApplication
     end
 
 
-    // Returns a list of all lowercase letters
+    // the next 30 lines of code returns a list of all lowercase letters
     // return {Array<text>} - list of lowercase letters
     action AllLower returns Array<text>
         Array<text> list
@@ -63,8 +63,8 @@ class Main is ConsoleApplication
         return list
     end
 
-    // Returns a list of all lowercase letters
-    // return {Array<text>} - list of lowercase letters
+    // the next 30 lines of code returns a list of all uppercase letters
+    // return {Array<text>} - list of uppercase letters
     action AllUpper returns Array<text>
         Array<text> list
         list:Add("A")
@@ -96,7 +96,7 @@ class Main is ConsoleApplication
         return list
     end
 
-    // Returns a list of all lowercase letters
+    // the next 9 lines of code returns a list of all lowercase letters
     // return {Array<text>} - list of lowercase letters
     action VowelsLower returns Array<text>
         Array<text> list
@@ -109,8 +109,8 @@ class Main is ConsoleApplication
     end
 
 
-    // Returns a list of all lowercase letters
-    // return {Array<text>} - list of lowercase letters
+    // the next 9 lines of code returns a list of all uppercase letters
+    // return {Array<text>} - list of uppercase letters
     action VowelsUpper returns Array<text>
         Array<text> list
         list:Add("A")
@@ -121,7 +121,7 @@ class Main is ConsoleApplication
         return list
     end
 
-    // Returns a list of all lowercase letters
+    // the next 25 lines of code returns a list of all lowercase letters
     // return {Array<text>} - list of lowercase letters
     action ConsonantsLower returns Array<text>
         Array<text> list
@@ -149,7 +149,8 @@ class Main is ConsoleApplication
         return list
     end
 
-
+    // the next 25 lines of code returns a list of all uppercase letters
+    // return {Array<text>} - list of uppercase letters
     action ConsonantsUpper returns Array<text>
         Array<text> list
         list:Add("B")
@@ -177,7 +178,7 @@ class Main is ConsoleApplication
     end
 
 
-    // Returns a list of letters
+    // the next 22 lines of code returns a list of letters
     // letterType {text} - "All", "Consonants", or "Vowels"
     // upper {boolean} - whether the letters should be upper case. If false, returns lowercase
     // return {Array<text>} - a list of letters
