@@ -11,23 +11,24 @@ START HERE DO THIS:
 Run this program and carefully read each individual part of the program.
 
 DISCUSS:
-Discuss these questions with a partner and be prepared to share answers with the class.
-* Lines 29-30: Why does this program use two lists? What is each one storing?
-* Lines 31-32: Why does this program include the variables topsIndex and bottomsIndex?
+Discuss these questions with a partner and be prepared to share answers with the class. (Use Find to look for the First keyword)
+* First Discussion: Why does this program use two lists? What is each one storing?
+* Second Discussion: Why does this program include the variables topsIndex and bottomsIndex?
   What would happen if these variables were removed from the program?
-* Lines 54-60: Write a short description of what the event handling code on these lines does.
-* Line 47: What is the conditional statement "topsIndex < topsList:GetSize() - 1" checking?
+* Third Discussion: Write a short description of what the event handling code on these lines does.
+* Fourth Discussion: What is the conditional statement "topsIndex < topsList:GetSize() - 1" checking?
   What would break if it was instead "topsIndex < topsList:GetSize()"?
-* Lines 41-61: Find all the places that the UpdateScreen function is called. What changes
+* Fifth Discussion: Find all the places that the UpdateScreen function is called. What changes
   about the way the app runs if any of these calls were removed?
 
 MODIFY:
 Edit the if-statement on lines 46-49 so that the topsIndex is set to 0 if the user hits the
 right button when they're already at the end of the list.
 */
-    //LOOK AT THE NEXT 4 LINES OF CODE (SHOULD BE LINES 29-32)
+    // First Discussion: 
     Array<Icon> topsList
     Array<Icon> bottomsList
+    // Second Discussion:
     integer topsIndex = 0
     integer bottomsIndex = 0
     Icon currentTop = undefined
@@ -37,21 +38,24 @@ right button when they're already at the end of the list.
     Button nextTop = undefined
     Button previousBottom = undefined
     Button nextBottom = undefined
-    //LOOK AT THE NEXT 20 LINES OF CODE (SHOULD BE LINES 41-61)
+    // Fifth Disscussion: look at the code below
     action ButtonActivated(Button button)
         if button = previousTop
             if topsIndex > 0
                 topsIndex = topsIndex - 1
             end
         elseif button = nextTop
-            if topsIndex < topsList:GetSize() - 1   //LOOK AT LINE 47
+            //  MODIFY THIS IF-ELSE STATEMENT
+            //  Fourth Discussion: look at the next line
+            if topsIndex < topsList:GetSize() - 1   
                 topsIndex = topsIndex + 1
             end
         elseif button = previousBottom
             if bottomsIndex > 0
                 bottomsIndex = bottomsIndex - 1
             end
-        elseif button = nextBottom //LOOK AT THE NEXT 6 LINES OF CODE (SHOULD BE LINES 54-60)
+        // Third Discussion: look at the code below
+        elseif button = nextBottom 
             if bottomsIndex < bottomsList:GetSize() - 1
                 bottomsIndex = bottomsIndex + 1
             end
@@ -104,6 +108,7 @@ right button when they're already at the end of the list.
         Color brown = NewColor(0.75, 0.5, 0.5)
 
         previousTop = CreateButton("Left Button.png")
+        previousTop:SetName("Previous Top")
         previousTop:SetIconColor(brown)
         previousTop:SetPixelX(10)
         previousTop:SetPixelY(380)
@@ -179,6 +184,7 @@ right button when they're already at the end of the list.
         page:Add(top6)
 
         nextTop = CreateButton("Right Button.png")
+        nextTop:SetName("Next Top")
         nextTop:SetIconColor(brown)
         nextTop:SetPixelX(310)
         nextTop:SetPixelY(380)
@@ -187,6 +193,7 @@ right button when they're already at the end of the list.
         page:Add(nextTop)
 
         previousBottom = CreateButton("Left Button.png")
+        previousBottom:SetName("Previous Bottom")
         previousBottom:SetIconColor(brown)
         previousBottom:SetPixelX(10)
         previousBottom:SetPixelY(180)
@@ -262,6 +269,7 @@ right button when they're already at the end of the list.
         page:Add(bottom6)
 
         nextBottom = CreateButton("Right Button.png")
+        nextBottom:SetName("Next Bottom")
         nextBottom:SetIconColor(brown)
         nextBottom:SetPixelX(310)
         nextBottom:SetPixelY(180)

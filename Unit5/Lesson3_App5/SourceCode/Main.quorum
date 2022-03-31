@@ -7,7 +7,8 @@ use Libraries.Containers.Array
 
 class Main is Application
 /*
-START HERE DO THIS:
+START HERE1 
+DO THIS:
 This app should let the user scroll through their classes, but the left button isn't working.
 * Read the starter code
 * Add code to the "leftButton" so the user can scroll back to the left after scrolling to the right.
@@ -15,7 +16,7 @@ This app should let the user scroll through their classes, but the left button i
 
 */
 
-    // Create and assign variables
+    // The following code creates and initializes variables
     integer index = 0
     Array<text> classes
 
@@ -89,6 +90,7 @@ This app should let the user scroll through their classes, but the left button i
         page:Add(background2)
 
         leftButton = CreateButton("Left Button.png")
+        leftButton:SetName("Left")
         leftButton:SetIconColor(yellow)
         leftButton:SetPixelWidth(80)
         leftButton:SetPixelHeight(80)
@@ -114,6 +116,7 @@ This app should let the user scroll through their classes, but the left button i
         page:Add(periodLabel)
 
         rightButton = CreateButton("Right Button.png")
+        rightButton:SetName("Right")
         rightButton:SetIconColor(yellow)
         rightButton:SetPixelWidth(80)
         rightButton:SetPixelHeight(80)
