@@ -36,7 +36,7 @@ Discuss these questions with a partner and be prepared to share answers with the
     text state = ""
 
     action ButtonActivated(Button button)
-        // gets the state name from the user
+        // the next 12 lines of code gets the state name from the user
         // sets up the screen by calling library functions and passing through the state name as an argument
         if button = clickButton
             state = stateInput:GetText()

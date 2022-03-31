@@ -6,7 +6,7 @@ class StateLibrary
 /*
 Functions which filter specific data from the States database
 */
-    // gives the abbreviation for a state
+    // the next 16 lines of code gives the abbreviation for a state
     // stateName {text} - the name of a state
     // return {text} - the two letter state abbreviation if the state exists, otherwise "Not found"
     action StateAbbreviation(text stateName) returns text
@@ -26,7 +26,7 @@ Functions which filter specific data from the States database
         return "Not found"
     end
 
-    // returns the skyline of a given state
+    // the next 16 lines of code returns the skyline of a given state
     // stateName {text} - the name of a state
     // return {text} - the Image URL of the state skyline if the state exists, otherwise the code.logo
     action StateSkyline(text stateName) returns text
@@ -46,7 +46,7 @@ Functions which filter specific data from the States database
         return "placeholder.png"
     end
 
-    // returns the seal of a given state
+    // the next 16 lines of code returns the seal of a given state
     // stateName {text} - the name of a state
     // return {text} - the Image URL of the state seal if the state exists, otherwise the code.logo
     action StateSeal(text stateName) returns text
@@ -66,7 +66,7 @@ Functions which filter specific data from the States database
         return "placeholder.png"
     end
 
-    // returns the flag of a given state
+    // the next 16 lines of code returns the flag of a given state
     // stateName {text} - the name of a state
     // return {text} - the Image URL of the state flag if the state exists, otherwise the code.logo
     action StateFlag(text stateName) returns text
@@ -86,7 +86,7 @@ Functions which filter specific data from the States database
         return "placeholder.png"
     end
 
-    // returns a random state
+    // the next 7 lines of code returns a random state
     // return {text} - the name of a random state
     action RandomState() returns text
         DataFrame frame

@@ -23,7 +23,7 @@ This simple program should show a random cat and the name of the breed every tim
 
     action ButtonActivated(Button button)
         if button = nextButton
-        //YOUR CODE GOES HERE Write your code here
+        //YOUR CODE GOES HERE
         // If you want to swap the image of an icon you can use the SwapImage(Icon icon, text imageFile) action
 
             

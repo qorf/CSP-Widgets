@@ -6,7 +6,7 @@ class Cats
 /*
 Library for using the cats data set.
 */
-    // Returns the name of a random breed of cat
+    // the next 8 lines of code returns the name of a random breed of cat
     // return {text} - the name of a random cat breed
     action RandomBreed returns text
         DataFrame frame
@@ -17,7 +17,7 @@ Library for using the cats data set.
         return breeds:GetAsText(random:RandomIntegerBetween(0, breeds:GetSize() - 1))
     end
 
-    // Returns the image of a given cat breed
+    // the next 18 lines of code returns the image of a given cat breed
     // searchBreed {text} - the name of the breed to search for
     // return {text} - the URL of the searched cat breed, or "Not found" if it wasn't found
     action BreedImage(text searchBreed) returns text
@@ -38,7 +38,7 @@ Library for using the cats data set.
         return "Not Found"
     end
 
-    // Returns the list of all cat breeds
+    // the next 14 lines of code returns the list of all cat breeds
     // return {Array<text>} - a list of cat breed names as strings
     action AllBreeds returns Array<text>
         DataFrame frame
@@ -55,7 +55,7 @@ Library for using the cats data set.
         return result
     end
 
-    // Returns the location of a random cat picture
+    // the next 3 lines of code returns the location of a random cat picture
     // return {text} - the URL of a random cat image
     action RandomImage returns text
         return BreedImage(RandomBreed())

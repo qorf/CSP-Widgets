@@ -31,13 +31,13 @@ TEST THE FUNCTIONS:
     
 
     action ButtonActivated(Button button)
-    // when the Pigify button is clicked, call the updateScreen() function
+    //in the next 3 lines of code when the Pigify button is clicked, call the updateScreen() function
         if button = pigifyButton
             UpdateScreen()
         end
     end
 
-    // resets the screen and calls the pigify() function passing through user input
+    // the next 6 lines of code is for the UpdateScreen action which resets the screen and calls the pigify() function passing through user input
     action UpdateScreen()
         text str = textInput:GetText()
         text statement = Pigify(str)
