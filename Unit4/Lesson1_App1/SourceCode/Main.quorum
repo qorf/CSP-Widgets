@@ -22,16 +22,17 @@ class Main is Application
 
         Label directions = CreateLabel()
         directions:SetName("Directions")
-        directions:SetText("This pet rock needs some love. If you select him enough times, he just might evolve into a very special pet rock. Use the buttons at the bottom to upgrade your selects!")               
+        directions:SetText("This pet rock needs some love. Hover over the rock and click the rock or press the space bar to pet him to make him happy! If you pet him enough times, he just might evolve into a very special pet rock. Use the buttons at the bottom to upgrade your selects so that each select is worth more!")               
         directions:SetPixelX(25)
         directions:SetPixelY(560)
         directions:SetMaximumWidth(350)
-        directions:SetFontSize(20)
+        directions:SetFontSize(19)
         directions:SetColor(NewColor(0, 0.58, 0.79))
         page:Add(directions)
 
         Button level1 = CreateButton("Pet Rock Level 1.jpg")
         level1:SetName("Pet Rock Level 1: Rock-a-Bye")
+        level1:SetDescription("The rock currently looks normal. You are now hovering over the rock and can select him to make him happy! You can check how many times you have selected him by checking the select counter below.")
         level1:SetPixelWidth(132)
         level1:SetPixelHeight(100)
         level1:SetPixelX(134)
@@ -40,6 +41,7 @@ class Main is Application
 
         Button level2 = CreateButton("Pet Rock Level 2.jpg")
         level2:SetName("Pet Rock Level 2: Rock-a-Bunny")
+        level2:SetDescription("The rock received enough love to level up! The rock now has bunny ears and is happy. Select the rock more times to make him even happier!")
         level2:SetPixelWidth(132)
         level2:SetPixelHeight(174)
         level2:SetPixelX(134)
@@ -49,7 +51,7 @@ class Main is Application
 
         Button level3 = CreateButton("Pet Rock Level 3.jpg")
         level3:SetName("Pet Rock Level 3: Rock-a-Walk-a-Rainbow")
-        level3:SetDescription("EVOLUTION COMPLETE")
+        level3:SetDescription("The rock received enough love to level up into its happiest form! The rock now is now very happy and has colorful bunny ears and sees a rainbow. EVOLUTION COMPLETE")
         level3:SetPixelWidth(200)
         level3:SetPixelHeight(200)
         level3:SetPixelX(100)
@@ -80,6 +82,7 @@ class Main is Application
         Label clickPowerLabel = CreateLabel()
         clickPowerLabel:SetName("Select Power")
         clickPowerLabel:SetText("+1")
+        clickPowerLabel:SetDescription("Each click or select on the space bar is currently worth +1 select")
         clickPowerLabel:SetFontSize(20)
         clickPowerLabel:SetColor(NewColor(0, 0.58, 0.79))
         clickPowerLabel:SetPixelX(320)
@@ -105,6 +108,7 @@ class Main is Application
 
         Button upgrade1 = CreateButton()
         upgrade1:SetName("+2 (cost = 5 selects)")
+        upgrade1:SetDescription("You must have 5 selects to buy this upgrade. Select this button to make each 1 click or select count as +2 selects.")
         upgrade1:SetFontSize(16)
         upgrade1:SetPixelX(25)
         upgrade1:SetPixelY(20)
@@ -114,6 +118,7 @@ class Main is Application
 
         Button upgrade2 = CreateButton()
         upgrade2:SetName("+20 (cost = 20 selects)")
+        upgrade2:SetDescription("You must have 20 selects to buy this upgrade. Select this button to make each 1 click or select count as +20 selects.")
         upgrade2:SetFontSize(16)
         upgrade2:SetPixelX(200)
         upgrade2:SetPixelY(20)
@@ -180,7 +185,7 @@ EVOLUTION COMPLETE")
 
             Label powerLabel = page:GetLabel("Select Power")
             powerLabel:SetText("+2")
-            powerLabel:SetDescription("+2")
+            powerLabel:SetDescription("Now each click or select will be worth +2")
             powerLabel:Focus()
 
             button:Hide()
@@ -200,7 +205,7 @@ EVOLUTION COMPLETE")
 
             Label powerLabel = page:GetLabel("Select Power")
             powerLabel:SetText("+20")
-            powerLabel:SetDescription("+20")
+            powerLabel:SetDescription("Now each click or select will be worth +20")
             powerLabel:Focus()
 
             Button upgrade1 = page:GetButton("+2 (cost = 5 selects)")
