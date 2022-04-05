@@ -10,11 +10,13 @@ DO THIS:
 * Now students use charting to look for 'data stories'. Depending on class time, allow students to share their data stories with partners or with the class as a whole.
 */
 
+//the next 4 lines of code loads the content of the csv file
 DataFrame frame
 frame:Load("../Data/Other/GoogleTrendsChocolate.csv")
 frame:AddSelectedColumn(1)
 frame:AddSelectedFactor(0)
 
+//the next 7 lines of code creates a graph from the data
 LineChart chart = frame:LineChart()
 chart:SetXTickCount(5)
 chart:SetFontSize(40)

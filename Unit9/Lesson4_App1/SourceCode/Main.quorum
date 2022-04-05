@@ -1,14 +1,14 @@
 use Libraries.Compute.Statistics.DataFrame
 
-//Create a DataFrame, load it, and set which column to focus on
+//the next 2 lines of code creates a DataFrame, load it, and set which column to focus on
 DataFrame frame
 frame:Load("../Data/Language and Literature/Words.csv")
 
-//Tell the data frames which columns we want to make the CrossTab for
+//the next 2 lines of code tells the data frames which columns we want to make the CrossTab for
 frame:AddSelectedColumn(2)
 frame:AddSelectedColumn(3)
 
-//We call the CrossTab action in DataFrame. This generates a new DataFrame, 
+//the next 3 lines calls the CrossTab action in DataFrame. This generates a new DataFrame, 
 //which we can output to the screen or save to a file and open in a spreadsheet program like Excel.
 DataFrame crossTab = frame:CrossTab()
 crossTab:Save("Cross.csv")

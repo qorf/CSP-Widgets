@@ -9,9 +9,9 @@ START HERE DO THIS:
 */
 
 
-//Create a DataFrame, load it, and set which column to focus on
+//the next line of code creates a DataFrame, load it, and set which column to focus on
 DataFrame frame
-//Notice that the data loads just fine into these frames and can be used
+//the next line of code loads the csv file, notice that the data loads just fine into these frames and can be used
 //However, anywhere where the data does not conform to a number, Quorum
 //strips out the values. We can confirm this by outputting to the screen
 //a chart or outputting the DataFrame in Quorum Studio
@@ -21,10 +21,10 @@ frame:Load("../Data/Other/Student Info.csv")
 //4 is average hours of sleep and 3 is favorite subject
 frame:AddSelectedColumn(4)
 
-//Create a Bar chart of the average number of hours of sleep.
+//the next 4 lines of code creates a Bar chart of the average number of hours of sleep.
 Histogram chart = frame:Histogram()
 chart:SetFontSize(30)
 chart:SetTitle("Unclean Student Info Chart")
 chart:SetXAxisTitle("Average Hours of Sleep")
-//We can make this bigger or smaller for our screen (width and height)
+//the next line of code configures the display size, we can make this bigger or smaller for our screen (width and height)
 chart:Display(1500,750)

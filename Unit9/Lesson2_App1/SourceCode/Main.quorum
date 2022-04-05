@@ -9,16 +9,16 @@ START HERE DO THIS:
 */
 
 
-//Create a DataFrame, load it, and set which column to focus on
+//the next line of code creates a DataFrame, load it, and set which column to focus on
 DataFrame frame
-//go up a folder from this project (../), find the Data/Animals folder, then find the file named Dogs.csv
+//the next line of code loads the csv file, go up a folder from this project (../), find the Data/Animals folder, then find the file named Dogs.csv
 frame:Load("../Data/Animals/Dogs.csv")
 
-//Change this to any columns of interest.
+//the next line of code changes this to any columns of interest.
 //We can also add them as indexes, where 0 is the left-most index.
 frame:AddSelectedColumns("Maximum Life Span")
 
-//Create a histogram with a bin width of 5. Leaving this 
+//the next 4 lines of code creates a histogram with a bin width of 5. Leaving this 
 //blank has the system calculate the bin width on its own
 //Display tells it to load it, show it, and make it accessible
 Histogram chart = frame:Histogram(5)
