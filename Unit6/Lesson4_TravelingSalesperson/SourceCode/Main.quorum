@@ -7,6 +7,7 @@ use Libraries.Interface.Controls.Button
 use Libraries.Interface.Controls.Control
 use Libraries.Interface.Controls.Icon
 use Libraries.Interface.Events.MouseEvent
+use Libraries.Interface.Events.FocusEvent
 use Libraries.Compute.Random
 
 /*START HERE 
@@ -38,7 +39,7 @@ class Main is Application
     integer minimumX = 10
     integer maximumX = 350
     integer minimumY = 130
-    integer maximumY = 550
+    integer maximumY = 525
     integer nodeSize = 31
     integer numberOfNodes = 11 
     
@@ -144,6 +145,10 @@ class Main is Application
 
     action Start
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Icon topBanner = CreateRectangle(NewColor(0.65, 0.24, 0.24))
         topBanner:SetFocusable(false)
         topBanner:SetPixelWidth(400)
@@ -155,10 +160,10 @@ class Main is Application
         Label title = CreateLabel()
         title:SetName("Title")
         title:SetText("Traveling Salesperson")
-        title:SetFontSize(25)
+        title:SetFontSize(30)
         title:SetColor(White())
-        title:SetPixelX(15)
-        title:SetPixelY(570)
+        title:SetPixelX(55)
+        title:SetPixelY(575)
         page:Add(title)
 
         grid:Initialize(maximumX, minimumX,maximumY,minimumY,nodeSize)
