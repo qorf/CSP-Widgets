@@ -66,6 +66,10 @@ should be able to add new songs into the list.
         Page page
         page:SetName("Song Page")
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(1, 1, 1))
+        SetFocusHighlightThickness(4)
+
         SetBackgroundColor(0.21, 0.18, 0.29)
         Color paleGreen = NewColor(0.85, 1, 0.65)
 

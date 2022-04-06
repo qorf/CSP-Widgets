@@ -14,7 +14,7 @@ Which students have 6 or more letters in their names?
 class Main is ConsoleApplication
 
     action Main
-        // Create and assign list
+        // Create and assign  a list for the animals
         Array<text> animals
         animals:Add("alligator")
         animals:Add("bird")
@@ -27,10 +27,12 @@ class Main is ConsoleApplication
         
         output "Which animals have more than 5 letters in their names?"
         
-        // Filter animals to those with more than 5 letters
+        // The next code creates an empty list for the filtered animals. 
+        // We also create an empty text variable as a place holder for any animals we will filter so we can add it to the filtered list 
         Array<text> animalsFiltered
         text animal = ""
         
+        //The next code iterates through the animals list and if its name is greater than 5 we add it to the filtered animals list
         integer i = 0
         repeat while i < animals:GetSize()
             animal = animals:Get(i)
@@ -54,11 +56,12 @@ class Main is ConsoleApplication
         
         output "Which students have 6 or more letters in their names?"
         
-        // Filter students to have those with 6 or more letters
+        // The next code creates an empty list for the filtered students. 
+        // We also create an empty text variable as a place holder for any students we will filter so we can add it to the filtered list 
         Array<text> studentsFiltered
         text student = ""
         
-        //YOUR CODE GOES HERE Add code to filter the list of students
+        //YOUR CODE GOES HERE to filter students to have those with 6 or more letters
 
 
 

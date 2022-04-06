@@ -51,6 +51,10 @@ class Main is Application
     action Start
         Page page
         page:SetName("Home")
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
         
         SetBackgroundColor(NewColor(0.92, 0.34, 0.34))
 

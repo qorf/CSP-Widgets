@@ -21,18 +21,32 @@ DO THIS:
     Page page
     Array<text> words
 
+    // The button selection currently changes a word from the words list to all upper case or all lower case depending on the random number picked.
     action ButtonActivated(Button button)
         integer i = 0
+        integer randomNumber = 0
         repeat while i < 4
             Label label = page:GetLabel("Label " + i)
-            Color randomColor = NewColor(RandomNumber(0, 255) / 255.0, RandomNumber(0, 255) / 255.0, RandomNumber(0, 255) / 255.0)          
-            label:SetColor(randomColor)
+            // YOUR CODE HERE 
+            randomNumber = RandomNumber(0,3)
+            if randomNumber = 1          
+                label:SetText(label:GetText():ToUpperCase())
+                label:SetDescription(label:GetText() + " is upper case!")
+            else
+                label:SetText(label:GetText():ToLowerCase())
+                label:SetDescription(label:GetText() + " is lower case!")
+            end
 
             i = i + 1
         end
     end
 
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         words:Add("Let's")
         words:Add("Randomize")
         words:Add("This")

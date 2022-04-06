@@ -25,22 +25,22 @@ Discuss these questions with a partner and be prepared to share answers with the
     DataFrame dogs
     text dogSize = "Small"
 
-    // These lists are undefined because we'll get them as columns
-    // from a DataFrame in the Start action
+    // We declare the next two lists but leave them undefined 
+    // because we'll fill their values from a DataFrame in the Start action
     Array<text> dogNames = undefined
     Array<number> dogHeights = undefined
 
-    // Set up a blank list to store the filtered names
+    // Declare a blank list to store the filtered names
     Array<text> filteredDogNames
 
-    // Variables for items on the page
+    // The next 5 lines declare variables for items on the page
     Icon picture = undefined
     Label description = undefined
     Button smallButton = undefined
     Button mediumButton = undefined
     Button largeButton = undefined
 
-    // When a size button is clicked, filter the lists and set up the screen.
+    // The next action activates when a size button is selected, then the list is filtered and the screen is set up.
     action ButtonActivated(Button button)
         if button = smallButton
             dogSize = "Small"
@@ -53,18 +53,18 @@ Discuss these questions with a partner and be prepared to share answers with the
     end
 
     /*
-    Filters the lists, based on which button has been clicked.
+    The next action filters the lists, based on which button has been selected.
     If the dog height is under a certain amount and the selected
     mode matches a value the corresponding name and image will be
     stored in the filtered list.
     */
     action Filter
-        // The Empty command removes all items from the list.
+        // The next line of code calls the Empty() action. The Empty action removes all items from the list.
         // We clear out the filtered list before we filter again.
         filteredDogNames:Empty()
 
         /*
-        Traverses the dogHeights list
+        The next section of code traverses the dogHeights list
         if dogHeights and dogSize meet certain conditions
         the corresponding names are stored in the filtered list
         */
@@ -80,10 +80,11 @@ Discuss these questions with a partner and be prepared to share answers with the
             i = i + 1
         end
 
+        // The next line of code updates the screen
         UpdateScreen()
     end
 
-    // Sets up the filtered list and the screen elements
+    // The next action sets up the filtered list and the screen elements
     action UpdateScreen
         integer randomIndex = RandomNumber(0, filteredDogNames:GetSize() - 1)
         text dogName = filteredDogNames:Get(randomIndex)
@@ -93,8 +94,9 @@ Discuss these questions with a partner and be prepared to share answers with the
     end
 
     action Start
+        // The next line of code loads the data from the csv into the dataframe
         dogs:Load("Data/Dogs.csv")
-        // Get data as lists from the dataset and store in our variables
+        // The next two lines get data as lists from the dataset and store in our variables
         dogNames = GetTextColumn(dogs, "Name")
         dogHeights = GetNumberColumn(dogs, "Maximum Height")
 

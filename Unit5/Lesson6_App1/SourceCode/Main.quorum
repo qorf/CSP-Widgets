@@ -64,6 +64,10 @@ DICUSS:
         Page mainPage
         mainPage:SetName("Main Screen")
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Label title = CreateLabel()
         title:SetName("Title")
         title:SetText("Coin Flip Simulator")
@@ -71,21 +75,23 @@ DICUSS:
         title:SetPixelX(60)
         title:SetPixelY(550)
         mainPage:Add(title)
-        
-        quarter = CreateButton("Quarter.png")
-        quarter:SetPixelX(85)
-        quarter:SetPixelY(300)
-        quarter:SetPixelWidth(230)
-        quarter:SetPixelHeight(230)
-        mainPage:Add(quarter)
 
         Label directions = CreateLabel()
         directions:SetName("Directions")
-        directions:SetText("Choose the total flips. Then click the quarter.")
+        directions:SetText("Enter the total flips. Then select the quarter.")
         directions:SetFontSize(18)
         directions:SetPixelX(25)
-        directions:SetPixelY(270)
+        directions:SetPixelY(500)
         mainPage:Add(directions)
+        
+        quarter = CreateButton("Quarter.png")
+        quarter:SetName("Quarter")
+        quarter:SetDescription("Select to start flips")
+        quarter:SetPixelX(85)
+        quarter:SetPixelY(250)
+        quarter:SetPixelWidth(230)
+        quarter:SetPixelHeight(230)
+        mainPage:Add(quarter)
 
         Icon background = CreateRectangle(NewColor(0.15, 0.64, 0.79))
         background:SetFocusable(false)

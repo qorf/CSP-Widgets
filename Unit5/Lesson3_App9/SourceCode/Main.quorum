@@ -45,6 +45,9 @@ class Main is Application
         food:Add("crackers")
         food:Add("peanuts")
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
         SetBackgroundColor(NewColor(1, 0.64, 0))
 
         Page page

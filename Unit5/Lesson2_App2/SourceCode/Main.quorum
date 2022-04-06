@@ -82,6 +82,9 @@ Add more people to make a pair")
         peopleList:Add("Another Person")
 
         SetBackgroundColor(NewColor(0.68, 0.89, 0.96))
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
 
         Icon banner = CreateRectangle(NewColor(0, 0.58, 0.79))
         banner:SetFocusable(false)

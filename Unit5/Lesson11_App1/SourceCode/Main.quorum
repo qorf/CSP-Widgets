@@ -23,7 +23,7 @@ repeat while i < fruits:GetSize()
     i = i + 1
 end
 
-
+// The next few lines of code declare and assigns list of vegetables.
 Array<text> vegetables
 vegetables:Add("carrots")
 vegetables:Add("onions")

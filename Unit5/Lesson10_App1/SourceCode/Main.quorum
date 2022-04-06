@@ -12,11 +12,11 @@ Groups of 4: Student A, Student B, Student C, Student D
 
 INVESTIGATE:
 * Read through the code below
-* Each student focuses their attention on a single action. Re-read the code for that action.
-    - Student A: Average (lines 73-81)
-    - Student B: Slow (lines 83-93)
-    - Student C: Fast (lines 95-105)
-    - Student D: NumberedListDisplay (lines 107-116)
+* Each student focuses their attention on a single action. Re-read the code for that action. Use Find to locate the starting point for each Student.
+    - Student A: Average 
+    - Student B: Slow 
+    - Student C: Fast 
+    - Student D: NumberedListDisplay 
 
 DISCUSS:
 * How does your function work?
@@ -69,7 +69,8 @@ MODIFY:
         totalMilesOutput:SetDescription("" + totalMiles)
         newMileInput:SetText("")
     end
-    //LOOK AT THE NEXT 9 LINES OF CODE (SHOULD BE LINES 73-81)
+    
+    //  Student A: LOOK AT THE NEXT 9 LINES OF CODE
     action Average
         integer total = 0
         integer i = 0
@@ -79,7 +80,7 @@ MODIFY:
         end
         average = total / mileTimes:GetSize()
     end
-    //LOOK AT THE NEXT 11 LINES OF CODE (SHOULD BE LINES 83-93)
+    // Student B: LOOK AT THE NEXT 11 LINES OF CODE 
     action Slow
         integer temp = mileTimes:Get(0)
         integer i = 0
@@ -91,7 +92,7 @@ MODIFY:
         end
         slowest = temp
     end
-    //LOOK AT THE NEXT 11 LINES OF CODE (SHOULD BE LINES 95-105)
+    // Student C: LOOK AT THE NEXT 11 LINES OF CODE 
     action Fast
         integer temp = mileTimes:Get(0)
         integer i = 0
@@ -103,7 +104,7 @@ MODIFY:
         end
         fastest = temp
     end
-    //LOOK AT THE NEXT 10 LINES OF CODE (LINES 107-116)
+    // Student D: LOOK AT THE NEXT 10 LINES OF CODE 
     action NumberedListDisplay
         text temp = ""
         integer i = 0
@@ -118,6 +119,10 @@ MODIFY:
     action Start
         Page homePage
         SetBackgroundColor(NewColor(0.16, 0.16, 0.16))
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
 
         Label title = CreateLabel()
         title:SetName("Title")

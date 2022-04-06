@@ -36,10 +36,11 @@ class Main is Application
         lowLabel:SetDescription(lowLabel:GetText())
 
         conditionLabel:SetText(filteredDescriptions:Get(index))
-        conditionLabel:SetDescription(conditionLabel:GetDescription())
+        conditionLabel:SetDescription(filteredDescriptions:Get(index))
 
         SwapImage(conditionIcon, filteredIcons:Get(index))
         conditionIcon:SetDescription(filteredConditions:Get(index))
+    
     end
 
     action Start
@@ -51,6 +52,10 @@ class Main is Application
         Array<text> icons = GetTextColumn(data, "Icon")
         Array<number> highs = GetNumberColumn(data, "High Temperature")
         Array<number> lows = GetNumberColumn(data, "Low Temperature")
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
 
         integer i = 0
         repeat while i < cities:GetSize()
@@ -180,7 +185,7 @@ class Main is Application
         page:Add(background4)
 
         conditionIcon = CreateIcon("Sunny.png")
-        conditionIcon:SetName("Condition")
+        conditionIcon:SetName("Condition Icon")
         conditionIcon:SetPixelX(175)
         conditionIcon:SetPixelY(100)
         conditionIcon:SetPixelWidth(200)
@@ -200,8 +205,8 @@ class Main is Application
         conditionLabel:SetPixelX(40)
         conditionLabel:SetPixelY(55)
         conditionLabel:SetMaximumWidth(320)
-        conditionLabel:SetName("Condition")
-        conditionLabel:SetText("CONDITION")
+        conditionLabel:SetName("Condition Text")
+        conditionLabel:SetText("A text description will appear here")
         page:Add(conditionLabel)
 
 

@@ -6,7 +6,7 @@ This program traverses a list of prices to find the minimum price.
 Add code to traverse the list to find the maximum price.
 */
 
-// Creating and assigning a list of prices
+// The following code is for creating and assigning a list of prices
 Array<number> prices
 prices:Add(0.70)
 prices:Add(1.50)
@@ -16,11 +16,11 @@ prices:Add(0.50)
 prices:Add(3.25)
 prices:Add(0.75)
 
-// Setting up values for traversal
+// The next 2 lines are for setting up values for traversal
 number minPrice = prices:Get(0)
 number price = 0
 
-// Traversing list to find minimum value
+// The following code is for traversing list to find minimum value
 integer i = 0
 repeat while i < prices:GetSize()
     price = prices:Get(i)
@@ -32,10 +32,10 @@ end
 
 output "The minimum price is $" + minPrice
 
-// Setting up variables
+// The next line is for setting up variables
 number maxPrice = prices:Get(0)
 
-// Traver the list to find the maximum value
+// The following code will be for traversing the list to find the maximum value
 i = 0
 repeat while i < prices:GetSize()
     //YOUR CODE GOES HERE Add code here

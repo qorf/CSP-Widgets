@@ -15,7 +15,7 @@ Darien is in grade 10
 Elly is in grade 9
 */
 
-// Creating and assigning lists
+// The code below is for creating and assigning  2 lists. One for fruits and one for prices.
 Array<text> fruits
 fruits:Add("apples")
 fruits:Add("bananas")
@@ -30,7 +30,7 @@ prices:Add(1.29)
 prices:Add(1.09)
 prices:Add(0.89)
 
-// Traversing both lists to print the price of each fruit
+// The code below is for traversing both lists to print the price of each fruit
 text fruit = ""
 number price = 0
 
@@ -42,7 +42,7 @@ repeat while i < fruits:GetSize()
     i = i + 1
 end
 
-// Creating and assigning lists
+// The code below is for creating and assigning  another 2 lists.
 Array<text> students
 students:Add("Angelo")
 students:Add("Emilia")

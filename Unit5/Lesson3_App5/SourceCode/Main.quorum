@@ -52,6 +52,11 @@ This app should let the user scroll through their classes, but the left button i
     end
 
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         classes:Add("Biology")
         classes:Add("Algebra")
         classes:Add("Social Studies")

@@ -10,10 +10,9 @@ By combining the iterator variable "i" with strings (for example, "Dice " + i in
 program below) you can change the properties of many screen elements all at once.
 
 DO THIS:
-This program is supposed to roll 220 dice but it has several things that need to be improved.
-* Make it roll all 20 dice
+This program is supposed to roll 10 dice but it has several things that need to be improved.
+* Make it roll all 10 dice
 * Add code so that it calculates the number of even rolls
-* Update the code to make even rolls a different color than the odd rolls
 
 */
 
@@ -28,11 +27,11 @@ This program is supposed to roll 220 dice but it has several things that need to
     action ButtonActivated(Button button)
         integer odds = 0
         integer i = 0
-        repeat while i < 10
+        repeat while i < 2
             integer roll = RandomNumber(1, 6)
             Label label = page:GetLabel("Dice " + i)
             label:SetText("" + roll)
-            label:SetDescription(label:GetText())
+            label:SetDescription(" is a " + label:GetText())
 
             if roll = 1 or roll = 3 or roll = 5
                 odds = odds + 1
@@ -46,6 +45,11 @@ This program is supposed to roll 220 dice but it has several things that need to
     end
 
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(1, 1, 1))
+        SetFocusHighlightThickness(4)
+
         SetBackgroundColor(NewColor(0.49, 0.42, 0.65))
         Color darkPurple = NewColor(0.39, 0.35, 0.51)
 
@@ -68,7 +72,7 @@ This program is supposed to roll 220 dice but it has several things that need to
         integer i = 0
         integer x = 15
         integer y = 463
-        repeat while i < 20
+        repeat while i < 2
             Icon rectangle = CreateRectangle(darkPurple)
             rectangle:SetFocusable(false)
             rectangle:SetPixelWidth(62)
@@ -90,7 +94,10 @@ This program is supposed to roll 220 dice but it has several things that need to
             i = i + 1
 
             /*
-            The "mod" command divides the first integer by the second integer
+            The code below this comment uses the modulus operation. The "mod" operator 
+            takes two integers, divides them, and then returns the remainder. 
+            For example 7 mod 4 is 3 because when we divide 7 by 4 the remainder is 3.
+            The "mod" operation divides the first integer by the second integer
             and checks the remainder. If the remainder is 0, then "i" is a 
             multiple of 5. In this case, that means we just finished a row of 5
             squares, so we set the "x" and "y" variables to start puttings
@@ -102,7 +109,6 @@ This program is supposed to roll 220 dice but it has several things that need to
             end
         end
 
-        //YOUR CODE GOES HERE 
         oddsOutput = CreateLabel()
         oddsOutput:SetColor(paleGreen)
         oddsOutput:SetFontSize(40)

@@ -15,7 +15,7 @@ favoritePets:Add("guinea pig")
 favoritePets:Add("iguana")
 output "Here's my list of favorite pets"
 
-// Printing and numbering every element in pets list
+// The next 7 lines of code are for printing and numbering every element in pets list
 text pet = ""
 integer i = 0
 repeat while i < favoritePets:GetSize()

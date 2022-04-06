@@ -81,6 +81,10 @@ right button when they're already at the end of the list.
 
         SetBackgroundColor(NewColor(1, 0.86, 0.82))
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Icon banner = CreateRectangle(NewColor(1, 0.92, 0.90))
         banner:SetFocusable(false)
         banner:SetPixelWidth(400)

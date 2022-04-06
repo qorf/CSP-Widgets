@@ -14,17 +14,18 @@ get only the states that have been added to the United States since the year 190
 */
 
     action Main
+        // The next two lines of code create a dataframe variable and then load that dataframe with data from the US States  csv file
         DataFrame data
         data:Load("Data/US States.csv")
 
-        // Create and assign lists of states and admission years
+        // The next 2 lines create and assign lists of states and admission years
         Array<text> stateList = GetTextColumn(data, "State Name")
         Array<integer> yearList = GetIntegerColumn(data, "Admission Year")
 
-        // List of states with admission year after 1900
+        // The next line creates an empty (for now) list of states with admission year after 1900
         Array<text> since1900List
 
-        // Filtering the table
+        // The following code is for traversing the states list and adding any states with year larger than 1900 to the filtered list 
         text state = ""
         integer year = 0
         integer i = 0
@@ -40,19 +41,20 @@ get only the states that have been added to the United States since the year 190
         output "States added since 1900:"
         output TextArrayToText(since1900List)
 
-        // Create and assign list of populations
+        // The next line creates and assign list of populations
         Array<integer> populationList = GetIntegerColumn(data, "Population")
 
-        // List of states with population less than one million
+        // The next line creates an empty list of states with population less than one million
         Array<text> smallPopulationList
 
+        // The following code will be for iterating and filtering the states list
         integer population = 0
         i = 0
         repeat while i < stateList:GetSize()
             state = stateList:Get(i)
             population = populationList:Get(i)
 
-            //YOUR CODE GOES HERE Add code here
+            //YOUR CODE GOES HERE to filter the states with population less than one million
 
             i = i + 1
         end

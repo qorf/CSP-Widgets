@@ -21,7 +21,7 @@ This app has users add their grades and then will calculate their average grade.
     Array<integer> gradesList
 
 
-    // Extra variables for elements on the screen
+    // The next 5 lines are extra variables for elements on the screen
     TextBox gradeInput = undefined
     Button addGrade = undefined
     Label gradesLabel = undefined
@@ -35,7 +35,7 @@ This app has users add their grades and then will calculate their average grade.
             UpdateScreen()
         elseif button = averageGrade
             //YOUR CODE GOES HERE Add code here to make the app show the average grade on the
-            // "averageOutput" label when the user clicks the average grade button
+            // "averageOutput" label when the user selects the average grade button
 
 
 
@@ -54,6 +54,10 @@ This app has users add their grades and then will calculate their average grade.
         Color lightGreen = NewColor(0.89, 0.94, 0.67)
         Color watermelonPink = NewColor(1, 0.53, 0.38)
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
 
         Icon banner = CreateRectangle(darkGreen)
@@ -69,7 +73,7 @@ This app has users add their grades and then will calculate their average grade.
         title:SetText("Grades.ly")
         title:SetColor(lightGreen)
         title:SetFontSize(50)
-        title:SetPixelX(15)
+        title:SetPixelX(100)
         title:SetPixelY(550)
         page:Add(title)
 
