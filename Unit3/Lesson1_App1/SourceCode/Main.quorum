@@ -333,6 +333,7 @@ class Main is Application
 
             Icon finishedTimer = CreateIcon("Finished Timer.jpg")
             finishedTimer:SetName("Finished Timer")
+            finishedTimer:SetDescription("The timer finished and you are all done! Go back to the homepage if you desire to play the app again.")
             finishedTimer:SetPixelWidth(78)
             finishedTimer:SetPixelHeight(121)
             finishedTimer:SetPixelX(280)

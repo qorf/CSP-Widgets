@@ -71,6 +71,7 @@ class Main is Application
 
       // The next line creates an Icon that uses the Cookie.png from the Images folder.
         Icon cookie = CreateIcon("Cookie.png")
+        cookie:SetDescription("You are currently on the icon of the cookie. Set the name and description of the cookie icon.")
 
         // This icon doesn't have a name yet. Using the same action you did with the directions label, give it a meaningful name on the line below.
 

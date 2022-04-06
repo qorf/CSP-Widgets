@@ -23,6 +23,9 @@ class Main is Application
         Page homePage
         homePage:SetName("Home Page")
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
         /*
         The lines following this comment create a button and set its properties (name, background color, pixel position, max width, etc.)
         This code makes House.png into a button using the CreateButton() action. You can use your own custom image

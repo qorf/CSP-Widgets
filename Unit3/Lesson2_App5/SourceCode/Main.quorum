@@ -18,6 +18,10 @@ class Main is Application
         Page homePage
         homePage:SetName("Home Page")
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
       // The next 5 lines create an Icon and set its properties (name, description, set pixel location, etc.)
         Icon rectangle = CreateRectangle(NewColor(1.0, 0.92, 0.9))
         rectangle:SetPixelWidth(400)

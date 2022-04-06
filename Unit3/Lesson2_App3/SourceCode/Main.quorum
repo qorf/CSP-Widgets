@@ -54,6 +54,12 @@ class Main is Application
         /*
         This code sets the color of the background.
         */
+
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         SetBackgroundColor(White())
 
        // The next 6 lines create an Icon and set its properties (name, description, set pixel location, etc.)
@@ -171,6 +177,8 @@ class Main is Application
         button2:SetBackgroundColor(Orange())
         button2:SetFontColor(Black())
         button2:SetBorderColor(Black())
+
+
 
         homePage:Add(button2)
 

@@ -16,6 +16,10 @@ class Main is Application
 
         Page homePage
         homePage:SetName("Home Page")
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
         
         Button button = CreateButton()
         button:SetName("I can have a name")
