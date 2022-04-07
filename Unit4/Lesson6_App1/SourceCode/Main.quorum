@@ -51,6 +51,10 @@ class Main is Application
         banner:SetPixelHeight(70)
         homePage:Add(banner)
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Label title = CreateLabel()
         title:SetName("Title")
         title:SetText("Lemon Squeeze")
@@ -77,6 +81,7 @@ class Main is Application
         instructions:SetText("Welcome Lemon Lovers!
 Collect lemons!
 Avoid limes!")
+        instructions:SetDescription("Select the lemons and avoid selecting the limes on the screen!")
         instructions:SetFontSize(20)
         homePage:Add(instructions)        
 
@@ -188,7 +193,8 @@ Avoid limes!")
             if lives < 0
                 instructions:SetText("You collected " + score + " lemons!
 Play again?")
-                ShowPage(homePage)
+                instructions:SetDescription("You lost! Do you want to play again?")
+               // ShowPage(homePage)
             end
         end
 
