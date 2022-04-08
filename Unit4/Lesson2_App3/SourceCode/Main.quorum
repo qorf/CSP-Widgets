@@ -16,6 +16,10 @@ class Main is Application
     TextBox nameField = undefined
 
     action Start
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4) 
+
         Page homePage
         homePage:SetName("Home Page")
 

@@ -13,6 +13,7 @@ class Main is Application
 
     action Start
 
+        // The next three lines allow a box to surround the item that is currently in focus.
         ShowFocusHighlight(true)
         SetFocusHighlightColor(NewColor(0, 0, 1))
         SetFocusHighlightThickness(4)
@@ -22,7 +23,7 @@ class Main is Application
 
         Label directions = CreateLabel()
         directions:SetName("Directions")
-        directions:SetText("This pet rock needs some love. Hover over the rock and click the rock or press the space bar to pet him to make him happy! If you pet him enough times, he might evolve into a very special rock. Use the buttons at the bottom to upgrade your petting power so that each pet is worth more!")               
+        directions:SetText("This pet rock needs some love. Select the rock to pet them to make them happy! If you pet them enough times, they might evolve! You can purchase upgrades so that each pet is worth more!")               
         directions:SetPixelX(25)
         directions:SetPixelY(560)
         directions:SetMaximumWidth(350)
@@ -32,7 +33,7 @@ class Main is Application
 
         Button level1 = CreateButton("Pet Rock Level 1.jpg")
         level1:SetName("Pet Rock Level 1: Rock-a-Bye")
-        level1:SetDescription("The rock currently looks normal. You are now hovering over the rock and can pet him to make him happy! You can check how many times you have pet him by checking the pet counter below.")
+        level1:SetDescription("The rock currently looks normal. Select them to make them happy! You can check how many times you have pet them by checking the pet counter below.")
         level1:SetPixelWidth(132)
         level1:SetPixelHeight(100)
         level1:SetPixelX(134)
@@ -41,7 +42,7 @@ class Main is Application
 
         Button level2 = CreateButton("Pet Rock Level 2.jpg")
         level2:SetName("Pet Rock Level 2: Rock-a-Bunny")
-        level2:SetDescription("The rock received enough love to level up! The rock now has bunny ears and is happy. Pet the rock more times to make him even happier!")
+        level2:SetDescription("The rock received enough love to level up! The rock now has bunny ears and is happy. Pet the rock more times to make them even happier!")
         level2:SetPixelWidth(132)
         level2:SetPixelHeight(174)
         level2:SetPixelX(134)
@@ -82,7 +83,7 @@ class Main is Application
         Label clickPowerLabel = CreateLabel()
         clickPowerLabel:SetName("Pet Power")
         clickPowerLabel:SetText("+1")
-        clickPowerLabel:SetDescription("Each click or select on the space bar is currently worth +1 pet")
+        clickPowerLabel:SetDescription("Each select is currently worth 1 pet")
         clickPowerLabel:SetFontSize(20)
         clickPowerLabel:SetColor(NewColor(0, 0.58, 0.79))
         clickPowerLabel:SetPixelX(320)
@@ -108,7 +109,7 @@ class Main is Application
 
         Button upgrade1 = CreateButton()
         upgrade1:SetName("+2 (cost = 5 pets)")
-        upgrade1:SetDescription("You must have 5 pets to buy this upgrade. Select this button to make each 1 click or select count as +2 pets.")
+        upgrade1:SetDescription("Select this button to make every pet worth 2. You must already have 5 pets to buy this upgrade.")
         upgrade1:SetFontSize(16)
         upgrade1:SetPixelX(25)
         upgrade1:SetPixelY(20)
@@ -118,7 +119,7 @@ class Main is Application
 
         Button upgrade2 = CreateButton()
         upgrade2:SetName("+20 (cost = 20 pets)")
-        upgrade2:SetDescription("You must have 20 pets to buy this upgrade. Select this button to make each 1 click or select count as +20 pets.")
+        upgrade2:SetDescription("Select this button to make each pet worth 20!. You must already have 20 pets to buy this upgrade.")
         upgrade2:SetFontSize(16)
         upgrade2:SetPixelX(200)
         upgrade2:SetPixelY(20)
@@ -185,7 +186,7 @@ EVOLUTION COMPLETE")
 
             Label powerLabel = page:GetLabel("Pet Power")
             powerLabel:SetText("+2")
-            powerLabel:SetDescription("Now each click or select will be worth +2")
+            powerLabel:SetDescription("Now each pet will be worth 2")
             powerLabel:Focus()
 
             button:Hide()
@@ -205,7 +206,7 @@ EVOLUTION COMPLETE")
 
             Label powerLabel = page:GetLabel("Pet Power")
             powerLabel:SetText("+20")
-            powerLabel:SetDescription("Now each click or select will be worth +20")
+            powerLabel:SetDescription("Now each pet will be worth 20")
             powerLabel:Focus()
 
             Button upgrade1 = page:GetButton("+2 (cost = 5 pets)")

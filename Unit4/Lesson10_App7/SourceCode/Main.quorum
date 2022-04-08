@@ -69,6 +69,11 @@ DO THIS:
 
     // The following code is the Start action code for this app.
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
         page:SetName("Main Page")
 

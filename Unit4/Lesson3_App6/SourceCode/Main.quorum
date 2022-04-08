@@ -25,6 +25,11 @@ class Main is Application
     Label dollarsLabel = undefined
 
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page homePage   
         homePage:SetName("Home")
         

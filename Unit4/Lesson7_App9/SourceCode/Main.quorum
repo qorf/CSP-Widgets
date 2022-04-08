@@ -42,6 +42,11 @@ class Main is Application
     Icon noCat = undefined
 
     action Start
+        // The next three lines allow a box to surround the item that is currently in focus.
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
 
         Label ageLabel = CreateLabel()

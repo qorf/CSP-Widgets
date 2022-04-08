@@ -24,6 +24,11 @@ class Main is Application
     TextBox reminderInput = undefined
 
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
         page:SetName("Main Screen")
 
@@ -65,13 +70,13 @@ class Main is Application
         page:Add(reminderInput)
 
         Button remindButton = CreateButton()
-        remindButton:SetName("Remind!")
+        remindButton:SetName("Add New Reminder!")
         remindButton:SetBackgroundColor(NewColor(0.44, 0.55, 0.69))
         remindButton:SetPixelWidth(250)
-        remindButton:SetPixelHeight(100)
+        remindButton:SetPixelHeight(75)
         remindButton:SetPixelX(75)
         remindButton:SetPixelY(100)
-        remindButton:SetFontSize(60)
+        remindButton:SetFontSize(25)
         remindButton:SetFontColor(White())
         page:Add(remindButton)
 

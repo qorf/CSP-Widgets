@@ -17,13 +17,18 @@ DO THIS:
     Label clickLabel = undefined
 
     action Start
+        // The next three lines allow a box to surround the item that is currently in focus.
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
     
         star = CreateButton("Star Icon.png")
         star:SetName("Star")
-        star:SetPixelWidth(400)
+        star:SetPixelWidth(300)
         star:SetPixelHeight(400)
-        star:SetPixelX(0)
+        star:SetPixelX(50)
         star:SetPixelY(150)
         star:SetIconColor(Black())
         page:Add(star)
@@ -44,8 +49,9 @@ DO THIS:
         clickLabel:SetText("Number of clicks: " + clicks)
         clickLabel:SetDescription(clickLabel:GetText())
         //YOUR CODE GOES HERE For a hint look at the SetDescription() action in the line above
-        if ( )
+        if (clicks =10 )
             star:SetIconColor(Red())
+            star:SetDescription("The star has changed to red")
             PlaySound("vibrant_game_positive_item_2.ogg")
         end
     end

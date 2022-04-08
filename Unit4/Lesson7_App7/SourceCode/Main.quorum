@@ -18,13 +18,18 @@ DO THIS:
     Label clickLabel = undefined
 
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
     
         star = CreateButton("Star Icon.png")
         star:SetName("Star")
-        star:SetPixelWidth(400)
+        star:SetPixelWidth(300)
         star:SetPixelHeight(400)
-        star:SetPixelX(0)
+        star:SetPixelX(50)
         star:SetPixelY(150)
         star:SetIconColor(Black())
         page:Add(star)
@@ -47,24 +52,31 @@ DO THIS:
 
         if clicks < 5
             star:SetIconColor(Red())
+            star:SetDescription("The star is now red")
             PlaySound("vibrant_game_positive_item_2.ogg")
         elseif clicks < 15
             star:SetIconColor(Yellow())
+            star:SetDescription("The star is now yellow")
             PlaySound("collect_item_bling_1.ogg")
         elseif clicks < 10
             star:SetIconColor(Orange())
+            star:SetDescription("The star is now orange")
             PlaySound("coin_2.ogg")
         elseif clicks < 20
             star:SetIconColor(Green())
+            star:SetDescription("The star is now green")
             PlaySound("arcade_game_jump_1.ogg")
         elseif clicks < 25
             star:SetIconColor(Blue())
+            star:SetDescription("The star is now blue")
             PlaySound("hollow_bell_notification.ogg")
         elseif clicks < 30
             star:SetIconColor(Purple())
+            star:SetDescription("The star is now purple")
             PlaySound("lighthearted_bonus_objective_1.ogg")
         else
             star:SetIconColor(Pink())
+            star:SetDescription("The star is now pink")
             PlaySound("hop.ogg")
         end
     end

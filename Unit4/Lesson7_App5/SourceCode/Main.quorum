@@ -9,7 +9,7 @@ Add code to this project so that the star changes color based on the number of c
 DO THIS:
 1. Run the code to see how it works.
 2. Change the if statement into an if-else statement by adding the "else" block between "if" and "end".
-3. Add code in the else section to change the star's color using "Orange()", and play the sound "hop.ogg"           
+3. Add code in the else section to change the star's color using "Orange()", set the stars description to orange, and play the sound "hop.ogg"           
 */    
 
     // The next 3 lines create variables and initialize the clicks variable to 0
@@ -18,13 +18,18 @@ DO THIS:
     Label clickLabel = undefined
 
     action Start
+        // The next three lines allow a box to surround the item that is currently in focus.
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
     
         star = CreateButton("Star Icon.png")
         star:SetName("Star")
-        star:SetPixelWidth(400)
+        star:SetPixelWidth(300)
         star:SetPixelHeight(400)
-        star:SetPixelX(0)
+        star:SetPixelX(50)
         star:SetPixelY(150)
         star:SetIconColor(Black())
         page:Add(star)
@@ -48,6 +53,7 @@ DO THIS:
         //YOUR CODE GOES HERE
         if clicks < 5
             star:SetIconColor(Red())
+            star:SetDescription("The star has changed color to red")
             PlaySound("vibrant_game_positive_item_2.ogg")
         end
     end

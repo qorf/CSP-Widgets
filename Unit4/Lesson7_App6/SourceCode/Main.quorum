@@ -7,8 +7,9 @@ class Main is Application
 DO THIS:
 1. Run the code to see how it works.
 2. Add code to the if-else-if command to make the star change colors
-    using the commands indicated in the table below.           
-3. Whenever the color changes, also play a sound of your choice.
+    using the commands indicated in the table below.   
+3. Set the description of the star icon so that it reports that the color has changed.        
+4. Whenever the color changes, also play a sound of your choice. Sound files can be found in the Sounds folder and end with the .ogg extension.
 
 Clicks & Color:
 0: Black()
@@ -27,13 +28,18 @@ Clicks & Color:
     Label clickLabel = undefined
 
     action Start
+        
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
     
         star = CreateButton("Star Icon.png")
         star:SetName("Star")
-        star:SetPixelWidth(400)
+        star:SetPixelWidth(300)
         star:SetPixelHeight(400)
-        star:SetPixelX(0)
+        star:SetPixelX(50)
         star:SetPixelY(150)
         star:SetIconColor(Black())
         page:Add(star)

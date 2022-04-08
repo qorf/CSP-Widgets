@@ -46,6 +46,11 @@ it doesn't seem to be working.
 
     // The following code is the start action for this app
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
         page:SetName("Home")
 

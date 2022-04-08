@@ -87,6 +87,10 @@ class Main is Application
     end
 
     action Start
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page homePage
         homePage:SetName("Home")
 
@@ -108,6 +112,7 @@ class Main is Application
         homePage:Add(nameLabel)
 
         nameInput = CreateTextBox()
+        nameInput:SetName("Name")
         nameInput:SetFontSize(20)
         nameInput:SetBackgroundColor(lightGray)
         nameInput:SetPixelX(90)
@@ -126,6 +131,7 @@ class Main is Application
 
         timeInput = CreateTextBox()
         timeInput:SetFontSize(20)
+        timeInput:SetName("Time, 8 to 5")
         timeInput:SetBackgroundColor(lightGray)
         timeInput:SetText("8")
         timeInput:SetPixelX(290)
@@ -202,7 +208,8 @@ class Main is Application
         homePage:Add(resultBackground)
 
         resultLabel = CreateLabel()
-        resultLabel:SetText("")
+        resultLabel:SetText("Activities Appear Here")
+        resultLabel:SetDescription("Activities Appear Here")
         resultLabel:SetFontSize(26)
         resultLabel:SetFontColor(White())
         resultLabel:SetMaximumWidth(320)

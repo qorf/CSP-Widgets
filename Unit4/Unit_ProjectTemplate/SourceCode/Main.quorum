@@ -19,6 +19,11 @@ class Main is Application
     This is where we put all of our code to set up our pages and create the user interface.
     */
     action Start
+        // The next three lines allow a box to surround the item that is currently in focus.
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         // The next line calls the action SetScreenSize. It sets how large the screen is in pixels. The first number represents the width, and the second represents the height.
         SetScreenSize(400, 600)
 

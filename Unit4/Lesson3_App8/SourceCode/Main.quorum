@@ -16,6 +16,10 @@ DO THIS:
     Label counter = undefined
 
     action Start
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
         page:SetName("Home")
 

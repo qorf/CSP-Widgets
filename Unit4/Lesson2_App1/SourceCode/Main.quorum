@@ -10,6 +10,11 @@ class Main is Application
     Label fahrenheit
 
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(1, 1, 1))
+        SetFocusHighlightThickness(4)
+
         Page thermostat
         thermostat:SetName("Thermostat")
 

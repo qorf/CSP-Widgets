@@ -39,6 +39,12 @@ class Main is Application
     Label scoreLabel = undefined
 
     action Start
+        // The next three lines allow a box to surround the item that is currently in focus. 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
+        // This next line sets the background color for the app.
         SetBackgroundColor(NewColor(0.59, 0.76, 0.34))
 
         // The following code adds the elements for the home page.
