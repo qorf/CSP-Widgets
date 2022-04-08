@@ -135,6 +135,13 @@ Play again?")
     end
 
     action Start
+
+        // The next three lines allow a box to surround the item that is currently in focus.
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
+        // The next line sets the background color
         SetBackgroundColor(NewColor(0.59, 0.76, 0.34))
 
         // The following code adds the elements for the home page.
