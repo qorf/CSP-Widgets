@@ -22,6 +22,8 @@ class Main is Application
     // variable set up 
     Button newLevelButton = undefined
     Button resetButton = undefined
+    Icon topBanner = undefined
+    Label title = undefined
     Label distanceText
     Label solutionPath
     integer totalDistance = 0
@@ -32,7 +34,7 @@ class Main is Application
     Page page
     Node startNode
     Grid grid
-    
+
     integer i = 0
     integer j = 200
     integer iterator = 8
@@ -50,7 +52,8 @@ class Main is Application
               startNode:SetSizeAndColor(DarkGray())
               solution:GetFromEnd():SetSizeAndColor(DarkGray())
               node:SetIsAddedToSolution(true)
-              node:SetSizeAndColor(StartGreen())  
+              node:SetSizeAndColor(StartGreen())
+              node:SetLabelText("Start")  
               solution:Add(node)
               solutionPath:SetText(Print())
               Recalculate(nodeList, node:GetPixelX(), node:GetPixelY())
@@ -67,89 +70,27 @@ class Main is Application
                 distanceText:SetText("Total Distance:         " + "0")
                 solutionPath:SetText(Print()) 
             elseif button:GetDescription() = "New Level"
-                solution:Empty()
-                page:Remove(startNode)
-                RemoveAllNodes(nodeList, page)
-                grid:ResetGrid(false)
-                Recalculate(nodeList, startNode:GetPixelX(), startNode:GetPixelY()) 
-                totalDistance = 0 
-                distanceText:SetText("Total Distance:         " + "0")
-                startNode = CreateNode(true,0,0)
-                SetNodeInGrid(grid, startNode)
-                solution:Add(startNode)
-                solutionPath:SetText(Print())
-                page:Add(startNode)
-                repeat numberOfNodes times
-                    Node node = CreateNode(false, startNode:GetPixelX(), startNode:GetPixelY())
-                    SetNodeInGrid(grid, node)
-                    node:SetLabelDistanceDescription(node:CalculateDistanceFromStart(startNode:GetPixelX(), startNode:GetPixelY()))
-                    nodeList:Add(node)
-                    page:Add(node)
-                end
+                page = ResetPage(page)
+
+                grid:Initialize(maximumX, minimumX,maximumY,minimumY,nodeSize)
+                grid:Fill(false)
+                
+                startNode = CreateNode(true,0,0) 
+
+                page = CreateLevel(page, startNode, grid)
+
+
             end
         end
     end
 
-    action MousedOver(Control item, MouseEvent event)
-        if item is Node
-            Node node = cast(Node, item)
-            node:ToggleLabel(false)
-        end
-    end
-
-    action MousedOut(Control item, MouseEvent event)
-        if item is Node
-            Node node = cast(Node, item)
-            node:ToggleLabel(true)
-        end
-    end
-
-    action Print() returns text
-       integer index = 0
-       text solutionList = ""
-        repeat while index < solution:GetSize()
-            if index = solution:GetSize() -1
-                solutionList = solutionList + cast(text,solution:Get(index):GetDistance())
-            else
-                solutionList = solutionList +  cast(text,solution:Get(index):GetDistance()) + ", "
-            end
-            index = index + 1
-        end
-        return solutionList
-    end
-
-    action PrintPixel(Node node, Node startNode)
-            output startNode:GetPixelX() + ", " + startNode:GetPixelY()
-            output node:GetPixelX() + ", " + node:GetPixelY()
-            output "-----------------------------------------------------"
-    end
-
-    action ResetNodelist() 
-        integer i = 0 
-        repeat while i < nodeList:GetSize()
-            nodeList:Get(i):SetIsAddedToSolution(false)
-            nodeList:Get(i):SetSizeAndColor(Banana())
-            i = i + 1
-        end
-    end
-
-    action Recalculate(Array<Node> list, number startX, number startY)
-        integer index = 0
-        repeat while index < list:GetSize()
-            if not list:Get(index):GetIsAddedToSolution()
-                list:Get(index):SetLabelDistanceDescription(list:Get(index):CalculateDistanceFromStart(startX, startY))
-            end
-            index = index + 1
-        end 
-    end
-
-    action Start
+    action CreateLevel(Page page, Node startNode, Grid grid) returns Page
 
         ShowFocusHighlight(true)
         SetFocusHighlightColor(NewColor(0, 0, 1))
         SetFocusHighlightThickness(4)
 
-        Icon topBanner = CreateRectangle(NewColor(0.65, 0.24, 0.24))
+        topBanner = CreateRectangle(NewColor(0.65, 0.24, 0.24))
         topBanner:SetFocusable(false)
         topBanner:SetPixelWidth(400)
         topBanner:SetPixelHeight(40)
@@ -157,7 +98,7 @@ class Main is Application
         topBanner:SetPixelY(560)
         page:Add(topBanner)
 
-        Label title = CreateLabel()
+        title = CreateLabel()
         title:SetName("Title")
         title:SetText("Traveling Salesperson")
         title:SetFontSize(30)
@@ -166,10 +107,6 @@ class Main is Application
         title:SetPixelY(575)
         page:Add(title)
 
-        grid:Initialize(maximumX, minimumX,maximumY,minimumY,nodeSize)
-        grid:Fill(false)
-        
-        startNode = CreateNode(true,0,0)
         SetNodeInGrid(grid, startNode)
         solution:Add(startNode)
         startNode:SetIsAddedToSolution(true)
@@ -227,13 +164,94 @@ class Main is Application
         resetButton:SetBorderColor(NewColor(0.67, 0.81, 0.87))
         page:Add(resetButton)
 
-        Icon bottomBanner = CreateRectangle(NewColor(0.78,0.79,0.8))
-        bottomBanner:SetPixelWidth(400)
-        bottomBanner:SetPixelHeight(80)
-        bottomBanner:SetPixelX(0)
-        bottomBanner:SetPixelY(0)
-        bottomBanner:SetFocusable(false)
-        //page:Add(bottomBanner)
+        return page
+    end
+
+    action MousedOver(Control item, MouseEvent event)
+        if item is Node
+            Node node = cast(Node, item)
+            node:ToggleLabel(false)
+        end
+    end
+
+    action MousedOut(Control item, MouseEvent event)
+        if item is Node
+            Node node = cast(Node, item)
+            node:ToggleLabel(true)
+        end
+    end
+
+    action Print() returns text
+       integer index = 0
+       text solutionList = ""
+        repeat while index < solution:GetSize()
+            if index = solution:GetSize() -1
+                solutionList = solutionList + cast(text,solution:Get(index):GetDistance())
+            else
+                solutionList = solutionList +  cast(text,solution:Get(index):GetDistance()) + ", "
+            end
+            index = index + 1
+        end
+        return solutionList
+    end
+
+    action PrintPixel(Node node, Node startNode)
+            output startNode:GetPixelX() + ", " + startNode:GetPixelY()
+            output node:GetPixelX() + ", " + node:GetPixelY()
+            output "-----------------------------------------------------"
+    end
+
+    action ResetNodelist() 
+        integer i = 0 
+        repeat while i < nodeList:GetSize()
+            nodeList:Get(i):SetIsAddedToSolution(false)
+            nodeList:Get(i):SetSizeAndColor(Banana())
+            i = i + 1
+        end
+    end
+
+    action ResetPage(Page page) returns Page
+        page:Remove(topBanner)
+        page:Remove(title)
+        page:Remove(distanceText)
+        page:Remove(solutionPath)
+        page:Remove(newLevelButton)
+        page:Remove(resetButton)
+        page:Remove(startNode)
+
+        integer counter = 0
+        repeat numberOfNodes times
+            page:Remove(nodeList:Get(counter))
+            counter = counter + 1
+        end
+
+        nodeList:Empty()
+        solution:Empty()
+        grid:Empty()
+
+        ShowFocusHighlight(false)
+
+        return page
+    end
+
+    action Recalculate(Array<Node> list, number startX, number startY)
+        integer index = 0
+        repeat while index < list:GetSize()
+            if not list:Get(index):GetIsAddedToSolution()
+                list:Get(index):SetLabelDistanceDescription(list:Get(index):CalculateDistanceFromStart(startX, startY))
+            end
+            index = index + 1
+        end 
+    end
+
+    action Start
+
+        grid:Initialize(maximumX, minimumX,maximumY,minimumY,nodeSize)
+        grid:Fill(false)
+        
+        startNode = CreateNode(true,0,0)
+
+        page = CreateLevel(page, startNode, grid)
         
         AddPage(page)
 

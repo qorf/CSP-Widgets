@@ -469,15 +469,14 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
             Node node = cast(Node, event:GetNewFocus())
             node:ToggleLabel(false)
         end
-        
     end
 
     action LostFocus(FocusEvent event)
         if highlight not= undefined and event:GetNewFocus() = undefined
             highlight:Hide()
         end
-        if event:GetNewFocus() is Node
-            Node node = cast(Node, event:GetNewFocus())
+        if event:GetLastFocus() is Node
+            Node node = cast(Node, event:GetLastFocus())
             node:ToggleLabel(true)
         end
     end
