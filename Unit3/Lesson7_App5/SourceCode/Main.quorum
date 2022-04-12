@@ -11,6 +11,10 @@ class Main is Application
         // The next line of code tells the program to play this music and loop it forever.
         PlaySound("vibrant_game_harping_down_forever_loop_1.ogg", true)
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page homePage
         homePage:SetName("Home Page")
 

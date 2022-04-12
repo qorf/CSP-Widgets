@@ -9,6 +9,10 @@ class Main is Application
     action Start
         SetScreenSize(400, 600)
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page
         page:SetName("Main Page")
 

@@ -9,6 +9,10 @@ class Main is Application
         Page mainPage
         mainPage:SetName("Main Page")
         
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Label title = CreateLabel()
         title:SetName("Title")
         title:SetText("Farm Sounds")
@@ -23,6 +27,7 @@ class Main is Application
         speakerIcon:SetPixelX(300)
         speakerIcon:SetPixelY(520)
         speakerIcon:SetColor(Black())
+        speakerIcon:SetDescription("Spearker Icon")
         mainPage:Add(speakerIcon)
 
         Button cowButton = CreateButton("Cow.jpg")

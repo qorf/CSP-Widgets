@@ -19,6 +19,10 @@ class Main is Application
         // Play the background music. It should repeat forever.
         PlaySound("forest_woodland_loop.ogg", true)
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Icon background = CreateIcon("Sky Background.jpg")
         background:SetPixelWidth(960)
         background:SetPixelHeight(600)
