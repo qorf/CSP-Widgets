@@ -656,10 +656,21 @@ class Application is Game, FocusListener, KeyboardListener, MouseListener, Mouse
         return 0 
     end
 
-    action RemoveAllNodes(Array<Node> nodeList, Page page)
-        Iterator<Node> element = nodeList:GetIterator()
-        repeat while element:HasNext()
-            page:Remove(element:Next())
+    action RemoveNode(Node node) returns Node
+        node:SetFocusable(false)
+        DefaultButtonBehavior behavior
+        node:SetBehavior(behavior)
+        node:RemoveMouseMovementListener(me)
+        node:RemoveMouseListener(me)
+        return node
+    end
+
+    action RemoveAllNodes(Array<Node> nodeList, Page page, integer numberOfNodes)
+        integer counter = 0
+        repeat numberOfNodes times
+            nodeList:Get(counter):SetFocusable(false)
+            page:Remove(nodeList:Get(counter))
+            counter = counter + 1
         end
         nodeList:Empty()
     end

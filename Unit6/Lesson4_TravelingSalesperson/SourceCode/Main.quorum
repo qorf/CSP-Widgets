@@ -70,25 +70,20 @@ class Main is Application
                 distanceText:SetText("Total Distance:         " + "0")
                 solutionPath:SetText(Print()) 
             elseif button:GetDescription() = "New Level"
-                page = ResetPage(page)
-
+                ResetPage()   
+                RemovePage(page)
+                totalDistance = 0
+                distanceText:SetText("Total Distance:         " + "0")
                 grid:Initialize(maximumX, minimumX,maximumY,minimumY,nodeSize)
                 grid:Fill(false)
-                
-                startNode = CreateNode(true,0,0) 
-
+                startNode = CreateNode(true,0,0)  
                 page = CreateLevel(page, startNode, grid)
-
-
+                SetFocus(newLevelButton)
             end
         end
     end
 
     action CreateLevel(Page page, Node startNode, Grid grid) returns Page
-
-        ShowFocusHighlight(true)
-        SetFocusHighlightColor(NewColor(0, 0, 1))
-        SetFocusHighlightThickness(4)
 
         topBanner = CreateRectangle(NewColor(0.65, 0.24, 0.24))
         topBanner:SetFocusable(false)
@@ -210,28 +205,26 @@ class Main is Application
         end
     end
 
-    action ResetPage(Page page) returns Page
+    action ResetPage()
+        topBanner:SetFocusable(false)
         page:Remove(topBanner)
+        title:SetFocusable(false)
         page:Remove(title)
+        distanceText:SetFocusable(false)
         page:Remove(distanceText)
+        solutionPath:SetFocusable(false)
         page:Remove(solutionPath)
+        newLevelButton:SetFocusable(false)
         page:Remove(newLevelButton)
+        resetButton:SetFocusable(false)
         page:Remove(resetButton)
+        startNode:SetFocusable(false)
         page:Remove(startNode)
+        
+        RemoveAllNodes(nodeList, page, numberOfNodes)
 
-        integer counter = 0
-        repeat numberOfNodes times
-            page:Remove(nodeList:Get(counter))
-            counter = counter + 1
-        end
-
-        nodeList:Empty()
         solution:Empty()
-        grid:Empty()
-
-        ShowFocusHighlight(false)
-
-        return page
+        grid:ResetGrid(false)
     end
 
     action Recalculate(Array<Node> list, number startX, number startY)
@@ -245,6 +238,10 @@ class Main is Application
     end
 
     action Start
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
 
         grid:Initialize(maximumX, minimumX,maximumY,minimumY,nodeSize)
         grid:Fill(false)
