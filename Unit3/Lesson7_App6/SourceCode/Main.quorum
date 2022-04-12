@@ -11,6 +11,10 @@ class Main is Application
 
         SetBackgroundColor(NewColor(1, 0.86, 0.82))
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Icon topBanner = CreateRectangle(NewColor(1, 0.92, 0.90))
         topBanner:SetFocusable(false)
         topBanner:SetPixelWidth(400)

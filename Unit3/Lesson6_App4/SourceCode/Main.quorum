@@ -12,6 +12,10 @@ class Main is Application
     action Start
         SetBackgroundColor(0.77, 0.88, 0.33)
 
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
+
         Page page1
         page1:SetName("Page 1")
 
@@ -79,6 +83,7 @@ class Main is Application
         cats:SetBackgroundColor(NewColor(1.0, 0.53, 0.38))
         cats:SetBorderColor(NewColor(0.34, 0.55, 0.18))
         page1:Add(cats)
+        
 
         Button dogs = CreateButton()
         dogs:SetName("Dogs!")
@@ -104,7 +109,7 @@ class Main is Application
 
             Label choiceLabel = page:GetLabel("Your choice")
             choiceLabel:SetText("Cats Rule!")
-            choiceLabel:SetDescription("Cats Rule!")
+            choiceLabel:SetDescription("Cats Rule! A picture of a cat standing on top of a fence is now on the screen.")
 
             Icon currentIcon = page:GetIcon("Choice")
 
@@ -129,7 +134,7 @@ class Main is Application
 
             Label choiceLabel = page:GetLabel("Your choice")
             choiceLabel:SetText("Dogs #1!!")
-            choiceLabel:SetDescription("Dogs #1!!")
+            choiceLabel:SetDescription("Dogs #1!! A picture of a small dog standing in front of a lake is now on the screen.")
 
             Icon currentIcon = page:GetIcon("Choice")
 

@@ -14,6 +14,10 @@ class Main is Application
 
         Page homePage
         homePage:SetName("Home Page")
+
+        ShowFocusHighlight(true)
+        SetFocusHighlightColor(NewColor(0, 0, 1))
+        SetFocusHighlightThickness(4)
         
         Button button = CreateButton()
         button:SetName("This is a button!")
@@ -34,7 +38,7 @@ class Main is Application
         button:SetPixelWidth(170)
         button:SetPixelHeight(100)
         button:SetName("Now it's a big button!")
-
+        button:SetDescription("You clicked on the button!")
         output "You clicked the button!"
     end
 end

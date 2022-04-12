@@ -200,7 +200,7 @@ Avoid limes!")
                 instructions:SetText("You collected " + score + " lemons!
 Play again?")
                 instructions:SetDescription("You lost! Do you want to play again?")
-               // ShowPage(homePage)
+                ShowPage(homePage)
             end
         end
 
