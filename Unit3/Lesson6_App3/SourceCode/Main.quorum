@@ -38,7 +38,7 @@ class Main is Application
         button:SetPixelWidth(170)
         button:SetPixelHeight(100)
         button:SetName("Now it's a big button!")
-        button:SetDescription("You clicked on the button!")
+        button:SetDescription("You clicked on the button! If you click the button again, the output will be displayed on the command line.")
         output "You clicked the button!"
     end
 end
