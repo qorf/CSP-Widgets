@@ -55,12 +55,17 @@ class Main is Application
 
             number randomNumber1 = RandomNumber(0, 600)
             number randomNumber2 = RandomNumber(0, 600)
-            smiley:SetPixelX(randomNumber1)
 
+            smiley:SetPixelX(randomNumber1)
             smiley:SetPixelY(randomNumber2)
 
         PlaySound("arcade_game_jump_1.ogg")
-        smiley:SetDescription("A smiley face at " + smiley:GetPixelX() + ", " + smiley:GetPixelY() + ". Mouse over or press any key to move it to a new position!")         
+
+        if randomNumber1 > 240 or randomNumber2 > 430
+            smiley:SetDescription("Out of bounds. Smiley at " + smiley:GetPixelX() + ", " + smiley:GetPixelY() + ". Mouse over or press any key to move it to a new position!")      
+        else
+            smiley:SetDescription("Smiley at " + smiley:GetPixelX() + ", " + smiley:GetPixelY() + ". Mouse over or press any key to move it to a new position!")     
+        end    
     end
 
     action Main
