@@ -5,6 +5,8 @@ use Libraries.Game.Graphics.Label
 use Libraries.Interface.Events.MouseEvent
 use Libraries.Interface.Controls.Control
 use Libraries.Interface.Events.KeyboardEvent
+use Libraries.Compute.Math
+use Libraries.Interface.Events.FocusEvent
 
 class Main is Application
 
@@ -92,12 +94,17 @@ class Main is Application
             Icon hawk = page:GetIcon("Hawk")
             hawk:SetPixelX(RandomNumber(0, 150))
             hawk:SetPixelY(RandomNumber(350, 550))
-            hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
+            //hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
 
             Icon sparrow = page:GetIcon("Sparrow")
             sparrow:SetPixelX(RandomNumber(0, 150))
             sparrow:SetPixelY(RandomNumber(350, 550))
-            sparrow:SetDescription("At " + sparrow:GetPixelX() + ", " + sparrow:GetPixelY())
+            Math math
+            number distance = 0
+            distance = cast(integer,math:SquareRoot(math:RaiseToPower(sparrow:GetPixelX()-hawk:GetPixelX(),2) + math:RaiseToPower(sparrow:GetPixelY()-hawk:GetPixelY(),2)))
+            output distance
+            hawk:SetDescription(distance + " is the distance")
+
         end
 
         if item:GetName() = "Sparrow"
@@ -112,13 +119,21 @@ class Main is Application
             Icon hawk = page:GetIcon("Hawk")
             hawk:SetPixelX(RandomNumber(0, 150))
             hawk:SetPixelY(RandomNumber(350, 550))
-            hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
+           // hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
 
             Icon sparrow = page:GetIcon("Sparrow")
             sparrow:SetPixelX(RandomNumber(0, 150))
             sparrow:SetPixelY(RandomNumber(350, 550))
-            sparrow:SetDescription("At " + sparrow:GetPixelX() + ", " + sparrow:GetPixelY())
+            Math math
+            number distance = 0
+            distance = cast(integer,math:SquareRoot(math:RaiseToPower(sparrow:GetPixelX()-hawk:GetPixelX(),2) + math:RaiseToPower(sparrow:GetPixelY()-hawk:GetPixelY(),2)))
+            output distance
+            sparrow:SetDescription(distance + " is the distance")
+
         end
+
+
+
     end
 
     // The following code action runs when the user moves the mouse off of an item.
@@ -157,12 +172,20 @@ class Main is Application
             Icon hawk = page:GetIcon("Hawk")
             hawk:SetPixelX(RandomNumber(0, 150))
             hawk:SetPixelY(RandomNumber(350, 550))
-            hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
+            //hawk:SetDescription("At " + hawk:GetPixelX() + ", " + hawk:GetPixelY())
 
             Icon sparrow = page:GetIcon("Sparrow")
             sparrow:SetPixelX(RandomNumber(0, 150))
             sparrow:SetPixelY(RandomNumber(350, 550))
-            sparrow:SetDescription("At " + sparrow:GetPixelX() + ", " + sparrow:GetPixelY())
+
+            Math math
+            number distance = 0
+            distance = cast(integer,math:SquareRoot(math:RaiseToPower(sparrow:GetPixelX()-hawk:GetPixelX(),2) + math:RaiseToPower(sparrow:GetPixelY()-hawk:GetPixelY(),2)))
+            output distance
+ 
+            sparrow:SetDescription(distance + " is the distance")
+            hawk:SetDescription(distance + " is the distance")
+
         end
     end
 
