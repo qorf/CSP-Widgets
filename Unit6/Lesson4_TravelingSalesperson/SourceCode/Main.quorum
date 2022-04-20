@@ -43,7 +43,7 @@ class Main is Application
     integer minimumY = 130
     integer maximumY = 525
     integer nodeSize = 31
-    integer numberOfNodes = 11 
+    integer numberOfNodes = 8 
     
     action ButtonActivated(Button button)
         if button is Node

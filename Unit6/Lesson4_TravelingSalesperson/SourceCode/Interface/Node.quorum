@@ -147,7 +147,7 @@ class Node is Button
     action SetLabelDistanceDescription(integer distance)
         SetLabelText(cast(text, distance))
         SetDistance(distance)
-        SetDescription("My x location is " + GetPixelX() + " and my y location is " + GetPixelY() + " My distance from start is " +  cast(text, distance))
+        SetDescription(GetPixelX() + " is my x location" +  GetPixelY() + " is my y location." + cast(text, distance) + " is my distance from start."  )
     end
 
     action SetStartLabelDescription()
