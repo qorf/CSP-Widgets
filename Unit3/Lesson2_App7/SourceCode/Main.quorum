@@ -1,3 +1,4 @@
+// Go to line 34 for the directions to this assignment.
 use Libraries.Curriculum.Code.all
 use Libraries.Game.Graphics.Label
 use Libraries.Interface.Controls.Icon
@@ -6,12 +7,12 @@ use Libraries.Interface.Controls.TextBox
 
 class Main is Application
 
-    action Start
     /*
-    When the app starts, the code after this comment runs.
-    By now students should be familiar with these setup lines of code. If they need a refresher please go back to Apps 1-5 in this unit. 
+    When the app starts, this code runs.
+
     This is where we put all of our code to set up our pages and create the user interface.
     */
+    action Start
         // SetScreenSize sets how large the screen is in pixels. The first number represents the width, and the second represents the height.
         SetScreenSize(400, 600)
 
@@ -26,23 +27,23 @@ class Main is Application
 
         // Set the background color as a percentage of red, green, and blue values. 
         // The default value sends 100% of each color, which makes white.
-        // You can change the values in the parenthesis to change the color!
+        // You can change the values here to change the color!
         SetBackgroundColor(1.0, 1.0, 1.0)
 
         /*
-        We need a page to put all of our elements onto for our app. We can do that with code that looks like the next two following lines:
+        First, we need to create the page to hold the required elements. Sample code:
 
         Page homePage
         homePage:SetName("Home Page")
 
-        You can change the ID and the "real" name to whatever you would like, but try to make them meaningful.
-        DO THIS: Write some code below to make a page for your application.
+        You can change the object name and the "real" name to whatever you would like, but try to make them meaningful.
+        DO THIS: Write the code needed to create a page. Then keep reading for the next set of directions.
         */
 
-        // YOUR CODE HERE
+
 
         /*
-        DO THIS: In the section below, recreate the sample app, which has the following features:
+        You will need to recreate the sample app with the following requirements:
         * A light-blue background
         * A dark-blue banner at the top of the app
         * A white label that says "Practice Log" in the middle of the banner
@@ -56,31 +57,30 @@ class Main is Application
 
         CREATING ELEMENTS
 
-        // This next line creates an icon using a picture in the Images folder
+        // Creates an icon using a picture in the Images folder
         Icon iconID = CreateIcon("Image.jpg")
 
-        // This next line creates a colored rectangle. You can replace the color with any of the normal color commands.
+        // Creates a colored rectangle. You can replace the color with any of the normal color commands.
         Icon iconID = CreateRectangle(NewColor(0, 0, 0))
 
-        // This next line creates a button with text on it.
+        // Creates a button with text on it.
         Button buttonID = CreateButton()
 
-        // This next line creates a button using a picture in the Images folder
+        // Creates a button using a picture in the Images folder
         Button buttonID = CreateButton("Image.jpg")
 
-        // This next line creates a label.
+        // Creates a label.
         Label labelID = CreateLabel()
 
-        // This next line creates a text box.
+        // Creates a text box.
         TextBox textBoxID = CreateTextBox()
 
-        // This next line after the comments adds an element to a page. If an element isn't on a page, it won't appear in your app!
-        // You can replace the "homePage" with the ID of your page, and the "elementID" with the ID of your element.
-        homePage:Add(elementID)
+        // Adds an element to a page. If an element isn't on a page, it won't appear in your app!
+        // You can replace the "pageID" with the ID of your page, and the "elementID" with the ID of your element.
+        pageID:Add(elementID)
 
         SETTING PROPERTIES
 
-        // The following comments refer to itemID but this can be any one of the elements you created above, like labelID or textBoxID
         // Sets the x position of the bottom-left corner of the item, measured in pixels.
         itemID:SetPixelX(25)
 
@@ -117,7 +117,7 @@ class Main is Application
         // Sets how many pixels wide the text in a Label can be before the text is wrapped onto the next line.
         labelID:SetMaximumWidth(300)
 
-        HOW TO USE COLORS IN QUORUM
+        USING COLORS
 
         // Makes a color by mixing red, green, and blue. Each number is between 0 (for 0% brightness) or 1 (for 100% brightness).
         NewColor(0.5, 0.75, 1.0)
@@ -142,20 +142,29 @@ class Main is Application
         Teal()
         Navy()
 
-        Use these commands to recreate the app. 
-        
-        Don't forget to replace the example item IDs with
-        the ID of the items you've made!
+        Remember, you need to change object names and SetNames to match your program, the examples above are just that, examples.
+
+        DO THIS: Recreate the sample app with the following elements:
+        * A light-blue background
+        * A dark-blue banner at the top of the app
+        * A white label that says "Practice Log" in the middle of the banner
+        * A yellow music symbol icon to the left of the label
+        * A yellow headphones icon to the right of the label
+        * A large, dark-blue rectangle in the center of the app
+        * A textbox underneath the rectangle
+        * A button at the bottom of the app named "Add Record"
+
+        After you creat the page, keep reading for the final step.
         */
 
-        // YOUR CODE HERE
+
 
         /*
-        DO THIS: Once you've added everything to the page, add the page to the app. The code should look like the following line of code:
+        DO THIS: Once you've added everything to the page, add the page to the app. The code should look like this:
 
         AddPage(homePage)
 
-        The ID in the parenthesis should be the same ID that you used when you made the page earlier!
+        The object name in the parenthesis should be the same object name that you used when you made the page earlier!
         Add the code below this comment to add your page to the app.
         */
 
